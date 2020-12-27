@@ -45,8 +45,8 @@ Add this dependency to your project's POM:
 The example code below converts a PowerPoint document to PDF format using aspose-slides-cloud library:
 ```java
         Configuration configuration = new Configuration();
-        configuration.setAppSid("MyAppSid");
-        configuration.setAppKey("MyAppKey");
+        configuration.setAppSid("MyClientId");
+        configuration.setAppKey("MyClientSecret");
         SlidesApi api = new SlidesApi(configuration);
 	PostSlidesConvertRequest request =  new PostSlidesConvertRequest();
         request.setFormat(ExportFormat.PDF);
