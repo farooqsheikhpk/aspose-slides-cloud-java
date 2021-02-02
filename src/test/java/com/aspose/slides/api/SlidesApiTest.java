@@ -79,6 +79,7 @@ import com.aspose.slides.model.Placeholders;
 import com.aspose.slides.model.Portion;
 import com.aspose.slides.model.Portions;
 import com.aspose.slides.model.PresentationsMergeRequest;
+import com.aspose.slides.model.ProtectionProperties;
 import com.aspose.slides.model.Sections;
 import com.aspose.slides.model.Series;
 import com.aspose.slides.model.ShapeBase;
@@ -87,6 +88,7 @@ import com.aspose.slides.model.Slide;
 import com.aspose.slides.model.SlideAnimation;
 import com.aspose.slides.model.SlideBackground;
 import com.aspose.slides.model.SlideComments;
+import com.aspose.slides.model.SlideProperties;
 import com.aspose.slides.model.SlideReplaceResult;
 import com.aspose.slides.model.Slides;
 import com.aspose.slides.model.SplitDocumentResult;
@@ -181,10 +183,12 @@ import com.aspose.slides.model.request.GetSlidesImagesRequest;
 import com.aspose.slides.model.request.GetSlidesPlaceholderRequest;
 import com.aspose.slides.model.request.GetSlidesPlaceholdersRequest;
 import com.aspose.slides.model.request.GetSlidesPresentationTextItemsRequest;
+import com.aspose.slides.model.request.GetSlidesProtectionPropertiesRequest;
 import com.aspose.slides.model.request.GetSlidesSlideRequest;
 import com.aspose.slides.model.request.GetSlidesSlideBackgroundRequest;
 import com.aspose.slides.model.request.GetSlidesSlideCommentsRequest;
 import com.aspose.slides.model.request.GetSlidesSlideImagesRequest;
+import com.aspose.slides.model.request.GetSlidesSlidePropertiesRequest;
 import com.aspose.slides.model.request.GetSlidesSlideTextItemsRequest;
 import com.aspose.slides.model.request.GetSlidesSlidesListRequest;
 import com.aspose.slides.model.request.GetSlidesThemeRequest;
@@ -229,6 +233,7 @@ import com.aspose.slides.model.request.PostSlidesConvertRequest;
 import com.aspose.slides.model.request.PostSlidesCopyRequest;
 import com.aspose.slides.model.request.PostSlidesDocumentRequest;
 import com.aspose.slides.model.request.PostSlidesDocumentFromHtmlRequest;
+import com.aspose.slides.model.request.PostSlidesDocumentFromPdfRequest;
 import com.aspose.slides.model.request.PostSlidesDocumentFromSourceRequest;
 import com.aspose.slides.model.request.PostSlidesDocumentFromTemplateRequest;
 import com.aspose.slides.model.request.PostSlidesPipelineRequest;
@@ -264,11 +269,13 @@ import com.aspose.slides.model.request.PutSlideSubshapeInfoRequest;
 import com.aspose.slides.model.request.PutSlidesConvertRequest;
 import com.aspose.slides.model.request.PutSlidesDocumentFromHtmlRequest;
 import com.aspose.slides.model.request.PutSlidesHeaderFooterRequest;
+import com.aspose.slides.model.request.PutSlidesProtectionPropertiesRequest;
 import com.aspose.slides.model.request.PutSlidesSaveAsRequest;
 import com.aspose.slides.model.request.PutSlidesSetDocumentPropertyRequest;
 import com.aspose.slides.model.request.PutSlidesSlideRequest;
 import com.aspose.slides.model.request.PutSlidesSlideBackgroundRequest;
 import com.aspose.slides.model.request.PutSlidesSlideBackgroundColorRequest;
+import com.aspose.slides.model.request.PutSlidesSlidePropertiesRequest;
 import com.aspose.slides.model.request.PutSlidesSlideSizeRequest;
 import com.aspose.slides.model.request.PutSlidesViewPropertiesRequest;
 import com.aspose.slides.model.request.PutSubshapeSaveAsRequest;
@@ -13662,6 +13669,129 @@ public class SlidesApiTest extends ApiTest {
     }
     
     /**
+     * Read presentation protection properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSlidesProtectionPropertiesTest() throws ApiException, Exception {
+        initialize("getSlidesProtectionProperties", null, null);
+        ProtectionProperties response = null;
+        GetSlidesProtectionPropertiesRequest request = createGetSlidesProtectionPropertiesRequest();
+        response = api.getSlidesProtectionProperties(request);
+        assertNotNull(response);
+    }
+
+    /**
+     * Read presentation protection properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSlidesProtectionPropertiesInvalidNameTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        GetSlidesProtectionPropertiesRequest request = createGetSlidesProtectionPropertiesRequest();
+        try {
+            request.setName((String)invalidizeTestValue("String", request.getName(), "getSlidesProtectionProperties", "name"));
+            initialize("getSlidesProtectionProperties", "name", request.getName());
+            ProtectionProperties response = api.getSlidesProtectionProperties(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "name", "getSlidesProtectionProperties", request.getName());
+        }
+        if (needAssertResponse) {
+            assertResponse("name", "getSlidesProtectionProperties");
+        }
+    }
+    /**
+     * Read presentation protection properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSlidesProtectionPropertiesInvalidPasswordTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        GetSlidesProtectionPropertiesRequest request = createGetSlidesProtectionPropertiesRequest();
+        try {
+            request.setPassword((String)invalidizeTestValue("String", request.getPassword(), "getSlidesProtectionProperties", "password"));
+            initialize("getSlidesProtectionProperties", "password", request.getPassword());
+            ProtectionProperties response = api.getSlidesProtectionProperties(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "password", "getSlidesProtectionProperties", request.getPassword());
+        }
+        if (needAssertResponse) {
+            assertResponse("password", "getSlidesProtectionProperties");
+        }
+    }
+    /**
+     * Read presentation protection properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSlidesProtectionPropertiesInvalidFolderTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        GetSlidesProtectionPropertiesRequest request = createGetSlidesProtectionPropertiesRequest();
+        try {
+            request.setFolder((String)invalidizeTestValue("String", request.getFolder(), "getSlidesProtectionProperties", "folder"));
+            initialize("getSlidesProtectionProperties", "folder", request.getFolder());
+            ProtectionProperties response = api.getSlidesProtectionProperties(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "folder", "getSlidesProtectionProperties", request.getFolder());
+        }
+        if (needAssertResponse) {
+            assertResponse("folder", "getSlidesProtectionProperties");
+        }
+    }
+    /**
+     * Read presentation protection properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSlidesProtectionPropertiesInvalidStorageTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        GetSlidesProtectionPropertiesRequest request = createGetSlidesProtectionPropertiesRequest();
+        try {
+            request.setStorage((String)invalidizeTestValue("String", request.getStorage(), "getSlidesProtectionProperties", "storage"));
+            initialize("getSlidesProtectionProperties", "storage", request.getStorage());
+            ProtectionProperties response = api.getSlidesProtectionProperties(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "storage", "getSlidesProtectionProperties", request.getStorage());
+        }
+        if (needAssertResponse) {
+            assertResponse("storage", "getSlidesProtectionProperties");
+        }
+    }
+
+    private GetSlidesProtectionPropertiesRequest createGetSlidesProtectionPropertiesRequest() {
+        GetSlidesProtectionPropertiesRequest request = new GetSlidesProtectionPropertiesRequest();
+        request.setName((String)getTestValue("String", "getSlidesProtectionProperties", "name"));
+        request.setPassword((String)getTestValue("String", "getSlidesProtectionProperties", "password"));
+        request.setFolder((String)getTestValue("String", "getSlidesProtectionProperties", "folder"));
+        request.setStorage((String)getTestValue("String", "getSlidesProtectionProperties", "storage"));
+        return request;
+    }
+    
+    /**
      * Read presentation slide info.
      *
      * 
@@ -14250,6 +14380,129 @@ public class SlidesApiTest extends ApiTest {
         request.setPassword((String)getTestValue("String", "getSlidesSlideImages", "password"));
         request.setFolder((String)getTestValue("String", "getSlidesSlideImages", "folder"));
         request.setStorage((String)getTestValue("String", "getSlidesSlideImages", "storage"));
+        return request;
+    }
+    
+    /**
+     * Read presentation slide properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSlidesSlidePropertiesTest() throws ApiException, Exception {
+        initialize("getSlidesSlideProperties", null, null);
+        SlideProperties response = null;
+        GetSlidesSlidePropertiesRequest request = createGetSlidesSlidePropertiesRequest();
+        response = api.getSlidesSlideProperties(request);
+        assertNotNull(response);
+    }
+
+    /**
+     * Read presentation slide properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSlidesSlidePropertiesInvalidNameTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        GetSlidesSlidePropertiesRequest request = createGetSlidesSlidePropertiesRequest();
+        try {
+            request.setName((String)invalidizeTestValue("String", request.getName(), "getSlidesSlideProperties", "name"));
+            initialize("getSlidesSlideProperties", "name", request.getName());
+            SlideProperties response = api.getSlidesSlideProperties(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "name", "getSlidesSlideProperties", request.getName());
+        }
+        if (needAssertResponse) {
+            assertResponse("name", "getSlidesSlideProperties");
+        }
+    }
+    /**
+     * Read presentation slide properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSlidesSlidePropertiesInvalidPasswordTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        GetSlidesSlidePropertiesRequest request = createGetSlidesSlidePropertiesRequest();
+        try {
+            request.setPassword((String)invalidizeTestValue("String", request.getPassword(), "getSlidesSlideProperties", "password"));
+            initialize("getSlidesSlideProperties", "password", request.getPassword());
+            SlideProperties response = api.getSlidesSlideProperties(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "password", "getSlidesSlideProperties", request.getPassword());
+        }
+        if (needAssertResponse) {
+            assertResponse("password", "getSlidesSlideProperties");
+        }
+    }
+    /**
+     * Read presentation slide properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSlidesSlidePropertiesInvalidFolderTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        GetSlidesSlidePropertiesRequest request = createGetSlidesSlidePropertiesRequest();
+        try {
+            request.setFolder((String)invalidizeTestValue("String", request.getFolder(), "getSlidesSlideProperties", "folder"));
+            initialize("getSlidesSlideProperties", "folder", request.getFolder());
+            SlideProperties response = api.getSlidesSlideProperties(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "folder", "getSlidesSlideProperties", request.getFolder());
+        }
+        if (needAssertResponse) {
+            assertResponse("folder", "getSlidesSlideProperties");
+        }
+    }
+    /**
+     * Read presentation slide properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSlidesSlidePropertiesInvalidStorageTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        GetSlidesSlidePropertiesRequest request = createGetSlidesSlidePropertiesRequest();
+        try {
+            request.setStorage((String)invalidizeTestValue("String", request.getStorage(), "getSlidesSlideProperties", "storage"));
+            initialize("getSlidesSlideProperties", "storage", request.getStorage());
+            SlideProperties response = api.getSlidesSlideProperties(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "storage", "getSlidesSlideProperties", request.getStorage());
+        }
+        if (needAssertResponse) {
+            assertResponse("storage", "getSlidesSlideProperties");
+        }
+    }
+
+    private GetSlidesSlidePropertiesRequest createGetSlidesSlidePropertiesRequest() {
+        GetSlidesSlidePropertiesRequest request = new GetSlidesSlidePropertiesRequest();
+        request.setName((String)getTestValue("String", "getSlidesSlideProperties", "name"));
+        request.setPassword((String)getTestValue("String", "getSlidesSlideProperties", "password"));
+        request.setFolder((String)getTestValue("String", "getSlidesSlideProperties", "folder"));
+        request.setStorage((String)getTestValue("String", "getSlidesSlideProperties", "storage"));
         return request;
     }
     
@@ -22739,6 +22992,154 @@ public class SlidesApiTest extends ApiTest {
     }
     
     /**
+     * Create presentation document from pdf or append pdf to an existing presentation.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postSlidesDocumentFromPdfTest() throws ApiException, Exception {
+        initialize("postSlidesDocumentFromPdf", null, null);
+        Document response = null;
+        PostSlidesDocumentFromPdfRequest request = createPostSlidesDocumentFromPdfRequest();
+        response = api.postSlidesDocumentFromPdf(request);
+        assertNotNull(response);
+    }
+
+    /**
+     * Create presentation document from pdf or append pdf to an existing presentation.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postSlidesDocumentFromPdfInvalidNameTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        PostSlidesDocumentFromPdfRequest request = createPostSlidesDocumentFromPdfRequest();
+        try {
+            request.setName((String)invalidizeTestValue("String", request.getName(), "postSlidesDocumentFromPdf", "name"));
+            initialize("postSlidesDocumentFromPdf", "name", request.getName());
+            Document response = api.postSlidesDocumentFromPdf(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "name", "postSlidesDocumentFromPdf", request.getName());
+        }
+        if (needAssertResponse) {
+            assertResponse("name", "postSlidesDocumentFromPdf");
+        }
+    }
+    /**
+     * Create presentation document from pdf or append pdf to an existing presentation.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postSlidesDocumentFromPdfInvalidPdfTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        PostSlidesDocumentFromPdfRequest request = createPostSlidesDocumentFromPdfRequest();
+        try {
+            request.setPdf((byte[])invalidizeTestValue("byte[]", request.getPdf(), "postSlidesDocumentFromPdf", "pdf"));
+            initialize("postSlidesDocumentFromPdf", "pdf", request.getPdf());
+            Document response = api.postSlidesDocumentFromPdf(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "pdf", "postSlidesDocumentFromPdf", request.getPdf());
+        }
+        if (needAssertResponse) {
+            assertResponse("pdf", "postSlidesDocumentFromPdf");
+        }
+    }
+    /**
+     * Create presentation document from pdf or append pdf to an existing presentation.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postSlidesDocumentFromPdfInvalidPasswordTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        PostSlidesDocumentFromPdfRequest request = createPostSlidesDocumentFromPdfRequest();
+        try {
+            request.setPassword((String)invalidizeTestValue("String", request.getPassword(), "postSlidesDocumentFromPdf", "password"));
+            initialize("postSlidesDocumentFromPdf", "password", request.getPassword());
+            Document response = api.postSlidesDocumentFromPdf(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "password", "postSlidesDocumentFromPdf", request.getPassword());
+        }
+        if (needAssertResponse) {
+            assertResponse("password", "postSlidesDocumentFromPdf");
+        }
+    }
+    /**
+     * Create presentation document from pdf or append pdf to an existing presentation.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postSlidesDocumentFromPdfInvalidStorageTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        PostSlidesDocumentFromPdfRequest request = createPostSlidesDocumentFromPdfRequest();
+        try {
+            request.setStorage((String)invalidizeTestValue("String", request.getStorage(), "postSlidesDocumentFromPdf", "storage"));
+            initialize("postSlidesDocumentFromPdf", "storage", request.getStorage());
+            Document response = api.postSlidesDocumentFromPdf(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "storage", "postSlidesDocumentFromPdf", request.getStorage());
+        }
+        if (needAssertResponse) {
+            assertResponse("storage", "postSlidesDocumentFromPdf");
+        }
+    }
+    /**
+     * Create presentation document from pdf or append pdf to an existing presentation.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postSlidesDocumentFromPdfInvalidFolderTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        PostSlidesDocumentFromPdfRequest request = createPostSlidesDocumentFromPdfRequest();
+        try {
+            request.setFolder((String)invalidizeTestValue("String", request.getFolder(), "postSlidesDocumentFromPdf", "folder"));
+            initialize("postSlidesDocumentFromPdf", "folder", request.getFolder());
+            Document response = api.postSlidesDocumentFromPdf(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "folder", "postSlidesDocumentFromPdf", request.getFolder());
+        }
+        if (needAssertResponse) {
+            assertResponse("folder", "postSlidesDocumentFromPdf");
+        }
+    }
+
+    private PostSlidesDocumentFromPdfRequest createPostSlidesDocumentFromPdfRequest() {
+        PostSlidesDocumentFromPdfRequest request = new PostSlidesDocumentFromPdfRequest();
+        request.setName((String)getTestValue("String", "postSlidesDocumentFromPdf", "name"));
+        request.setPdf((byte[])getTestValue("byte[]", "postSlidesDocumentFromPdf", "pdf"));
+        request.setPassword((String)getTestValue("String", "postSlidesDocumentFromPdf", "password"));
+        request.setStorage((String)getTestValue("String", "postSlidesDocumentFromPdf", "storage"));
+        request.setFolder((String)getTestValue("String", "postSlidesDocumentFromPdf", "folder"));
+        return request;
+    }
+    
+    /**
      * Create a presentation from an existing source.
      *
      * 
@@ -30165,6 +30566,154 @@ public class SlidesApiTest extends ApiTest {
     }
     
     /**
+     * Update presentation protection properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putSlidesProtectionPropertiesTest() throws ApiException, Exception {
+        initialize("putSlidesProtectionProperties", null, null);
+        ProtectionProperties response = null;
+        PutSlidesProtectionPropertiesRequest request = createPutSlidesProtectionPropertiesRequest();
+        response = api.putSlidesProtectionProperties(request);
+        assertNotNull(response);
+    }
+
+    /**
+     * Update presentation protection properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putSlidesProtectionPropertiesInvalidNameTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        PutSlidesProtectionPropertiesRequest request = createPutSlidesProtectionPropertiesRequest();
+        try {
+            request.setName((String)invalidizeTestValue("String", request.getName(), "putSlidesProtectionProperties", "name"));
+            initialize("putSlidesProtectionProperties", "name", request.getName());
+            ProtectionProperties response = api.putSlidesProtectionProperties(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "name", "putSlidesProtectionProperties", request.getName());
+        }
+        if (needAssertResponse) {
+            assertResponse("name", "putSlidesProtectionProperties");
+        }
+    }
+    /**
+     * Update presentation protection properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putSlidesProtectionPropertiesInvalidDtoTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        PutSlidesProtectionPropertiesRequest request = createPutSlidesProtectionPropertiesRequest();
+        try {
+            request.setDto((ProtectionProperties)invalidizeTestValue("ProtectionProperties", request.getDto(), "putSlidesProtectionProperties", "dto"));
+            initialize("putSlidesProtectionProperties", "dto", request.getDto());
+            ProtectionProperties response = api.putSlidesProtectionProperties(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "dto", "putSlidesProtectionProperties", request.getDto());
+        }
+        if (needAssertResponse) {
+            assertResponse("dto", "putSlidesProtectionProperties");
+        }
+    }
+    /**
+     * Update presentation protection properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putSlidesProtectionPropertiesInvalidPasswordTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        PutSlidesProtectionPropertiesRequest request = createPutSlidesProtectionPropertiesRequest();
+        try {
+            request.setPassword((String)invalidizeTestValue("String", request.getPassword(), "putSlidesProtectionProperties", "password"));
+            initialize("putSlidesProtectionProperties", "password", request.getPassword());
+            ProtectionProperties response = api.putSlidesProtectionProperties(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "password", "putSlidesProtectionProperties", request.getPassword());
+        }
+        if (needAssertResponse) {
+            assertResponse("password", "putSlidesProtectionProperties");
+        }
+    }
+    /**
+     * Update presentation protection properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putSlidesProtectionPropertiesInvalidFolderTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        PutSlidesProtectionPropertiesRequest request = createPutSlidesProtectionPropertiesRequest();
+        try {
+            request.setFolder((String)invalidizeTestValue("String", request.getFolder(), "putSlidesProtectionProperties", "folder"));
+            initialize("putSlidesProtectionProperties", "folder", request.getFolder());
+            ProtectionProperties response = api.putSlidesProtectionProperties(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "folder", "putSlidesProtectionProperties", request.getFolder());
+        }
+        if (needAssertResponse) {
+            assertResponse("folder", "putSlidesProtectionProperties");
+        }
+    }
+    /**
+     * Update presentation protection properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putSlidesProtectionPropertiesInvalidStorageTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        PutSlidesProtectionPropertiesRequest request = createPutSlidesProtectionPropertiesRequest();
+        try {
+            request.setStorage((String)invalidizeTestValue("String", request.getStorage(), "putSlidesProtectionProperties", "storage"));
+            initialize("putSlidesProtectionProperties", "storage", request.getStorage());
+            ProtectionProperties response = api.putSlidesProtectionProperties(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "storage", "putSlidesProtectionProperties", request.getStorage());
+        }
+        if (needAssertResponse) {
+            assertResponse("storage", "putSlidesProtectionProperties");
+        }
+    }
+
+    private PutSlidesProtectionPropertiesRequest createPutSlidesProtectionPropertiesRequest() {
+        PutSlidesProtectionPropertiesRequest request = new PutSlidesProtectionPropertiesRequest();
+        request.setName((String)getTestValue("String", "putSlidesProtectionProperties", "name"));
+        request.setDto((ProtectionProperties)getTestValue("ProtectionProperties", "putSlidesProtectionProperties", "dto"));
+        request.setPassword((String)getTestValue("String", "putSlidesProtectionProperties", "password"));
+        request.setFolder((String)getTestValue("String", "putSlidesProtectionProperties", "folder"));
+        request.setStorage((String)getTestValue("String", "putSlidesProtectionProperties", "storage"));
+        return request;
+    }
+    
+    /**
      * Save a presentation to a specified format.
      *
      * 
@@ -31075,6 +31624,154 @@ public class SlidesApiTest extends ApiTest {
         request.setFolder((String)getTestValue("String", "putSlidesSlideBackgroundColor", "folder"));
         request.setPassword((String)getTestValue("String", "putSlidesSlideBackgroundColor", "password"));
         request.setStorage((String)getTestValue("String", "putSlidesSlideBackgroundColor", "storage"));
+        return request;
+    }
+    
+    /**
+     * Update presentation slide properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putSlidesSlidePropertiesTest() throws ApiException, Exception {
+        initialize("putSlidesSlideProperties", null, null);
+        SlideProperties response = null;
+        PutSlidesSlidePropertiesRequest request = createPutSlidesSlidePropertiesRequest();
+        response = api.putSlidesSlideProperties(request);
+        assertNotNull(response);
+    }
+
+    /**
+     * Update presentation slide properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putSlidesSlidePropertiesInvalidNameTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        PutSlidesSlidePropertiesRequest request = createPutSlidesSlidePropertiesRequest();
+        try {
+            request.setName((String)invalidizeTestValue("String", request.getName(), "putSlidesSlideProperties", "name"));
+            initialize("putSlidesSlideProperties", "name", request.getName());
+            SlideProperties response = api.putSlidesSlideProperties(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "name", "putSlidesSlideProperties", request.getName());
+        }
+        if (needAssertResponse) {
+            assertResponse("name", "putSlidesSlideProperties");
+        }
+    }
+    /**
+     * Update presentation slide properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putSlidesSlidePropertiesInvalidDtoTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        PutSlidesSlidePropertiesRequest request = createPutSlidesSlidePropertiesRequest();
+        try {
+            request.setDto((SlideProperties)invalidizeTestValue("SlideProperties", request.getDto(), "putSlidesSlideProperties", "dto"));
+            initialize("putSlidesSlideProperties", "dto", request.getDto());
+            SlideProperties response = api.putSlidesSlideProperties(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "dto", "putSlidesSlideProperties", request.getDto());
+        }
+        if (needAssertResponse) {
+            assertResponse("dto", "putSlidesSlideProperties");
+        }
+    }
+    /**
+     * Update presentation slide properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putSlidesSlidePropertiesInvalidPasswordTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        PutSlidesSlidePropertiesRequest request = createPutSlidesSlidePropertiesRequest();
+        try {
+            request.setPassword((String)invalidizeTestValue("String", request.getPassword(), "putSlidesSlideProperties", "password"));
+            initialize("putSlidesSlideProperties", "password", request.getPassword());
+            SlideProperties response = api.putSlidesSlideProperties(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "password", "putSlidesSlideProperties", request.getPassword());
+        }
+        if (needAssertResponse) {
+            assertResponse("password", "putSlidesSlideProperties");
+        }
+    }
+    /**
+     * Update presentation slide properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putSlidesSlidePropertiesInvalidFolderTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        PutSlidesSlidePropertiesRequest request = createPutSlidesSlidePropertiesRequest();
+        try {
+            request.setFolder((String)invalidizeTestValue("String", request.getFolder(), "putSlidesSlideProperties", "folder"));
+            initialize("putSlidesSlideProperties", "folder", request.getFolder());
+            SlideProperties response = api.putSlidesSlideProperties(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "folder", "putSlidesSlideProperties", request.getFolder());
+        }
+        if (needAssertResponse) {
+            assertResponse("folder", "putSlidesSlideProperties");
+        }
+    }
+    /**
+     * Update presentation slide properties.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void putSlidesSlidePropertiesInvalidStorageTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        PutSlidesSlidePropertiesRequest request = createPutSlidesSlidePropertiesRequest();
+        try {
+            request.setStorage((String)invalidizeTestValue("String", request.getStorage(), "putSlidesSlideProperties", "storage"));
+            initialize("putSlidesSlideProperties", "storage", request.getStorage());
+            SlideProperties response = api.putSlidesSlideProperties(request);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "storage", "putSlidesSlideProperties", request.getStorage());
+        }
+        if (needAssertResponse) {
+            assertResponse("storage", "putSlidesSlideProperties");
+        }
+    }
+
+    private PutSlidesSlidePropertiesRequest createPutSlidesSlidePropertiesRequest() {
+        PutSlidesSlidePropertiesRequest request = new PutSlidesSlidePropertiesRequest();
+        request.setName((String)getTestValue("String", "putSlidesSlideProperties", "name"));
+        request.setDto((SlideProperties)getTestValue("SlideProperties", "putSlidesSlideProperties", "dto"));
+        request.setPassword((String)getTestValue("String", "putSlidesSlideProperties", "password"));
+        request.setFolder((String)getTestValue("String", "putSlidesSlideProperties", "folder"));
+        request.setStorage((String)getTestValue("String", "putSlidesSlideProperties", "storage"));
         return request;
     }
     

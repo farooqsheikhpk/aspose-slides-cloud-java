@@ -82,6 +82,7 @@ import com.aspose.slides.model.Placeholders;
 import com.aspose.slides.model.Portion;
 import com.aspose.slides.model.Portions;
 import com.aspose.slides.model.PresentationsMergeRequest;
+import com.aspose.slides.model.ProtectionProperties;
 import com.aspose.slides.model.Sections;
 import com.aspose.slides.model.Series;
 import com.aspose.slides.model.ShapeBase;
@@ -90,6 +91,7 @@ import com.aspose.slides.model.Slide;
 import com.aspose.slides.model.SlideAnimation;
 import com.aspose.slides.model.SlideBackground;
 import com.aspose.slides.model.SlideComments;
+import com.aspose.slides.model.SlideProperties;
 import com.aspose.slides.model.SlideReplaceResult;
 import com.aspose.slides.model.Slides;
 import com.aspose.slides.model.SplitDocumentResult;
@@ -177,10 +179,12 @@ import com.aspose.slides.model.request.GetSlidesImagesRequest;
 import com.aspose.slides.model.request.GetSlidesPlaceholderRequest;
 import com.aspose.slides.model.request.GetSlidesPlaceholdersRequest;
 import com.aspose.slides.model.request.GetSlidesPresentationTextItemsRequest;
+import com.aspose.slides.model.request.GetSlidesProtectionPropertiesRequest;
 import com.aspose.slides.model.request.GetSlidesSlideRequest;
 import com.aspose.slides.model.request.GetSlidesSlideBackgroundRequest;
 import com.aspose.slides.model.request.GetSlidesSlideCommentsRequest;
 import com.aspose.slides.model.request.GetSlidesSlideImagesRequest;
+import com.aspose.slides.model.request.GetSlidesSlidePropertiesRequest;
 import com.aspose.slides.model.request.GetSlidesSlideTextItemsRequest;
 import com.aspose.slides.model.request.GetSlidesSlidesListRequest;
 import com.aspose.slides.model.request.GetSlidesThemeRequest;
@@ -225,6 +229,7 @@ import com.aspose.slides.model.request.PostSlidesConvertRequest;
 import com.aspose.slides.model.request.PostSlidesCopyRequest;
 import com.aspose.slides.model.request.PostSlidesDocumentRequest;
 import com.aspose.slides.model.request.PostSlidesDocumentFromHtmlRequest;
+import com.aspose.slides.model.request.PostSlidesDocumentFromPdfRequest;
 import com.aspose.slides.model.request.PostSlidesDocumentFromSourceRequest;
 import com.aspose.slides.model.request.PostSlidesDocumentFromTemplateRequest;
 import com.aspose.slides.model.request.PostSlidesPipelineRequest;
@@ -260,11 +265,13 @@ import com.aspose.slides.model.request.PutSlideSubshapeInfoRequest;
 import com.aspose.slides.model.request.PutSlidesConvertRequest;
 import com.aspose.slides.model.request.PutSlidesDocumentFromHtmlRequest;
 import com.aspose.slides.model.request.PutSlidesHeaderFooterRequest;
+import com.aspose.slides.model.request.PutSlidesProtectionPropertiesRequest;
 import com.aspose.slides.model.request.PutSlidesSaveAsRequest;
 import com.aspose.slides.model.request.PutSlidesSetDocumentPropertyRequest;
 import com.aspose.slides.model.request.PutSlidesSlideRequest;
 import com.aspose.slides.model.request.PutSlidesSlideBackgroundRequest;
 import com.aspose.slides.model.request.PutSlidesSlideBackgroundColorRequest;
+import com.aspose.slides.model.request.PutSlidesSlidePropertiesRequest;
 import com.aspose.slides.model.request.PutSlidesSlideSizeRequest;
 import com.aspose.slides.model.request.PutSlidesViewPropertiesRequest;
 import com.aspose.slides.model.request.PutSubshapeSaveAsRequest;
@@ -679,11 +686,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "categoryIndex" + "\\}", apiClient.objectToString(request.getCategoryIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -819,11 +827,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "seriesIndex" + "\\}", apiClient.objectToString(request.getSeriesIndex())).replaceAll("\\{" + "pointIndex" + "\\}", apiClient.objectToString(request.getPointIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -954,11 +963,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "seriesIndex" + "\\}", apiClient.objectToString(request.getSeriesIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -1299,11 +1309,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -1434,11 +1445,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -1565,11 +1577,12 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "paragraphs", request.getParagraphs());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -1705,11 +1718,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex())).replaceAll("\\{" + "portionIndex" + "\\}", apiClient.objectToString(request.getPortionIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -1841,11 +1855,12 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "portions", request.getPortions());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -1971,11 +1986,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -2097,11 +2113,12 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "shapes", request.getShapes());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -2232,11 +2249,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -2363,11 +2381,12 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "paragraphs", request.getParagraphs());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -2503,11 +2522,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex())).replaceAll("\\{" + "portionIndex" + "\\}", apiClient.objectToString(request.getPortionIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -2639,11 +2659,12 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "portions", request.getPortions());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -2765,11 +2786,12 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "withSlides", request.getWithSlides());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -2887,11 +2909,12 @@ public class SlidesApi {
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "sections", request.getSections());
         apiClient.addQueryParameter(queryParams, "withSlides", request.getWithSlides());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -3012,11 +3035,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -3142,11 +3166,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "effectIndex" + "\\}", apiClient.objectToString(request.getEffectIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -3272,11 +3297,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "sequenceIndex" + "\\}", apiClient.objectToString(request.getSequenceIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -3407,11 +3433,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "sequenceIndex" + "\\}", apiClient.objectToString(request.getSequenceIndex())).replaceAll("\\{" + "effectIndex" + "\\}", apiClient.objectToString(request.getEffectIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -3532,11 +3559,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -3657,11 +3685,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -3782,11 +3811,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -3912,11 +3942,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -4038,11 +4069,12 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "shapes", request.getShapes());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -4168,11 +4200,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(request.getPath())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -4294,11 +4327,12 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "shapes", request.getShapes());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -4415,11 +4449,12 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "slides", request.getSlides());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -4535,11 +4570,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -4660,11 +4696,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "propertyName" + "\\}", apiClient.objectToString(request.getPropertyName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -4785,11 +4822,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -4920,11 +4958,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(request.getPath())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -5051,11 +5090,12 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "paragraphs", request.getParagraphs());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -5191,11 +5231,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(request.getPath())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex())).replaceAll("\\{" + "portionIndex" + "\\}", apiClient.objectToString(request.getPortionIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -5327,11 +5368,12 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "portions", request.getPortions());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -5905,11 +5947,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -6025,11 +6068,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -6150,11 +6194,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -6270,11 +6315,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -6395,11 +6441,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -6520,11 +6567,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -6645,11 +6693,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -6775,11 +6824,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -6910,11 +6960,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -7040,11 +7091,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -7180,11 +7232,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex())).replaceAll("\\{" + "portionIndex" + "\\}", apiClient.objectToString(request.getPortionIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -7315,11 +7368,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -7440,11 +7494,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -7572,12 +7627,13 @@ public class SlidesApi {
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "width", request.getWidth());
         apiClient.addQueryParameter(queryParams, "height", request.getHeight());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "fontsFolder", request.getFontsFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -7713,11 +7769,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex())).replaceAll("\\{" + "portionIndex" + "\\}", apiClient.objectToString(request.getPortionIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -7848,11 +7905,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -7968,11 +8026,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -8094,11 +8153,12 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "shapeIndex", request.getShapeIndex());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -8219,11 +8279,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -8349,11 +8410,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -8484,11 +8546,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -8614,11 +8677,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -8739,11 +8803,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -8869,11 +8934,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(request.getPath())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -9004,11 +9070,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(request.getPath())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -9134,11 +9201,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(request.getPath())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -9259,11 +9327,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(request.getPath()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -9487,11 +9556,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -9607,11 +9677,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -9732,11 +9803,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "propertyName" + "\\}", apiClient.objectToString(request.getPropertyName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -9857,11 +9929,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "index" + "\\}", apiClient.objectToString(request.getIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -9987,11 +10060,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "index" + "\\}", apiClient.objectToString(request.getIndex())).replaceAll("\\{" + "format" + "\\}", apiClient.objectToString(request.getFormat()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -10107,11 +10181,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -10237,11 +10312,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "placeholderIndex" + "\\}", apiClient.objectToString(request.getPlaceholderIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -10362,11 +10438,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -10483,11 +10560,12 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "withEmpty", request.getWithEmpty());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -10582,6 +10660,127 @@ public class SlidesApi {
         return call;
     }
     /**
+     * Build call for getSlidesProtectionProperties
+     * @param request Request for getSlidesProtectionProperties. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSlidesProtectionPropertiesCall(GetSlidesProtectionPropertiesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (request.getName() == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getSlidesProtectionProperties(Async)");
+        }
+        
+        Object postBody = null;
+
+        // create path and map variables
+        String path = "/slides/{name}/protectionProperties"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
+        apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
+
+        Map<String, Object> formParams = new HashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+    }
+
+    /**
+     * Read presentation protection properties.
+     * 
+     * @param request Request for getSlidesProtectionProperties. (required)
+     * @return ProtectionProperties
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ProtectionProperties getSlidesProtectionProperties(GetSlidesProtectionPropertiesRequest request) throws ApiException {
+        try {
+            ApiResponse<ProtectionProperties> resp = getSlidesProtectionPropertiesWithHttpInfo(request);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<ProtectionProperties> resp = getSlidesProtectionPropertiesWithHttpInfo(request);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Read presentation protection properties.
+     * 
+     * @param request Request for getSlidesProtectionProperties. (required)
+     * @return ApiResponse&lt;ProtectionProperties&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ProtectionProperties> getSlidesProtectionPropertiesWithHttpInfo(GetSlidesProtectionPropertiesRequest request) throws ApiException {
+        com.squareup.okhttp.Call call = getSlidesProtectionPropertiesCall(request, null, null);
+        Type returnType = new TypeToken<ProtectionProperties>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Read presentation protection properties. (asynchronously)
+     * 
+     * @param request Request for getSlidesProtectionProperties. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSlidesProtectionPropertiesAsync(GetSlidesProtectionPropertiesRequest request, final ApiCallback<ProtectionProperties> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSlidesProtectionPropertiesCall(request, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<ProtectionProperties>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
      * Build call for getSlidesSlide
      * @param request Request for getSlidesSlide. (required)
      * @param progressListener Progress listener
@@ -10608,11 +10807,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -10733,11 +10933,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -10858,11 +11059,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -10983,11 +11185,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -11082,6 +11285,127 @@ public class SlidesApi {
         return call;
     }
     /**
+     * Build call for getSlidesSlideProperties
+     * @param request Request for getSlidesSlideProperties. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSlidesSlidePropertiesCall(GetSlidesSlidePropertiesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (request.getName() == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getSlidesSlideProperties(Async)");
+        }
+        
+        Object postBody = null;
+
+        // create path and map variables
+        String path = "/slides/{name}/slideProperties"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
+        apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
+
+        Map<String, Object> formParams = new HashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+    }
+
+    /**
+     * Read presentation slide properties.
+     * 
+     * @param request Request for getSlidesSlideProperties. (required)
+     * @return SlideProperties
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SlideProperties getSlidesSlideProperties(GetSlidesSlidePropertiesRequest request) throws ApiException {
+        try {
+            ApiResponse<SlideProperties> resp = getSlidesSlidePropertiesWithHttpInfo(request);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<SlideProperties> resp = getSlidesSlidePropertiesWithHttpInfo(request);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Read presentation slide properties.
+     * 
+     * @param request Request for getSlidesSlideProperties. (required)
+     * @return ApiResponse&lt;SlideProperties&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SlideProperties> getSlidesSlidePropertiesWithHttpInfo(GetSlidesSlidePropertiesRequest request) throws ApiException {
+        com.squareup.okhttp.Call call = getSlidesSlidePropertiesCall(request, null, null);
+        Type returnType = new TypeToken<SlideProperties>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Read presentation slide properties. (asynchronously)
+     * 
+     * @param request Request for getSlidesSlideProperties. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSlidesSlidePropertiesAsync(GetSlidesSlidePropertiesRequest request, final ApiCallback<SlideProperties> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSlidesSlidePropertiesCall(request, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<SlideProperties>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
      * Build call for getSlidesSlideTextItems
      * @param request Request for getSlidesSlideTextItems. (required)
      * @param progressListener Progress listener
@@ -11109,11 +11433,12 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "withEmpty", request.getWithEmpty());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -11229,11 +11554,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -11354,11 +11680,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -11479,11 +11806,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -11604,11 +11932,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -11729,11 +12058,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -11849,11 +12179,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -11989,11 +12320,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(request.getPath())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex())).replaceAll("\\{" + "portionIndex" + "\\}", apiClient.objectToString(request.getPortionIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -12124,11 +12456,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(request.getPath())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -12616,12 +12949,13 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "position", request.getPosition());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -12757,12 +13091,13 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "position", request.getPosition());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -12883,13 +13218,14 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "shapeToClone", request.getShapeToClone());
         apiClient.addQueryParameter(queryParams, "position", request.getPosition());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -13010,13 +13346,14 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(request.getPath()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "shapeToClone", request.getShapeToClone());
         apiClient.addQueryParameter(queryParams, "position", request.getPosition());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -13147,12 +13484,13 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(request.getPath())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "position", request.getPosition());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -13288,12 +13626,13 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(request.getPath())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "position", request.getPosition());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -13419,11 +13758,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -13554,11 +13894,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -13694,11 +14035,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "seriesIndex" + "\\}", apiClient.objectToString(request.getSeriesIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -13829,11 +14171,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -13961,13 +14304,15 @@ public class SlidesApi {
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "cloneFrom", request.getCloneFrom());
         apiClient.addQueryParameter(queryParams, "cloneFromPosition", request.getCloneFromPosition());
-        apiClient.addQueryParameter(queryParams, "cloneFromPassword", request.getCloneFromPassword());
         apiClient.addQueryParameter(queryParams, "cloneFromStorage", request.getCloneFromStorage());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getCloneFromPassword() != null)
+        headerParams.put("cloneFromPassword", apiClient.parameterToString(request.getCloneFromPassword()));
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -14095,14 +14440,16 @@ public class SlidesApi {
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "cloneFrom", request.getCloneFrom());
         apiClient.addQueryParameter(queryParams, "cloneFromPosition", request.getCloneFromPosition());
-        apiClient.addQueryParameter(queryParams, "cloneFromPassword", request.getCloneFromPassword());
         apiClient.addQueryParameter(queryParams, "cloneFromStorage", request.getCloneFromStorage());
         apiClient.addQueryParameter(queryParams, "applyToAll", request.getApplyToAll());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getCloneFromPassword() != null)
+        headerParams.put("cloneFromPassword", apiClient.parameterToString(request.getCloneFromPassword()));
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -14223,9 +14570,10 @@ public class SlidesApi {
             .replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -14346,9 +14694,10 @@ public class SlidesApi {
             .replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -14476,10 +14825,11 @@ public class SlidesApi {
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "width", request.getWidth());
         apiClient.addQueryParameter(queryParams, "height", request.getHeight());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "fontsFolder", request.getFontsFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -14610,12 +14960,13 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "position", request.getPosition());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -14751,12 +15102,13 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "position", request.getPosition());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -14882,13 +15234,14 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "shapeToClone", request.getShapeToClone());
         apiClient.addQueryParameter(queryParams, "position", request.getPosition());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -15019,7 +15372,6 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "format" + "\\}", apiClient.objectToString(request.getFormat()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "scaleX", request.getScaleX());
@@ -15028,6 +15380,8 @@ public class SlidesApi {
         apiClient.addQueryParameter(queryParams, "fontsFolder", request.getFontsFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -15148,11 +15502,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -15280,11 +15635,12 @@ public class SlidesApi {
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "sectionName", request.getSectionName());
         apiClient.addQueryParameter(queryParams, "slideIndex", request.getSlideIndex());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -15411,11 +15767,12 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "newPosition", request.getNewPosition());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -15546,7 +15903,6 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "format" + "\\}", apiClient.objectToString(request.getFormat()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "scaleX", request.getScaleX());
@@ -15555,6 +15911,8 @@ public class SlidesApi {
         apiClient.addQueryParameter(queryParams, "fontsFolder", request.getFontsFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -15680,11 +16038,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -15810,11 +16169,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -15945,11 +16305,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "sequenceIndex" + "\\}", apiClient.objectToString(request.getSequenceIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -16077,12 +16438,13 @@ public class SlidesApi {
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "width", request.getWidth());
         apiClient.addQueryParameter(queryParams, "height", request.getHeight());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "fontsFolder", request.getFontsFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -16199,12 +16561,13 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "position", request.getPosition());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "layoutAlias", request.getLayoutAlias());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -16325,10 +16688,11 @@ public class SlidesApi {
             .replaceAll("\\{" + "format" + "\\}", apiClient.objectToString(request.getFormat()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "fontsFolder", request.getFontsFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -16452,13 +16816,15 @@ public class SlidesApi {
         apiClient.addQueryParameter(queryParams, "slideToCopy", request.getSlideToCopy());
         apiClient.addQueryParameter(queryParams, "position", request.getPosition());
         apiClient.addQueryParameter(queryParams, "source", request.getSource());
-        apiClient.addQueryParameter(queryParams, "sourcePassword", request.getSourcePassword());
         apiClient.addQueryParameter(queryParams, "sourceStorage", request.getSourceStorage());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getSourcePassword() != null)
+        headerParams.put("sourcePassword", apiClient.parameterToString(request.getSourcePassword()));
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -16574,12 +16940,14 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "inputPassword", request.getInputPassword());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getInputPassword() != null)
+        headerParams.put("inputPassword", apiClient.parameterToString(request.getInputPassword()));
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -16695,11 +17063,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -16794,6 +17163,127 @@ public class SlidesApi {
         return call;
     }
     /**
+     * Build call for postSlidesDocumentFromPdf
+     * @param request Request for postSlidesDocumentFromPdf. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postSlidesDocumentFromPdfCall(PostSlidesDocumentFromPdfRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (request.getName() == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postSlidesDocumentFromPdf(Async)");
+        }
+        
+        Object postBody = request.getPdf();
+
+        // create path and map variables
+        String path = "/slides/{name}/fromPdf"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
+        apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
+
+        Map<String, Object> formParams = new HashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/octet-stream"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+    }
+
+    /**
+     * Create presentation document from pdf or append pdf to an existing presentation.
+     * 
+     * @param request Request for postSlidesDocumentFromPdf. (required)
+     * @return Document
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Document postSlidesDocumentFromPdf(PostSlidesDocumentFromPdfRequest request) throws ApiException {
+        try {
+            ApiResponse<Document> resp = postSlidesDocumentFromPdfWithHttpInfo(request);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Document> resp = postSlidesDocumentFromPdfWithHttpInfo(request);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Create presentation document from pdf or append pdf to an existing presentation.
+     * 
+     * @param request Request for postSlidesDocumentFromPdf. (required)
+     * @return ApiResponse&lt;Document&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Document> postSlidesDocumentFromPdfWithHttpInfo(PostSlidesDocumentFromPdfRequest request) throws ApiException {
+        com.squareup.okhttp.Call call = postSlidesDocumentFromPdfCall(request, null, null);
+        Type returnType = new TypeToken<Document>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Create presentation document from pdf or append pdf to an existing presentation. (asynchronously)
+     * 
+     * @param request Request for postSlidesDocumentFromPdf. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call postSlidesDocumentFromPdfAsync(PostSlidesDocumentFromPdfRequest request, final ApiCallback<Document> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = postSlidesDocumentFromPdfCall(request, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Document>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
      * Build call for postSlidesDocumentFromSource
      * @param request Request for postSlidesDocumentFromSource. (required)
      * @param progressListener Progress listener
@@ -16816,13 +17306,15 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "sourcePath", request.getSourcePath());
-        apiClient.addQueryParameter(queryParams, "sourcePassword", request.getSourcePassword());
         apiClient.addQueryParameter(queryParams, "sourceStorage", request.getSourceStorage());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getSourcePassword() != null)
+        headerParams.put("sourcePassword", apiClient.parameterToString(request.getSourcePassword()));
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -16944,14 +17436,16 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "templatePath", request.getTemplatePath());
-        apiClient.addQueryParameter(queryParams, "templatePassword", request.getTemplatePassword());
         apiClient.addQueryParameter(queryParams, "templateStorage", request.getTemplateStorage());
         apiClient.addQueryParameter(queryParams, "isImageDataEmbedded", request.getIsImageDataEmbedded());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getTemplatePassword() != null)
+        headerParams.put("templatePassword", apiClient.parameterToString(request.getTemplatePassword()));
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -17201,11 +17695,12 @@ public class SlidesApi {
         apiClient.addQueryParameter(queryParams, "oldValue", request.getOldValue());
         apiClient.addQueryParameter(queryParams, "newValue", request.getNewValue());
         apiClient.addQueryParameter(queryParams, "ignoreCase", request.getIgnoreCase());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -17332,11 +17827,12 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "newPosition", request.getNewPosition());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -17454,11 +17950,12 @@ public class SlidesApi {
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "oldPositions", request.getOldPositions());
         apiClient.addQueryParameter(queryParams, "newPositions", request.getNewPositions());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -17579,12 +18076,13 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "format" + "\\}", apiClient.objectToString(request.getFormat()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "fontsFolder", request.getFontsFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -17705,11 +18203,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -17843,11 +18342,12 @@ public class SlidesApi {
         apiClient.addQueryParameter(queryParams, "oldValue", request.getOldValue());
         apiClient.addQueryParameter(queryParams, "newValue", request.getNewValue());
         apiClient.addQueryParameter(queryParams, "ignoreCase", request.getIgnoreCase());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -17969,12 +18469,13 @@ public class SlidesApi {
         apiClient.addQueryParameter(queryParams, "to", request.getTo());
         apiClient.addQueryParameter(queryParams, "from", request.getFrom());
         apiClient.addQueryParameter(queryParams, "destFolder", request.getDestFolder());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "fontsFolder", request.getFontsFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -18105,7 +18606,6 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(request.getPath())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "format" + "\\}", apiClient.objectToString(request.getFormat()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "scaleX", request.getScaleX());
@@ -18114,6 +18614,8 @@ public class SlidesApi {
         apiClient.addQueryParameter(queryParams, "fontsFolder", request.getFontsFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -18249,11 +18751,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "categoryIndex" + "\\}", apiClient.objectToString(request.getCategoryIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -18394,11 +18897,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "seriesIndex" + "\\}", apiClient.objectToString(request.getSeriesIndex())).replaceAll("\\{" + "pointIndex" + "\\}", apiClient.objectToString(request.getPointIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -18534,11 +19038,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "seriesIndex" + "\\}", apiClient.objectToString(request.getSeriesIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -18664,11 +19169,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -18794,11 +19300,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -18935,7 +19442,6 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "outPath", request.getOutPath());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "scaleX", request.getScaleX());
@@ -18944,6 +19450,8 @@ public class SlidesApi {
         apiClient.addQueryParameter(queryParams, "fontsFolder", request.getFontsFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -19060,11 +19568,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -19191,11 +19700,12 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "sectionName", request.getSectionName());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -19316,11 +19826,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -19461,11 +19972,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex())).replaceAll("\\{" + "portionIndex" + "\\}", apiClient.objectToString(request.getPortionIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -19601,11 +20113,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -19746,11 +20259,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(request.getPath())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex())).replaceAll("\\{" + "portionIndex" + "\\}", apiClient.objectToString(request.getPortionIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -19886,11 +20400,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(request.getPath())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -20027,7 +20542,6 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "outPath", request.getOutPath());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "scaleX", request.getScaleX());
@@ -20036,6 +20550,8 @@ public class SlidesApi {
         apiClient.addQueryParameter(queryParams, "fontsFolder", request.getFontsFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -20157,11 +20673,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -20292,11 +20809,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "effectIndex" + "\\}", apiClient.objectToString(request.getEffectIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -20432,11 +20950,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "sequenceIndex" + "\\}", apiClient.objectToString(request.getSequenceIndex())).replaceAll("\\{" + "effectIndex" + "\\}", apiClient.objectToString(request.getEffectIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -20562,11 +21081,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -20700,12 +21220,13 @@ public class SlidesApi {
         apiClient.addQueryParameter(queryParams, "outPath", request.getOutPath());
         apiClient.addQueryParameter(queryParams, "width", request.getWidth());
         apiClient.addQueryParameter(queryParams, "height", request.getHeight());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "fontsFolder", request.getFontsFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -20832,11 +21353,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -20967,11 +21489,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(request.getPath())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -21098,10 +21621,11 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "outPath", request.getOutPath());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "fontsFolder", request.getFontsFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -21198,7 +21722,9 @@ public class SlidesApi {
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @deprecated
      */
+    @Deprecated
     public com.squareup.okhttp.Call putSlidesDocumentFromHtmlCall(PutSlidesDocumentFromHtmlRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
@@ -21213,11 +21739,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -21253,7 +21780,9 @@ public class SlidesApi {
      * @param request Request for putSlidesDocumentFromHtml. (required)
      * @return Document
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @deprecated
      */
+    @Deprecated
     public Document putSlidesDocumentFromHtml(PutSlidesDocumentFromHtmlRequest request) throws ApiException {
         try {
             ApiResponse<Document> resp = putSlidesDocumentFromHtmlWithHttpInfo(request);
@@ -21270,7 +21799,9 @@ public class SlidesApi {
      * @param request Request for putSlidesDocumentFromHtml. (required)
      * @return ApiResponse&lt;Document&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<Document> putSlidesDocumentFromHtmlWithHttpInfo(PutSlidesDocumentFromHtmlRequest request) throws ApiException {
         com.squareup.okhttp.Call call = putSlidesDocumentFromHtmlCall(request, null, null);
         Type returnType = new TypeToken<Document>(){}.getType();
@@ -21284,7 +21815,9 @@ public class SlidesApi {
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @deprecated
      */
+    @Deprecated
     public com.squareup.okhttp.Call putSlidesDocumentFromHtmlAsync(PutSlidesDocumentFromHtmlRequest request, final ApiCallback<Document> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
@@ -21338,11 +21871,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -21437,6 +21971,132 @@ public class SlidesApi {
         return call;
     }
     /**
+     * Build call for putSlidesProtectionProperties
+     * @param request Request for putSlidesProtectionProperties. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putSlidesProtectionPropertiesCall(PutSlidesProtectionPropertiesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (request.getName() == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putSlidesProtectionProperties(Async)");
+        }
+        
+        // verify the required parameter 'dto' is set
+        if (request.getDto() == null) {
+            throw new ApiException("Missing the required parameter 'dto' when calling putSlidesProtectionProperties(Async)");
+        }
+        
+        Object postBody = request.getDto();
+
+        // create path and map variables
+        String path = "/slides/{name}/protectionProperties"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
+        apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
+
+        Map<String, Object> formParams = new HashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+    }
+
+    /**
+     * Update presentation protection properties.
+     * 
+     * @param request Request for putSlidesProtectionProperties. (required)
+     * @return ProtectionProperties
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ProtectionProperties putSlidesProtectionProperties(PutSlidesProtectionPropertiesRequest request) throws ApiException {
+        try {
+            ApiResponse<ProtectionProperties> resp = putSlidesProtectionPropertiesWithHttpInfo(request);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<ProtectionProperties> resp = putSlidesProtectionPropertiesWithHttpInfo(request);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Update presentation protection properties.
+     * 
+     * @param request Request for putSlidesProtectionProperties. (required)
+     * @return ApiResponse&lt;ProtectionProperties&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ProtectionProperties> putSlidesProtectionPropertiesWithHttpInfo(PutSlidesProtectionPropertiesRequest request) throws ApiException {
+        com.squareup.okhttp.Call call = putSlidesProtectionPropertiesCall(request, null, null);
+        Type returnType = new TypeToken<ProtectionProperties>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Update presentation protection properties. (asynchronously)
+     * 
+     * @param request Request for putSlidesProtectionProperties. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putSlidesProtectionPropertiesAsync(PutSlidesProtectionPropertiesRequest request, final ApiCallback<ProtectionProperties> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putSlidesProtectionPropertiesCall(request, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<ProtectionProperties>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
      * Build call for putSlidesSaveAs
      * @param request Request for putSlidesSaveAs. (required)
      * @param progressListener Progress listener
@@ -21469,12 +22129,13 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "outPath", request.getOutPath());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "fontsFolder", request.getFontsFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -21596,11 +22257,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "propertyName" + "\\}", apiClient.objectToString(request.getPropertyName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -21726,11 +22388,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -21857,10 +22520,11 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -21988,10 +22652,11 @@ public class SlidesApi {
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "color", request.getColor());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -22086,13 +22751,141 @@ public class SlidesApi {
         return call;
     }
     /**
+     * Build call for putSlidesSlideProperties
+     * @param request Request for putSlidesSlideProperties. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call putSlidesSlidePropertiesCall(PutSlidesSlidePropertiesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (request.getName() == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putSlidesSlideProperties(Async)");
+        }
+        
+        // verify the required parameter 'dto' is set
+        if (request.getDto() == null) {
+            throw new ApiException("Missing the required parameter 'dto' when calling putSlidesSlideProperties(Async)");
+        }
+        
+        Object postBody = request.getDto();
+
+        // create path and map variables
+        String path = "/slides/{name}/slideProperties"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
+        apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
+
+        Map<String, Object> formParams = new HashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+    }
+
+    /**
+     * Update presentation slide properties.
+     * 
+     * @param request Request for putSlidesSlideProperties. (required)
+     * @return SlideProperties
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SlideProperties putSlidesSlideProperties(PutSlidesSlidePropertiesRequest request) throws ApiException {
+        try {
+            ApiResponse<SlideProperties> resp = putSlidesSlidePropertiesWithHttpInfo(request);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<SlideProperties> resp = putSlidesSlidePropertiesWithHttpInfo(request);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Update presentation slide properties.
+     * 
+     * @param request Request for putSlidesSlideProperties. (required)
+     * @return ApiResponse&lt;SlideProperties&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SlideProperties> putSlidesSlidePropertiesWithHttpInfo(PutSlidesSlidePropertiesRequest request) throws ApiException {
+        com.squareup.okhttp.Call call = putSlidesSlidePropertiesCall(request, null, null);
+        Type returnType = new TypeToken<SlideProperties>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Update presentation slide properties. (asynchronously)
+     * 
+     * @param request Request for putSlidesSlideProperties. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call putSlidesSlidePropertiesAsync(PutSlidesSlidePropertiesRequest request, final ApiCallback<SlideProperties> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = putSlidesSlidePropertiesCall(request, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<SlideProperties>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
      * Build call for putSlidesSlideSize
      * @param request Request for putSlidesSlideSize. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @deprecated
      */
+    @Deprecated
     public com.squareup.okhttp.Call putSlidesSlideSizeCall(PutSlidesSlideSizeRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
@@ -22107,7 +22900,6 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "width", request.getWidth());
@@ -22116,6 +22908,8 @@ public class SlidesApi {
         apiClient.addQueryParameter(queryParams, "scaleType", request.getScaleType());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -22151,7 +22945,9 @@ public class SlidesApi {
      * @param request Request for putSlidesSlideSize. (required)
      * @return Document
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @deprecated
      */
+    @Deprecated
     public Document putSlidesSlideSize(PutSlidesSlideSizeRequest request) throws ApiException {
         try {
             ApiResponse<Document> resp = putSlidesSlideSizeWithHttpInfo(request);
@@ -22168,7 +22964,9 @@ public class SlidesApi {
      * @param request Request for putSlidesSlideSize. (required)
      * @return ApiResponse&lt;Document&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<Document> putSlidesSlideSizeWithHttpInfo(PutSlidesSlideSizeRequest request) throws ApiException {
         com.squareup.okhttp.Call call = putSlidesSlideSizeCall(request, null, null);
         Type returnType = new TypeToken<Document>(){}.getType();
@@ -22182,7 +22980,9 @@ public class SlidesApi {
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @deprecated
      */
+    @Deprecated
     public com.squareup.okhttp.Call putSlidesSlideSizeAsync(PutSlidesSlideSizeRequest request, final ApiCallback<Document> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
@@ -22236,11 +23036,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -22377,7 +23178,6 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "outPath", request.getOutPath());
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
         apiClient.addQueryParameter(queryParams, "scaleX", request.getScaleX());
@@ -22386,6 +23186,8 @@ public class SlidesApi {
         apiClient.addQueryParameter(queryParams, "fontsFolder", request.getFontsFolder());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -22507,11 +23309,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -22642,11 +23445,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -22782,11 +23586,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 
@@ -22927,11 +23732,12 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(request.getName())).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(request.getSlideIndex())).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(request.getShapeIndex())).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(request.getParagraphIndex())).replaceAll("\\{" + "portionIndex" + "\\}", apiClient.objectToString(request.getPortionIndex()));
 
         List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "password", request.getPassword());
         apiClient.addQueryParameter(queryParams, "folder", request.getFolder());
         apiClient.addQueryParameter(queryParams, "storage", request.getStorage());
 
         Map<String, String> headerParams = new HashMap<String, String>();
+        if (request.getPassword() != null)
+        headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
 

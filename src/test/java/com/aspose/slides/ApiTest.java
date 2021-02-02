@@ -143,7 +143,7 @@ public class ApiTest {
                 }
             }
         }
-        return getTypedTestValue(type, value);
+        return getTypedTestValue(type, functionName, value);
     }
 
     protected boolean isGoodRuleType(ValueRule rule, String type) {
@@ -169,7 +169,7 @@ public class ApiTest {
                 invalidValue = vr.getInvalidValue();
             }
         }
-        return getTypedTestValue(type, untemplatize(invalidValue, value));
+        return getTypedTestValue(type, functionName, untemplatize(invalidValue, value));
     }
 
     protected void initialize(String functionName, String invalidParameterName, Object invalidParameterValue) throws ApiException {
@@ -308,13 +308,17 @@ public class ApiTest {
         return null;
     }
     
-    private Object getTypedTestValue(String type, Object value) {
+    private Object getTypedTestValue(String type, String functionName, Object value) {
         if (value == null) {
             return null;
         }
         if ("byte[]".equals(type)) {
             try {
-                return Files.readAllBytes(Paths.get(getFilePath()));
+                String filePath = getFilePath();
+                if ("postSlidesDocumentFromPdf".equalsIgnoreCase(functionName)) {
+                    filePath = testDataFolderName + "/test.pdf";
+                }
+                return Files.readAllBytes(Paths.get(filePath));
             } catch (IOException ex) {
                 Logger.getLogger(ApiTest.class.getName()).log(Level.SEVERE, null, ex);
             }
