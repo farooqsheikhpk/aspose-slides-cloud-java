@@ -56,7 +56,7 @@ public class PipelineTest extends ApiTest {
      *          if the Api call fails
      */
     @Test
-    public void placeholderTest() throws ApiException, IOException {
+    public void pipelineTest() throws ApiException, IOException {
         RequestInputFile file1 = new RequestInputFile();
         file1.setIndex(0);
 

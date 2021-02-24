@@ -676,13 +676,13 @@ public class ApiClient {
             return buildRequestBodyMultipart(parts);
         } else if (obj instanceof byte[]) {
             // Binary (byte array) body parameter support.
-            return RequestBody.create(MediaType.parse(contentType), (byte[]) obj);
+            return RequestBody.create(MediaType.parse("application/json"), (byte[]) obj);
         } else if (obj instanceof File) {
             // File body parameter support.
-            return RequestBody.create(MediaType.parse(contentType), (File) obj);
+            return RequestBody.create(MediaType.parse("application/json"), (File) obj);
         } else if (obj instanceof String) {
             // Binary (byte array) body parameter support.
-            return RequestBody.create(MediaType.parse(contentType), (String) obj);
+            return RequestBody.create(MediaType.parse("application/json"), (String) obj);
         } else {
             String content = "";
             if (obj != null) {
@@ -922,8 +922,8 @@ public class ApiClient {
      * @return The HTTP call
      * @throws ApiException If fail to serialize the request body object
      */
-    public Call buildCall(String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, List<FileInfo> files, ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Request request = buildRequest(path, method, queryParams, body, headerParams, formParams, files, progressRequestListener);
+    public Call buildCall(String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Request request = buildRequest(path, method, queryParams, body, headerParams, formParams, progressRequestListener);
         return httpClient.newCall(request);
     }
 
@@ -940,7 +940,7 @@ public class ApiClient {
      * @return The HTTP request 
      * @throws ApiException If fail to serialize the request body object
      */
-    public Request buildRequest(String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, List<FileInfo> files, ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public Request buildRequest(String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         if (headerParams == null) {
             headerParams = new HashMap<String, String>();
         }
@@ -958,27 +958,16 @@ public class ApiClient {
             reqBody = null;
         } else if ("application/x-www-form-urlencoded".equals(contentType)) {
             reqBody = buildRequestBodyFormEncoding(formParams);
-        } else if ("multipart/form-data".equals(contentType)) {
-            if (formParams.size() == 1) {
-                reqBody = serialize(formParams.values().toArray()[0], contentType, files);
-            } else if (formParams.size() > 1) {
-                reqBody = buildRequestBodyMultipart(formParams);
+        } else if (formParams.size() == 1) {
+            if (body != null && ArrayList.class.isAssignableFrom(formParams.values().toArray()[0].getClass())) {
+                reqBody = serialize(body, contentType, (List<FileInfo>)formParams.values().toArray()[0]);
             } else {
-                reqBody = serialize(body, contentType, files);
+                reqBody = serialize(formParams.values().toArray()[0], contentType, null);
             }
-        } else if (body == null) {
-            if (formParams != null) {
-                contentType = "application/x-www-form-urlencoded";
-                reqBody = buildRequestBodyFormEncoding(formParams);
-            } else if ("DELETE".equals(method)) {
-                // allow calling DELETE without sending a request body
-                reqBody = null;
-            } else {
-                // use an empty request body (for POST, PUT and PATCH)
-                reqBody = RequestBody.create(MediaType.parse(contentType), "");
-            }
+        } else if (formParams.size() > 1) {
+            reqBody = buildRequestBodyMultipart(formParams);
         } else {
-            reqBody = serialize(body, contentType, files);
+            reqBody = serialize(body, contentType, null);
         }
         Request request = null;
         if(progressRequestListener != null && reqBody != null) {

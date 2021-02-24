@@ -80,7 +80,11 @@ public class JWTAuth extends Authentication {
             grantCredentialsParams.put("client_id", config.getAppSid());
             grantCredentialsParams.put("client_secret", config.getAppKey());
         }
-        Call call = apiClient.buildCall("/connect/token", "POST", null, null, null, grantCredentialsParams, null, null);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        headerParams.put("Content-Type", "application/x-www-form-urlencoded");
+
+        Call call = apiClient.buildCall("/connect/token", "POST", null, null, headerParams, grantCredentialsParams, null);
         try {
             ApiResponse<AuthResponse> response = apiClient.execute(call, new TypeToken<AuthResponse>(){}.getType());
             config.setAuthToken(response.getData().getAccessToken());

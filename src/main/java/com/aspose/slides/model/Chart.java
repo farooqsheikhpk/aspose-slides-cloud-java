@@ -224,7 +224,9 @@ public class Chart extends ShapeBase {
     
     WATERFALL("Waterfall"),
     
-    FUNNEL("Funnel");
+    FUNNEL("Funnel"),
+    
+    MAP("Map");
 
     private String value;
 

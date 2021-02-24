@@ -306,17 +306,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call copyFileCall(CopyFileRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'srcPath' is set
         if (request.getSrcPath() == null) {
             throw new ApiException("Missing the required parameter 'srcPath' when calling copyFile(Async)");
         }
-        
         // verify the required parameter 'destPath' is set
         if (request.getDestPath() == null) {
             throw new ApiException("Missing the required parameter 'destPath' when calling copyFile(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -356,7 +353,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -428,17 +425,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call copyFolderCall(CopyFolderRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'srcPath' is set
         if (request.getSrcPath() == null) {
             throw new ApiException("Missing the required parameter 'srcPath' when calling copyFolder(Async)");
         }
-        
         // verify the required parameter 'destPath' is set
         if (request.getDestPath() == null) {
             throw new ApiException("Missing the required parameter 'destPath' when calling copyFolder(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -477,7 +471,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -549,7 +543,6 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call createFolderCall(CreateFolderRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         Object postBody = null;
 
         // create path and map variables
@@ -586,7 +579,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -658,27 +651,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteChartCategoryCall(DeleteChartCategoryRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteChartCategory(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteChartCategory(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteChartCategory(Async)");
         }
-        
         // verify the required parameter 'categoryIndex' is set
         if (request.getCategoryIndex() == null) {
             throw new ApiException("Missing the required parameter 'categoryIndex' when calling deleteChartCategory(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -718,7 +706,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -794,32 +782,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteChartDataPointCall(DeleteChartDataPointRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteChartDataPoint(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteChartDataPoint(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteChartDataPoint(Async)");
         }
-        
         // verify the required parameter 'seriesIndex' is set
         if (request.getSeriesIndex() == null) {
             throw new ApiException("Missing the required parameter 'seriesIndex' when calling deleteChartDataPoint(Async)");
         }
-        
         // verify the required parameter 'pointIndex' is set
         if (request.getPointIndex() == null) {
             throw new ApiException("Missing the required parameter 'pointIndex' when calling deleteChartDataPoint(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -859,7 +841,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -935,27 +917,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteChartSeriesCall(DeleteChartSeriesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteChartSeries(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteChartSeries(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteChartSeries(Async)");
         }
-        
         // verify the required parameter 'seriesIndex' is set
         if (request.getSeriesIndex() == null) {
             throw new ApiException("Missing the required parameter 'seriesIndex' when calling deleteChartSeries(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -995,7 +972,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -1071,7 +1048,6 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteFileCall(DeleteFileRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         Object postBody = null;
 
         // create path and map variables
@@ -1109,7 +1085,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -1181,7 +1157,6 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteFolderCall(DeleteFolderRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         Object postBody = null;
 
         // create path and map variables
@@ -1219,7 +1194,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -1291,17 +1266,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteNotesSlideCall(DeleteNotesSlideRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteNotesSlide(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteNotesSlide(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -1341,7 +1313,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -1417,27 +1389,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteNotesSlideParagraphCall(DeleteNotesSlideParagraphRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteNotesSlideParagraph(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteNotesSlideParagraph(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteNotesSlideParagraph(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling deleteNotesSlideParagraph(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -1477,7 +1444,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -1553,22 +1520,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteNotesSlideParagraphsCall(DeleteNotesSlideParagraphsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteNotesSlideParagraphs(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteNotesSlideParagraphs(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteNotesSlideParagraphs(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -1609,7 +1572,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -1685,32 +1648,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteNotesSlidePortionCall(DeleteNotesSlidePortionRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteNotesSlidePortion(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteNotesSlidePortion(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteNotesSlidePortion(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling deleteNotesSlidePortion(Async)");
         }
-        
         // verify the required parameter 'portionIndex' is set
         if (request.getPortionIndex() == null) {
             throw new ApiException("Missing the required parameter 'portionIndex' when calling deleteNotesSlidePortion(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -1750,7 +1707,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -1826,27 +1783,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteNotesSlidePortionsCall(DeleteNotesSlidePortionsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteNotesSlidePortions(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteNotesSlidePortions(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteNotesSlidePortions(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling deleteNotesSlidePortions(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -1887,7 +1839,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -1963,22 +1915,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteNotesSlideShapeCall(DeleteNotesSlideShapeRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteNotesSlideShape(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteNotesSlideShape(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteNotesSlideShape(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -2018,7 +1966,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -2094,17 +2042,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteNotesSlideShapesCall(DeleteNotesSlideShapesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteNotesSlideShapes(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteNotesSlideShapes(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -2145,7 +2090,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -2221,27 +2166,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteParagraphCall(DeleteParagraphRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteParagraph(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteParagraph(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteParagraph(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling deleteParagraph(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -2281,7 +2221,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -2357,22 +2297,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteParagraphsCall(DeleteParagraphsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteParagraphs(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteParagraphs(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteParagraphs(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -2413,7 +2349,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -2489,32 +2425,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deletePortionCall(DeletePortionRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deletePortion(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deletePortion(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling deletePortion(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling deletePortion(Async)");
         }
-        
         // verify the required parameter 'portionIndex' is set
         if (request.getPortionIndex() == null) {
             throw new ApiException("Missing the required parameter 'portionIndex' when calling deletePortion(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -2554,7 +2484,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -2630,27 +2560,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deletePortionsCall(DeletePortionsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deletePortions(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deletePortions(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling deletePortions(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling deletePortions(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -2691,7 +2616,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -2767,17 +2692,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSectionCall(DeleteSectionRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSection(Async)");
         }
-        
         // verify the required parameter 'sectionIndex' is set
         if (request.getSectionIndex() == null) {
             throw new ApiException("Missing the required parameter 'sectionIndex' when calling deleteSection(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -2818,7 +2740,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -2894,12 +2816,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSectionsCall(DeleteSectionsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSections(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -2941,7 +2861,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -3017,17 +2937,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSlideAnimationCall(DeleteSlideAnimationRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSlideAnimation(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSlideAnimation(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -3067,7 +2984,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -3143,22 +3060,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSlideAnimationEffectCall(DeleteSlideAnimationEffectRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSlideAnimationEffect(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSlideAnimationEffect(Async)");
         }
-        
         // verify the required parameter 'effectIndex' is set
         if (request.getEffectIndex() == null) {
             throw new ApiException("Missing the required parameter 'effectIndex' when calling deleteSlideAnimationEffect(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -3198,7 +3111,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -3274,22 +3187,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSlideAnimationInteractiveSequenceCall(DeleteSlideAnimationInteractiveSequenceRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSlideAnimationInteractiveSequence(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSlideAnimationInteractiveSequence(Async)");
         }
-        
         // verify the required parameter 'sequenceIndex' is set
         if (request.getSequenceIndex() == null) {
             throw new ApiException("Missing the required parameter 'sequenceIndex' when calling deleteSlideAnimationInteractiveSequence(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -3329,7 +3238,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -3405,27 +3314,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSlideAnimationInteractiveSequenceEffectCall(DeleteSlideAnimationInteractiveSequenceEffectRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSlideAnimationInteractiveSequenceEffect(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSlideAnimationInteractiveSequenceEffect(Async)");
         }
-        
         // verify the required parameter 'sequenceIndex' is set
         if (request.getSequenceIndex() == null) {
             throw new ApiException("Missing the required parameter 'sequenceIndex' when calling deleteSlideAnimationInteractiveSequenceEffect(Async)");
         }
-        
         // verify the required parameter 'effectIndex' is set
         if (request.getEffectIndex() == null) {
             throw new ApiException("Missing the required parameter 'effectIndex' when calling deleteSlideAnimationInteractiveSequenceEffect(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -3465,7 +3369,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -3541,17 +3445,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSlideAnimationInteractiveSequencesCall(DeleteSlideAnimationInteractiveSequencesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSlideAnimationInteractiveSequences(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSlideAnimationInteractiveSequences(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -3591,7 +3492,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -3667,17 +3568,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSlideAnimationMainSequenceCall(DeleteSlideAnimationMainSequenceRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSlideAnimationMainSequence(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSlideAnimationMainSequence(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -3717,7 +3615,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -3793,17 +3691,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSlideByIndexCall(DeleteSlideByIndexRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSlideByIndex(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSlideByIndex(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -3843,7 +3738,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -3919,22 +3814,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSlideShapeCall(DeleteSlideShapeRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSlideShape(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSlideShape(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteSlideShape(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -3974,7 +3865,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -4050,17 +3941,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSlideShapesCall(DeleteSlideShapesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSlideShapes(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSlideShapes(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -4101,7 +3989,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -4177,22 +4065,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSlideSubshapeCall(DeleteSlideSubshapeRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSlideSubshape(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSlideSubshape(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteSlideSubshape(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -4232,7 +4116,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -4308,17 +4192,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSlideSubshapesCall(DeleteSlideSubshapesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSlideSubshapes(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSlideSubshapes(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -4359,7 +4240,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -4435,12 +4316,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSlidesCleanSlidesListCall(DeleteSlidesCleanSlidesListRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSlidesCleanSlidesList(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -4481,7 +4360,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -4557,12 +4436,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSlidesDocumentPropertiesCall(DeleteSlidesDocumentPropertiesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSlidesDocumentProperties(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -4602,7 +4479,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -4678,17 +4555,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSlidesDocumentPropertyCall(DeleteSlidesDocumentPropertyRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSlidesDocumentProperty(Async)");
         }
-        
         // verify the required parameter 'propertyName' is set
         if (request.getPropertyName() == null) {
             throw new ApiException("Missing the required parameter 'propertyName' when calling deleteSlidesDocumentProperty(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -4728,7 +4602,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -4804,17 +4678,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSlidesSlideBackgroundCall(DeleteSlidesSlideBackgroundRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSlidesSlideBackground(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSlidesSlideBackground(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -4854,7 +4725,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -4930,27 +4801,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSubshapeParagraphCall(DeleteSubshapeParagraphRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSubshapeParagraph(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSubshapeParagraph(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteSubshapeParagraph(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling deleteSubshapeParagraph(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -4990,7 +4856,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -5066,22 +4932,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSubshapeParagraphsCall(DeleteSubshapeParagraphsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSubshapeParagraphs(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSubshapeParagraphs(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteSubshapeParagraphs(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -5122,7 +4984,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -5198,32 +5060,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSubshapePortionCall(DeleteSubshapePortionRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSubshapePortion(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSubshapePortion(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteSubshapePortion(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling deleteSubshapePortion(Async)");
         }
-        
         // verify the required parameter 'portionIndex' is set
         if (request.getPortionIndex() == null) {
             throw new ApiException("Missing the required parameter 'portionIndex' when calling deleteSubshapePortion(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -5263,7 +5119,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -5339,27 +5195,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteSubshapePortionsCall(DeleteSubshapePortionsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteSubshapePortions(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSubshapePortions(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteSubshapePortions(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling deleteSubshapePortions(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -5400,7 +5251,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -5476,7 +5327,6 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call downloadFileCall(DownloadFileRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         Object postBody = null;
 
         // create path and map variables
@@ -5514,7 +5364,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -5590,7 +5440,6 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getDiscUsageCall(GetDiscUsageRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         Object postBody = null;
 
         // create path and map variables
@@ -5627,7 +5476,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -5703,7 +5552,6 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getFileVersionsCall(GetFileVersionsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         Object postBody = null;
 
         // create path and map variables
@@ -5740,7 +5588,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -5816,7 +5664,6 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getFilesListCall(GetFilesListRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         Object postBody = null;
 
         // create path and map variables
@@ -5853,7 +5700,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -5929,17 +5776,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getLayoutSlideCall(GetLayoutSlideRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getLayoutSlide(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getLayoutSlide(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -5979,7 +5823,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -6055,12 +5899,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getLayoutSlidesListCall(GetLayoutSlidesListRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getLayoutSlidesList(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -6100,7 +5942,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -6176,17 +6018,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getMasterSlideCall(GetMasterSlideRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getMasterSlide(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getMasterSlide(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -6226,7 +6065,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -6302,12 +6141,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getMasterSlidesListCall(GetMasterSlidesListRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getMasterSlidesList(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -6347,7 +6184,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -6423,17 +6260,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getNotesSlideCall(GetNotesSlideRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getNotesSlide(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getNotesSlide(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -6473,7 +6307,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -6549,17 +6383,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getNotesSlideExistsCall(GetNotesSlideExistsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getNotesSlideExists(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getNotesSlideExists(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -6599,7 +6430,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -6675,17 +6506,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getNotesSlideHeaderFooterCall(GetNotesSlideHeaderFooterRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getNotesSlideHeaderFooter(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getNotesSlideHeaderFooter(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -6725,7 +6553,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -6801,22 +6629,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getNotesSlideShapeCall(GetNotesSlideShapeRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getNotesSlideShape(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getNotesSlideShape(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling getNotesSlideShape(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -6856,7 +6680,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -6932,27 +6756,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getNotesSlideShapeParagraphCall(GetNotesSlideShapeParagraphRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getNotesSlideShapeParagraph(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getNotesSlideShapeParagraph(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling getNotesSlideShapeParagraph(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getNotesSlideShapeParagraph(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -6992,7 +6811,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -7068,22 +6887,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getNotesSlideShapeParagraphsCall(GetNotesSlideShapeParagraphsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getNotesSlideShapeParagraphs(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getNotesSlideShapeParagraphs(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling getNotesSlideShapeParagraphs(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -7123,7 +6938,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -7199,32 +7014,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getNotesSlideShapePortionCall(GetNotesSlideShapePortionRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getNotesSlideShapePortion(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getNotesSlideShapePortion(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling getNotesSlideShapePortion(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getNotesSlideShapePortion(Async)");
         }
-        
         // verify the required parameter 'portionIndex' is set
         if (request.getPortionIndex() == null) {
             throw new ApiException("Missing the required parameter 'portionIndex' when calling getNotesSlideShapePortion(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -7264,7 +7073,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -7340,27 +7149,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getNotesSlideShapePortionsCall(GetNotesSlideShapePortionsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getNotesSlideShapePortions(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getNotesSlideShapePortions(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling getNotesSlideShapePortions(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getNotesSlideShapePortions(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -7400,7 +7204,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -7476,17 +7280,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getNotesSlideShapesCall(GetNotesSlideShapesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getNotesSlideShapes(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getNotesSlideShapes(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -7526,7 +7327,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -7602,22 +7403,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getNotesSlideWithFormatCall(GetNotesSlideWithFormatRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getNotesSlideWithFormat(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getNotesSlideWithFormat(Async)");
         }
-        
         // verify the required parameter 'format' is set
         if (request.getFormat() == null) {
             throw new ApiException("Missing the required parameter 'format' when calling getNotesSlideWithFormat(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -7660,7 +7457,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -7736,32 +7533,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getParagraphPortionCall(GetParagraphPortionRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getParagraphPortion(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getParagraphPortion(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling getParagraphPortion(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getParagraphPortion(Async)");
         }
-        
         // verify the required parameter 'portionIndex' is set
         if (request.getPortionIndex() == null) {
             throw new ApiException("Missing the required parameter 'portionIndex' when calling getParagraphPortion(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -7801,7 +7592,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -7877,27 +7668,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getParagraphPortionsCall(GetParagraphPortionsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getParagraphPortions(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getParagraphPortions(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling getParagraphPortions(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getParagraphPortions(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -7937,7 +7723,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -8013,12 +7799,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSectionsCall(GetSectionsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSections(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -8058,7 +7842,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -8134,17 +7918,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlideAnimationCall(GetSlideAnimationRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlideAnimation(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlideAnimation(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -8185,7 +7966,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -8261,17 +8042,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlideHeaderFooterCall(GetSlideHeaderFooterRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlideHeaderFooter(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlideHeaderFooter(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -8311,7 +8089,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -8387,22 +8165,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlideShapeCall(GetSlideShapeRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlideShape(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlideShape(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling getSlideShape(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -8442,7 +8216,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -8518,27 +8292,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlideShapeParagraphCall(GetSlideShapeParagraphRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlideShapeParagraph(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlideShapeParagraph(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling getSlideShapeParagraph(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getSlideShapeParagraph(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -8578,7 +8347,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -8654,22 +8423,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlideShapeParagraphsCall(GetSlideShapeParagraphsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlideShapeParagraphs(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlideShapeParagraphs(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling getSlideShapeParagraphs(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -8709,7 +8474,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -8785,17 +8550,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlideShapesCall(GetSlideShapesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlideShapes(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlideShapes(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -8835,7 +8597,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -8911,22 +8673,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlideSubshapeCall(GetSlideSubshapeRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlideSubshape(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlideSubshape(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling getSlideSubshape(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -8966,7 +8724,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -9042,27 +8800,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlideSubshapeParagraphCall(GetSlideSubshapeParagraphRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlideSubshapeParagraph(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlideSubshapeParagraph(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling getSlideSubshapeParagraph(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getSlideSubshapeParagraph(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -9102,7 +8855,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -9178,22 +8931,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlideSubshapeParagraphsCall(GetSlideSubshapeParagraphsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlideSubshapeParagraphs(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlideSubshapeParagraphs(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling getSlideSubshapeParagraphs(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -9233,7 +8982,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -9309,17 +9058,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlideSubshapesCall(GetSlideSubshapesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlideSubshapes(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlideSubshapes(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -9359,7 +9105,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -9434,7 +9180,6 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesApiInfoCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         Object postBody = null;
 
         // create path and map variables
@@ -9470,7 +9215,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -9543,12 +9288,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesDocumentCall(GetSlidesDocumentRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesDocument(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -9588,7 +9331,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -9664,12 +9407,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesDocumentPropertiesCall(GetSlidesDocumentPropertiesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesDocumentProperties(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -9709,7 +9450,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -9785,17 +9526,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesDocumentPropertyCall(GetSlidesDocumentPropertyRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesDocumentProperty(Async)");
         }
-        
         // verify the required parameter 'propertyName' is set
         if (request.getPropertyName() == null) {
             throw new ApiException("Missing the required parameter 'propertyName' when calling getSlidesDocumentProperty(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -9835,7 +9573,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -9911,17 +9649,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesImageWithDefaultFormatCall(GetSlidesImageWithDefaultFormatRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesImageWithDefaultFormat(Async)");
         }
-        
         // verify the required parameter 'index' is set
         if (request.getIndex() == null) {
             throw new ApiException("Missing the required parameter 'index' when calling getSlidesImageWithDefaultFormat(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -9961,7 +9696,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -10037,22 +9772,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesImageWithFormatCall(GetSlidesImageWithFormatRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesImageWithFormat(Async)");
         }
-        
         // verify the required parameter 'index' is set
         if (request.getIndex() == null) {
             throw new ApiException("Missing the required parameter 'index' when calling getSlidesImageWithFormat(Async)");
         }
-        
         // verify the required parameter 'format' is set
         if (request.getFormat() == null) {
             throw new ApiException("Missing the required parameter 'format' when calling getSlidesImageWithFormat(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -10092,7 +9823,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -10168,12 +9899,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesImagesCall(GetSlidesImagesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesImages(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -10213,7 +9942,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -10289,22 +10018,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesPlaceholderCall(GetSlidesPlaceholderRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesPlaceholder(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlidesPlaceholder(Async)");
         }
-        
         // verify the required parameter 'placeholderIndex' is set
         if (request.getPlaceholderIndex() == null) {
             throw new ApiException("Missing the required parameter 'placeholderIndex' when calling getSlidesPlaceholder(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -10344,7 +10069,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -10420,17 +10145,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesPlaceholdersCall(GetSlidesPlaceholdersRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesPlaceholders(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlidesPlaceholders(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -10470,7 +10192,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -10546,12 +10268,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesPresentationTextItemsCall(GetSlidesPresentationTextItemsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesPresentationTextItems(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -10592,7 +10312,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -10668,12 +10388,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesProtectionPropertiesCall(GetSlidesProtectionPropertiesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesProtectionProperties(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -10713,7 +10431,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -10789,17 +10507,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesSlideCall(GetSlidesSlideRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesSlide(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlidesSlide(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -10839,7 +10554,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -10915,17 +10630,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesSlideBackgroundCall(GetSlidesSlideBackgroundRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesSlideBackground(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlidesSlideBackground(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -10965,7 +10677,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -11041,17 +10753,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesSlideCommentsCall(GetSlidesSlideCommentsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesSlideComments(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlidesSlideComments(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -11091,7 +10800,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -11167,17 +10876,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesSlideImagesCall(GetSlidesSlideImagesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesSlideImages(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlidesSlideImages(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -11217,7 +10923,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -11293,12 +10999,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesSlidePropertiesCall(GetSlidesSlidePropertiesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesSlideProperties(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -11338,7 +11042,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -11414,17 +11118,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesSlideTextItemsCall(GetSlidesSlideTextItemsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesSlideTextItems(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlidesSlideTextItems(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -11465,7 +11166,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -11541,12 +11242,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesSlidesListCall(GetSlidesSlidesListRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesSlidesList(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -11586,7 +11285,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -11662,17 +11361,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesThemeCall(GetSlidesThemeRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesTheme(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlidesTheme(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -11712,7 +11408,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -11788,17 +11484,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesThemeColorSchemeCall(GetSlidesThemeColorSchemeRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesThemeColorScheme(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlidesThemeColorScheme(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -11838,7 +11531,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -11914,17 +11607,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesThemeFontSchemeCall(GetSlidesThemeFontSchemeRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesThemeFontScheme(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlidesThemeFontScheme(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -11964,7 +11654,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -12040,17 +11730,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesThemeFormatSchemeCall(GetSlidesThemeFormatSchemeRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesThemeFormatScheme(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSlidesThemeFormatScheme(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -12090,7 +11777,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -12166,12 +11853,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSlidesViewPropertiesCall(GetSlidesViewPropertiesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSlidesViewProperties(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -12211,7 +11896,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -12287,32 +11972,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSubshapeParagraphPortionCall(GetSubshapeParagraphPortionRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSubshapeParagraphPortion(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSubshapeParagraphPortion(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling getSubshapeParagraphPortion(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getSubshapeParagraphPortion(Async)");
         }
-        
         // verify the required parameter 'portionIndex' is set
         if (request.getPortionIndex() == null) {
             throw new ApiException("Missing the required parameter 'portionIndex' when calling getSubshapeParagraphPortion(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -12352,7 +12031,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -12428,27 +12107,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSubshapeParagraphPortionsCall(GetSubshapeParagraphPortionsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSubshapeParagraphPortions(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling getSubshapeParagraphPortions(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling getSubshapeParagraphPortions(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getSubshapeParagraphPortions(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -12488,7 +12162,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -12564,17 +12238,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call moveFileCall(MoveFileRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'srcPath' is set
         if (request.getSrcPath() == null) {
             throw new ApiException("Missing the required parameter 'srcPath' when calling moveFile(Async)");
         }
-        
         // verify the required parameter 'destPath' is set
         if (request.getDestPath() == null) {
             throw new ApiException("Missing the required parameter 'destPath' when calling moveFile(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -12614,7 +12285,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -12686,17 +12357,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call moveFolderCall(MoveFolderRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'srcPath' is set
         if (request.getSrcPath() == null) {
             throw new ApiException("Missing the required parameter 'srcPath' when calling moveFolder(Async)");
         }
-        
         // verify the required parameter 'destPath' is set
         if (request.getDestPath() == null) {
             throw new ApiException("Missing the required parameter 'destPath' when calling moveFolder(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -12735,7 +12403,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -12807,7 +12475,6 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call objectExistsCall(ObjectExistsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         Object postBody = null;
 
         // create path and map variables
@@ -12845,7 +12512,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -12921,27 +12588,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postAddNewParagraphCall(PostAddNewParagraphRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postAddNewParagraph(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postAddNewParagraph(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling postAddNewParagraph(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling postAddNewParagraph(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -12982,7 +12644,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -13058,32 +12720,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postAddNewPortionCall(PostAddNewPortionRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postAddNewPortion(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postAddNewPortion(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling postAddNewPortion(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling postAddNewPortion(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling postAddNewPortion(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -13124,7 +12780,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -13200,17 +12856,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postAddNewShapeCall(PostAddNewShapeRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postAddNewShape(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postAddNewShape(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -13252,7 +12905,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -13328,17 +12981,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postAddNewSubshapeCall(PostAddNewSubshapeRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postAddNewSubshape(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postAddNewSubshape(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -13380,7 +13030,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -13456,27 +13106,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postAddNewSubshapeParagraphCall(PostAddNewSubshapeParagraphRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postAddNewSubshapeParagraph(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postAddNewSubshapeParagraph(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling postAddNewSubshapeParagraph(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling postAddNewSubshapeParagraph(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -13517,7 +13162,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -13593,32 +13238,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postAddNewSubshapePortionCall(PostAddNewSubshapePortionRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postAddNewSubshapePortion(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postAddNewSubshapePortion(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling postAddNewSubshapePortion(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling postAddNewSubshapePortion(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling postAddNewSubshapePortion(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -13659,7 +13298,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -13735,22 +13374,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postAddNotesSlideCall(PostAddNotesSlideRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postAddNotesSlide(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postAddNotesSlide(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling postAddNotesSlide(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -13790,7 +13425,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -13866,27 +13501,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postChartCategoryCall(PostChartCategoryRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postChartCategory(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postChartCategory(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling postChartCategory(Async)");
         }
-        
         // verify the required parameter 'category' is set
         if (request.getCategory() == null) {
             throw new ApiException("Missing the required parameter 'category' when calling postChartCategory(Async)");
         }
-        
         Object postBody = request.getCategory();
 
         // create path and map variables
@@ -13926,7 +13556,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -14002,32 +13632,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postChartDataPointCall(PostChartDataPointRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postChartDataPoint(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postChartDataPoint(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling postChartDataPoint(Async)");
         }
-        
         // verify the required parameter 'seriesIndex' is set
         if (request.getSeriesIndex() == null) {
             throw new ApiException("Missing the required parameter 'seriesIndex' when calling postChartDataPoint(Async)");
         }
-        
         // verify the required parameter 'dataPoint' is set
         if (request.getDataPoint() == null) {
             throw new ApiException("Missing the required parameter 'dataPoint' when calling postChartDataPoint(Async)");
         }
-        
         Object postBody = request.getDataPoint();
 
         // create path and map variables
@@ -14067,7 +13691,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -14143,27 +13767,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postChartSeriesCall(PostChartSeriesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postChartSeries(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postChartSeries(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling postChartSeries(Async)");
         }
-        
         // verify the required parameter 'series' is set
         if (request.getSeries() == null) {
             throw new ApiException("Missing the required parameter 'series' when calling postChartSeries(Async)");
         }
-        
         Object postBody = request.getSeries();
 
         // create path and map variables
@@ -14203,7 +13822,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -14279,22 +13898,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postCopyLayoutSlideFromSourcePresentationCall(PostCopyLayoutSlideFromSourcePresentationRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postCopyLayoutSlideFromSourcePresentation(Async)");
         }
-        
         // verify the required parameter 'cloneFrom' is set
         if (request.getCloneFrom() == null) {
             throw new ApiException("Missing the required parameter 'cloneFrom' when calling postCopyLayoutSlideFromSourcePresentation(Async)");
         }
-        
         // verify the required parameter 'cloneFromPosition' is set
         if (request.getCloneFromPosition() == null) {
             throw new ApiException("Missing the required parameter 'cloneFromPosition' when calling postCopyLayoutSlideFromSourcePresentation(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -14339,7 +13954,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -14415,22 +14030,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postCopyMasterSlideFromSourcePresentationCall(PostCopyMasterSlideFromSourcePresentationRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postCopyMasterSlideFromSourcePresentation(Async)");
         }
-        
         // verify the required parameter 'cloneFrom' is set
         if (request.getCloneFrom() == null) {
             throw new ApiException("Missing the required parameter 'cloneFrom' when calling postCopyMasterSlideFromSourcePresentation(Async)");
         }
-        
         // verify the required parameter 'cloneFromPosition' is set
         if (request.getCloneFromPosition() == null) {
             throw new ApiException("Missing the required parameter 'cloneFromPosition' when calling postCopyMasterSlideFromSourcePresentation(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -14476,7 +14087,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -14552,18 +14163,15 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postGetNotesSlideCall(PostGetNotesSlideRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'document' is set
         if (request.getDocument() == null) {
             throw new ApiException("Missing the required parameter 'document' when calling postGetNotesSlide(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postGetNotesSlide(Async)");
         }
-        
-        Object postBody = request.getDocument();
+        Object postBody = null;
 
         // create path and map variables
         String path = "/slides/slides/{slideIndex}/notesSlide"
@@ -14576,6 +14184,8 @@ public class SlidesApi {
         headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
+        if (request.getDocument() != null)
+        formParams.put("document", request.getDocument());
 
         final String[] accepts = {
             "application/json"
@@ -14584,7 +14194,7 @@ public class SlidesApi {
         if (accept != null) headerParams.put("Accept", accept);
 
         final String[] contentTypes = {
-            "application/octet-stream", "multipart/form-data"
+            "multipart/form-data"
         };
         final String contentType = apiClient.selectHeaderContentType(contentTypes);
         headerParams.put("Content-Type", contentType);
@@ -14600,7 +14210,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -14676,18 +14286,15 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postGetNotesSlideExistsCall(PostGetNotesSlideExistsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'document' is set
         if (request.getDocument() == null) {
             throw new ApiException("Missing the required parameter 'document' when calling postGetNotesSlideExists(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postGetNotesSlideExists(Async)");
         }
-        
-        Object postBody = request.getDocument();
+        Object postBody = null;
 
         // create path and map variables
         String path = "/slides/slides/{slideIndex}/notesSlide/exist"
@@ -14700,6 +14307,8 @@ public class SlidesApi {
         headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
+        if (request.getDocument() != null)
+        formParams.put("document", request.getDocument());
 
         final String[] accepts = {
             "application/json"
@@ -14708,7 +14317,7 @@ public class SlidesApi {
         if (accept != null) headerParams.put("Accept", accept);
 
         final String[] contentTypes = {
-            "application/octet-stream"
+            "application/json"
         };
         final String contentType = apiClient.selectHeaderContentType(contentTypes);
         headerParams.put("Content-Type", contentType);
@@ -14724,7 +14333,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -14800,23 +14409,19 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postGetNotesSlideWithFormatCall(PostGetNotesSlideWithFormatRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'document' is set
         if (request.getDocument() == null) {
             throw new ApiException("Missing the required parameter 'document' when calling postGetNotesSlideWithFormat(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postGetNotesSlideWithFormat(Async)");
         }
-        
         // verify the required parameter 'format' is set
         if (request.getFormat() == null) {
             throw new ApiException("Missing the required parameter 'format' when calling postGetNotesSlideWithFormat(Async)");
         }
-        
-        Object postBody = request.getDocument();
+        Object postBody = null;
 
         // create path and map variables
         String path = "/slides/slides/{slideIndex}/notesSlide/{format}"
@@ -14832,6 +14437,8 @@ public class SlidesApi {
         headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
+        if (request.getDocument() != null)
+        formParams.put("document", request.getDocument());
 
         final String[] accepts = {
             "multipart/form-data"
@@ -14840,7 +14447,7 @@ public class SlidesApi {
         if (accept != null) headerParams.put("Accept", accept);
 
         final String[] contentTypes = {
-            "application/octet-stream", "multipart/form-data"
+            "multipart/form-data"
         };
         final String contentType = apiClient.selectHeaderContentType(contentTypes);
         headerParams.put("Content-Type", contentType);
@@ -14856,7 +14463,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -14932,27 +14539,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postNotesSlideAddNewParagraphCall(PostNotesSlideAddNewParagraphRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postNotesSlideAddNewParagraph(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postNotesSlideAddNewParagraph(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling postNotesSlideAddNewParagraph(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling postNotesSlideAddNewParagraph(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -14993,7 +14595,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -15069,32 +14671,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postNotesSlideAddNewPortionCall(PostNotesSlideAddNewPortionRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postNotesSlideAddNewPortion(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postNotesSlideAddNewPortion(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling postNotesSlideAddNewPortion(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling postNotesSlideAddNewPortion(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling postNotesSlideAddNewPortion(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -15135,7 +14731,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -15211,22 +14807,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postNotesSlideAddNewShapeCall(PostNotesSlideAddNewShapeRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postNotesSlideAddNewShape(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postNotesSlideAddNewShape(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling postNotesSlideAddNewShape(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -15268,7 +14860,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -15344,27 +14936,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postNotesSlideShapeSaveAsCall(PostNotesSlideShapeSaveAsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postNotesSlideShapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postNotesSlideShapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling postNotesSlideShapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'format' is set
         if (request.getFormat() == null) {
             throw new ApiException("Missing the required parameter 'format' when calling postNotesSlideShapeSaveAs(Async)");
         }
-        
         Object postBody = request.getOptions();
 
         // create path and map variables
@@ -15408,7 +14995,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -15484,17 +15071,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postPresentationMergeCall(PostPresentationMergeRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postPresentationMerge(Async)");
         }
-        
         // verify the required parameter 'request' is set
         if (request.getRequest() == null) {
             throw new ApiException("Missing the required parameter 'request' when calling postPresentationMerge(Async)");
         }
-        
         Object postBody = request.getRequest();
 
         // create path and map variables
@@ -15534,7 +15118,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -15610,22 +15194,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSectionCall(PostSectionRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSection(Async)");
         }
-        
         // verify the required parameter 'sectionName' is set
         if (request.getSectionName() == null) {
             throw new ApiException("Missing the required parameter 'sectionName' when calling postSection(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postSection(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -15667,7 +15247,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -15743,22 +15323,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSectionMoveCall(PostSectionMoveRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSectionMove(Async)");
         }
-        
         // verify the required parameter 'sectionIndex' is set
         if (request.getSectionIndex() == null) {
             throw new ApiException("Missing the required parameter 'sectionIndex' when calling postSectionMove(Async)");
         }
-        
         // verify the required parameter 'newPosition' is set
         if (request.getNewPosition() == null) {
             throw new ApiException("Missing the required parameter 'newPosition' when calling postSectionMove(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -15799,7 +15375,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -15875,27 +15451,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postShapeSaveAsCall(PostShapeSaveAsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postShapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postShapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling postShapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'format' is set
         if (request.getFormat() == null) {
             throw new ApiException("Missing the required parameter 'format' when calling postShapeSaveAs(Async)");
         }
-        
         Object postBody = request.getOptions();
 
         // create path and map variables
@@ -15939,7 +15510,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -16015,22 +15586,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlideAnimationEffectCall(PostSlideAnimationEffectRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSlideAnimationEffect(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postSlideAnimationEffect(Async)");
         }
-        
         // verify the required parameter 'effect' is set
         if (request.getEffect() == null) {
             throw new ApiException("Missing the required parameter 'effect' when calling postSlideAnimationEffect(Async)");
         }
-        
         Object postBody = request.getEffect();
 
         // create path and map variables
@@ -16070,7 +15637,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -16146,22 +15713,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlideAnimationInteractiveSequenceCall(PostSlideAnimationInteractiveSequenceRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSlideAnimationInteractiveSequence(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postSlideAnimationInteractiveSequence(Async)");
         }
-        
         // verify the required parameter 'sequence' is set
         if (request.getSequence() == null) {
             throw new ApiException("Missing the required parameter 'sequence' when calling postSlideAnimationInteractiveSequence(Async)");
         }
-        
         Object postBody = request.getSequence();
 
         // create path and map variables
@@ -16201,7 +15764,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -16277,27 +15840,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlideAnimationInteractiveSequenceEffectCall(PostSlideAnimationInteractiveSequenceEffectRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSlideAnimationInteractiveSequenceEffect(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postSlideAnimationInteractiveSequenceEffect(Async)");
         }
-        
         // verify the required parameter 'sequenceIndex' is set
         if (request.getSequenceIndex() == null) {
             throw new ApiException("Missing the required parameter 'sequenceIndex' when calling postSlideAnimationInteractiveSequenceEffect(Async)");
         }
-        
         // verify the required parameter 'effect' is set
         if (request.getEffect() == null) {
             throw new ApiException("Missing the required parameter 'effect' when calling postSlideAnimationInteractiveSequenceEffect(Async)");
         }
-        
         Object postBody = request.getEffect();
 
         // create path and map variables
@@ -16337,7 +15895,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -16413,22 +15971,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlideSaveAsCall(PostSlideSaveAsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSlideSaveAs(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postSlideSaveAs(Async)");
         }
-        
         // verify the required parameter 'format' is set
         if (request.getFormat() == null) {
             throw new ApiException("Missing the required parameter 'format' when calling postSlideSaveAs(Async)");
         }
-        
         Object postBody = request.getOptions();
 
         // create path and map variables
@@ -16471,7 +16025,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -16547,12 +16101,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlidesAddCall(PostSlidesAddRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSlidesAdd(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -16594,7 +16146,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -16670,18 +16222,15 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlidesConvertCall(PostSlidesConvertRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'document' is set
         if (request.getDocument() == null) {
             throw new ApiException("Missing the required parameter 'document' when calling postSlidesConvert(Async)");
         }
-        
         // verify the required parameter 'format' is set
         if (request.getFormat() == null) {
             throw new ApiException("Missing the required parameter 'format' when calling postSlidesConvert(Async)");
         }
-        
-        Object postBody = request.getDocument();
+        Object postBody = null;
 
         // create path and map variables
         String path = "/slides/convert/{format}"
@@ -16695,6 +16244,8 @@ public class SlidesApi {
         headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
+        if (request.getDocument() != null)
+        formParams.put("document", request.getDocument());
 
         final String[] accepts = {
             "multipart/form-data"
@@ -16703,7 +16254,7 @@ public class SlidesApi {
         if (accept != null) headerParams.put("Accept", accept);
 
         final String[] contentTypes = {
-            "application/octet-stream", "multipart/form-data"
+            "multipart/form-data"
         };
         final String contentType = apiClient.selectHeaderContentType(contentTypes);
         headerParams.put("Content-Type", contentType);
@@ -16719,7 +16270,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -16795,17 +16346,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlidesCopyCall(PostSlidesCopyRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSlidesCopy(Async)");
         }
-        
         // verify the required parameter 'slideToCopy' is set
         if (request.getSlideToCopy() == null) {
             throw new ApiException("Missing the required parameter 'slideToCopy' when calling postSlidesCopy(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -16851,7 +16399,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -16927,13 +16475,11 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlidesDocumentCall(PostSlidesDocumentRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSlidesDocument(Async)");
         }
-        
-        Object postBody = request.getData();
+        Object postBody = null;
 
         // create path and map variables
         String path = "/slides/{name}"
@@ -16950,6 +16496,8 @@ public class SlidesApi {
         headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
+        if (request.getData() != null)
+        formParams.put("data", request.getData());
 
         final String[] accepts = {
             "application/json"
@@ -16958,7 +16506,7 @@ public class SlidesApi {
         if (accept != null) headerParams.put("Accept", accept);
 
         final String[] contentTypes = {
-            "application/octet-stream", "multipart/form-data"
+            "multipart/form-data"
         };
         final String contentType = apiClient.selectHeaderContentType(contentTypes);
         headerParams.put("Content-Type", contentType);
@@ -16974,7 +16522,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -17050,12 +16598,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlidesDocumentFromHtmlCall(PostSlidesDocumentFromHtmlRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSlidesDocumentFromHtml(Async)");
         }
-        
         Object postBody = request.getHtml();
 
         // create path and map variables
@@ -17095,7 +16641,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -17171,13 +16717,11 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlidesDocumentFromPdfCall(PostSlidesDocumentFromPdfRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSlidesDocumentFromPdf(Async)");
         }
-        
-        Object postBody = request.getPdf();
+        Object postBody = null;
 
         // create path and map variables
         String path = "/slides/{name}/fromPdf"
@@ -17192,6 +16736,8 @@ public class SlidesApi {
         headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
+        if (request.getPdf() != null)
+        formParams.put("pdf", request.getPdf());
 
         final String[] accepts = {
             "application/json"
@@ -17200,7 +16746,7 @@ public class SlidesApi {
         if (accept != null) headerParams.put("Accept", accept);
 
         final String[] contentTypes = {
-            "application/octet-stream"
+            "application/json"
         };
         final String contentType = apiClient.selectHeaderContentType(contentTypes);
         headerParams.put("Content-Type", contentType);
@@ -17216,7 +16762,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -17292,12 +16838,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlidesDocumentFromSourceCall(PostSlidesDocumentFromSourceRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSlidesDocumentFromSource(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -17341,7 +16885,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -17417,17 +16961,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlidesDocumentFromTemplateCall(PostSlidesDocumentFromTemplateRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSlidesDocumentFromTemplate(Async)");
         }
-        
         // verify the required parameter 'templatePath' is set
         if (request.getTemplatePath() == null) {
             throw new ApiException("Missing the required parameter 'templatePath' when calling postSlidesDocumentFromTemplate(Async)");
         }
-        
         Object postBody = request.getData();
 
         // create path and map variables
@@ -17472,7 +17013,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -17548,12 +17089,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlidesPipelineCall(PostSlidesPipelineRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'pipeline' is set
         if (request.getPipeline() == null) {
             throw new ApiException("Missing the required parameter 'pipeline' when calling postSlidesPipeline(Async)");
         }
-        
         Object postBody = request.getPipeline();
 
         // create path and map variables
@@ -17565,6 +17104,8 @@ public class SlidesApi {
         Map<String, String> headerParams = new HashMap<String, String>();
 
         Map<String, Object> formParams = new HashMap<String, Object>();
+        if (request.getFiles() != null)
+        formParams.put("files", request.getFiles());
 
         final String[] accepts = {
             "multipart/form-data"
@@ -17589,11 +17130,7 @@ public class SlidesApi {
                 }
             });
         }
-        List<FileInfo> files = new ArrayList<FileInfo>();
-        if (request.getFiles() != null) {
-            files.addAll(request.getFiles());
-        }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, files, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -17669,22 +17206,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlidesPresentationReplaceTextCall(PostSlidesPresentationReplaceTextRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSlidesPresentationReplaceText(Async)");
         }
-        
         // verify the required parameter 'oldValue' is set
         if (request.getOldValue() == null) {
             throw new ApiException("Missing the required parameter 'oldValue' when calling postSlidesPresentationReplaceText(Async)");
         }
-        
         // verify the required parameter 'newValue' is set
         if (request.getNewValue() == null) {
             throw new ApiException("Missing the required parameter 'newValue' when calling postSlidesPresentationReplaceText(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -17727,7 +17260,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -17803,22 +17336,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlidesReorderCall(PostSlidesReorderRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSlidesReorder(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postSlidesReorder(Async)");
         }
-        
         // verify the required parameter 'newPosition' is set
         if (request.getNewPosition() == null) {
             throw new ApiException("Missing the required parameter 'newPosition' when calling postSlidesReorder(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -17859,7 +17388,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -17935,12 +17464,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlidesReorderManyCall(PostSlidesReorderManyRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSlidesReorderMany(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -17982,7 +17509,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -18058,17 +17585,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlidesSaveAsCall(PostSlidesSaveAsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSlidesSaveAs(Async)");
         }
-        
         // verify the required parameter 'format' is set
         if (request.getFormat() == null) {
             throw new ApiException("Missing the required parameter 'format' when calling postSlidesSaveAs(Async)");
         }
-        
         Object postBody = request.getOptions();
 
         // create path and map variables
@@ -18109,7 +17633,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -18185,17 +17709,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlidesSetDocumentPropertiesCall(PostSlidesSetDocumentPropertiesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSlidesSetDocumentProperties(Async)");
         }
-        
         // verify the required parameter 'properties' is set
         if (request.getProperties() == null) {
             throw new ApiException("Missing the required parameter 'properties' when calling postSlidesSetDocumentProperties(Async)");
         }
-        
         Object postBody = request.getProperties();
 
         // create path and map variables
@@ -18235,7 +17756,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -18311,27 +17832,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlidesSlideReplaceTextCall(PostSlidesSlideReplaceTextRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSlidesSlideReplaceText(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postSlidesSlideReplaceText(Async)");
         }
-        
         // verify the required parameter 'oldValue' is set
         if (request.getOldValue() == null) {
             throw new ApiException("Missing the required parameter 'oldValue' when calling postSlidesSlideReplaceText(Async)");
         }
-        
         // verify the required parameter 'newValue' is set
         if (request.getNewValue() == null) {
             throw new ApiException("Missing the required parameter 'newValue' when calling postSlidesSlideReplaceText(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -18374,7 +17890,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -18450,12 +17966,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSlidesSplitCall(PostSlidesSplitRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSlidesSplit(Async)");
         }
-        
         Object postBody = request.getOptions();
 
         // create path and map variables
@@ -18502,7 +18016,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -18578,27 +18092,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postSubshapeSaveAsCall(PostSubshapeSaveAsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postSubshapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling postSubshapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling postSubshapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'format' is set
         if (request.getFormat() == null) {
             throw new ApiException("Missing the required parameter 'format' when calling postSubshapeSaveAs(Async)");
         }
-        
         Object postBody = request.getOptions();
 
         // create path and map variables
@@ -18642,7 +18151,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -18718,32 +18227,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putChartCategoryCall(PutChartCategoryRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putChartCategory(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putChartCategory(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling putChartCategory(Async)");
         }
-        
         // verify the required parameter 'categoryIndex' is set
         if (request.getCategoryIndex() == null) {
             throw new ApiException("Missing the required parameter 'categoryIndex' when calling putChartCategory(Async)");
         }
-        
         // verify the required parameter 'category' is set
         if (request.getCategory() == null) {
             throw new ApiException("Missing the required parameter 'category' when calling putChartCategory(Async)");
         }
-        
         Object postBody = request.getCategory();
 
         // create path and map variables
@@ -18783,7 +18286,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -18859,37 +18362,30 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putChartDataPointCall(PutChartDataPointRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putChartDataPoint(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putChartDataPoint(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling putChartDataPoint(Async)");
         }
-        
         // verify the required parameter 'seriesIndex' is set
         if (request.getSeriesIndex() == null) {
             throw new ApiException("Missing the required parameter 'seriesIndex' when calling putChartDataPoint(Async)");
         }
-        
         // verify the required parameter 'pointIndex' is set
         if (request.getPointIndex() == null) {
             throw new ApiException("Missing the required parameter 'pointIndex' when calling putChartDataPoint(Async)");
         }
-        
         // verify the required parameter 'dataPoint' is set
         if (request.getDataPoint() == null) {
             throw new ApiException("Missing the required parameter 'dataPoint' when calling putChartDataPoint(Async)");
         }
-        
         Object postBody = request.getDataPoint();
 
         // create path and map variables
@@ -18929,7 +18425,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -19005,32 +18501,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putChartSeriesCall(PutChartSeriesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putChartSeries(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putChartSeries(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling putChartSeries(Async)");
         }
-        
         // verify the required parameter 'seriesIndex' is set
         if (request.getSeriesIndex() == null) {
             throw new ApiException("Missing the required parameter 'seriesIndex' when calling putChartSeries(Async)");
         }
-        
         // verify the required parameter 'series' is set
         if (request.getSeries() == null) {
             throw new ApiException("Missing the required parameter 'series' when calling putChartSeries(Async)");
         }
-        
         Object postBody = request.getSeries();
 
         // create path and map variables
@@ -19070,7 +18560,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -19146,22 +18636,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putLayoutSlideCall(PutLayoutSlideRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putLayoutSlide(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putLayoutSlide(Async)");
         }
-        
         // verify the required parameter 'slideDto' is set
         if (request.getSlideDto() == null) {
             throw new ApiException("Missing the required parameter 'slideDto' when calling putLayoutSlide(Async)");
         }
-        
         Object postBody = request.getSlideDto();
 
         // create path and map variables
@@ -19201,7 +18687,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -19277,22 +18763,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putNotesSlideHeaderFooterCall(PutNotesSlideHeaderFooterRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putNotesSlideHeaderFooter(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putNotesSlideHeaderFooter(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling putNotesSlideHeaderFooter(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -19332,7 +18814,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -19408,32 +18890,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putNotesSlideShapeSaveAsCall(PutNotesSlideShapeSaveAsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putNotesSlideShapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putNotesSlideShapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling putNotesSlideShapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'format' is set
         if (request.getFormat() == null) {
             throw new ApiException("Missing the required parameter 'format' when calling putNotesSlideShapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'outPath' is set
         if (request.getOutPath() == null) {
             throw new ApiException("Missing the required parameter 'outPath' when calling putNotesSlideShapeSaveAs(Async)");
         }
-        
         Object postBody = request.getOptions();
 
         // create path and map variables
@@ -19478,7 +18954,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -19550,17 +19026,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putPresentationMergeCall(PutPresentationMergeRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putPresentationMerge(Async)");
         }
-        
         // verify the required parameter 'request' is set
         if (request.getRequest() == null) {
             throw new ApiException("Missing the required parameter 'request' when calling putPresentationMerge(Async)");
         }
-        
         Object postBody = request.getRequest();
 
         // create path and map variables
@@ -19600,7 +19073,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -19676,22 +19149,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSectionCall(PutSectionRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSection(Async)");
         }
-        
         // verify the required parameter 'sectionIndex' is set
         if (request.getSectionIndex() == null) {
             throw new ApiException("Missing the required parameter 'sectionIndex' when calling putSection(Async)");
         }
-        
         // verify the required parameter 'sectionName' is set
         if (request.getSectionName() == null) {
             throw new ApiException("Missing the required parameter 'sectionName' when calling putSection(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -19732,7 +19201,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -19808,17 +19277,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSectionsCall(PutSectionsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSections(Async)");
         }
-        
         // verify the required parameter 'sections' is set
         if (request.getSections() == null) {
             throw new ApiException("Missing the required parameter 'sections' when calling putSections(Async)");
         }
-        
         Object postBody = request.getSections();
 
         // create path and map variables
@@ -19858,7 +19324,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -19934,37 +19400,30 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSetParagraphPortionPropertiesCall(PutSetParagraphPortionPropertiesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSetParagraphPortionProperties(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putSetParagraphPortionProperties(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling putSetParagraphPortionProperties(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling putSetParagraphPortionProperties(Async)");
         }
-        
         // verify the required parameter 'portionIndex' is set
         if (request.getPortionIndex() == null) {
             throw new ApiException("Missing the required parameter 'portionIndex' when calling putSetParagraphPortionProperties(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling putSetParagraphPortionProperties(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -20004,7 +19463,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -20080,32 +19539,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSetParagraphPropertiesCall(PutSetParagraphPropertiesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSetParagraphProperties(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putSetParagraphProperties(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling putSetParagraphProperties(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling putSetParagraphProperties(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling putSetParagraphProperties(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -20145,7 +19598,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -20221,37 +19674,30 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSetSubshapeParagraphPortionPropertiesCall(PutSetSubshapeParagraphPortionPropertiesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSetSubshapeParagraphPortionProperties(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putSetSubshapeParagraphPortionProperties(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling putSetSubshapeParagraphPortionProperties(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling putSetSubshapeParagraphPortionProperties(Async)");
         }
-        
         // verify the required parameter 'portionIndex' is set
         if (request.getPortionIndex() == null) {
             throw new ApiException("Missing the required parameter 'portionIndex' when calling putSetSubshapeParagraphPortionProperties(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling putSetSubshapeParagraphPortionProperties(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -20291,7 +19737,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -20367,32 +19813,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSetSubshapeParagraphPropertiesCall(PutSetSubshapeParagraphPropertiesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSetSubshapeParagraphProperties(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putSetSubshapeParagraphProperties(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling putSetSubshapeParagraphProperties(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling putSetSubshapeParagraphProperties(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling putSetSubshapeParagraphProperties(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -20432,7 +19872,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -20508,32 +19948,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putShapeSaveAsCall(PutShapeSaveAsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putShapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putShapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling putShapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'format' is set
         if (request.getFormat() == null) {
             throw new ApiException("Missing the required parameter 'format' when calling putShapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'outPath' is set
         if (request.getOutPath() == null) {
             throw new ApiException("Missing the required parameter 'outPath' when calling putShapeSaveAs(Async)");
         }
-        
         Object postBody = request.getOptions();
 
         // create path and map variables
@@ -20578,7 +20012,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -20650,22 +20084,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSlideAnimationCall(PutSlideAnimationRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSlideAnimation(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putSlideAnimation(Async)");
         }
-        
         // verify the required parameter 'animation' is set
         if (request.getAnimation() == null) {
             throw new ApiException("Missing the required parameter 'animation' when calling putSlideAnimation(Async)");
         }
-        
         Object postBody = request.getAnimation();
 
         // create path and map variables
@@ -20705,7 +20135,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -20781,27 +20211,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSlideAnimationEffectCall(PutSlideAnimationEffectRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSlideAnimationEffect(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putSlideAnimationEffect(Async)");
         }
-        
         // verify the required parameter 'effectIndex' is set
         if (request.getEffectIndex() == null) {
             throw new ApiException("Missing the required parameter 'effectIndex' when calling putSlideAnimationEffect(Async)");
         }
-        
         // verify the required parameter 'effect' is set
         if (request.getEffect() == null) {
             throw new ApiException("Missing the required parameter 'effect' when calling putSlideAnimationEffect(Async)");
         }
-        
         Object postBody = request.getEffect();
 
         // create path and map variables
@@ -20841,7 +20266,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -20917,32 +20342,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSlideAnimationInteractiveSequenceEffectCall(PutSlideAnimationInteractiveSequenceEffectRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSlideAnimationInteractiveSequenceEffect(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putSlideAnimationInteractiveSequenceEffect(Async)");
         }
-        
         // verify the required parameter 'sequenceIndex' is set
         if (request.getSequenceIndex() == null) {
             throw new ApiException("Missing the required parameter 'sequenceIndex' when calling putSlideAnimationInteractiveSequenceEffect(Async)");
         }
-        
         // verify the required parameter 'effectIndex' is set
         if (request.getEffectIndex() == null) {
             throw new ApiException("Missing the required parameter 'effectIndex' when calling putSlideAnimationInteractiveSequenceEffect(Async)");
         }
-        
         // verify the required parameter 'effect' is set
         if (request.getEffect() == null) {
             throw new ApiException("Missing the required parameter 'effect' when calling putSlideAnimationInteractiveSequenceEffect(Async)");
         }
-        
         Object postBody = request.getEffect();
 
         // create path and map variables
@@ -20982,7 +20401,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -21058,22 +20477,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSlideHeaderFooterCall(PutSlideHeaderFooterRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSlideHeaderFooter(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putSlideHeaderFooter(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling putSlideHeaderFooter(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -21113,7 +20528,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -21189,27 +20604,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSlideSaveAsCall(PutSlideSaveAsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSlideSaveAs(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putSlideSaveAs(Async)");
         }
-        
         // verify the required parameter 'format' is set
         if (request.getFormat() == null) {
             throw new ApiException("Missing the required parameter 'format' when calling putSlideSaveAs(Async)");
         }
-        
         // verify the required parameter 'outPath' is set
         if (request.getOutPath() == null) {
             throw new ApiException("Missing the required parameter 'outPath' when calling putSlideSaveAs(Async)");
         }
-        
         Object postBody = request.getOptions();
 
         // create path and map variables
@@ -21253,7 +20663,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -21325,27 +20735,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSlideShapeInfoCall(PutSlideShapeInfoRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSlideShapeInfo(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putSlideShapeInfo(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling putSlideShapeInfo(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling putSlideShapeInfo(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -21385,7 +20790,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -21461,27 +20866,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSlideSubshapeInfoCall(PutSlideSubshapeInfoRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSlideSubshapeInfo(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putSlideSubshapeInfo(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling putSlideSubshapeInfo(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling putSlideSubshapeInfo(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -21521,7 +20921,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -21597,23 +20997,19 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSlidesConvertCall(PutSlidesConvertRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'document' is set
         if (request.getDocument() == null) {
             throw new ApiException("Missing the required parameter 'document' when calling putSlidesConvert(Async)");
         }
-        
         // verify the required parameter 'format' is set
         if (request.getFormat() == null) {
             throw new ApiException("Missing the required parameter 'format' when calling putSlidesConvert(Async)");
         }
-        
         // verify the required parameter 'outPath' is set
         if (request.getOutPath() == null) {
             throw new ApiException("Missing the required parameter 'outPath' when calling putSlidesConvert(Async)");
         }
-        
-        Object postBody = request.getDocument();
+        Object postBody = null;
 
         // create path and map variables
         String path = "/slides/convert/{format}"
@@ -21628,6 +21024,8 @@ public class SlidesApi {
         headerParams.put("password", apiClient.parameterToString(request.getPassword()));
 
         Map<String, Object> formParams = new HashMap<String, Object>();
+        if (request.getDocument() != null)
+        formParams.put("document", request.getDocument());
 
         final String[] accepts = {
             "application/json"
@@ -21636,7 +21034,7 @@ public class SlidesApi {
         if (accept != null) headerParams.put("Accept", accept);
 
         final String[] contentTypes = {
-            "application/octet-stream", "multipart/form-data"
+            "multipart/form-data"
         };
         final String contentType = apiClient.selectHeaderContentType(contentTypes);
         headerParams.put("Content-Type", contentType);
@@ -21652,7 +21050,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -21726,12 +21124,10 @@ public class SlidesApi {
      */
     @Deprecated
     public com.squareup.okhttp.Call putSlidesDocumentFromHtmlCall(PutSlidesDocumentFromHtmlRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSlidesDocumentFromHtml(Async)");
         }
-        
         Object postBody = request.getHtml();
 
         // create path and map variables
@@ -21771,7 +21167,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -21853,17 +21249,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSlidesHeaderFooterCall(PutSlidesHeaderFooterRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSlidesHeaderFooter(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling putSlidesHeaderFooter(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -21903,7 +21296,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -21979,17 +21372,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSlidesProtectionPropertiesCall(PutSlidesProtectionPropertiesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSlidesProtectionProperties(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling putSlidesProtectionProperties(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -22029,7 +21419,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -22105,22 +21495,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSlidesSaveAsCall(PutSlidesSaveAsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSlidesSaveAs(Async)");
         }
-        
         // verify the required parameter 'outPath' is set
         if (request.getOutPath() == null) {
             throw new ApiException("Missing the required parameter 'outPath' when calling putSlidesSaveAs(Async)");
         }
-        
         // verify the required parameter 'format' is set
         if (request.getFormat() == null) {
             throw new ApiException("Missing the required parameter 'format' when calling putSlidesSaveAs(Async)");
         }
-        
         Object postBody = request.getOptions();
 
         // create path and map variables
@@ -22162,7 +21548,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -22234,22 +21620,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSlidesSetDocumentPropertyCall(PutSlidesSetDocumentPropertyRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSlidesSetDocumentProperty(Async)");
         }
-        
         // verify the required parameter 'propertyName' is set
         if (request.getPropertyName() == null) {
             throw new ApiException("Missing the required parameter 'propertyName' when calling putSlidesSetDocumentProperty(Async)");
         }
-        
         // verify the required parameter 'property' is set
         if (request.getProperty() == null) {
             throw new ApiException("Missing the required parameter 'property' when calling putSlidesSetDocumentProperty(Async)");
         }
-        
         Object postBody = request.getProperty();
 
         // create path and map variables
@@ -22289,7 +21671,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -22365,22 +21747,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSlidesSlideCall(PutSlidesSlideRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSlidesSlide(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putSlidesSlide(Async)");
         }
-        
         // verify the required parameter 'slideDto' is set
         if (request.getSlideDto() == null) {
             throw new ApiException("Missing the required parameter 'slideDto' when calling putSlidesSlide(Async)");
         }
-        
         Object postBody = request.getSlideDto();
 
         // create path and map variables
@@ -22420,7 +21798,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -22496,22 +21874,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSlidesSlideBackgroundCall(PutSlidesSlideBackgroundRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSlidesSlideBackground(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putSlidesSlideBackground(Async)");
         }
-        
         // verify the required parameter 'background' is set
         if (request.getBackground() == null) {
             throw new ApiException("Missing the required parameter 'background' when calling putSlidesSlideBackground(Async)");
         }
-        
         Object postBody = request.getBackground();
 
         // create path and map variables
@@ -22551,7 +21925,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -22627,22 +22001,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSlidesSlideBackgroundColorCall(PutSlidesSlideBackgroundColorRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSlidesSlideBackgroundColor(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putSlidesSlideBackgroundColor(Async)");
         }
-        
         // verify the required parameter 'color' is set
         if (request.getColor() == null) {
             throw new ApiException("Missing the required parameter 'color' when calling putSlidesSlideBackgroundColor(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -22683,7 +22053,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -22759,17 +22129,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSlidesSlidePropertiesCall(PutSlidesSlidePropertiesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSlidesSlideProperties(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling putSlidesSlideProperties(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -22809,7 +22176,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -22887,12 +22254,10 @@ public class SlidesApi {
      */
     @Deprecated
     public com.squareup.okhttp.Call putSlidesSlideSizeCall(PutSlidesSlideSizeRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSlidesSlideSize(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -22936,7 +22301,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -23018,17 +22383,14 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSlidesViewPropertiesCall(PutSlidesViewPropertiesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSlidesViewProperties(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling putSlidesViewProperties(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -23068,7 +22430,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -23144,32 +22506,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putSubshapeSaveAsCall(PutSubshapeSaveAsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putSubshapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putSubshapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling putSubshapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'format' is set
         if (request.getFormat() == null) {
             throw new ApiException("Missing the required parameter 'format' when calling putSubshapeSaveAs(Async)");
         }
-        
         // verify the required parameter 'outPath' is set
         if (request.getOutPath() == null) {
             throw new ApiException("Missing the required parameter 'outPath' when calling putSubshapeSaveAs(Async)");
         }
-        
         Object postBody = request.getOptions();
 
         // create path and map variables
@@ -23214,7 +22570,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -23286,22 +22642,18 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putUpdateNotesSlideCall(PutUpdateNotesSlideRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putUpdateNotesSlide(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putUpdateNotesSlide(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling putUpdateNotesSlide(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -23341,7 +22693,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -23417,27 +22769,22 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putUpdateNotesSlideShapeCall(PutUpdateNotesSlideShapeRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putUpdateNotesSlideShape(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putUpdateNotesSlideShape(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling putUpdateNotesSlideShape(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling putUpdateNotesSlideShape(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -23477,7 +22824,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -23553,32 +22900,26 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putUpdateNotesSlideShapeParagraphCall(PutUpdateNotesSlideShapeParagraphRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putUpdateNotesSlideShapeParagraph(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putUpdateNotesSlideShapeParagraph(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling putUpdateNotesSlideShapeParagraph(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling putUpdateNotesSlideShapeParagraph(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling putUpdateNotesSlideShapeParagraph(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -23618,7 +22959,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -23694,37 +23035,30 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putUpdateNotesSlideShapePortionCall(PutUpdateNotesSlideShapePortionRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'name' is set
         if (request.getName() == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putUpdateNotesSlideShapePortion(Async)");
         }
-        
         // verify the required parameter 'slideIndex' is set
         if (request.getSlideIndex() == null) {
             throw new ApiException("Missing the required parameter 'slideIndex' when calling putUpdateNotesSlideShapePortion(Async)");
         }
-        
         // verify the required parameter 'shapeIndex' is set
         if (request.getShapeIndex() == null) {
             throw new ApiException("Missing the required parameter 'shapeIndex' when calling putUpdateNotesSlideShapePortion(Async)");
         }
-        
         // verify the required parameter 'paragraphIndex' is set
         if (request.getParagraphIndex() == null) {
             throw new ApiException("Missing the required parameter 'paragraphIndex' when calling putUpdateNotesSlideShapePortion(Async)");
         }
-        
         // verify the required parameter 'portionIndex' is set
         if (request.getPortionIndex() == null) {
             throw new ApiException("Missing the required parameter 'portionIndex' when calling putUpdateNotesSlideShapePortion(Async)");
         }
-        
         // verify the required parameter 'dto' is set
         if (request.getDto() == null) {
             throw new ApiException("Missing the required parameter 'dto' when calling putUpdateNotesSlideShapePortion(Async)");
         }
-        
         Object postBody = request.getDto();
 
         // create path and map variables
@@ -23764,7 +23098,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -23840,12 +23174,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call storageExistsCall(StorageExistsRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'storageName' is set
         if (request.getStorageName() == null) {
             throw new ApiException("Missing the required parameter 'storageName' when calling storageExists(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -23881,7 +23213,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -23957,12 +23289,10 @@ public class SlidesApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call uploadFileCall(UploadFileRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'file' is set
         if (request.getFile() == null) {
             throw new ApiException("Missing the required parameter 'file' when calling uploadFile(Async)");
         }
-        
         Object postBody = null;
 
         // create path and map variables
@@ -24001,7 +23331,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, null, progressRequestListener);
+        return apiClient.buildCall(path, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**

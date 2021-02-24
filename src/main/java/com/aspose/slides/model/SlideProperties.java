@@ -52,7 +52,7 @@ public class SlideProperties extends ResourceBase {
   private Integer firstSlideNumber;
 
   /**
-   * Last used view mode.
+   * Slide orientation.
    */
   @JsonAdapter(OrientationEnum.Adapter.class)
   public enum OrientationEnum {
@@ -268,10 +268,10 @@ public class SlideProperties extends ResourceBase {
   }
 
    /**
-   * Last used view mode.
+   * Slide orientation.
    * @return orientation
   **/
-  @ApiModelProperty(value = "Last used view mode.")
+  @ApiModelProperty(value = "Slide orientation.")
   public OrientationEnum getOrientation() {
     return orientation;
   }

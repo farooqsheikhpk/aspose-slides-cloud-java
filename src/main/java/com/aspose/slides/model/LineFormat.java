@@ -338,6 +338,62 @@ public class LineFormat {
   @SerializedName(value = "style", alternate = { "Style" })
   private StyleEnum style;
 
+  /**
+   * Sketch type.
+   */
+  @JsonAdapter(SketchTypeEnum.Adapter.class)
+  public enum SketchTypeEnum {
+    NONE("None"),
+    
+    CURVED("Curved"),
+    
+    FREEHAND("Freehand"),
+    
+    SCRIBBLE("Scribble"),
+    
+    NOTDEFINED("NotDefined");
+
+    private String value;
+
+    SketchTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static SketchTypeEnum fromValue(String text) {
+      for (SketchTypeEnum b : SketchTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<SketchTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SketchTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public SketchTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return SketchTypeEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName(value = "sketchType", alternate = { "SketchType" })
+  private SketchTypeEnum sketchType;
+
   @SerializedName(value = "beginArrowHead", alternate = { "BeginArrowHead" })
   private ArrowHeadProperties beginArrowHead;
 
@@ -449,6 +505,24 @@ public class LineFormat {
 
   public void setStyle(StyleEnum style) {
     this.style = style;
+  }
+
+  public LineFormat sketchType(SketchTypeEnum sketchType) {
+    this.sketchType = sketchType;
+    return this;
+  }
+
+   /**
+   * Sketch type.
+   * @return sketchType
+  **/
+  @ApiModelProperty(value = "Sketch type.")
+  public SketchTypeEnum getSketchType() {
+    return sketchType;
+  }
+
+  public void setSketchType(SketchTypeEnum sketchType) {
+    this.sketchType = sketchType;
   }
 
   public LineFormat beginArrowHead(ArrowHeadProperties beginArrowHead) {
@@ -569,12 +643,12 @@ public class LineFormat {
       return false;
     }
     LineFormat lineFormat = (LineFormat) o;
-    return true && Objects.equals(this.alignment, lineFormat.alignment) && Objects.equals(this.capStyle, lineFormat.capStyle) && Objects.equals(this.dashStyle, lineFormat.dashStyle) && Objects.equals(this.joinStyle, lineFormat.joinStyle) && Objects.equals(this.style, lineFormat.style) && Objects.equals(this.beginArrowHead, lineFormat.beginArrowHead) && Objects.equals(this.endArrowHead, lineFormat.endArrowHead) && Objects.equals(this.customDashPattern, lineFormat.customDashPattern) && Objects.equals(this.fillFormat, lineFormat.fillFormat) && Objects.equals(this.miterLimit, lineFormat.miterLimit) && Objects.equals(this.width, lineFormat.width);
+    return true && Objects.equals(this.alignment, lineFormat.alignment) && Objects.equals(this.capStyle, lineFormat.capStyle) && Objects.equals(this.dashStyle, lineFormat.dashStyle) && Objects.equals(this.joinStyle, lineFormat.joinStyle) && Objects.equals(this.style, lineFormat.style) && Objects.equals(this.sketchType, lineFormat.sketchType) && Objects.equals(this.beginArrowHead, lineFormat.beginArrowHead) && Objects.equals(this.endArrowHead, lineFormat.endArrowHead) && Objects.equals(this.customDashPattern, lineFormat.customDashPattern) && Objects.equals(this.fillFormat, lineFormat.fillFormat) && Objects.equals(this.miterLimit, lineFormat.miterLimit) && Objects.equals(this.width, lineFormat.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(alignment, capStyle, dashStyle, joinStyle, style, beginArrowHead, endArrowHead, customDashPattern, fillFormat, miterLimit, width);
+    return Objects.hash(alignment, capStyle, dashStyle, joinStyle, style, sketchType, beginArrowHead, endArrowHead, customDashPattern, fillFormat, miterLimit, width);
   }
 
 
@@ -588,6 +662,7 @@ public class LineFormat {
     sb.append("    dashStyle: ").append(toIndentedString(dashStyle)).append("\n");
     sb.append("    joinStyle: ").append(toIndentedString(joinStyle)).append("\n");
     sb.append("    style: ").append(toIndentedString(style)).append("\n");
+    sb.append("    sketchType: ").append(toIndentedString(sketchType)).append("\n");
     sb.append("    beginArrowHead: ").append(toIndentedString(beginArrowHead)).append("\n");
     sb.append("    endArrowHead: ").append(toIndentedString(endArrowHead)).append("\n");
     sb.append("    customDashPattern: ").append(toIndentedString(customDashPattern)).append("\n");

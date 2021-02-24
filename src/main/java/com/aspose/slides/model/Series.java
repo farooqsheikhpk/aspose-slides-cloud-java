@@ -214,7 +214,9 @@ public class Series {
     
     WATERFALL("Waterfall"),
     
-    FUNNEL("Funnel");
+    FUNNEL("Funnel"),
+    
+    MAP("Map");
 
     private String value;
 

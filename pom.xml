@@ -5,7 +5,7 @@
   <artifactId>aspose-slides-cloud</artifactId>
   <packaging>jar</packaging>
   <name>aspose-slides-cloud</name>
-  <version>21.1.0</version>
+  <version>21.2.0</version>
   <url>https://github.com/aspose-slides-cloud/aspose-slides-cloud-java</url>
   <description>SDK for Aspose.Slides for Cloud</description>
   <scm>
@@ -251,6 +251,6 @@
     <maven-plugin-version>1.0.0</maven-plugin-version>
     <junit-version>4.13.1</junit-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <!--test>*.*#putShapeSaveAsInvalidFormatTest</test-->
+    <!--test>*.*#postSlidesDocumentFromPdfTest</test-->
   </properties>
 </project>
