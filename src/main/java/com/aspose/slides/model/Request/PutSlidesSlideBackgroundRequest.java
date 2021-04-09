@@ -63,16 +63,6 @@ public class PutSlidesSlideBackgroundRequest {
     this.background = background;
   }
 
-  private String folder;
-
-  public String getFolder() {
-    return folder;
-  }
-
-  public void setFolder(String folder) {
-    this.folder = folder;
-  }
-
   private String password;
 
   public String getPassword() {
@@ -81,6 +71,16 @@ public class PutSlidesSlideBackgroundRequest {
 
   public void setPassword(String password) {
     this.password = password;
+  }
+
+  private String folder;
+
+  public String getFolder() {
+    return folder;
+  }
+
+  public void setFolder(String folder) {
+    this.folder = folder;
   }
 
   private String storage;

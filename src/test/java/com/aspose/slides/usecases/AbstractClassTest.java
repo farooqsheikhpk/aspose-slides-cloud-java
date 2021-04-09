@@ -25,50 +25,40 @@
  * --------------------------------------------------------------------------------------------------------------------
  */
 
-package com.aspose.slides.extra;
+package com.aspose.slides.usecases;
 
-import com.aspose.slides.api.SlidesApi;
 import com.aspose.slides.ApiException;
 import org.junit.Test;
 
 import com.aspose.slides.ApiTest;
-import com.aspose.slides.Configuration;
-import com.aspose.slides.FileInfo;
-import com.aspose.slides.JSON;
 import com.aspose.slides.model.*;
-import com.aspose.slides.model.request.PostSlideSaveAsRequest;
-import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import static org.junit.Assert.assertTrue;
 
 /**
- * API tests for PlaceholdersApi
+ * API tests for abstract class deserialization
  */
-public class TimeoutTest extends ApiTest {
+public class AbstractClassTest extends ApiTest {
     /**
      * Read slide placeholder info.
-     *
-     * 
-     *
      * @throws ApiException
-     * 
+     * @throws java.io.IOException
      */
     @Test
-    public void timeoutTest() throws ApiException, IOException {
-        /* unstable test
-        initialize("postSlideSaveAs", null, null);
-        String configContents = new String(Files.readAllBytes(Paths.get("testConfig.json")), Charset.defaultCharset());
-        Configuration config = new JSON().deserialize(configContents, new TypeToken<Configuration>(){}.getType());
-        config.setTimeout(1);
-        initialize("postSlideSaveAs", null, null);
-        PostSlideSaveAsRequest request = new PostSlideSaveAsRequest();
-        request.setName("test.pptx");
-        request.setFolder("TempSlidesSDK");
-        request.setPassword("password");
-        request.setSlideIndex(1);
-        request.setFormat(SlideExportFormat.SVG);
-        new SlidesApi(config).postSlideSaveAs(request);*/
+    public void shapeTest() throws ApiException, IOException {
+        initialize("getSlideShape", null, null);
+        ShapeBase shape = api.getShape("test.pptx", 1, 1, "password", "TempSlidesSDK", null);
+        assertTrue(shape instanceof Shape);
+        assertTrue(((Shape)shape).getText().equals("1"));
+    }
+
+    /**
+     * Check default model properties are set.
+     * @throws ApiException
+     */
+    @Test
+    public void chartTest() throws ApiException {
+        Chart chart = new Chart();
+        assertTrue(chart.getType().equals(Chart.TypeEnum.CHART));
     }
 }

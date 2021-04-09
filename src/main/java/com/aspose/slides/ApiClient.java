@@ -958,14 +958,31 @@ public class ApiClient {
             reqBody = null;
         } else if ("application/x-www-form-urlencoded".equals(contentType)) {
             reqBody = buildRequestBodyFormEncoding(formParams);
-        } else if (formParams.size() == 1) {
-            if (body != null && ArrayList.class.isAssignableFrom(formParams.values().toArray()[0].getClass())) {
-                reqBody = serialize(body, contentType, (List<FileInfo>)formParams.values().toArray()[0]);
+        } else if (formParams.size() == 1 && ArrayList.class.isAssignableFrom(formParams.values().toArray()[0].getClass())) {
+            List<FileInfo> files = (List<FileInfo>)formParams.values().toArray()[0];
+            int partCount = (body != null ? 1 : 0) + files.size();
+            if (partCount > 1) {
+                Map<String, Object> parts = new LinkedHashMap<String, Object>();
+                if (body != null) {
+                    parts.put("body", body);
+                }
+                int fileIndex = 0;
+                for (FileInfo file : files) {
+                    fileIndex++;
+                    parts.put("file" + fileIndex, file);
+                }
+                reqBody = buildRequestBodyMultipart(parts);
             } else {
-                reqBody = serialize(formParams.values().toArray()[0], contentType, null);
+                if (body != null && ArrayList.class.isAssignableFrom(formParams.values().toArray()[0].getClass())) {
+                    reqBody = serialize(body, contentType, (List<FileInfo>)formParams.values().toArray()[0]);
+                } else {
+                    reqBody = serialize(formParams.values().toArray()[0], contentType, null);
+                }
             }
         } else if (formParams.size() > 1) {
             reqBody = buildRequestBodyMultipart(formParams);
+        } else if (formParams.size() == 1) {
+            reqBody = serialize(formParams.values().toArray()[0], contentType, null);
         } else {
             reqBody = serialize(body, contentType, null);
         }
@@ -1049,26 +1066,38 @@ public class ApiClient {
      */
     public RequestBody buildRequestBodyMultipart(Map<String, Object> formParams) {
         MultipartBuilder mpBuilder = new MultipartBuilder().type(MultipartBuilder.FORM);
+        int partIndex = 1;
         for (Entry<String, Object> param : formParams.entrySet()) {
+            String fileName = "file" + partIndex;
             if (param.getValue() instanceof File) {
                 File file = (File) param.getValue();
-                Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + param.getKey() + "\"; filename=\"" + file.getName() + "\"");
+                if (file.getName() != null && file.getName() != "") {
+                    fileName = file.getName();
+                }
+                Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + param.getKey() + "\"; filename=\"" + fileName + "\"");
                 MediaType mediaType = MediaType.parse(guessContentTypeFromFile(file));
                 mpBuilder.addPart(partHeaders, RequestBody.create(mediaType, file));
             } else if (param.getValue() instanceof byte[]) {
                 byte[] bytes = (byte[]) param.getValue();
-                Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + param.getKey() + "\"; filename=\"" + param.getKey() + "\"");
+                if (param.getKey() != null && param.getKey() != "") {
+                    fileName = param.getKey();
+                }
+                Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + param.getKey() + "\"; filename=\"" + fileName + "\"");
                 MediaType mediaType = MediaType.parse("application/octet-stream");
                 mpBuilder.addPart(partHeaders, RequestBody.create(mediaType, bytes));
             } else if (param.getValue() instanceof FileInfo) {
                 FileInfo file = (FileInfo) param.getValue();
-                Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + param.getKey() + "\"; filename=\"" + file.getName() + "\"");
+                if (file.getName() != null && file.getName() != "") {
+                    fileName = file.getName();
+                }
+                Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + param.getKey() + "\"; filename=\"" + fileName + "\"");
                 MediaType mediaType = MediaType.parse(file.getMimeType() == null ? "application/octet-stream" : file.getMimeType());
                 mpBuilder.addPart(partHeaders, RequestBody.create(mediaType, file.getData()));
             } else {
                 Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + param.getKey() + "\"");
                 mpBuilder.addPart(partHeaders, RequestBody.create(null, json.serialize(param.getValue())));
             }
+            partIndex++;
         }
         return mpBuilder.build();
     }

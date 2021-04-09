@@ -83,6 +83,16 @@ public class PostNotesSlideAddNewPortionRequest {
     this.dto = dto;
   }
 
+  private Integer position;
+
+  public Integer getPosition() {
+    return position;
+  }
+
+  public void setPosition(Integer position) {
+    this.position = position;
+  }
+
   private String password;
 
   public String getPassword() {
@@ -111,16 +121,6 @@ public class PostNotesSlideAddNewPortionRequest {
 
   public void setStorage(String storage) {
     this.storage = storage;
-  }
-
-  private Integer position;
-
-  public Integer getPosition() {
-    return position;
-  }
-
-  public void setPosition(Integer position) {
-    this.position = position;
   }
 
 }

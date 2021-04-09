@@ -25,16 +25,14 @@
  * --------------------------------------------------------------------------------------------------------------------
  */
 
-package com.aspose.slides.extra;
+package com.aspose.slides.usecases;
 
-import com.aspose.slides.api.SlidesApi;
 import com.aspose.slides.ApiException;
 import org.junit.Test;
 
 import com.aspose.slides.ApiTest;
 import com.aspose.slides.FileInfo;
 import com.aspose.slides.model.*;
-import com.aspose.slides.model.request.PostSlidesPipelineRequest;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -49,11 +47,8 @@ import static org.junit.Assert.assertTrue;
 public class PipelineTest extends ApiTest {
     /**
      * Read slide placeholder info.
-     *
-     * 
-     *
      * @throws ApiException
-     *          if the Api call fails
+     * @throws java.io.IOException
      */
     @Test
     public void pipelineTest() throws ApiException, IOException {
@@ -91,11 +86,7 @@ public class PipelineTest extends ApiTest {
         files.add(fileInfo1);
         files.add(fileInfo2);
         
-        PostSlidesPipelineRequest request = new PostSlidesPipelineRequest();
-        request.setPipeline(pipeline);
-        request.setFiles(files);
-                
-        File response = api.postSlidesPipeline(request);
+        File response = api.pipeline(pipeline, files);
         assertTrue(response.isFile());
     }
 }

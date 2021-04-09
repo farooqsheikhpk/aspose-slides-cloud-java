@@ -25,7 +25,7 @@
  * --------------------------------------------------------------------------------------------------------------------
  */
 
-package com.aspose.slides.extra;
+package com.aspose.slides.usecases;
 
 import com.aspose.slides.ApiException;
 import org.junit.Test;
@@ -50,17 +50,19 @@ public class AuthTest extends ApiTest {
     /**
      * Valid auth info.
      * @throws ApiException
+     * @throws java.io.IOException
      */
     @Test
     public void goodAuthTest() throws ApiException, IOException {
         String configContents = new String(Files.readAllBytes(Paths.get("testConfig.json")), Charset.defaultCharset());
         Configuration config = new JSON().deserialize(configContents, new TypeToken<Configuration>(){}.getType());
-        new SlidesApi(config).getSlidesApiInfo();
+        new SlidesApi(config).getApiInfo();
     }
 
     /**
      * Invalid auth info.
      * @throws ApiException
+     * @throws java.io.IOException
      */
     @Test
     public void badAuthTest() throws ApiException, IOException {
@@ -68,7 +70,7 @@ public class AuthTest extends ApiTest {
         Configuration config = new JSON().deserialize(configContents, new TypeToken<Configuration>(){}.getType());
         try {
             config.setAppKey("invalid");
-            new SlidesApi(config).getSlidesApiInfo();
+            new SlidesApi(config).getApiInfo();
             fail("Must have failed.");
         } catch (ApiException ex) {
             assertThat(ex.getCode(), is(401));
@@ -78,26 +80,28 @@ public class AuthTest extends ApiTest {
     /**
      * Valid auth token.
      * @throws ApiException
+     * @throws java.io.IOException
      */
     @Test
     public void goodTokenTest() throws ApiException, IOException {
         String configContents = new String(Files.readAllBytes(Paths.get("testConfig.json")), Charset.defaultCharset());
         Configuration config = new JSON().deserialize(configContents, new TypeToken<Configuration>(){}.getType());
-        new SlidesApi(config).getSlidesApiInfo();
+        new SlidesApi(config).getApiInfo();
         config.setAppSid("invalid");
-        new SlidesApi(config).getSlidesApiInfo();
+        new SlidesApi(config).getApiInfo();
     }
 
     /**
      * Invalid auth token.
      * @throws ApiException
+     * @throws java.io.IOException
      */
     @Test
     public void badTokenTest() throws ApiException, IOException {
         String configContents = new String(Files.readAllBytes(Paths.get("testConfig.json")), Charset.defaultCharset());
         Configuration config = new JSON().deserialize(configContents, new TypeToken<Configuration>(){}.getType());
-        new SlidesApi(config).getSlidesApiInfo();
+        new SlidesApi(config).getApiInfo();
         config.setAuthToken("invalid");
-        new SlidesApi(config).getSlidesApiInfo();
+        new SlidesApi(config).getApiInfo();
     }
 }

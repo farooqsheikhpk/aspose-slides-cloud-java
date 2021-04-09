@@ -73,16 +73,6 @@ public class PostSlidesSaveAsRequest {
     this.password = password;
   }
 
-  private String storage;
-
-  public String getStorage() {
-    return storage;
-  }
-
-  public void setStorage(String storage) {
-    this.storage = storage;
-  }
-
   private String folder;
 
   public String getFolder() {
@@ -91,6 +81,16 @@ public class PostSlidesSaveAsRequest {
 
   public void setFolder(String folder) {
     this.folder = folder;
+  }
+
+  private String storage;
+
+  public String getStorage() {
+    return storage;
+  }
+
+  public void setStorage(String storage) {
+    this.storage = storage;
   }
 
   private String fontsFolder;

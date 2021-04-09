@@ -48,7 +48,7 @@ public class JWTAuth extends Authentication {
 
     public JWTAuth(Configuration config) {
         this.config = config;
-        apiClient = new ApiClient(config.getBaseUrl(), new Authentication());
+        apiClient = new ApiClient(config.getAuthBaseUrl(), new Authentication());
     }
 
     @Override

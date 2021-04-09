@@ -28,10 +28,6 @@
 package com.aspose.slides;
 
 import com.aspose.slides.api.SlidesApi;
-import com.aspose.slides.model.request.CopyFileRequest;
-import com.aspose.slides.model.request.UploadFileRequest;
-import com.aspose.slides.model.request.DeleteFileRequest;
-import com.aspose.slides.model.request.DownloadFileRequest;
 import com.aspose.slides.testrules.FileAction;
 import com.aspose.slides.testrules.FileRule;
 import com.aspose.slides.testrules.ResultRule;
@@ -67,9 +63,10 @@ public class ApiTest {
     private TestRules testRules;
 
     private final String expectedTestDataVersion = "1";
-    private final String tempFolderName = "TempTests";
     private final String folderName = "TempSlidesSDK";
-    private final String testDataFolderName = "TestData";
+
+    protected final String tempFolderName = "TempTests";
+    protected final String testDataFolderName = "TestData";
 
     protected static SlidesApi api;
     
@@ -192,27 +189,20 @@ public class ApiTest {
         for (String path : files.keySet()) {
             FileRule rule = files.get(path);
             if (rule.getAction() == FileAction.Put) {
-                CopyFileRequest request = new CopyFileRequest();
-                request.setSrcPath(tempFolderName + "/" + rule.getActualName());
-                request.setDestPath(path);
-                api.copyFile(request);
+                api.copyFile(tempFolderName + "/" + rule.getActualName(), path, null, null, null);
             }
             else if (rule.getAction() == FileAction.Delete)
             {
-                DeleteFileRequest request = new DeleteFileRequest();
-                request.setPath(path);
-                api.deleteFile(request);
+                api.deleteFile(path, null, null);
             }
         }
     }
 
     private void initializeStorage() throws ApiException {
         String versionPath = tempFolderName + "/version.txt";
-        DownloadFileRequest request = new DownloadFileRequest();
-        request.setPath(versionPath);
         String version = null;
         try {
-            version = new BufferedReader(new FileReader(api.downloadFile(request))).readLine();
+            version = new BufferedReader(new FileReader(api.downloadFile(tempFolderName + "/version.txt", null, null))).readLine();
         } catch (IOException ex) {
             throw new ApiException(ex.getMessage());
         }
@@ -220,20 +210,16 @@ public class ApiTest {
             File folder = new File(testDataFolderName);
             for (File f : folder.listFiles()) {
                 if (f.isFile()) {
-                    UploadFileRequest fileRequest = new UploadFileRequest();
+                    byte[] fileBytes = null;
                     try {
-                        fileRequest.setFile(Files.readAllBytes(Paths.get(testDataFolderName + "/" + f.getName())));
+                        fileBytes = Files.readAllBytes(Paths.get(testDataFolderName + "/" + f.getName()));
                     } catch (IOException ex) {
                         throw new ApiException(ex.getMessage());
                     }
-                    fileRequest.setPath(tempFolderName + "/" + f.getName());
-                    api.uploadFile(fileRequest);
+                    api.uploadFile(tempFolderName + "/" + f.getName(), fileBytes, null);
                 }
             }
-            UploadFileRequest uploadRequest = new UploadFileRequest();
-            uploadRequest.setFile(expectedTestDataVersion.getBytes());
-            uploadRequest.setPath(versionPath);
-            api.uploadFile(uploadRequest);
+            api.uploadFile(versionPath, expectedTestDataVersion.getBytes(), null);
         }
     }
 
@@ -319,6 +305,22 @@ public class ApiTest {
                     filePath = testDataFolderName + "/test.pdf";
                 }
                 return Files.readAllBytes(Paths.get(filePath));
+            } catch (IOException ex) {
+                Logger.getLogger(ApiTest.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if ("List<FileInfo>".equals(type)) {
+            try {
+                FileInfo fileInfo1 = new FileInfo();
+                fileInfo1.setData(Files.readAllBytes(Paths.get("TestData/test.pptx")));
+
+                FileInfo fileInfo2 = new FileInfo();
+                fileInfo2.setData(Files.readAllBytes(Paths.get("TestData/test-unprotected.pptx")));
+
+                List<FileInfo> files = new ArrayList<FileInfo>();
+                files.add(fileInfo1);
+                files.add(fileInfo2);
+                return files;
             } catch (IOException ex) {
                 Logger.getLogger(ApiTest.class.getName()).log(Level.SEVERE, null, ex);
             }

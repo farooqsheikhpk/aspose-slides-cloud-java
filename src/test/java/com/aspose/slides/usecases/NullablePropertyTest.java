@@ -25,18 +25,13 @@
  * --------------------------------------------------------------------------------------------------------------------
  */
 
-package com.aspose.slides.extra;
+package com.aspose.slides.usecases;
 
-import com.aspose.slides.api.SlidesApi;
 import com.aspose.slides.ApiException;
 import org.junit.Test;
 
 import com.aspose.slides.ApiTest;
 import com.aspose.slides.model.*;
-import com.aspose.slides.model.request.CopyFileRequest;
-import com.aspose.slides.model.request.GetSlideShapeRequest;
-import com.aspose.slides.model.request.PostAddNewShapeRequest;
-import com.aspose.slides.model.request.PutSlideShapeInfoRequest;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,11 +43,8 @@ import static org.junit.Assert.assertTrue;
 public class NullablePropertyTest extends ApiTest {
     /**
      * Read slide placeholder info.
-     *
-     * 
-     *
      * @throws ApiException
-     * 
+     * @throws java.io.IOException
      */
     @Test
     public void nullablePropertyTest() throws ApiException, IOException {
@@ -64,10 +56,7 @@ public class NullablePropertyTest extends ApiTest {
         double min2 = 12;
         double max1 = 104.3;
         double max2 = 87;
-        CopyFileRequest request = new CopyFileRequest();
-        request.setSrcPath("TempTests/" + fileName);
-        request.setDestPath(folderName + "/" + fileName);
-        api.copyFile(request);
+        api.copyFile("TempTests/" + fileName, folderName + "/" + fileName, null, null, null);
 
         Chart testDto = new Chart();
         testDto.setChartType(Chart.ChartTypeEnum.LINE);
@@ -101,22 +90,8 @@ public class NullablePropertyTest extends ApiTest {
         testAxis.setMaxValue(max1);
         testAxes.setHorizontalAxis(testAxis);
         testDto.setAxes(testAxes);
-        PostAddNewShapeRequest postRequest = new PostAddNewShapeRequest();
-        postRequest.setName(fileName);
-        postRequest.setFolder(folderName);
-        postRequest.setPassword(password);
-        postRequest.setSlideIndex(1);
-        postRequest.setDto(testDto);
-        api.postAddNewShape(postRequest);
-
-        GetSlideShapeRequest getRequest = new GetSlideShapeRequest();
-        getRequest.setName(fileName);
-        getRequest.setFolder(folderName);
-        getRequest.setPassword(password);
-        getRequest.setSlideIndex(1);
-        getRequest.setShapeIndex(4);
-        api.getSlideShape(getRequest);
-        ShapeBase result = api.getSlideShape(getRequest);
+        api.createShape(fileName, 1, testDto, null, null, password, folderName, null);
+        ShapeBase result = api.getShape(fileName, 1, 4, password, folderName, null);
         assertTrue(((Chart)result).getAxes().getHorizontalAxis().getMinValue() == min1);
         assertTrue(((Chart)result).getAxes().getHorizontalAxis().getMaxValue() == max1);
 
@@ -126,26 +101,18 @@ public class NullablePropertyTest extends ApiTest {
         testAxis.setMinValue(min2);
         testAxes.setHorizontalAxis(testAxis);
         testDto.setAxes(testAxes);
-        PutSlideShapeInfoRequest putRequest = new PutSlideShapeInfoRequest();
-        putRequest.setName(fileName);
-        putRequest.setFolder(folderName);
-        putRequest.setPassword(password);
-        putRequest.setSlideIndex(1);
-        putRequest.setShapeIndex(4);
-        putRequest.setDto(testDto);
-        api.putSlideShapeInfo(putRequest);
+        api.updateShape(fileName, 1, 4, testDto, password, folderName, null);
 
-        result = api.getSlideShape(getRequest);
+        result = api.getShape(fileName, 1, 4, password, folderName, null);
         assertTrue(((Chart)result).getAxes().getHorizontalAxis().getMinValue() == min2);
         assertTrue(((Chart)result).getAxes().getHorizontalAxis().getMaxValue() == max1);
-
 
         testAxis = new Axis();
         testAxis.setMaxValue(max2);
         testAxes.setHorizontalAxis(testAxis);
-        api.putSlideShapeInfo(putRequest);
+        api.updateShape(fileName, 1, 4, testDto, password, folderName, null);
 
-        result = api.getSlideShape(getRequest);
+        result = api.getShape(fileName, 1, 4, password, folderName, null);
         assertTrue(((Chart)result).getAxes().getHorizontalAxis().getMinValue() == min2);
         assertTrue(((Chart)result).getAxes().getHorizontalAxis().getMaxValue() == max2);
     }

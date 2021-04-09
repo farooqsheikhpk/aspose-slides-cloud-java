@@ -63,6 +63,26 @@ public class PostAddNewShapeRequest {
     this.dto = dto;
   }
 
+  private Integer shapeToClone;
+
+  public Integer getShapeToClone() {
+    return shapeToClone;
+  }
+
+  public void setShapeToClone(Integer shapeToClone) {
+    this.shapeToClone = shapeToClone;
+  }
+
+  private Integer position;
+
+  public Integer getPosition() {
+    return position;
+  }
+
+  public void setPosition(Integer position) {
+    this.position = position;
+  }
+
   private String password;
 
   public String getPassword() {
@@ -91,26 +111,6 @@ public class PostAddNewShapeRequest {
 
   public void setStorage(String storage) {
     this.storage = storage;
-  }
-
-  private Integer shapeToClone;
-
-  public Integer getShapeToClone() {
-    return shapeToClone;
-  }
-
-  public void setShapeToClone(Integer shapeToClone) {
-    this.shapeToClone = shapeToClone;
-  }
-
-  private Integer position;
-
-  public Integer getPosition() {
-    return position;
-  }
-
-  public void setPosition(Integer position) {
-    this.position = position;
   }
 
 }

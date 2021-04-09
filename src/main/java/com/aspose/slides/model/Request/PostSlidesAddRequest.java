@@ -43,6 +43,16 @@ public class PostSlidesAddRequest {
     this.name = name;
   }
 
+  private String layoutAlias;
+
+  public String getLayoutAlias() {
+    return layoutAlias;
+  }
+
+  public void setLayoutAlias(String layoutAlias) {
+    this.layoutAlias = layoutAlias;
+  }
+
   private Integer position;
 
   public Integer getPosition() {
@@ -81,16 +91,6 @@ public class PostSlidesAddRequest {
 
   public void setStorage(String storage) {
     this.storage = storage;
-  }
-
-  private String layoutAlias;
-
-  public String getLayoutAlias() {
-    return layoutAlias;
-  }
-
-  public void setLayoutAlias(String layoutAlias) {
-    this.layoutAlias = layoutAlias;
   }
 
 }

@@ -43,16 +43,6 @@ public class PutSlidesSaveAsRequest {
     this.name = name;
   }
 
-  private String outPath;
-
-  public String getOutPath() {
-    return outPath;
-  }
-
-  public void setOutPath(String outPath) {
-    this.outPath = outPath;
-  }
-
   private ExportFormat format;
 
   public ExportFormat getFormat() {
@@ -61,6 +51,16 @@ public class PutSlidesSaveAsRequest {
 
   public void setFormat(ExportFormat format) {
     this.format = format;
+  }
+
+  private String outPath;
+
+  public String getOutPath() {
+    return outPath;
+  }
+
+  public void setOutPath(String outPath) {
+    this.outPath = outPath;
   }
 
   private ExportOptions options;
@@ -83,16 +83,6 @@ public class PutSlidesSaveAsRequest {
     this.password = password;
   }
 
-  private String storage;
-
-  public String getStorage() {
-    return storage;
-  }
-
-  public void setStorage(String storage) {
-    this.storage = storage;
-  }
-
   private String folder;
 
   public String getFolder() {
@@ -101,6 +91,16 @@ public class PutSlidesSaveAsRequest {
 
   public void setFolder(String folder) {
     this.folder = folder;
+  }
+
+  private String storage;
+
+  public String getStorage() {
+    return storage;
+  }
+
+  public void setStorage(String storage) {
+    this.storage = storage;
   }
 
   private String fontsFolder;

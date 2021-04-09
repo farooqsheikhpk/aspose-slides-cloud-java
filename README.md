@@ -24,6 +24,15 @@ This repository contains Aspose.Slides Cloud SDK for Java source code. This SDK 
 **Web:** HTML
 **Other:** SWF (export whole presentations)
 
+## Enhancements in Version 21.3
+* New **MergeOnline** and **MergeAndSaveOnline** methods to merge presentations from multipart request body.
+* New **SplitOnline** and **SplitAndSaveOnline** methods to split presentation from request body.
+* New **DownloadSlideOnline**, **DownloadShapeOnline**, **DownloadImageDefaultFormatOnline**, **DownloadImageOnline**, **SaveSlideOnline** and **SaveShapeOnline** methods to convert slides, shapes and images to spefified format using presentation from request body.
+* New **DownloadImagesDefaultFormat**, **DownloadImages**, **DownloadImagesDefaultFormatOnline** and **DownloadImagesDefaultFormatOnline** methods to download all images from presentation as a ZIP archive.
+* New **ReplacePresentationTextOnline** and **ReplaceSlideTextOnline** methods to replace text in presentation from request body.
+* New **AlignShapes** method to align shapes in a slide.
+* Simplified method declarations. See the [Release notes](https://docs.aspose.cloud/slides/aspose-slides-cloud-21-3-release-notes/) for details. Old method declarations are deprecated and will be deleted in 21.6 release.
+
 ## Enhancements in Version 21.2
 * New **Map** value of **ChartTypeEnum** type to manage map charts.
 * New **SketchFromat** property of **LineFormat** class.
@@ -33,19 +42,6 @@ This repository contains Aspose.Slides Cloud SDK for Java source code. This SDK 
 * New **GetSlidesSlideProperties**, **GetSlidesProtectionProperties**, **PutSlidesSlideProperties**, **PutSlidesProtectionProperties** allow to get/set presentaion properties like slide size, orientaion, read-only etc.
 * **PutSlidesDocumentFromHtml** method is deprecated and will be deleted in 21.4 release. Use **PostSlidesDocumentFromHtml** method instead.
 * **PutSlidesSlideSize** method is deprecated and will be deleted in 21.4 release. Use **PutSlidesProtectionProperties** method instead.
-
-## Enhancements in Version 20.12
-- Updated the SDK to run with cloud image.
-- **HttpRequestTimeout** property is added to SDK configuration. It allows specifying a custom timeout (in seconds) for **HTTP** requests made by the SDK.
-
-## Enhancements in Version 20.10
-* Removed ****ShapeType** property from BaseShape class; replaced **GeometryShapeType** with **ShapeType** property for **GeometryShape**.
-* Removed redundant **ResourceUriElement** class. All properties of **ResourceUriElement** type are changed to ResourceUri type.
-
-## Enhancements in Version 20.9
-* New **GetSections, PutSections, PutSection, PostSection, PostSectionMove, DeleteSection, DeleteSections** methods to add, update and delete presentation sections.
-* New **PostslidesHeaderFooter, PostSlideHeaderFooter, GetSlideHeaderFooter, PostNotesSlideHeaderFooter, GetNotesSlideHeaderFooter** methods to manage header/footer settings for slides.
-* Replaced Categories for **ParentCategories** & Level properties in **ChartCategory** class to properly support Sunburst & Treeview charts.
 
 ## Licensing
 All Aspose.Slides Cloud SDKs are licensed under MIT License.
@@ -73,7 +69,7 @@ Add this dependency to your project's POM:
     <dependency>
         <groupId>com.aspose</groupId>
         <artifactId>aspose-slides-cloud</artifactId>
-        <version>21.1.0</version>
+        <version>21.3.0</version>
     </dependency>
 </dependencies>
 ```
@@ -85,10 +81,7 @@ The example code below converts a PowerPoint document to PDF format using aspose
         configuration.setAppSid("MyClientId");
         configuration.setAppKey("MyClientSecret");
         SlidesApi api = new SlidesApi(configuration);
-	PostSlidesConvertRequest request =  new PostSlidesConvertRequest();
-        request.setFormat(ExportFormat.PDF);
-        request.setDocument(Files.readAllBytes(Paths.get("MyPresentation.pptx")));
-        File response = api.postSlidesConvert(request);
+        File response = api.convert(Files.readAllBytes(Paths.get("MyPresentation.pptx")), ExportFormat.PDF, null, null, null);
         System.out.println("My PDF was saved to " + response.getPath());
 ```
 You can check more [Examples](Examples) of using the SDK.

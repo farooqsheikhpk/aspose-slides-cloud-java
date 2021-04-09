@@ -56,6 +56,56 @@ public class PresentationToMerge {
   @SerializedName(value = "slides", alternate = { "Slides" })
   private List<Integer> slides = null;
 
+  /**
+   * Merge (request or storage). 
+   */
+  @JsonAdapter(SourceEnum.Adapter.class)
+  public enum SourceEnum {
+    STORAGE("Storage"),
+    
+    REQUEST("Request");
+
+    private String value;
+
+    SourceEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static SourceEnum fromValue(String text) {
+      for (SourceEnum b : SourceEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<SourceEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SourceEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public SourceEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return SourceEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName(value = "source", alternate = { "Source" })
+  private SourceEnum source;
+
 
   public PresentationToMerge() {
     super();
@@ -123,6 +173,24 @@ public class PresentationToMerge {
     this.slides = slides;
   }
 
+  public PresentationToMerge source(SourceEnum source) {
+    this.source = source;
+    return this;
+  }
+
+   /**
+   * Merge (request or storage). 
+   * @return source
+  **/
+  @ApiModelProperty(value = "Merge (request or storage). ")
+  public SourceEnum getSource() {
+    return source;
+  }
+
+  public void setSource(SourceEnum source) {
+    this.source = source;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -133,12 +201,12 @@ public class PresentationToMerge {
       return false;
     }
     PresentationToMerge presentationToMerge = (PresentationToMerge) o;
-    return true && Objects.equals(this.path, presentationToMerge.path) && Objects.equals(this.password, presentationToMerge.password) && Objects.equals(this.slides, presentationToMerge.slides);
+    return true && Objects.equals(this.path, presentationToMerge.path) && Objects.equals(this.password, presentationToMerge.password) && Objects.equals(this.slides, presentationToMerge.slides) && Objects.equals(this.source, presentationToMerge.source);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(path, password, slides);
+    return Objects.hash(path, password, slides, source);
   }
 
 
@@ -150,6 +218,7 @@ public class PresentationToMerge {
     sb.append("    path: ").append(toIndentedString(path)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    slides: ").append(toIndentedString(slides)).append("\n");
+    sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("}");
     return sb.toString();
   }

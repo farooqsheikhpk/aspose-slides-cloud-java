@@ -25,21 +25,27 @@
  * --------------------------------------------------------------------------------------------------------------------
  */
 
-package com.aspose.slides.extra;
+package com.aspose.slides.usecases;
 
+import com.aspose.slides.api.SlidesApi;
 import com.aspose.slides.ApiException;
 import org.junit.Test;
 
 import com.aspose.slides.ApiTest;
+import com.aspose.slides.Configuration;
+import com.aspose.slides.FileInfo;
+import com.aspose.slides.JSON;
 import com.aspose.slides.model.*;
-import com.aspose.slides.model.request.GetSlideShapeRequest;
+import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
-import static org.junit.Assert.assertTrue;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
- * API tests for abstract class deserialization
+ * API tests for PlaceholdersApi
  */
-public class AbstractClassTest extends ApiTest {
+public class TimeoutTest extends ApiTest {
     /**
      * Read slide placeholder info.
      *
@@ -49,26 +55,13 @@ public class AbstractClassTest extends ApiTest {
      * 
      */
     @Test
-    public void shapeTest() throws ApiException, IOException {
-        initialize("getSlideShape", null, null);
-        GetSlideShapeRequest request = new GetSlideShapeRequest();
-        request.setName("test.pptx");
-        request.setFolder("TempSlidesSDK");
-        request.setPassword("password");
-        request.setSlideIndex(1);
-        request.setShapeIndex(1);
-        ShapeBase shape = api.getSlideShape(request);
-        assertTrue(shape instanceof Shape);
-        assertTrue(((Shape)shape).getText().equals("1"));
-    }
-
-    /**
-     * Check default model properties are set.
-     * @throws ApiException
-     */
-    @Test
-    public void chartTest() throws ApiException {
-        Chart chart = new Chart();
-        assertTrue(chart.getType().equals(Chart.TypeEnum.CHART));
+    public void timeoutTest() throws ApiException, IOException {
+        /* unstable test
+        initialize("postSlideSaveAs", null, null);
+        String configContents = new String(Files.readAllBytes(Paths.get("testConfig.json")), Charset.defaultCharset());
+        Configuration config = new JSON().deserialize(configContents, new TypeToken<Configuration>(){}.getType());
+        config.setTimeout(1);
+        initialize("postSlideSaveAs", null, null);
+        new SlidesApi(config).downloadSlide("test.pptx", 1, SlideExportFormat.SVG, "password", "TempSlidesSDK");*/
     }
 }

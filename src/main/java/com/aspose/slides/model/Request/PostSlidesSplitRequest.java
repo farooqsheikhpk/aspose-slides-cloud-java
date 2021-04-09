@@ -83,16 +83,6 @@ public class PostSlidesSplitRequest {
     this.height = height;
   }
 
-  private Integer to;
-
-  public Integer getTo() {
-    return to;
-  }
-
-  public void setTo(Integer to) {
-    this.to = to;
-  }
-
   private Integer from;
 
   public Integer getFrom() {
@@ -101,6 +91,16 @@ public class PostSlidesSplitRequest {
 
   public void setFrom(Integer from) {
     this.from = from;
+  }
+
+  private Integer to;
+
+  public Integer getTo() {
+    return to;
+  }
+
+  public void setTo(Integer to) {
+    this.to = to;
   }
 
   private String destFolder;
@@ -123,16 +123,6 @@ public class PostSlidesSplitRequest {
     this.password = password;
   }
 
-  private String storage;
-
-  public String getStorage() {
-    return storage;
-  }
-
-  public void setStorage(String storage) {
-    this.storage = storage;
-  }
-
   private String folder;
 
   public String getFolder() {
@@ -141,6 +131,16 @@ public class PostSlidesSplitRequest {
 
   public void setFolder(String folder) {
     this.folder = folder;
+  }
+
+  private String storage;
+
+  public String getStorage() {
+    return storage;
+  }
+
+  public void setStorage(String storage) {
+    this.storage = storage;
   }
 
   private String fontsFolder;

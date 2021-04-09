@@ -43,6 +43,17 @@ public class Configuration {
         baseUrl = value;
     }
 
+    @SerializedName("AuthBaseUrl")
+    private String authBaseUrl;
+
+    public String getAuthBaseUrl() {
+        return authBaseUrl != null ? authBaseUrl : baseUrl;
+    }
+
+    public void setAuthBaseUrl(String value) {
+        authBaseUrl = value;
+    }
+
     @SerializedName("Version")
     private String version = "v3.0";
 
