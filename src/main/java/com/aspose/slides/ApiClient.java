@@ -958,25 +958,39 @@ public class ApiClient {
             reqBody = null;
         } else if ("application/x-www-form-urlencoded".equals(contentType)) {
             reqBody = buildRequestBodyFormEncoding(formParams);
-        } else if (formParams.size() == 1 && ArrayList.class.isAssignableFrom(formParams.values().toArray()[0].getClass())) {
-            List<FileInfo> files = (List<FileInfo>)formParams.values().toArray()[0];
-            int partCount = (body != null ? 1 : 0) + files.size();
+        } else if (formParams.size() > 0) {
+            List<FileInfo> files = null;
+            Object[] bodyParts = null;
+            if (ArrayList.class.isAssignableFrom(formParams.values().toArray()[0].getClass())) {
+                files = (List<FileInfo>)formParams.values().toArray()[0];
+            } else {
+                bodyParts = formParams.values().toArray();
+            }
+            int partCount = (body != null ? 1 : 0) + (files != null ? files.size() : 0) + (bodyParts != null ? bodyParts.length : 0);
             if (partCount > 1) {
                 Map<String, Object> parts = new LinkedHashMap<String, Object>();
                 if (body != null) {
                     parts.put("body", body);
                 }
                 int fileIndex = 0;
-                for (FileInfo file : files) {
-                    fileIndex++;
-                    parts.put("file" + fileIndex, file);
+                if (files != null) {
+                    for (FileInfo file : files) {
+                        fileIndex++;
+                        parts.put("file" + fileIndex, file);
+                    }
+                }
+                if (bodyParts != null) {
+                    for (Object part : bodyParts) {
+                        fileIndex++;
+                        parts.put("file" + fileIndex, part);
+                    }
                 }
                 reqBody = buildRequestBodyMultipart(parts);
             } else {
-                if (body != null && ArrayList.class.isAssignableFrom(formParams.values().toArray()[0].getClass())) {
-                    reqBody = serialize(body, contentType, (List<FileInfo>)formParams.values().toArray()[0]);
+                if (files != null) {
+                    reqBody = serialize(files.toArray()[0], contentType, null);
                 } else {
-                    reqBody = serialize(formParams.values().toArray()[0], contentType, null);
+                    reqBody = serialize(bodyParts[0], contentType, null);
                 }
             }
         } else if (formParams.size() > 1) {

@@ -140,7 +140,7 @@ public class ApiTest {
                 }
             }
         }
-        return getTypedTestValue(type, functionName, value);
+        return getTypedTestValue(type, functionName, name, value);
     }
 
     protected boolean isGoodRuleType(ValueRule rule, String type) {
@@ -166,7 +166,7 @@ public class ApiTest {
                 invalidValue = vr.getInvalidValue();
             }
         }
-        return getTypedTestValue(type, functionName, untemplatize(invalidValue, value));
+        return getTypedTestValue(type, functionName, name, untemplatize(invalidValue, value));
     }
 
     protected void initialize(String functionName, String invalidParameterName, Object invalidParameterValue) throws ApiException {
@@ -294,15 +294,18 @@ public class ApiTest {
         return null;
     }
     
-    private Object getTypedTestValue(String type, String functionName, Object value) {
+    private Object getTypedTestValue(String type, String functionName, String name, Object value) {
         if (value == null) {
             return null;
         }
         if ("byte[]".equals(type)) {
             try {
                 String filePath = getFilePath();
-                if ("postSlidesDocumentFromPdf".equalsIgnoreCase(functionName)) {
+                if ("importFromPdf".equalsIgnoreCase(functionName)) {
                     filePath = testDataFolderName + "/test.pdf";
+                }
+                if ("image".equalsIgnoreCase(name)) {
+                    filePath = testDataFolderName + "/watermark.png";
                 }
                 return Files.readAllBytes(Paths.get(filePath));
             } catch (IOException ex) {
@@ -313,9 +316,11 @@ public class ApiTest {
             try {
                 FileInfo fileInfo1 = new FileInfo();
                 fileInfo1.setData(Files.readAllBytes(Paths.get("TestData/test.pptx")));
+                fileInfo1.setName("test.pptx");
 
                 FileInfo fileInfo2 = new FileInfo();
                 fileInfo2.setData(Files.readAllBytes(Paths.get("TestData/test-unprotected.pptx")));
+                fileInfo2.setName("test-unprotected.pptx");
 
                 List<FileInfo> files = new ArrayList<FileInfo>();
                 files.add(fileInfo1);

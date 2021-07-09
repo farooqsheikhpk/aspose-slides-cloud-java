@@ -54,6 +54,18 @@ public class ProtectionProperties extends ResourceBase {
   @SerializedName(value = "readOnlyRecommended", alternate = { "ReadOnlyRecommended" })
   private Boolean readOnlyRecommended;
 
+  @SerializedName(value = "readPassword", alternate = { "ReadPassword" })
+  private String readPassword;
+
+  @SerializedName(value = "writePassword", alternate = { "WritePassword" })
+  private String writePassword;
+
+  @SerializedName(value = "isWriteProtected", alternate = { "IsWriteProtected" })
+  private Boolean isWriteProtected;
+
+  @SerializedName(value = "isEncrypted", alternate = { "IsEncrypted" })
+  private Boolean isEncrypted;
+
 
   public ProtectionProperties() {
     super();
@@ -95,6 +107,78 @@ public class ProtectionProperties extends ResourceBase {
     this.readOnlyRecommended = readOnlyRecommended;
   }
 
+  public ProtectionProperties readPassword(String readPassword) {
+    this.readPassword = readPassword;
+    return this;
+  }
+
+   /**
+   * Password for read protection.
+   * @return readPassword
+  **/
+  @ApiModelProperty(value = "Password for read protection.")
+  public String getReadPassword() {
+    return readPassword;
+  }
+
+  public void setReadPassword(String readPassword) {
+    this.readPassword = readPassword;
+  }
+
+  public ProtectionProperties writePassword(String writePassword) {
+    this.writePassword = writePassword;
+    return this;
+  }
+
+   /**
+   * Password for write protection.
+   * @return writePassword
+  **/
+  @ApiModelProperty(value = "Password for write protection.")
+  public String getWritePassword() {
+    return writePassword;
+  }
+
+  public void setWritePassword(String writePassword) {
+    this.writePassword = writePassword;
+  }
+
+  public ProtectionProperties isWriteProtected(Boolean isWriteProtected) {
+    this.isWriteProtected = isWriteProtected;
+    return this;
+  }
+
+   /**
+   * Returns true if the presentation protected for editing. 
+   * @return isWriteProtected
+  **/
+  @ApiModelProperty(required = true, value = "Returns true if the presentation protected for editing. ")
+  public Boolean isIsWriteProtected() {
+    return isWriteProtected;
+  }
+
+  public void setIsWriteProtected(Boolean isWriteProtected) {
+    this.isWriteProtected = isWriteProtected;
+  }
+
+  public ProtectionProperties isEncrypted(Boolean isEncrypted) {
+    this.isEncrypted = isEncrypted;
+    return this;
+  }
+
+   /**
+   * Returns true if the presentation protected for reading. 
+   * @return isEncrypted
+  **/
+  @ApiModelProperty(required = true, value = "Returns true if the presentation protected for reading. ")
+  public Boolean isIsEncrypted() {
+    return isEncrypted;
+  }
+
+  public void setIsEncrypted(Boolean isEncrypted) {
+    this.isEncrypted = isEncrypted;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -105,12 +189,12 @@ public class ProtectionProperties extends ResourceBase {
       return false;
     }
     ProtectionProperties protectionProperties = (ProtectionProperties) o;
-    return true && Objects.equals(this.encryptDocumentProperties, protectionProperties.encryptDocumentProperties) && Objects.equals(this.readOnlyRecommended, protectionProperties.readOnlyRecommended) && super.equals(o);
+    return true && Objects.equals(this.encryptDocumentProperties, protectionProperties.encryptDocumentProperties) && Objects.equals(this.readOnlyRecommended, protectionProperties.readOnlyRecommended) && Objects.equals(this.readPassword, protectionProperties.readPassword) && Objects.equals(this.writePassword, protectionProperties.writePassword) && Objects.equals(this.isWriteProtected, protectionProperties.isWriteProtected) && Objects.equals(this.isEncrypted, protectionProperties.isEncrypted) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(encryptDocumentProperties, readOnlyRecommended, super.hashCode());
+    return Objects.hash(encryptDocumentProperties, readOnlyRecommended, readPassword, writePassword, isWriteProtected, isEncrypted, super.hashCode());
   }
 
 
@@ -121,6 +205,10 @@ public class ProtectionProperties extends ResourceBase {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    encryptDocumentProperties: ").append(toIndentedString(encryptDocumentProperties)).append("\n");
     sb.append("    readOnlyRecommended: ").append(toIndentedString(readOnlyRecommended)).append("\n");
+    sb.append("    readPassword: ").append(toIndentedString(readPassword)).append("\n");
+    sb.append("    writePassword: ").append(toIndentedString(writePassword)).append("\n");
+    sb.append("    isWriteProtected: ").append(toIndentedString(isWriteProtected)).append("\n");
+    sb.append("    isEncrypted: ").append(toIndentedString(isEncrypted)).append("\n");
     sb.append("}");
     return sb.toString();
   }
