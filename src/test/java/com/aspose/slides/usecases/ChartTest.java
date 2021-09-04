@@ -53,7 +53,7 @@ public class ChartTest extends ApiTest {
 
     @Test
     public void chartCreateTest() throws ApiException, IOException {
-        /*initialize(null, null, null);
+        initialize(null, null, null);
         Chart dto = new Chart();
         dto.setChartType(Chart.ChartTypeEnum.CLUSTEREDCOLUMN);
         dto.setWidth(400.0);
@@ -102,12 +102,12 @@ public class ChartTest extends ApiTest {
         Chart chart = (Chart)api.createShape(c_fileName, c_slideIndex, dto, null, null, c_password, c_folderName, null);
         assertNotNull(chart);
         assertEquals(2, chart.getSeries().size());
-        assertEquals(3, chart.getCategories().size());*/
+        assertEquals(3, chart.getCategories().size());
     }
 
     @Test
     public void chartUpdateTest() throws ApiException, IOException {
-        /*initialize(null, null, null);
+        initialize(null, null, null);
         Chart dto = new Chart();
         dto.setChartType(Chart.ChartTypeEnum.CLUSTEREDCOLUMN);
         dto.setWidth(400.0);
@@ -156,12 +156,12 @@ public class ChartTest extends ApiTest {
         Chart chart = (Chart)api.updateShape(c_fileName, c_slideIndex, c_shapeIndex, dto, c_password, c_folderName, null);
         assertNotNull(chart);
         assertEquals(2, chart.getSeries().size());
-        assertEquals(3, chart.getCategories().size());*/
+        assertEquals(3, chart.getCategories().size());
     }
 
     @Test
     public void chartSeriesCreateTest() throws ApiException, IOException {
-        /*initialize(null, null, null);
+        initialize(null, null, null);
         OneValueSeries series = new OneValueSeries();
         series.setName("Series1");
         List<OneValueChartDataPoint> dataPoints = new ArrayList<OneValueChartDataPoint>();
@@ -181,12 +181,12 @@ public class ChartTest extends ApiTest {
         Chart chart = api.createChartSeries(c_fileName, c_slideIndex, c_shapeIndex, series, c_password, c_folderName, null);
         assertNotNull(chart);
         assertEquals(c_seriesCount + 1, chart.getSeries().size());
-        assertEquals(c_categoryCount, chart.getCategories().size());*/
+        assertEquals(c_categoryCount, chart.getCategories().size());
     }
 
     @Test
     public void chartSeriesUpdateTest() throws ApiException, IOException {
-        /*initialize(null, null, null);
+        initialize(null, null, null);
         OneValueSeries series = new OneValueSeries();
         series.setName("Series1");
         List<OneValueChartDataPoint> dataPoints = new ArrayList<OneValueChartDataPoint>();
@@ -206,7 +206,7 @@ public class ChartTest extends ApiTest {
         Chart chart = api.updateChartSeries(c_fileName, c_slideIndex, c_shapeIndex, c_seriesIndex, series, c_password, c_folderName, null);
         assertNotNull(chart);
         assertEquals(c_seriesCount, chart.getSeries().size());
-        assertEquals(c_categoryCount, chart.getCategories().size());*/
+        assertEquals(c_categoryCount, chart.getCategories().size());
     }
 
     @Test
@@ -221,7 +221,7 @@ public class ChartTest extends ApiTest {
     @Test
     public void chartCategoryCreateTest() throws ApiException, IOException {
         //SLIDESCLOUD-1133
-        /*initialize(null, null, null);
+        initialize(null, null, null);
         ChartCategory category = new ChartCategory();
         category.setValue("NewCategory");
         List<OneValueChartDataPoint> dataPoints = new ArrayList<OneValueChartDataPoint>();
@@ -240,13 +240,13 @@ public class ChartTest extends ApiTest {
         assertEquals(c_seriesCount, chart.getSeries().size());
         assertEquals(c_categoryCount + 1, chart.getCategories().size());
         assertEquals(c_categoryCount + 1, ((OneValueSeries)chart.getSeries().get(0)).getDataPoints().size());
-        assertEquals(category.getDataPoints().get(0).getValue(), ((OneValueSeries)chart.getSeries().get(0)).getDataPoints().get(c_categoryCount).getValue());*/
+        assertEquals(category.getDataPoints().get(0).getValue(), ((OneValueSeries)chart.getSeries().get(0)).getDataPoints().get(c_categoryCount).getValue());
     }
 
     @Test
     public void chartCategoryUpdateTest() throws ApiException, IOException {
         //SLIDESCLOUD-1133
-        /*initialize(null, null, null);
+        initialize(null, null, null);
         ChartCategory category = new ChartCategory();
         category.setValue("NewCategory");
         List<OneValueChartDataPoint> dataPoints = new ArrayList<OneValueChartDataPoint>();
@@ -265,18 +265,18 @@ public class ChartTest extends ApiTest {
         assertEquals(c_seriesCount, chart.getSeries().size());
         assertEquals(c_categoryCount, chart.getCategories().size());
         assertEquals(c_categoryCount, ((OneValueSeries)chart.getSeries().get(0)).getDataPoints().size());
-        assertEquals(category.getDataPoints().get(0).getValue(), ((OneValueSeries)chart.getSeries().get(0)).getDataPoints().get(c_categoryIndex - 1).getValue());*/
+        assertEquals(category.getDataPoints().get(0).getValue(), ((OneValueSeries)chart.getSeries().get(0)).getDataPoints().get(c_categoryIndex - 1).getValue());
     }
 
     @Test
     public void chartCategoryDeleteTest() throws ApiException, IOException {
         //SLIDESCLOUD-1133
-        /*initialize(null, null, null);
+        initialize(null, null, null);
         Chart chart = api.deleteChartCategory(c_fileName, c_slideIndex, c_shapeIndex, c_categoryIndex, c_password, c_folderName, null);
         assertNotNull(chart);
         assertEquals(c_seriesCount, chart.getSeries().size());
         assertEquals(c_categoryCount - 1, chart.getCategories().size());
-        assertEquals(c_categoryCount - 1, ((OneValueSeries)chart.getSeries().get(0)).getDataPoints().size());*/
+        assertEquals(c_categoryCount - 1, ((OneValueSeries)chart.getSeries().get(0)).getDataPoints().size());
     }
 
     @Test
@@ -295,7 +295,7 @@ public class ChartTest extends ApiTest {
     @Test
     public void chartDataPointUpdateTest() throws ApiException, IOException {
         //SLIDESCLOUD-1133
-        /*initialize(null, null, null);
+        initialize(null, null, null);
         OneValueChartDataPoint dataPoint = new OneValueChartDataPoint();
         dataPoint.setValue(40.0);
         Chart chart = api.updateChartDataPoint(c_fileName, c_slideIndex, c_shapeIndex, c_seriesIndex, c_categoryIndex, dataPoint, c_password, c_folderName, null);
@@ -303,24 +303,24 @@ public class ChartTest extends ApiTest {
         assertEquals(c_seriesCount, chart.getSeries().size());
         assertEquals(c_categoryCount, chart.getCategories().size());
         assertEquals(c_categoryCount, ((OneValueSeries)chart.getSeries().get(c_seriesIndex - 1)).getDataPoints().size());
-        assertEquals(dataPoint.getValue(), ((OneValueSeries)chart.getSeries().get(c_seriesIndex - 1)).getDataPoints().get(c_categoryIndex - 1).getValue());*/
+        assertEquals(dataPoint.getValue(), ((OneValueSeries)chart.getSeries().get(c_seriesIndex - 1)).getDataPoints().get(c_categoryIndex - 1).getValue());
     }
 
     @Test
     public void chartDataPointDeleteTest() throws ApiException, IOException {
         //SLIDESCLOUD-1133
-        /*initialize(null, null, null);
+        initialize(null, null, null);
         Chart chart = api.deleteChartDataPoint(c_fileName, c_slideIndex, c_shapeIndex, c_seriesIndex, c_categoryIndex, c_password, c_folderName, null);
         assertNotNull(chart);
         assertEquals(c_seriesCount, chart.getSeries().size());
         assertEquals(c_categoryCount, chart.getCategories().size());
         assertEquals(c_categoryCount, ((OneValueSeries)chart.getSeries().get(c_seriesIndex - 1)).getDataPoints().size());
-        assertNull(((OneValueSeries)chart.getSeries().get(c_seriesIndex - 1)).getDataPoints().get(c_categoryIndex - 1));*/
+        assertNull(((OneValueSeries)chart.getSeries().get(c_seriesIndex - 1)).getDataPoints().get(c_categoryIndex - 1));
     }
 
     @Test
     public void chartSunburstTest() throws ApiException, IOException {
-        /*initialize(null, null, null);
+        initialize(null, null, null);
         Chart dto = new Chart();
         dto.setChartType(Chart.ChartTypeEnum.SUNBURST);
         dto.setWidth(400.0);
@@ -352,7 +352,7 @@ public class ChartTest extends ApiTest {
         ChartCategory category4 = new ChartCategory();
         category4.setValue("Stem2");
         category4.setLevel(1);
-        categories.add(category3);
+        categories.add(category4);
         dto.setCategories(categories);
         List<Series> seriesList = new ArrayList<Series>();
         OneValueSeries series = new OneValueSeries();
@@ -377,7 +377,7 @@ public class ChartTest extends ApiTest {
         assertNotNull(chart);
         assertEquals(1, chart.getSeries().size());
         assertEquals(4, chart.getCategories().size());
-        assertEquals(3, chart.getCategories().get(0).getLevel().longValue());*/
+        assertEquals(3, chart.getCategories().get(0).getLevel().longValue());
     }
 
     private static final String c_folderName = "TempSlidesSDK";

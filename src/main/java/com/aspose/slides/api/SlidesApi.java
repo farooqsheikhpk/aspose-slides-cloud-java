@@ -284,12 +284,13 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
+     * @param slides The indices of the slides to be converted. If not specified, all slides are converted by default. 
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call convertCall(byte[] document, ExportFormat format, String password, String storage, String fontsFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call convertCall(byte[] document, ExportFormat format, String password, String storage, String fontsFolder, List<Integer> slides, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'document' is set
         if (document == null) {
             throw new ApiException("Missing the required parameter 'document' when calling convert(Async)");
@@ -307,6 +308,7 @@ public class SlidesApi {
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "storage", storage);
         apiClient.addQueryParameter(queryParams, "fontsFolder", fontsFolder);
+        apiClient.addQueryParameter(queryParams, "slides", slides);
 
         Map<String, String> headerParams = new HashMap<String, String>();
         if (password != null)
@@ -350,15 +352,16 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
+     * @param slides The indices of the slides to be converted. If not specified, all slides are converted by default. 
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File convert(byte[] document, ExportFormat format, String password, String storage, String fontsFolder) throws ApiException {
+    public File convert(byte[] document, ExportFormat format, String password, String storage, String fontsFolder, List<Integer> slides) throws ApiException {
         try {
-            ApiResponse<File> resp = convertWithHttpInfo(document, format, password, storage, fontsFolder);
+            ApiResponse<File> resp = convertWithHttpInfo(document, format, password, storage, fontsFolder, slides);
             return resp.getData();
         } catch (NeedRepeatRequestException e) {
-            ApiResponse<File> resp = convertWithHttpInfo(document, format, password, storage, fontsFolder);
+            ApiResponse<File> resp = convertWithHttpInfo(document, format, password, storage, fontsFolder, slides);
             return resp.getData();
         }
     }
@@ -371,11 +374,12 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
+     * @param slides The indices of the slides to be converted. If not specified, all slides are converted by default. 
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> convertWithHttpInfo(byte[] document, ExportFormat format, String password, String storage, String fontsFolder) throws ApiException {
-        com.squareup.okhttp.Call call = convertCall(document, format, password, storage, fontsFolder, null, null);
+    public ApiResponse<File> convertWithHttpInfo(byte[] document, ExportFormat format, String password, String storage, String fontsFolder, List<Integer> slides) throws ApiException {
+        com.squareup.okhttp.Call call = convertCall(document, format, password, storage, fontsFolder, slides, null, null);
         Type returnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, returnType);
     }
@@ -388,11 +392,12 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
+     * @param slides The indices of the slides to be converted. If not specified, all slides are converted by default. 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call convertAsync(byte[] document, ExportFormat format, String password, String storage, String fontsFolder, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call convertAsync(byte[] document, ExportFormat format, String password, String storage, String fontsFolder, List<Integer> slides, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -413,7 +418,7 @@ public class SlidesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = convertCall(document, format, password, storage, fontsFolder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = convertCall(document, format, password, storage, fontsFolder, slides, progressListener, progressRequestListener);
         Type returnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, returnType, callback);
         return call;
@@ -426,12 +431,13 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
+     * @param slides The indices of the slides to be converted. If not specified, all slides are converted by default. 
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call convertAndSaveCall(byte[] document, ExportFormat format, String outPath, String password, String storage, String fontsFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call convertAndSaveCall(byte[] document, ExportFormat format, String outPath, String password, String storage, String fontsFolder, List<Integer> slides, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'document' is set
         if (document == null) {
             throw new ApiException("Missing the required parameter 'document' when calling convertAndSave(Async)");
@@ -454,6 +460,7 @@ public class SlidesApi {
         apiClient.addQueryParameter(queryParams, "outPath", outPath);
         apiClient.addQueryParameter(queryParams, "storage", storage);
         apiClient.addQueryParameter(queryParams, "fontsFolder", fontsFolder);
+        apiClient.addQueryParameter(queryParams, "slides", slides);
 
         Map<String, String> headerParams = new HashMap<String, String>();
         if (password != null)
@@ -498,14 +505,15 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
+     * @param slides The indices of the slides to be converted. If not specified, all slides are converted by default. 
      
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void convertAndSave(byte[] document, ExportFormat format, String outPath, String password, String storage, String fontsFolder) throws ApiException {
+    public void convertAndSave(byte[] document, ExportFormat format, String outPath, String password, String storage, String fontsFolder, List<Integer> slides) throws ApiException {
         try {
-            convertAndSaveWithHttpInfo(document, format, outPath, password, storage, fontsFolder);
+            convertAndSaveWithHttpInfo(document, format, outPath, password, storage, fontsFolder, slides);
         } catch (NeedRepeatRequestException e) {
-            convertAndSaveWithHttpInfo(document, format, outPath, password, storage, fontsFolder);
+            convertAndSaveWithHttpInfo(document, format, outPath, password, storage, fontsFolder, slides);
         }
     }
 
@@ -518,11 +526,12 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
+     * @param slides The indices of the slides to be converted. If not specified, all slides are converted by default. 
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> convertAndSaveWithHttpInfo(byte[] document, ExportFormat format, String outPath, String password, String storage, String fontsFolder) throws ApiException {
-        com.squareup.okhttp.Call call = convertAndSaveCall(document, format, outPath, password, storage, fontsFolder, null, null);
+    public ApiResponse<Void> convertAndSaveWithHttpInfo(byte[] document, ExportFormat format, String outPath, String password, String storage, String fontsFolder, List<Integer> slides) throws ApiException {
+        com.squareup.okhttp.Call call = convertAndSaveCall(document, format, outPath, password, storage, fontsFolder, slides, null, null);
         return apiClient.execute(call);
     }
 
@@ -535,11 +544,12 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
+     * @param slides The indices of the slides to be converted. If not specified, all slides are converted by default. 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call convertAndSaveAsync(byte[] document, ExportFormat format, String outPath, String password, String storage, String fontsFolder, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call convertAndSaveAsync(byte[] document, ExportFormat format, String outPath, String password, String storage, String fontsFolder, List<Integer> slides, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -560,7 +570,7 @@ public class SlidesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = convertAndSaveCall(document, format, outPath, password, storage, fontsFolder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = convertAndSaveCall(document, format, outPath, password, storage, fontsFolder, slides, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -13780,12 +13790,13 @@ public class SlidesApi {
      * @param folder Document folder. 
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
+     * @param slides The indices of the slides to be saved. If not specified, all slides are saved by default. 
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call downloadPresentationCall(String name, ExportFormat format, ExportOptions options, String password, String folder, String storage, String fontsFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call downloadPresentationCall(String name, ExportFormat format, ExportOptions options, String password, String folder, String storage, String fontsFolder, List<Integer> slides, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling downloadPresentation(Async)");
@@ -13804,6 +13815,7 @@ public class SlidesApi {
         apiClient.addQueryParameter(queryParams, "folder", folder);
         apiClient.addQueryParameter(queryParams, "storage", storage);
         apiClient.addQueryParameter(queryParams, "fontsFolder", fontsFolder);
+        apiClient.addQueryParameter(queryParams, "slides", slides);
 
         Map<String, String> headerParams = new HashMap<String, String>();
         if (password != null)
@@ -13847,15 +13859,16 @@ public class SlidesApi {
      * @param folder Document folder. 
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
+     * @param slides The indices of the slides to be saved. If not specified, all slides are saved by default. 
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File downloadPresentation(String name, ExportFormat format, ExportOptions options, String password, String folder, String storage, String fontsFolder) throws ApiException {
+    public File downloadPresentation(String name, ExportFormat format, ExportOptions options, String password, String folder, String storage, String fontsFolder, List<Integer> slides) throws ApiException {
         try {
-            ApiResponse<File> resp = downloadPresentationWithHttpInfo(name, format, options, password, folder, storage, fontsFolder);
+            ApiResponse<File> resp = downloadPresentationWithHttpInfo(name, format, options, password, folder, storage, fontsFolder, slides);
             return resp.getData();
         } catch (NeedRepeatRequestException e) {
-            ApiResponse<File> resp = downloadPresentationWithHttpInfo(name, format, options, password, folder, storage, fontsFolder);
+            ApiResponse<File> resp = downloadPresentationWithHttpInfo(name, format, options, password, folder, storage, fontsFolder, slides);
             return resp.getData();
         }
     }
@@ -13870,11 +13883,12 @@ public class SlidesApi {
      * @param folder Document folder. 
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
+     * @param slides The indices of the slides to be saved. If not specified, all slides are saved by default. 
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> downloadPresentationWithHttpInfo(String name, ExportFormat format, ExportOptions options, String password, String folder, String storage, String fontsFolder) throws ApiException {
-        com.squareup.okhttp.Call call = downloadPresentationCall(name, format, options, password, folder, storage, fontsFolder, null, null);
+    public ApiResponse<File> downloadPresentationWithHttpInfo(String name, ExportFormat format, ExportOptions options, String password, String folder, String storage, String fontsFolder, List<Integer> slides) throws ApiException {
+        com.squareup.okhttp.Call call = downloadPresentationCall(name, format, options, password, folder, storage, fontsFolder, slides, null, null);
         Type returnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, returnType);
     }
@@ -13889,11 +13903,12 @@ public class SlidesApi {
      * @param folder Document folder. 
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
+     * @param slides The indices of the slides to be saved. If not specified, all slides are saved by default. 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call downloadPresentationAsync(String name, ExportFormat format, ExportOptions options, String password, String folder, String storage, String fontsFolder, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call downloadPresentationAsync(String name, ExportFormat format, ExportOptions options, String password, String folder, String storage, String fontsFolder, List<Integer> slides, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -13914,7 +13929,7 @@ public class SlidesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = downloadPresentationCall(name, format, options, password, folder, storage, fontsFolder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = downloadPresentationCall(name, format, options, password, folder, storage, fontsFolder, slides, progressListener, progressRequestListener);
         Type returnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, returnType, callback);
         return call;
@@ -24891,12 +24906,13 @@ public class SlidesApi {
      * @param folder Document folder. 
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
+     * @param slides The indices of the slides to be saved. If not specified, all slides are saved by default. 
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call savePresentationCall(String name, ExportFormat format, String outPath, ExportOptions options, String password, String folder, String storage, String fontsFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call savePresentationCall(String name, ExportFormat format, String outPath, ExportOptions options, String password, String folder, String storage, String fontsFolder, List<Integer> slides, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling savePresentation(Async)");
@@ -24920,6 +24936,7 @@ public class SlidesApi {
         apiClient.addQueryParameter(queryParams, "folder", folder);
         apiClient.addQueryParameter(queryParams, "storage", storage);
         apiClient.addQueryParameter(queryParams, "fontsFolder", fontsFolder);
+        apiClient.addQueryParameter(queryParams, "slides", slides);
 
         Map<String, String> headerParams = new HashMap<String, String>();
         if (password != null)
@@ -24964,14 +24981,15 @@ public class SlidesApi {
      * @param folder Document folder. 
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
+     * @param slides The indices of the slides to be saved. If not specified, all slides are saved by default. 
      
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void savePresentation(String name, ExportFormat format, String outPath, ExportOptions options, String password, String folder, String storage, String fontsFolder) throws ApiException {
+    public void savePresentation(String name, ExportFormat format, String outPath, ExportOptions options, String password, String folder, String storage, String fontsFolder, List<Integer> slides) throws ApiException {
         try {
-            savePresentationWithHttpInfo(name, format, outPath, options, password, folder, storage, fontsFolder);
+            savePresentationWithHttpInfo(name, format, outPath, options, password, folder, storage, fontsFolder, slides);
         } catch (NeedRepeatRequestException e) {
-            savePresentationWithHttpInfo(name, format, outPath, options, password, folder, storage, fontsFolder);
+            savePresentationWithHttpInfo(name, format, outPath, options, password, folder, storage, fontsFolder, slides);
         }
     }
 
@@ -24986,11 +25004,12 @@ public class SlidesApi {
      * @param folder Document folder. 
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
+     * @param slides The indices of the slides to be saved. If not specified, all slides are saved by default. 
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> savePresentationWithHttpInfo(String name, ExportFormat format, String outPath, ExportOptions options, String password, String folder, String storage, String fontsFolder) throws ApiException {
-        com.squareup.okhttp.Call call = savePresentationCall(name, format, outPath, options, password, folder, storage, fontsFolder, null, null);
+    public ApiResponse<Void> savePresentationWithHttpInfo(String name, ExportFormat format, String outPath, ExportOptions options, String password, String folder, String storage, String fontsFolder, List<Integer> slides) throws ApiException {
+        com.squareup.okhttp.Call call = savePresentationCall(name, format, outPath, options, password, folder, storage, fontsFolder, slides, null, null);
         return apiClient.execute(call);
     }
 
@@ -25005,11 +25024,12 @@ public class SlidesApi {
      * @param folder Document folder. 
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
+     * @param slides The indices of the slides to be saved. If not specified, all slides are saved by default. 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call savePresentationAsync(String name, ExportFormat format, String outPath, ExportOptions options, String password, String folder, String storage, String fontsFolder, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call savePresentationAsync(String name, ExportFormat format, String outPath, ExportOptions options, String password, String folder, String storage, String fontsFolder, List<Integer> slides, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -25030,7 +25050,7 @@ public class SlidesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = savePresentationCall(name, format, outPath, options, password, folder, storage, fontsFolder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = savePresentationCall(name, format, outPath, options, password, folder, storage, fontsFolder, slides, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }

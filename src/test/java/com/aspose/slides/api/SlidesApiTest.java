@@ -401,7 +401,8 @@ public class SlidesApiTest extends ApiTest {
         String valuePassword = (String)getTestValue("String", "convert", "password");
         String valueStorage = (String)getTestValue("String", "convert", "storage");
         String valueFontsFolder = (String)getTestValue("String", "convert", "fontsFolder");
-        response = api.convert(valueDocument, valueFormat, valuePassword, valueStorage, valueFontsFolder);
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "convert", "slides");
+        response = api.convert(valueDocument, valueFormat, valuePassword, valueStorage, valueFontsFolder, valueSlides);
         assertTrue(response.isFile());
     }
 
@@ -421,10 +422,11 @@ public class SlidesApiTest extends ApiTest {
         String valuePassword = (String)getTestValue("String", "convert", "password");
         String valueStorage = (String)getTestValue("String", "convert", "storage");
         String valueFontsFolder = (String)getTestValue("String", "convert", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "convert", "slides");
         try {
             valueDocument = (byte[])invalidizeTestValue("byte[]", valueDocument, "convert", "document");
             initialize("convert", "document", valueDocument);
-            File response = api.convert(valueDocument, valueFormat, valuePassword, valueStorage, valueFontsFolder);
+            File response = api.convert(valueDocument, valueFormat, valuePassword, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "document", "convert", valueDocument);
@@ -449,10 +451,11 @@ public class SlidesApiTest extends ApiTest {
         String valuePassword = (String)getTestValue("String", "convert", "password");
         String valueStorage = (String)getTestValue("String", "convert", "storage");
         String valueFontsFolder = (String)getTestValue("String", "convert", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "convert", "slides");
         try {
             valueFormat = (ExportFormat)invalidizeTestValue("ExportFormat", valueFormat, "convert", "format");
             initialize("convert", "format", valueFormat);
-            File response = api.convert(valueDocument, valueFormat, valuePassword, valueStorage, valueFontsFolder);
+            File response = api.convert(valueDocument, valueFormat, valuePassword, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "format", "convert", valueFormat);
@@ -477,10 +480,11 @@ public class SlidesApiTest extends ApiTest {
         String valuePassword = (String)getTestValue("String", "convert", "password");
         String valueStorage = (String)getTestValue("String", "convert", "storage");
         String valueFontsFolder = (String)getTestValue("String", "convert", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "convert", "slides");
         try {
             valuePassword = (String)invalidizeTestValue("String", valuePassword, "convert", "password");
             initialize("convert", "password", valuePassword);
-            File response = api.convert(valueDocument, valueFormat, valuePassword, valueStorage, valueFontsFolder);
+            File response = api.convert(valueDocument, valueFormat, valuePassword, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "password", "convert", valuePassword);
@@ -505,10 +509,11 @@ public class SlidesApiTest extends ApiTest {
         String valuePassword = (String)getTestValue("String", "convert", "password");
         String valueStorage = (String)getTestValue("String", "convert", "storage");
         String valueFontsFolder = (String)getTestValue("String", "convert", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "convert", "slides");
         try {
             valueStorage = (String)invalidizeTestValue("String", valueStorage, "convert", "storage");
             initialize("convert", "storage", valueStorage);
-            File response = api.convert(valueDocument, valueFormat, valuePassword, valueStorage, valueFontsFolder);
+            File response = api.convert(valueDocument, valueFormat, valuePassword, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "storage", "convert", valueStorage);
@@ -533,16 +538,46 @@ public class SlidesApiTest extends ApiTest {
         String valuePassword = (String)getTestValue("String", "convert", "password");
         String valueStorage = (String)getTestValue("String", "convert", "storage");
         String valueFontsFolder = (String)getTestValue("String", "convert", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "convert", "slides");
         try {
             valueFontsFolder = (String)invalidizeTestValue("String", valueFontsFolder, "convert", "fontsFolder");
             initialize("convert", "fontsFolder", valueFontsFolder);
-            File response = api.convert(valueDocument, valueFormat, valuePassword, valueStorage, valueFontsFolder);
+            File response = api.convert(valueDocument, valueFormat, valuePassword, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "fontsFolder", "convert", valueFontsFolder);
         }
         if (needAssertResponse) {
             assertResponse("fontsFolder", "convert");
+        }
+    }
+    /**
+     * Convert presentation from request content to format specified.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void convertInvalidSlidesTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        byte[] valueDocument = (byte[])getTestValue("byte[]", "convert", "document");
+        ExportFormat valueFormat = (ExportFormat)getTestValue("ExportFormat", "convert", "format");
+        String valuePassword = (String)getTestValue("String", "convert", "password");
+        String valueStorage = (String)getTestValue("String", "convert", "storage");
+        String valueFontsFolder = (String)getTestValue("String", "convert", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "convert", "slides");
+        try {
+            valueSlides = (List<Integer>)invalidizeTestValue("List<Integer>", valueSlides, "convert", "slides");
+            initialize("convert", "slides", valueSlides);
+            File response = api.convert(valueDocument, valueFormat, valuePassword, valueStorage, valueFontsFolder, valueSlides);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "slides", "convert", valueSlides);
+        }
+        if (needAssertResponse) {
+            assertResponse("slides", "convert");
         }
     }
     
@@ -564,7 +599,8 @@ public class SlidesApiTest extends ApiTest {
         String valuePassword = (String)getTestValue("String", "convertAndSave", "password");
         String valueStorage = (String)getTestValue("String", "convertAndSave", "storage");
         String valueFontsFolder = (String)getTestValue("String", "convertAndSave", "fontsFolder");
-        api.convertAndSave(valueDocument, valueFormat, valueOutPath, valuePassword, valueStorage, valueFontsFolder);
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "convertAndSave", "slides");
+        api.convertAndSave(valueDocument, valueFormat, valueOutPath, valuePassword, valueStorage, valueFontsFolder, valueSlides);
     }
 
     /**
@@ -584,10 +620,11 @@ public class SlidesApiTest extends ApiTest {
         String valuePassword = (String)getTestValue("String", "convertAndSave", "password");
         String valueStorage = (String)getTestValue("String", "convertAndSave", "storage");
         String valueFontsFolder = (String)getTestValue("String", "convertAndSave", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "convertAndSave", "slides");
         try {
             valueDocument = (byte[])invalidizeTestValue("byte[]", valueDocument, "convertAndSave", "document");
             initialize("convertAndSave", "document", valueDocument);
-            api.convertAndSave(valueDocument, valueFormat, valueOutPath, valuePassword, valueStorage, valueFontsFolder);
+            api.convertAndSave(valueDocument, valueFormat, valueOutPath, valuePassword, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "document", "convertAndSave", valueDocument);
@@ -613,10 +650,11 @@ public class SlidesApiTest extends ApiTest {
         String valuePassword = (String)getTestValue("String", "convertAndSave", "password");
         String valueStorage = (String)getTestValue("String", "convertAndSave", "storage");
         String valueFontsFolder = (String)getTestValue("String", "convertAndSave", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "convertAndSave", "slides");
         try {
             valueFormat = (ExportFormat)invalidizeTestValue("ExportFormat", valueFormat, "convertAndSave", "format");
             initialize("convertAndSave", "format", valueFormat);
-            api.convertAndSave(valueDocument, valueFormat, valueOutPath, valuePassword, valueStorage, valueFontsFolder);
+            api.convertAndSave(valueDocument, valueFormat, valueOutPath, valuePassword, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "format", "convertAndSave", valueFormat);
@@ -642,10 +680,11 @@ public class SlidesApiTest extends ApiTest {
         String valuePassword = (String)getTestValue("String", "convertAndSave", "password");
         String valueStorage = (String)getTestValue("String", "convertAndSave", "storage");
         String valueFontsFolder = (String)getTestValue("String", "convertAndSave", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "convertAndSave", "slides");
         try {
             valueOutPath = (String)invalidizeTestValue("String", valueOutPath, "convertAndSave", "outPath");
             initialize("convertAndSave", "outPath", valueOutPath);
-            api.convertAndSave(valueDocument, valueFormat, valueOutPath, valuePassword, valueStorage, valueFontsFolder);
+            api.convertAndSave(valueDocument, valueFormat, valueOutPath, valuePassword, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "outPath", "convertAndSave", valueOutPath);
@@ -671,10 +710,11 @@ public class SlidesApiTest extends ApiTest {
         String valuePassword = (String)getTestValue("String", "convertAndSave", "password");
         String valueStorage = (String)getTestValue("String", "convertAndSave", "storage");
         String valueFontsFolder = (String)getTestValue("String", "convertAndSave", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "convertAndSave", "slides");
         try {
             valuePassword = (String)invalidizeTestValue("String", valuePassword, "convertAndSave", "password");
             initialize("convertAndSave", "password", valuePassword);
-            api.convertAndSave(valueDocument, valueFormat, valueOutPath, valuePassword, valueStorage, valueFontsFolder);
+            api.convertAndSave(valueDocument, valueFormat, valueOutPath, valuePassword, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "password", "convertAndSave", valuePassword);
@@ -700,10 +740,11 @@ public class SlidesApiTest extends ApiTest {
         String valuePassword = (String)getTestValue("String", "convertAndSave", "password");
         String valueStorage = (String)getTestValue("String", "convertAndSave", "storage");
         String valueFontsFolder = (String)getTestValue("String", "convertAndSave", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "convertAndSave", "slides");
         try {
             valueStorage = (String)invalidizeTestValue("String", valueStorage, "convertAndSave", "storage");
             initialize("convertAndSave", "storage", valueStorage);
-            api.convertAndSave(valueDocument, valueFormat, valueOutPath, valuePassword, valueStorage, valueFontsFolder);
+            api.convertAndSave(valueDocument, valueFormat, valueOutPath, valuePassword, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "storage", "convertAndSave", valueStorage);
@@ -729,16 +770,47 @@ public class SlidesApiTest extends ApiTest {
         String valuePassword = (String)getTestValue("String", "convertAndSave", "password");
         String valueStorage = (String)getTestValue("String", "convertAndSave", "storage");
         String valueFontsFolder = (String)getTestValue("String", "convertAndSave", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "convertAndSave", "slides");
         try {
             valueFontsFolder = (String)invalidizeTestValue("String", valueFontsFolder, "convertAndSave", "fontsFolder");
             initialize("convertAndSave", "fontsFolder", valueFontsFolder);
-            api.convertAndSave(valueDocument, valueFormat, valueOutPath, valuePassword, valueStorage, valueFontsFolder);
+            api.convertAndSave(valueDocument, valueFormat, valueOutPath, valuePassword, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "fontsFolder", "convertAndSave", valueFontsFolder);
         }
         if (needAssertResponse) {
             assertResponse("fontsFolder", "convertAndSave");
+        }
+    }
+    /**
+     * Convert presentation from request content to format specified.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void convertAndSaveInvalidSlidesTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        byte[] valueDocument = (byte[])getTestValue("byte[]", "convertAndSave", "document");
+        ExportFormat valueFormat = (ExportFormat)getTestValue("ExportFormat", "convertAndSave", "format");
+        String valueOutPath = (String)getTestValue("String", "convertAndSave", "outPath");
+        String valuePassword = (String)getTestValue("String", "convertAndSave", "password");
+        String valueStorage = (String)getTestValue("String", "convertAndSave", "storage");
+        String valueFontsFolder = (String)getTestValue("String", "convertAndSave", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "convertAndSave", "slides");
+        try {
+            valueSlides = (List<Integer>)invalidizeTestValue("List<Integer>", valueSlides, "convertAndSave", "slides");
+            initialize("convertAndSave", "slides", valueSlides);
+            api.convertAndSave(valueDocument, valueFormat, valueOutPath, valuePassword, valueStorage, valueFontsFolder, valueSlides);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "slides", "convertAndSave", valueSlides);
+        }
+        if (needAssertResponse) {
+            assertResponse("slides", "convertAndSave");
         }
     }
     
@@ -19648,7 +19720,8 @@ public class SlidesApiTest extends ApiTest {
         String valueFolder = (String)getTestValue("String", "downloadPresentation", "folder");
         String valueStorage = (String)getTestValue("String", "downloadPresentation", "storage");
         String valueFontsFolder = (String)getTestValue("String", "downloadPresentation", "fontsFolder");
-        response = api.downloadPresentation(valueName, valueFormat, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder);
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "downloadPresentation", "slides");
+        response = api.downloadPresentation(valueName, valueFormat, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder, valueSlides);
         assertTrue(response.isFile());
     }
 
@@ -19670,10 +19743,11 @@ public class SlidesApiTest extends ApiTest {
         String valueFolder = (String)getTestValue("String", "downloadPresentation", "folder");
         String valueStorage = (String)getTestValue("String", "downloadPresentation", "storage");
         String valueFontsFolder = (String)getTestValue("String", "downloadPresentation", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "downloadPresentation", "slides");
         try {
             valueName = (String)invalidizeTestValue("String", valueName, "downloadPresentation", "name");
             initialize("downloadPresentation", "name", valueName);
-            File response = api.downloadPresentation(valueName, valueFormat, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder);
+            File response = api.downloadPresentation(valueName, valueFormat, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "name", "downloadPresentation", valueName);
@@ -19700,10 +19774,11 @@ public class SlidesApiTest extends ApiTest {
         String valueFolder = (String)getTestValue("String", "downloadPresentation", "folder");
         String valueStorage = (String)getTestValue("String", "downloadPresentation", "storage");
         String valueFontsFolder = (String)getTestValue("String", "downloadPresentation", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "downloadPresentation", "slides");
         try {
             valueFormat = (ExportFormat)invalidizeTestValue("ExportFormat", valueFormat, "downloadPresentation", "format");
             initialize("downloadPresentation", "format", valueFormat);
-            File response = api.downloadPresentation(valueName, valueFormat, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder);
+            File response = api.downloadPresentation(valueName, valueFormat, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "format", "downloadPresentation", valueFormat);
@@ -19730,10 +19805,11 @@ public class SlidesApiTest extends ApiTest {
         String valueFolder = (String)getTestValue("String", "downloadPresentation", "folder");
         String valueStorage = (String)getTestValue("String", "downloadPresentation", "storage");
         String valueFontsFolder = (String)getTestValue("String", "downloadPresentation", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "downloadPresentation", "slides");
         try {
             valueOptions = (ExportOptions)invalidizeTestValue("ExportOptions", valueOptions, "downloadPresentation", "options");
             initialize("downloadPresentation", "options", valueOptions);
-            File response = api.downloadPresentation(valueName, valueFormat, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder);
+            File response = api.downloadPresentation(valueName, valueFormat, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "options", "downloadPresentation", valueOptions);
@@ -19760,10 +19836,11 @@ public class SlidesApiTest extends ApiTest {
         String valueFolder = (String)getTestValue("String", "downloadPresentation", "folder");
         String valueStorage = (String)getTestValue("String", "downloadPresentation", "storage");
         String valueFontsFolder = (String)getTestValue("String", "downloadPresentation", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "downloadPresentation", "slides");
         try {
             valuePassword = (String)invalidizeTestValue("String", valuePassword, "downloadPresentation", "password");
             initialize("downloadPresentation", "password", valuePassword);
-            File response = api.downloadPresentation(valueName, valueFormat, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder);
+            File response = api.downloadPresentation(valueName, valueFormat, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "password", "downloadPresentation", valuePassword);
@@ -19790,10 +19867,11 @@ public class SlidesApiTest extends ApiTest {
         String valueFolder = (String)getTestValue("String", "downloadPresentation", "folder");
         String valueStorage = (String)getTestValue("String", "downloadPresentation", "storage");
         String valueFontsFolder = (String)getTestValue("String", "downloadPresentation", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "downloadPresentation", "slides");
         try {
             valueFolder = (String)invalidizeTestValue("String", valueFolder, "downloadPresentation", "folder");
             initialize("downloadPresentation", "folder", valueFolder);
-            File response = api.downloadPresentation(valueName, valueFormat, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder);
+            File response = api.downloadPresentation(valueName, valueFormat, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "folder", "downloadPresentation", valueFolder);
@@ -19820,10 +19898,11 @@ public class SlidesApiTest extends ApiTest {
         String valueFolder = (String)getTestValue("String", "downloadPresentation", "folder");
         String valueStorage = (String)getTestValue("String", "downloadPresentation", "storage");
         String valueFontsFolder = (String)getTestValue("String", "downloadPresentation", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "downloadPresentation", "slides");
         try {
             valueStorage = (String)invalidizeTestValue("String", valueStorage, "downloadPresentation", "storage");
             initialize("downloadPresentation", "storage", valueStorage);
-            File response = api.downloadPresentation(valueName, valueFormat, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder);
+            File response = api.downloadPresentation(valueName, valueFormat, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "storage", "downloadPresentation", valueStorage);
@@ -19850,16 +19929,48 @@ public class SlidesApiTest extends ApiTest {
         String valueFolder = (String)getTestValue("String", "downloadPresentation", "folder");
         String valueStorage = (String)getTestValue("String", "downloadPresentation", "storage");
         String valueFontsFolder = (String)getTestValue("String", "downloadPresentation", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "downloadPresentation", "slides");
         try {
             valueFontsFolder = (String)invalidizeTestValue("String", valueFontsFolder, "downloadPresentation", "fontsFolder");
             initialize("downloadPresentation", "fontsFolder", valueFontsFolder);
-            File response = api.downloadPresentation(valueName, valueFormat, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder);
+            File response = api.downloadPresentation(valueName, valueFormat, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "fontsFolder", "downloadPresentation", valueFontsFolder);
         }
         if (needAssertResponse) {
             assertResponse("fontsFolder", "downloadPresentation");
+        }
+    }
+    /**
+     * Save a presentation to a specified format.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void downloadPresentationInvalidSlidesTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "downloadPresentation", "name");
+        ExportFormat valueFormat = (ExportFormat)getTestValue("ExportFormat", "downloadPresentation", "format");
+        ExportOptions valueOptions = (ExportOptions)getTestValue("ExportOptions", "downloadPresentation", "options");
+        String valuePassword = (String)getTestValue("String", "downloadPresentation", "password");
+        String valueFolder = (String)getTestValue("String", "downloadPresentation", "folder");
+        String valueStorage = (String)getTestValue("String", "downloadPresentation", "storage");
+        String valueFontsFolder = (String)getTestValue("String", "downloadPresentation", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "downloadPresentation", "slides");
+        try {
+            valueSlides = (List<Integer>)invalidizeTestValue("List<Integer>", valueSlides, "downloadPresentation", "slides");
+            initialize("downloadPresentation", "slides", valueSlides);
+            File response = api.downloadPresentation(valueName, valueFormat, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder, valueSlides);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "slides", "downloadPresentation", valueSlides);
+        }
+        if (needAssertResponse) {
+            assertResponse("slides", "downloadPresentation");
         }
     }
     
@@ -34248,7 +34359,8 @@ public class SlidesApiTest extends ApiTest {
         String valueFolder = (String)getTestValue("String", "savePresentation", "folder");
         String valueStorage = (String)getTestValue("String", "savePresentation", "storage");
         String valueFontsFolder = (String)getTestValue("String", "savePresentation", "fontsFolder");
-        api.savePresentation(valueName, valueFormat, valueOutPath, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder);
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "savePresentation", "slides");
+        api.savePresentation(valueName, valueFormat, valueOutPath, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder, valueSlides);
     }
 
     /**
@@ -34270,10 +34382,11 @@ public class SlidesApiTest extends ApiTest {
         String valueFolder = (String)getTestValue("String", "savePresentation", "folder");
         String valueStorage = (String)getTestValue("String", "savePresentation", "storage");
         String valueFontsFolder = (String)getTestValue("String", "savePresentation", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "savePresentation", "slides");
         try {
             valueName = (String)invalidizeTestValue("String", valueName, "savePresentation", "name");
             initialize("savePresentation", "name", valueName);
-            api.savePresentation(valueName, valueFormat, valueOutPath, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder);
+            api.savePresentation(valueName, valueFormat, valueOutPath, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "name", "savePresentation", valueName);
@@ -34301,10 +34414,11 @@ public class SlidesApiTest extends ApiTest {
         String valueFolder = (String)getTestValue("String", "savePresentation", "folder");
         String valueStorage = (String)getTestValue("String", "savePresentation", "storage");
         String valueFontsFolder = (String)getTestValue("String", "savePresentation", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "savePresentation", "slides");
         try {
             valueFormat = (ExportFormat)invalidizeTestValue("ExportFormat", valueFormat, "savePresentation", "format");
             initialize("savePresentation", "format", valueFormat);
-            api.savePresentation(valueName, valueFormat, valueOutPath, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder);
+            api.savePresentation(valueName, valueFormat, valueOutPath, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "format", "savePresentation", valueFormat);
@@ -34332,10 +34446,11 @@ public class SlidesApiTest extends ApiTest {
         String valueFolder = (String)getTestValue("String", "savePresentation", "folder");
         String valueStorage = (String)getTestValue("String", "savePresentation", "storage");
         String valueFontsFolder = (String)getTestValue("String", "savePresentation", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "savePresentation", "slides");
         try {
             valueOutPath = (String)invalidizeTestValue("String", valueOutPath, "savePresentation", "outPath");
             initialize("savePresentation", "outPath", valueOutPath);
-            api.savePresentation(valueName, valueFormat, valueOutPath, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder);
+            api.savePresentation(valueName, valueFormat, valueOutPath, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "outPath", "savePresentation", valueOutPath);
@@ -34363,10 +34478,11 @@ public class SlidesApiTest extends ApiTest {
         String valueFolder = (String)getTestValue("String", "savePresentation", "folder");
         String valueStorage = (String)getTestValue("String", "savePresentation", "storage");
         String valueFontsFolder = (String)getTestValue("String", "savePresentation", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "savePresentation", "slides");
         try {
             valueOptions = (ExportOptions)invalidizeTestValue("ExportOptions", valueOptions, "savePresentation", "options");
             initialize("savePresentation", "options", valueOptions);
-            api.savePresentation(valueName, valueFormat, valueOutPath, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder);
+            api.savePresentation(valueName, valueFormat, valueOutPath, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "options", "savePresentation", valueOptions);
@@ -34394,10 +34510,11 @@ public class SlidesApiTest extends ApiTest {
         String valueFolder = (String)getTestValue("String", "savePresentation", "folder");
         String valueStorage = (String)getTestValue("String", "savePresentation", "storage");
         String valueFontsFolder = (String)getTestValue("String", "savePresentation", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "savePresentation", "slides");
         try {
             valuePassword = (String)invalidizeTestValue("String", valuePassword, "savePresentation", "password");
             initialize("savePresentation", "password", valuePassword);
-            api.savePresentation(valueName, valueFormat, valueOutPath, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder);
+            api.savePresentation(valueName, valueFormat, valueOutPath, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "password", "savePresentation", valuePassword);
@@ -34425,10 +34542,11 @@ public class SlidesApiTest extends ApiTest {
         String valueFolder = (String)getTestValue("String", "savePresentation", "folder");
         String valueStorage = (String)getTestValue("String", "savePresentation", "storage");
         String valueFontsFolder = (String)getTestValue("String", "savePresentation", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "savePresentation", "slides");
         try {
             valueFolder = (String)invalidizeTestValue("String", valueFolder, "savePresentation", "folder");
             initialize("savePresentation", "folder", valueFolder);
-            api.savePresentation(valueName, valueFormat, valueOutPath, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder);
+            api.savePresentation(valueName, valueFormat, valueOutPath, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "folder", "savePresentation", valueFolder);
@@ -34456,10 +34574,11 @@ public class SlidesApiTest extends ApiTest {
         String valueFolder = (String)getTestValue("String", "savePresentation", "folder");
         String valueStorage = (String)getTestValue("String", "savePresentation", "storage");
         String valueFontsFolder = (String)getTestValue("String", "savePresentation", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "savePresentation", "slides");
         try {
             valueStorage = (String)invalidizeTestValue("String", valueStorage, "savePresentation", "storage");
             initialize("savePresentation", "storage", valueStorage);
-            api.savePresentation(valueName, valueFormat, valueOutPath, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder);
+            api.savePresentation(valueName, valueFormat, valueOutPath, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "storage", "savePresentation", valueStorage);
@@ -34487,16 +34606,49 @@ public class SlidesApiTest extends ApiTest {
         String valueFolder = (String)getTestValue("String", "savePresentation", "folder");
         String valueStorage = (String)getTestValue("String", "savePresentation", "storage");
         String valueFontsFolder = (String)getTestValue("String", "savePresentation", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "savePresentation", "slides");
         try {
             valueFontsFolder = (String)invalidizeTestValue("String", valueFontsFolder, "savePresentation", "fontsFolder");
             initialize("savePresentation", "fontsFolder", valueFontsFolder);
-            api.savePresentation(valueName, valueFormat, valueOutPath, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder);
+            api.savePresentation(valueName, valueFormat, valueOutPath, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder, valueSlides);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "fontsFolder", "savePresentation", valueFontsFolder);
         }
         if (needAssertResponse) {
             assertResponse("fontsFolder", "savePresentation");
+        }
+    }
+    /**
+     * Save a presentation to a specified format.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void savePresentationInvalidSlidesTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "savePresentation", "name");
+        ExportFormat valueFormat = (ExportFormat)getTestValue("ExportFormat", "savePresentation", "format");
+        String valueOutPath = (String)getTestValue("String", "savePresentation", "outPath");
+        ExportOptions valueOptions = (ExportOptions)getTestValue("ExportOptions", "savePresentation", "options");
+        String valuePassword = (String)getTestValue("String", "savePresentation", "password");
+        String valueFolder = (String)getTestValue("String", "savePresentation", "folder");
+        String valueStorage = (String)getTestValue("String", "savePresentation", "storage");
+        String valueFontsFolder = (String)getTestValue("String", "savePresentation", "fontsFolder");
+        List<Integer> valueSlides = (List<Integer>)getTestValue("List<Integer>", "savePresentation", "slides");
+        try {
+            valueSlides = (List<Integer>)invalidizeTestValue("List<Integer>", valueSlides, "savePresentation", "slides");
+            initialize("savePresentation", "slides", valueSlides);
+            api.savePresentation(valueName, valueFormat, valueOutPath, valueOptions, valuePassword, valueFolder, valueStorage, valueFontsFolder, valueSlides);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "slides", "savePresentation", valueSlides);
+        }
+        if (needAssertResponse) {
+            assertResponse("slides", "savePresentation");
         }
     }
     

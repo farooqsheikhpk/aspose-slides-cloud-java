@@ -63,14 +63,10 @@ public class JWTAuth extends Authentication {
 
     @Override
     public void handleBadResponse(Response response) throws ApiException, IOException {
-        if (isAuthError(response)) {
+        if (response.code() == 401) {
             requestToken();
             throw new NeedRepeatRequestException();
         }
-    }
-    
-    private boolean isAuthError(Response response) throws ApiException, IOException {
-        return response.code() == 401 ||  (response.code() == 500 && response.body().contentLength() == 0);
     }
     
     private synchronized void requestToken() throws ApiException {

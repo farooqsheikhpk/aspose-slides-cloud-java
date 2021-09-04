@@ -52,7 +52,7 @@ public class PipelineTest extends ApiTest {
      */
     @Test
     public void pipelineTest() throws ApiException, IOException {
-        /*RequestInputFile file1 = new RequestInputFile();
+        RequestInputFile file1 = new RequestInputFile();
         file1.setIndex(0);
 
         RequestInputFile file2 = new RequestInputFile();
@@ -87,6 +87,6 @@ public class PipelineTest extends ApiTest {
         files.add(fileInfo2);
         
         File response = api.pipeline(pipeline, files);
-        assertTrue(response.isFile());*/
+        assertTrue(response.isFile());
     }
 }

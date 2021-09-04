@@ -64,11 +64,395 @@ public class JSON {
     private LocalDateTypeAdapter localDateTypeAdapter = new LocalDateTypeAdapter();
 
     public JSON() {
+        Map<String, RuntimeTypeAdapterFactory> typeAdapters = new HashMap<String, RuntimeTypeAdapterFactory>();
+        Map<String, Map<String, String>> valueMap = new HashMap<String, Map<String, String>>();
+        String currentValue = null;
         GsonBuilder gsonBuilder = new GsonBuilder()
             .registerTypeAdapter(Date.class, dateTypeAdapter)
             .registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter)
             .registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter)
             .registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
+        if (!typeAdapters.containsKey("Task")) {
+            typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
+            valueMap.put("Task", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.Task.TypeEnum.ADDLAYOUTSLIDE.getValue();
+        if (!valueMap.get("Task").containsKey(currentValue)) {
+            valueMap.get("Task").put(currentValue, null);
+            typeAdapters.get("Task").registerSubtype(com.aspose.slides.model.AddLayoutSlide.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("Task")) {
+            typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
+            valueMap.put("Task", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.Task.TypeEnum.ADDMASTERSLIDE.getValue();
+        if (!valueMap.get("Task").containsKey(currentValue)) {
+            valueMap.get("Task").put(currentValue, null);
+            typeAdapters.get("Task").registerSubtype(com.aspose.slides.model.AddMasterSlide.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("Task")) {
+            typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
+            valueMap.put("Task", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.Task.TypeEnum.ADDSHAPE.getValue();
+        if (!valueMap.get("Task").containsKey(currentValue)) {
+            valueMap.get("Task").put(currentValue, null);
+            typeAdapters.get("Task").registerSubtype(com.aspose.slides.model.AddShape.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("Task")) {
+            typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
+            valueMap.put("Task", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.Task.TypeEnum.ADDSLIDE.getValue();
+        if (!valueMap.get("Task").containsKey(currentValue)) {
+            valueMap.get("Task").put(currentValue, null);
+            typeAdapters.get("Task").registerSubtype(com.aspose.slides.model.AddSlide.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("InputFile")) {
+            typeAdapters.put("InputFile", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.InputFile.class, "type"));
+            valueMap.put("InputFile", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.InputFile.TypeEnum.BASE64.getValue();
+        if (!valueMap.get("InputFile").containsKey(currentValue)) {
+            valueMap.get("InputFile").put(currentValue, null);
+            typeAdapters.get("InputFile").registerSubtype(com.aspose.slides.model.Base64InputFile.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("Series")) {
+            typeAdapters.put("Series", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Series.class, "dataPointType"));
+            valueMap.put("Series", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.Series.DataPointTypeEnum.BUBBLE.getValue();
+        if (!valueMap.get("Series").containsKey(currentValue)) {
+            valueMap.get("Series").put(currentValue, null);
+            typeAdapters.get("Series").registerSubtype(com.aspose.slides.model.BubbleSeries.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("FillFormat")) {
+            typeAdapters.put("FillFormat", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.FillFormat.class, "type"));
+            valueMap.put("FillFormat", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.FillFormat.TypeEnum.GRADIENT.getValue();
+        if (!valueMap.get("FillFormat").containsKey(currentValue)) {
+            valueMap.get("FillFormat").put(currentValue, null);
+            typeAdapters.get("FillFormat").registerSubtype(com.aspose.slides.model.GradientFill.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("Task")) {
+            typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
+            valueMap.put("Task", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.Task.TypeEnum.MERGE.getValue();
+        if (!valueMap.get("Task").containsKey(currentValue)) {
+            valueMap.get("Task").put(currentValue, null);
+            typeAdapters.get("Task").registerSubtype(com.aspose.slides.model.Merge.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("FillFormat")) {
+            typeAdapters.put("FillFormat", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.FillFormat.class, "type"));
+            valueMap.put("FillFormat", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.FillFormat.TypeEnum.NOFILL.getValue();
+        if (!valueMap.get("FillFormat").containsKey(currentValue)) {
+            valueMap.get("FillFormat").put(currentValue, null);
+            typeAdapters.get("FillFormat").registerSubtype(com.aspose.slides.model.NoFill.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("Series")) {
+            typeAdapters.put("Series", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Series.class, "dataPointType"));
+            valueMap.put("Series", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.Series.DataPointTypeEnum.ONEVALUE.getValue();
+        if (!valueMap.get("Series").containsKey(currentValue)) {
+            valueMap.get("Series").put(currentValue, null);
+            typeAdapters.get("Series").registerSubtype(com.aspose.slides.model.OneValueSeries.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("InputFile")) {
+            typeAdapters.put("InputFile", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.InputFile.class, "type"));
+            valueMap.put("InputFile", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.InputFile.TypeEnum.PATH.getValue();
+        if (!valueMap.get("InputFile").containsKey(currentValue)) {
+            valueMap.get("InputFile").put(currentValue, null);
+            typeAdapters.get("InputFile").registerSubtype(com.aspose.slides.model.PathInputFile.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("OutputFile")) {
+            typeAdapters.put("OutputFile", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.OutputFile.class, "type"));
+            valueMap.put("OutputFile", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.OutputFile.TypeEnum.PATH.getValue();
+        if (!valueMap.get("OutputFile").containsKey(currentValue)) {
+            valueMap.get("OutputFile").put(currentValue, null);
+            typeAdapters.get("OutputFile").registerSubtype(com.aspose.slides.model.PathOutputFile.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("FillFormat")) {
+            typeAdapters.put("FillFormat", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.FillFormat.class, "type"));
+            valueMap.put("FillFormat", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.FillFormat.TypeEnum.PATTERN.getValue();
+        if (!valueMap.get("FillFormat").containsKey(currentValue)) {
+            valueMap.get("FillFormat").put(currentValue, null);
+            typeAdapters.get("FillFormat").registerSubtype(com.aspose.slides.model.PatternFill.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("FillFormat")) {
+            typeAdapters.put("FillFormat", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.FillFormat.class, "type"));
+            valueMap.put("FillFormat", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.FillFormat.TypeEnum.PICTURE.getValue();
+        if (!valueMap.get("FillFormat").containsKey(currentValue)) {
+            valueMap.get("FillFormat").put(currentValue, null);
+            typeAdapters.get("FillFormat").registerSubtype(com.aspose.slides.model.PictureFill.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("Task")) {
+            typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
+            valueMap.put("Task", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.Task.TypeEnum.REMOVESHAPE.getValue();
+        if (!valueMap.get("Task").containsKey(currentValue)) {
+            valueMap.get("Task").put(currentValue, null);
+            typeAdapters.get("Task").registerSubtype(com.aspose.slides.model.RemoveShape.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("Task")) {
+            typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
+            valueMap.put("Task", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.Task.TypeEnum.REMOVESLIDE.getValue();
+        if (!valueMap.get("Task").containsKey(currentValue)) {
+            valueMap.get("Task").put(currentValue, null);
+            typeAdapters.get("Task").registerSubtype(com.aspose.slides.model.RemoveSlide.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("Task")) {
+            typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
+            valueMap.put("Task", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.Task.TypeEnum.REODERSLIDE.getValue();
+        if (!valueMap.get("Task").containsKey(currentValue)) {
+            valueMap.get("Task").put(currentValue, null);
+            typeAdapters.get("Task").registerSubtype(com.aspose.slides.model.ReorderSlide.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("Task")) {
+            typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
+            valueMap.put("Task", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.Task.TypeEnum.REPLACETEXT.getValue();
+        if (!valueMap.get("Task").containsKey(currentValue)) {
+            valueMap.get("Task").put(currentValue, null);
+            typeAdapters.get("Task").registerSubtype(com.aspose.slides.model.ReplaceText.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("InputFile")) {
+            typeAdapters.put("InputFile", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.InputFile.class, "type"));
+            valueMap.put("InputFile", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.InputFile.TypeEnum.REQUEST.getValue();
+        if (!valueMap.get("InputFile").containsKey(currentValue)) {
+            valueMap.get("InputFile").put(currentValue, null);
+            typeAdapters.get("InputFile").registerSubtype(com.aspose.slides.model.RequestInputFile.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("Task")) {
+            typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
+            valueMap.put("Task", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.Task.TypeEnum.RESETSLIDE.getValue();
+        if (!valueMap.get("Task").containsKey(currentValue)) {
+            valueMap.get("Task").put(currentValue, null);
+            typeAdapters.get("Task").registerSubtype(com.aspose.slides.model.ResetSlide.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("OutputFile")) {
+            typeAdapters.put("OutputFile", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.OutputFile.class, "type"));
+            valueMap.put("OutputFile", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.OutputFile.TypeEnum.RESPONSE.getValue();
+        if (!valueMap.get("OutputFile").containsKey(currentValue)) {
+            valueMap.get("OutputFile").put(currentValue, null);
+            typeAdapters.get("OutputFile").registerSubtype(com.aspose.slides.model.ResponseOutputFile.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("Task")) {
+            typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
+            valueMap.put("Task", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.Task.TypeEnum.SAVE.getValue();
+        if (!valueMap.get("Task").containsKey(currentValue)) {
+            valueMap.get("Task").put(currentValue, null);
+            typeAdapters.get("Task").registerSubtype(com.aspose.slides.model.Save.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("Task")) {
+            typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
+            valueMap.put("Task", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.Task.TypeEnum.SAVESHAPE.getValue();
+        if (!valueMap.get("Task").containsKey(currentValue)) {
+            valueMap.get("Task").put(currentValue, null);
+            typeAdapters.get("Task").registerSubtype(com.aspose.slides.model.SaveShape.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("Task")) {
+            typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
+            valueMap.put("Task", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.Task.TypeEnum.SAVESLIDE.getValue();
+        if (!valueMap.get("Task").containsKey(currentValue)) {
+            valueMap.get("Task").put(currentValue, null);
+            typeAdapters.get("Task").registerSubtype(com.aspose.slides.model.SaveSlide.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("Series")) {
+            typeAdapters.put("Series", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Series.class, "dataPointType"));
+            valueMap.put("Series", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.Series.DataPointTypeEnum.SCATTER.getValue();
+        if (!valueMap.get("Series").containsKey(currentValue)) {
+            valueMap.get("Series").put(currentValue, null);
+            typeAdapters.get("Series").registerSubtype(com.aspose.slides.model.ScatterSeries.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("FillFormat")) {
+            typeAdapters.put("FillFormat", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.FillFormat.class, "type"));
+            valueMap.put("FillFormat", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.FillFormat.TypeEnum.SOLID.getValue();
+        if (!valueMap.get("FillFormat").containsKey(currentValue)) {
+            valueMap.get("FillFormat").put(currentValue, null);
+            typeAdapters.get("FillFormat").registerSubtype(com.aspose.slides.model.SolidFill.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("Task")) {
+            typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
+            valueMap.put("Task", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.Task.TypeEnum.UPDATEBACKGROUND.getValue();
+        if (!valueMap.get("Task").containsKey(currentValue)) {
+            valueMap.get("Task").put(currentValue, null);
+            typeAdapters.get("Task").registerSubtype(com.aspose.slides.model.UpdateBackground.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("Task")) {
+            typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
+            valueMap.put("Task", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.Task.TypeEnum.UPDATESHAPE.getValue();
+        if (!valueMap.get("Task").containsKey(currentValue)) {
+            valueMap.get("Task").put(currentValue, null);
+            typeAdapters.get("Task").registerSubtype(com.aspose.slides.model.UpdateShape.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("OneValueSeries")) {
+            typeAdapters.put("OneValueSeries", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.OneValueSeries.class, "dataPointType"));
+            valueMap.put("OneValueSeries", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.OneValueSeries.DataPointTypeEnum.ONEVALUE.getValue();
+        if (!valueMap.get("OneValueSeries").containsKey(currentValue)) {
+            valueMap.get("OneValueSeries").put(currentValue, null);
+            typeAdapters.get("OneValueSeries").registerSubtype(com.aspose.slides.model.BoxAndWhiskerSeries.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("ShapeBase")) {
+            typeAdapters.put("ShapeBase", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.ShapeBase.class, "type"));
+            valueMap.put("ShapeBase", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.ShapeBase.TypeEnum.CHART.getValue();
+        if (!valueMap.get("ShapeBase").containsKey(currentValue)) {
+            valueMap.get("ShapeBase").put(currentValue, null);
+            typeAdapters.get("ShapeBase").registerSubtype(com.aspose.slides.model.Chart.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("ShapeBase")) {
+            typeAdapters.put("ShapeBase", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.ShapeBase.class, "type"));
+            valueMap.put("ShapeBase", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.ShapeBase.TypeEnum.GRAPHICALOBJECT.getValue();
+        if (!valueMap.get("ShapeBase").containsKey(currentValue)) {
+            valueMap.get("ShapeBase").put(currentValue, null);
+            typeAdapters.get("ShapeBase").registerSubtype(com.aspose.slides.model.GraphicalObject.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("ShapeBase")) {
+            typeAdapters.put("ShapeBase", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.ShapeBase.class, "type"));
+            valueMap.put("ShapeBase", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.ShapeBase.TypeEnum.GROUPSHAPE.getValue();
+        if (!valueMap.get("ShapeBase").containsKey(currentValue)) {
+            valueMap.get("ShapeBase").put(currentValue, null);
+            typeAdapters.get("ShapeBase").registerSubtype(com.aspose.slides.model.GroupShape.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("ShapeBase")) {
+            typeAdapters.put("ShapeBase", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.ShapeBase.class, "type"));
+            valueMap.put("ShapeBase", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.ShapeBase.TypeEnum.OLEOBJECTFRAME.getValue();
+        if (!valueMap.get("ShapeBase").containsKey(currentValue)) {
+            valueMap.get("ShapeBase").put(currentValue, null);
+            typeAdapters.get("ShapeBase").registerSubtype(com.aspose.slides.model.OleObjectFrame.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("ShapeBase")) {
+            typeAdapters.put("ShapeBase", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.ShapeBase.class, "type"));
+            valueMap.put("ShapeBase", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.ShapeBase.TypeEnum.SMARTART.getValue();
+        if (!valueMap.get("ShapeBase").containsKey(currentValue)) {
+            valueMap.get("ShapeBase").put(currentValue, null);
+            typeAdapters.get("ShapeBase").registerSubtype(com.aspose.slides.model.SmartArt.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("ShapeBase")) {
+            typeAdapters.put("ShapeBase", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.ShapeBase.class, "type"));
+            valueMap.put("ShapeBase", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.ShapeBase.TypeEnum.TABLE.getValue();
+        if (!valueMap.get("ShapeBase").containsKey(currentValue)) {
+            valueMap.get("ShapeBase").put(currentValue, null);
+            typeAdapters.get("ShapeBase").registerSubtype(com.aspose.slides.model.Table.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("OneValueSeries")) {
+            typeAdapters.put("OneValueSeries", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.OneValueSeries.class, "dataPointType"));
+            valueMap.put("OneValueSeries", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.OneValueSeries.DataPointTypeEnum.ONEVALUE.getValue();
+        if (!valueMap.get("OneValueSeries").containsKey(currentValue)) {
+            valueMap.get("OneValueSeries").put(currentValue, null);
+            typeAdapters.get("OneValueSeries").registerSubtype(com.aspose.slides.model.WaterfallSeries.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("GeometryShape")) {
+            typeAdapters.put("GeometryShape", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.GeometryShape.class, "type"));
+            valueMap.put("GeometryShape", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.GeometryShape.TypeEnum.AUDIOFRAME.getValue();
+        if (!valueMap.get("GeometryShape").containsKey(currentValue)) {
+            valueMap.get("GeometryShape").put(currentValue, null);
+            typeAdapters.get("GeometryShape").registerSubtype(com.aspose.slides.model.AudioFrame.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("GeometryShape")) {
+            typeAdapters.put("GeometryShape", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.GeometryShape.class, "type"));
+            valueMap.put("GeometryShape", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.GeometryShape.TypeEnum.CONNECTOR.getValue();
+        if (!valueMap.get("GeometryShape").containsKey(currentValue)) {
+            valueMap.get("GeometryShape").put(currentValue, null);
+            typeAdapters.get("GeometryShape").registerSubtype(com.aspose.slides.model.Connector.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("GeometryShape")) {
+            typeAdapters.put("GeometryShape", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.GeometryShape.class, "type"));
+            valueMap.put("GeometryShape", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.GeometryShape.TypeEnum.PICTUREFRAME.getValue();
+        if (!valueMap.get("GeometryShape").containsKey(currentValue)) {
+            valueMap.get("GeometryShape").put(currentValue, null);
+            typeAdapters.get("GeometryShape").registerSubtype(com.aspose.slides.model.PictureFrame.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("GeometryShape")) {
+            typeAdapters.put("GeometryShape", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.GeometryShape.class, "type"));
+            valueMap.put("GeometryShape", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.GeometryShape.TypeEnum.SHAPE.getValue();
+        if (!valueMap.get("GeometryShape").containsKey(currentValue)) {
+            valueMap.get("GeometryShape").put(currentValue, null);
+            typeAdapters.get("GeometryShape").registerSubtype(com.aspose.slides.model.Shape.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("GeometryShape")) {
+            typeAdapters.put("GeometryShape", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.GeometryShape.class, "type"));
+            valueMap.put("GeometryShape", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.GeometryShape.TypeEnum.SMARTARTSHAPE.getValue();
+        if (!valueMap.get("GeometryShape").containsKey(currentValue)) {
+            valueMap.get("GeometryShape").put(currentValue, null);
+            typeAdapters.get("GeometryShape").registerSubtype(com.aspose.slides.model.SmartArtShape.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("GeometryShape")) {
+            typeAdapters.put("GeometryShape", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.GeometryShape.class, "type"));
+            valueMap.put("GeometryShape", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.GeometryShape.TypeEnum.VIDEOFRAME.getValue();
+        if (!valueMap.get("GeometryShape").containsKey(currentValue)) {
+            valueMap.get("GeometryShape").put(currentValue, null);
+            typeAdapters.get("GeometryShape").registerSubtype(com.aspose.slides.model.VideoFrame.class, currentValue);
+        }
+        for (RuntimeTypeAdapterFactory factory : typeAdapters.values()) {
+            gsonBuilder.registerTypeAdapterFactory(factory);
+        }
         gson = gsonBuilder.create();
     }
 
