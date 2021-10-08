@@ -47,11 +47,11 @@ public class ConvertTest extends ApiTest {
     @Test
     public void convertPostFromRequestTest() throws ApiException, IOException {
         byte[] file = Files.readAllBytes(Paths.get(testDataFolderName + "/" + c_fileName));
-        File converted = api.convert(file, c_format, c_password, null, null, null);
+        File converted = api.convert(file, c_format, c_password, null, null, null, null);
         assertNotNull(converted);
         assertTrue(converted.length() > 0);
         assertTrue(converted.canRead());
-        File convertedSlides = api.convert(file, c_format, c_password, null, null, Arrays.asList( 1, 2 ));
+        File convertedSlides = api.convert(file, c_format, c_password, null, null, Arrays.asList( 1, 2 ), null);
         assertNotNull(convertedSlides);
         assertTrue(convertedSlides.length() > 0);
         assertTrue(convertedSlides.canRead());
@@ -61,7 +61,7 @@ public class ConvertTest extends ApiTest {
     @Test
     public void convertPutFromRequestTest() throws ApiException, IOException {
         byte[] file = Files.readAllBytes(Paths.get(testDataFolderName + "/" + c_fileName));
-        api.convertAndSave(file, c_format, c_outPath, c_password, null, null, null);
+        api.convertAndSave(file, c_format, c_outPath, c_password, null, null, null, null);
         ObjectExist exists = api.objectExists(c_outPath, null, null);
         assertTrue(exists.isExists());
     }
@@ -84,7 +84,17 @@ public class ConvertTest extends ApiTest {
     }
 
     @Test
-    public void convertWithOptionsTest() throws ApiException, IOException {
+    public void convertWithOptionsFromRequestTest() throws ApiException, IOException {
+        byte[] file = Files.readAllBytes(Paths.get(testDataFolderName + "/" + c_fileName));
+        File converted1 = api.convert(file, c_format, c_password, null, null, null, null);
+        PdfExportOptions options = new PdfExportOptions();
+        options.setDrawSlidesFrame(true);
+        File converted2 = api.convert(file, c_format, c_password, null, null, null, options);
+        assertNotEquals(converted1.length(), converted2.length());
+    }
+
+    @Test
+    public void convertWithOptionsFromStorageTest() throws ApiException, IOException {
         initialize(null, null, null);
         File converted1 = api.downloadPresentation(c_fileName, c_format, null, c_password, c_folderName, null, null, null);
         PdfExportOptions options = new PdfExportOptions();
@@ -96,7 +106,7 @@ public class ConvertTest extends ApiTest {
     @Test
     public void convertSlidePostFromRequestTest() throws ApiException, IOException {
         byte[] file = Files.readAllBytes(Paths.get(testDataFolderName + "/" + c_fileName));
-        File converted = api.downloadSlideOnline(file, c_slideIndex, c_slideFormat, null, null, c_password, null, null);
+        File converted = api.downloadSlideOnline(file, c_slideIndex, c_slideFormat, null, null, c_password, null, null, null);
         assertNotNull(converted);
         assertTrue(converted.length() > 0);
         assertTrue(converted.canRead());
@@ -105,7 +115,7 @@ public class ConvertTest extends ApiTest {
     @Test
     public void convertSlidePutFromRequestTest() throws ApiException, IOException {
         byte[] file = Files.readAllBytes(Paths.get(testDataFolderName + "/" + c_fileName));
-        api.saveSlideOnline(file, c_slideIndex, c_slideFormat, c_outPath, null, null, c_password, null, null);
+        api.saveSlideOnline(file, c_slideIndex, c_slideFormat, c_outPath, null, null, c_password, null, null, null);
         ObjectExist exists = api.objectExists(c_outPath, null, null);
         assertTrue(exists.isExists());
     }
@@ -128,7 +138,17 @@ public class ConvertTest extends ApiTest {
     }
 
     @Test
-    public void convertSlideWithOptionsTest() throws ApiException, IOException {
+    public void convertSlideWithOptionsFromRequestTest() throws ApiException, IOException {
+        byte[] file = Files.readAllBytes(Paths.get(testDataFolderName + "/" + c_fileName));
+        File converted1 = api.downloadSlideOnline(file, c_slideIndex, c_slideFormat, null, null, c_password, null, null, null);
+        PdfExportOptions options = new PdfExportOptions();
+        options.setDrawSlidesFrame(true);
+        File converted2 = api.downloadSlideOnline(file, c_slideIndex, c_slideFormat, null, null, c_password, null, null, options);
+        assertNotEquals(converted1.length(), converted2.length());
+    }
+
+    @Test
+    public void convertSlideWithOptionsFromStorageTest() throws ApiException, IOException {
         initialize(null, null, null);
         File converted1 = api.downloadSlide(c_fileName, c_slideIndex, c_slideFormat, null, null, null, c_password, c_folderName, null, null);
         PdfExportOptions options = new PdfExportOptions();
@@ -140,7 +160,7 @@ public class ConvertTest extends ApiTest {
     @Test
     public void convertShapePostFromRequestTest() throws ApiException, IOException {
         byte[] file = Files.readAllBytes(Paths.get(testDataFolderName + "/" + c_fileName));
-        File converted = api.downloadShapeOnline(file, c_slideIndex, c_shapeIndex, c_shapeFormat, null, null, null, c_password, null, null);
+        File converted = api.downloadShapeOnline(file, c_slideIndex, c_shapeIndex, c_shapeFormat, null, null, null, c_password, null, null, null);
         assertNotNull(converted);
         assertTrue(converted.length() > 0);
         assertTrue(converted.canRead());
@@ -149,7 +169,7 @@ public class ConvertTest extends ApiTest {
     @Test
     public void convertShapePutFromRequestTest() throws ApiException, IOException {
         byte[] file = Files.readAllBytes(Paths.get(testDataFolderName + "/" + c_fileName));
-        api.saveShapeOnline(file, c_slideIndex, c_shapeIndex, c_shapeFormat, c_outPath, null, null, null, c_password, null, null);
+        api.saveShapeOnline(file, c_slideIndex, c_shapeIndex, c_shapeFormat, c_outPath, null, null, null, c_password, null, null, null);
         ObjectExist exists = api.objectExists(c_outPath, null, null);
         assertTrue(exists.isExists());
     }

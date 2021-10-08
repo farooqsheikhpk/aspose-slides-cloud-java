@@ -278,6 +278,171 @@ public class SlidesApi {
         return call;
     }
     /**
+     * Build call for alignSpecialSlideShapes
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param alignmentType Alignment type that will be applied to the shapes. (required)
+     * @param alignToSlide If true, shapes will be aligned relative to the slide edges. 
+     * @param shapes Shapes indexes. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call alignSpecialSlideShapesCall(String name, Integer slideIndex, SpecialSlideType slideType, ShapesAlignmentType alignmentType, Boolean alignToSlide, List<Integer> shapes, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling alignSpecialSlideShapes(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling alignSpecialSlideShapes(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling alignSpecialSlideShapes(Async)");
+        }
+        // verify the required parameter 'alignmentType' is set
+        if (alignmentType == null) {
+            throw new ApiException("Missing the required parameter 'alignmentType' when calling alignSpecialSlideShapes(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/align/{alignmentType}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "alignmentType" + "\\}", apiClient.objectToString(alignmentType));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "alignToSlide", alignToSlide);
+        apiClient.addQueryParameter(queryParams, "shapes", shapes);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Changes the placement of selected shapes on the master slide. Aligns shapes to the margins or the edge of the slide or aligns them relative to each other.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param alignmentType Alignment type that will be applied to the shapes. (required)
+     * @param alignToSlide If true, shapes will be aligned relative to the slide edges. 
+     * @param shapes Shapes indexes. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Shapes
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Shapes alignSpecialSlideShapes(String name, Integer slideIndex, SpecialSlideType slideType, ShapesAlignmentType alignmentType, Boolean alignToSlide, List<Integer> shapes, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Shapes> resp = alignSpecialSlideShapesWithHttpInfo(name, slideIndex, slideType, alignmentType, alignToSlide, shapes, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Shapes> resp = alignSpecialSlideShapesWithHttpInfo(name, slideIndex, slideType, alignmentType, alignToSlide, shapes, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Changes the placement of selected shapes on the master slide. Aligns shapes to the margins or the edge of the slide or aligns them relative to each other.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param alignmentType Alignment type that will be applied to the shapes. (required)
+     * @param alignToSlide If true, shapes will be aligned relative to the slide edges. 
+     * @param shapes Shapes indexes. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Shapes&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Shapes> alignSpecialSlideShapesWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, ShapesAlignmentType alignmentType, Boolean alignToSlide, List<Integer> shapes, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = alignSpecialSlideShapesCall(name, slideIndex, slideType, alignmentType, alignToSlide, shapes, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Shapes>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Changes the placement of selected shapes on the master slide. Aligns shapes to the margins or the edge of the slide or aligns them relative to each other. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param alignmentType Alignment type that will be applied to the shapes. (required)
+     * @param alignToSlide If true, shapes will be aligned relative to the slide edges. 
+     * @param shapes Shapes indexes. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call alignSpecialSlideShapesAsync(String name, Integer slideIndex, SpecialSlideType slideType, ShapesAlignmentType alignmentType, Boolean alignToSlide, List<Integer> shapes, String password, String folder, String storage, final ApiCallback<Shapes> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = alignSpecialSlideShapesCall(name, slideIndex, slideType, alignmentType, alignToSlide, shapes, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Shapes>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
      * Build call for convert
      * @param document Document data. (required)
      * @param format Export format. (required)
@@ -285,12 +450,13 @@ public class SlidesApi {
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
      * @param slides The indices of the slides to be converted. If not specified, all slides are converted by default. 
+     * @param options Export options. 
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call convertCall(byte[] document, ExportFormat format, String password, String storage, String fontsFolder, List<Integer> slides, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call convertCall(byte[] document, ExportFormat format, String password, String storage, String fontsFolder, List<Integer> slides, ExportOptions options, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'document' is set
         if (document == null) {
             throw new ApiException("Missing the required parameter 'document' when calling convert(Async)");
@@ -299,7 +465,7 @@ public class SlidesApi {
         if (format == null) {
             throw new ApiException("Missing the required parameter 'format' when calling convert(Async)");
         }
-        Object postBody = null;
+        Object postBody = options;
 
         // create path and map variables
         String methodPath = "/slides/convert/{format}"
@@ -353,15 +519,16 @@ public class SlidesApi {
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
      * @param slides The indices of the slides to be converted. If not specified, all slides are converted by default. 
+     * @param options Export options. 
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File convert(byte[] document, ExportFormat format, String password, String storage, String fontsFolder, List<Integer> slides) throws ApiException {
+    public File convert(byte[] document, ExportFormat format, String password, String storage, String fontsFolder, List<Integer> slides, ExportOptions options) throws ApiException {
         try {
-            ApiResponse<File> resp = convertWithHttpInfo(document, format, password, storage, fontsFolder, slides);
+            ApiResponse<File> resp = convertWithHttpInfo(document, format, password, storage, fontsFolder, slides, options);
             return resp.getData();
         } catch (NeedRepeatRequestException e) {
-            ApiResponse<File> resp = convertWithHttpInfo(document, format, password, storage, fontsFolder, slides);
+            ApiResponse<File> resp = convertWithHttpInfo(document, format, password, storage, fontsFolder, slides, options);
             return resp.getData();
         }
     }
@@ -375,11 +542,12 @@ public class SlidesApi {
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
      * @param slides The indices of the slides to be converted. If not specified, all slides are converted by default. 
+     * @param options Export options. 
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> convertWithHttpInfo(byte[] document, ExportFormat format, String password, String storage, String fontsFolder, List<Integer> slides) throws ApiException {
-        com.squareup.okhttp.Call call = convertCall(document, format, password, storage, fontsFolder, slides, null, null);
+    public ApiResponse<File> convertWithHttpInfo(byte[] document, ExportFormat format, String password, String storage, String fontsFolder, List<Integer> slides, ExportOptions options) throws ApiException {
+        com.squareup.okhttp.Call call = convertCall(document, format, password, storage, fontsFolder, slides, options, null, null);
         Type returnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, returnType);
     }
@@ -393,11 +561,12 @@ public class SlidesApi {
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
      * @param slides The indices of the slides to be converted. If not specified, all slides are converted by default. 
+     * @param options Export options. 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call convertAsync(byte[] document, ExportFormat format, String password, String storage, String fontsFolder, List<Integer> slides, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call convertAsync(byte[] document, ExportFormat format, String password, String storage, String fontsFolder, List<Integer> slides, ExportOptions options, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -418,7 +587,7 @@ public class SlidesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = convertCall(document, format, password, storage, fontsFolder, slides, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = convertCall(document, format, password, storage, fontsFolder, slides, options, progressListener, progressRequestListener);
         Type returnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, returnType, callback);
         return call;
@@ -432,12 +601,13 @@ public class SlidesApi {
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
      * @param slides The indices of the slides to be converted. If not specified, all slides are converted by default. 
+     * @param options Export options. 
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call convertAndSaveCall(byte[] document, ExportFormat format, String outPath, String password, String storage, String fontsFolder, List<Integer> slides, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call convertAndSaveCall(byte[] document, ExportFormat format, String outPath, String password, String storage, String fontsFolder, List<Integer> slides, ExportOptions options, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'document' is set
         if (document == null) {
             throw new ApiException("Missing the required parameter 'document' when calling convertAndSave(Async)");
@@ -450,7 +620,7 @@ public class SlidesApi {
         if (outPath == null) {
             throw new ApiException("Missing the required parameter 'outPath' when calling convertAndSave(Async)");
         }
-        Object postBody = null;
+        Object postBody = options;
 
         // create path and map variables
         String methodPath = "/slides/convert/{format}"
@@ -506,14 +676,15 @@ public class SlidesApi {
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
      * @param slides The indices of the slides to be converted. If not specified, all slides are converted by default. 
+     * @param options Export options. 
      
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void convertAndSave(byte[] document, ExportFormat format, String outPath, String password, String storage, String fontsFolder, List<Integer> slides) throws ApiException {
+    public void convertAndSave(byte[] document, ExportFormat format, String outPath, String password, String storage, String fontsFolder, List<Integer> slides, ExportOptions options) throws ApiException {
         try {
-            convertAndSaveWithHttpInfo(document, format, outPath, password, storage, fontsFolder, slides);
+            convertAndSaveWithHttpInfo(document, format, outPath, password, storage, fontsFolder, slides, options);
         } catch (NeedRepeatRequestException e) {
-            convertAndSaveWithHttpInfo(document, format, outPath, password, storage, fontsFolder, slides);
+            convertAndSaveWithHttpInfo(document, format, outPath, password, storage, fontsFolder, slides, options);
         }
     }
 
@@ -527,11 +698,12 @@ public class SlidesApi {
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
      * @param slides The indices of the slides to be converted. If not specified, all slides are converted by default. 
+     * @param options Export options. 
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> convertAndSaveWithHttpInfo(byte[] document, ExportFormat format, String outPath, String password, String storage, String fontsFolder, List<Integer> slides) throws ApiException {
-        com.squareup.okhttp.Call call = convertAndSaveCall(document, format, outPath, password, storage, fontsFolder, slides, null, null);
+    public ApiResponse<Void> convertAndSaveWithHttpInfo(byte[] document, ExportFormat format, String outPath, String password, String storage, String fontsFolder, List<Integer> slides, ExportOptions options) throws ApiException {
+        com.squareup.okhttp.Call call = convertAndSaveCall(document, format, outPath, password, storage, fontsFolder, slides, options, null, null);
         return apiClient.execute(call);
     }
 
@@ -545,11 +717,12 @@ public class SlidesApi {
      * @param storage Document storage. 
      * @param fontsFolder Custom fonts folder. 
      * @param slides The indices of the slides to be converted. If not specified, all slides are converted by default. 
+     * @param options Export options. 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call convertAndSaveAsync(byte[] document, ExportFormat format, String outPath, String password, String storage, String fontsFolder, List<Integer> slides, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call convertAndSaveAsync(byte[] document, ExportFormat format, String outPath, String password, String storage, String fontsFolder, List<Integer> slides, ExportOptions options, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -570,7 +743,7 @@ public class SlidesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = convertAndSaveCall(document, format, outPath, password, storage, fontsFolder, slides, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = convertAndSaveCall(document, format, outPath, password, storage, fontsFolder, slides, options, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -3063,491 +3236,6 @@ public class SlidesApi {
         return call;
     }
     /**
-     * Build call for createNotesSlideParagraph
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param dto Paragraph DTO. (required)
-     * @param position Position of the new paragraph in the list. Default is at the end of the list. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call createNotesSlideParagraphCall(String name, Integer slideIndex, Integer shapeIndex, Paragraph dto, Integer position, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling createNotesSlideParagraph(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling createNotesSlideParagraph(Async)");
-        }
-        // verify the required parameter 'shapeIndex' is set
-        if (shapeIndex == null) {
-            throw new ApiException("Missing the required parameter 'shapeIndex' when calling createNotesSlideParagraph(Async)");
-        }
-        // verify the required parameter 'dto' is set
-        if (dto == null) {
-            throw new ApiException("Missing the required parameter 'dto' when calling createNotesSlideParagraph(Async)");
-        }
-        Object postBody = dto;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "position", position);
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "application/json"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Creates new paragraph.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param dto Paragraph DTO. (required)
-     * @param position Position of the new paragraph in the list. Default is at the end of the list. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return Paragraph
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public Paragraph createNotesSlideParagraph(String name, Integer slideIndex, Integer shapeIndex, Paragraph dto, Integer position, String password, String folder, String storage) throws ApiException {
-        try {
-            ApiResponse<Paragraph> resp = createNotesSlideParagraphWithHttpInfo(name, slideIndex, shapeIndex, dto, position, password, folder, storage);
-            return resp.getData();
-        } catch (NeedRepeatRequestException e) {
-            ApiResponse<Paragraph> resp = createNotesSlideParagraphWithHttpInfo(name, slideIndex, shapeIndex, dto, position, password, folder, storage);
-            return resp.getData();
-        }
-    }
-
-    /**
-     * Creates new paragraph.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param dto Paragraph DTO. (required)
-     * @param position Position of the new paragraph in the list. Default is at the end of the list. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ApiResponse&lt;Paragraph&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Paragraph> createNotesSlideParagraphWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, Paragraph dto, Integer position, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = createNotesSlideParagraphCall(name, slideIndex, shapeIndex, dto, position, password, folder, storage, null, null);
-        Type returnType = new TypeToken<Paragraph>(){}.getType();
-        return apiClient.execute(call, returnType);
-    }
-
-    /**
-     * Creates new paragraph. (asynchronously)
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param dto Paragraph DTO. (required)
-     * @param position Position of the new paragraph in the list. Default is at the end of the list. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call createNotesSlideParagraphAsync(String name, Integer slideIndex, Integer shapeIndex, Paragraph dto, Integer position, String password, String folder, String storage, final ApiCallback<Paragraph> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = createNotesSlideParagraphCall(name, slideIndex, shapeIndex, dto, position, password, folder, storage, progressListener, progressRequestListener);
-        Type returnType = new TypeToken<Paragraph>(){}.getType();
-        apiClient.executeAsync(call, returnType, callback);
-        return call;
-    }
-    /**
-     * Build call for createNotesSlidePortion
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param dto Portion DTO. (required)
-     * @param position Position of the new portion in the list. Default is at the end of the list. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call createNotesSlidePortionCall(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Portion dto, Integer position, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling createNotesSlidePortion(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling createNotesSlidePortion(Async)");
-        }
-        // verify the required parameter 'shapeIndex' is set
-        if (shapeIndex == null) {
-            throw new ApiException("Missing the required parameter 'shapeIndex' when calling createNotesSlidePortion(Async)");
-        }
-        // verify the required parameter 'paragraphIndex' is set
-        if (paragraphIndex == null) {
-            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling createNotesSlidePortion(Async)");
-        }
-        // verify the required parameter 'dto' is set
-        if (dto == null) {
-            throw new ApiException("Missing the required parameter 'dto' when calling createNotesSlidePortion(Async)");
-        }
-        Object postBody = dto;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "position", position);
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "application/json"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Creates new portion.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param dto Portion DTO. (required)
-     * @param position Position of the new portion in the list. Default is at the end of the list. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return Portion
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public Portion createNotesSlidePortion(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Portion dto, Integer position, String password, String folder, String storage) throws ApiException {
-        try {
-            ApiResponse<Portion> resp = createNotesSlidePortionWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, dto, position, password, folder, storage);
-            return resp.getData();
-        } catch (NeedRepeatRequestException e) {
-            ApiResponse<Portion> resp = createNotesSlidePortionWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, dto, position, password, folder, storage);
-            return resp.getData();
-        }
-    }
-
-    /**
-     * Creates new portion.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param dto Portion DTO. (required)
-     * @param position Position of the new portion in the list. Default is at the end of the list. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ApiResponse&lt;Portion&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Portion> createNotesSlidePortionWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Portion dto, Integer position, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = createNotesSlidePortionCall(name, slideIndex, shapeIndex, paragraphIndex, dto, position, password, folder, storage, null, null);
-        Type returnType = new TypeToken<Portion>(){}.getType();
-        return apiClient.execute(call, returnType);
-    }
-
-    /**
-     * Creates new portion. (asynchronously)
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param dto Portion DTO. (required)
-     * @param position Position of the new portion in the list. Default is at the end of the list. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call createNotesSlidePortionAsync(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Portion dto, Integer position, String password, String folder, String storage, final ApiCallback<Portion> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = createNotesSlidePortionCall(name, slideIndex, shapeIndex, paragraphIndex, dto, position, password, folder, storage, progressListener, progressRequestListener);
-        Type returnType = new TypeToken<Portion>(){}.getType();
-        apiClient.executeAsync(call, returnType, callback);
-        return call;
-    }
-    /**
-     * Build call for createNotesSlideShape
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param dto Shape DTO. (required)
-     * @param shapeToClone Optional index for clone shape instead of adding a new one. 
-     * @param position Position of the new shape in the list. Default is at the end of the list. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call createNotesSlideShapeCall(String name, Integer slideIndex, ShapeBase dto, Integer shapeToClone, Integer position, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling createNotesSlideShape(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling createNotesSlideShape(Async)");
-        }
-        // verify the required parameter 'dto' is set
-        if (dto == null) {
-            throw new ApiException("Missing the required parameter 'dto' when calling createNotesSlideShape(Async)");
-        }
-        Object postBody = dto;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "shapeToClone", shapeToClone);
-        apiClient.addQueryParameter(queryParams, "position", position);
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "application/json"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Create new shape.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param dto Shape DTO. (required)
-     * @param shapeToClone Optional index for clone shape instead of adding a new one. 
-     * @param position Position of the new shape in the list. Default is at the end of the list. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ShapeBase
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ShapeBase createNotesSlideShape(String name, Integer slideIndex, ShapeBase dto, Integer shapeToClone, Integer position, String password, String folder, String storage) throws ApiException {
-        try {
-            ApiResponse<ShapeBase> resp = createNotesSlideShapeWithHttpInfo(name, slideIndex, dto, shapeToClone, position, password, folder, storage);
-            return resp.getData();
-        } catch (NeedRepeatRequestException e) {
-            ApiResponse<ShapeBase> resp = createNotesSlideShapeWithHttpInfo(name, slideIndex, dto, shapeToClone, position, password, folder, storage);
-            return resp.getData();
-        }
-    }
-
-    /**
-     * Create new shape.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param dto Shape DTO. (required)
-     * @param shapeToClone Optional index for clone shape instead of adding a new one. 
-     * @param position Position of the new shape in the list. Default is at the end of the list. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ApiResponse&lt;ShapeBase&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<ShapeBase> createNotesSlideShapeWithHttpInfo(String name, Integer slideIndex, ShapeBase dto, Integer shapeToClone, Integer position, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = createNotesSlideShapeCall(name, slideIndex, dto, shapeToClone, position, password, folder, storage, null, null);
-        Type returnType = new TypeToken<ShapeBase>(){}.getType();
-        return apiClient.execute(call, returnType);
-    }
-
-    /**
-     * Create new shape. (asynchronously)
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param dto Shape DTO. (required)
-     * @param shapeToClone Optional index for clone shape instead of adding a new one. 
-     * @param position Position of the new shape in the list. Default is at the end of the list. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call createNotesSlideShapeAsync(String name, Integer slideIndex, ShapeBase dto, Integer shapeToClone, Integer position, String password, String folder, String storage, final ApiCallback<ShapeBase> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = createNotesSlideShapeCall(name, slideIndex, dto, shapeToClone, position, password, folder, storage, progressListener, progressRequestListener);
-        Type returnType = new TypeToken<ShapeBase>(){}.getType();
-        apiClient.executeAsync(call, returnType, callback);
-        return call;
-    }
-    /**
      * Build call for createParagraph
      * @param name Document name. (required)
      * @param slideIndex Slide index. (required)
@@ -4765,6 +4453,1501 @@ public class SlidesApi {
 
         com.squareup.okhttp.Call call = createSlideCall(name, layoutAlias, position, password, folder, storage, progressListener, progressRequestListener);
         Type returnType = new TypeToken<Slides>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createSpecialSlideAnimationEffect
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param effect Animation effect DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createSpecialSlideAnimationEffectCall(String name, Integer slideIndex, SpecialSlideType slideType, Effect effect, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling createSpecialSlideAnimationEffect(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling createSpecialSlideAnimationEffect(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling createSpecialSlideAnimationEffect(Async)");
+        }
+        // verify the required parameter 'effect' is set
+        if (effect == null) {
+            throw new ApiException("Missing the required parameter 'effect' when calling createSpecialSlideAnimationEffect(Async)");
+        }
+        Object postBody = effect;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/animation/mainSequence"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Add an effect to special slide (master, layout, notes) animation.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param effect Animation effect DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return SlideAnimation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SlideAnimation createSpecialSlideAnimationEffect(String name, Integer slideIndex, SpecialSlideType slideType, Effect effect, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<SlideAnimation> resp = createSpecialSlideAnimationEffectWithHttpInfo(name, slideIndex, slideType, effect, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<SlideAnimation> resp = createSpecialSlideAnimationEffectWithHttpInfo(name, slideIndex, slideType, effect, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Add an effect to special slide (master, layout, notes) animation.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param effect Animation effect DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;SlideAnimation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SlideAnimation> createSpecialSlideAnimationEffectWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Effect effect, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = createSpecialSlideAnimationEffectCall(name, slideIndex, slideType, effect, password, folder, storage, null, null);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Add an effect to special slide (master, layout, notes) animation. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param effect Animation effect DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createSpecialSlideAnimationEffectAsync(String name, Integer slideIndex, SpecialSlideType slideType, Effect effect, String password, String folder, String storage, final ApiCallback<SlideAnimation> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createSpecialSlideAnimationEffectCall(name, slideIndex, slideType, effect, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createSpecialSlideAnimationInteractiveSequence
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequence Animation sequence DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createSpecialSlideAnimationInteractiveSequenceCall(String name, Integer slideIndex, SpecialSlideType slideType, InteractiveSequence sequence, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling createSpecialSlideAnimationInteractiveSequence(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling createSpecialSlideAnimationInteractiveSequence(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling createSpecialSlideAnimationInteractiveSequence(Async)");
+        }
+        // verify the required parameter 'sequence' is set
+        if (sequence == null) {
+            throw new ApiException("Missing the required parameter 'sequence' when calling createSpecialSlideAnimationInteractiveSequence(Async)");
+        }
+        Object postBody = sequence;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/animation/interactiveSequences"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Set special slide (master, layout, notes) animation.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequence Animation sequence DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return SlideAnimation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SlideAnimation createSpecialSlideAnimationInteractiveSequence(String name, Integer slideIndex, SpecialSlideType slideType, InteractiveSequence sequence, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<SlideAnimation> resp = createSpecialSlideAnimationInteractiveSequenceWithHttpInfo(name, slideIndex, slideType, sequence, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<SlideAnimation> resp = createSpecialSlideAnimationInteractiveSequenceWithHttpInfo(name, slideIndex, slideType, sequence, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Set special slide (master, layout, notes) animation.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequence Animation sequence DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;SlideAnimation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SlideAnimation> createSpecialSlideAnimationInteractiveSequenceWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, InteractiveSequence sequence, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = createSpecialSlideAnimationInteractiveSequenceCall(name, slideIndex, slideType, sequence, password, folder, storage, null, null);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Set special slide (master, layout, notes) animation. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequence Animation sequence DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createSpecialSlideAnimationInteractiveSequenceAsync(String name, Integer slideIndex, SpecialSlideType slideType, InteractiveSequence sequence, String password, String folder, String storage, final ApiCallback<SlideAnimation> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createSpecialSlideAnimationInteractiveSequenceCall(name, slideIndex, slideType, sequence, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createSpecialSlideAnimationInteractiveSequenceEffect
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequenceIndex The position of the interactive sequence. (required)
+     * @param effect Animation effect DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createSpecialSlideAnimationInteractiveSequenceEffectCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer sequenceIndex, Effect effect, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling createSpecialSlideAnimationInteractiveSequenceEffect(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling createSpecialSlideAnimationInteractiveSequenceEffect(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling createSpecialSlideAnimationInteractiveSequenceEffect(Async)");
+        }
+        // verify the required parameter 'sequenceIndex' is set
+        if (sequenceIndex == null) {
+            throw new ApiException("Missing the required parameter 'sequenceIndex' when calling createSpecialSlideAnimationInteractiveSequenceEffect(Async)");
+        }
+        // verify the required parameter 'effect' is set
+        if (effect == null) {
+            throw new ApiException("Missing the required parameter 'effect' when calling createSpecialSlideAnimationInteractiveSequenceEffect(Async)");
+        }
+        Object postBody = effect;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/animation/interactiveSequences/{sequenceIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "sequenceIndex" + "\\}", apiClient.objectToString(sequenceIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Add an animation effect to a special slide (master, layout, notes) interactive sequence.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequenceIndex The position of the interactive sequence. (required)
+     * @param effect Animation effect DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return SlideAnimation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SlideAnimation createSpecialSlideAnimationInteractiveSequenceEffect(String name, Integer slideIndex, SpecialSlideType slideType, Integer sequenceIndex, Effect effect, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<SlideAnimation> resp = createSpecialSlideAnimationInteractiveSequenceEffectWithHttpInfo(name, slideIndex, slideType, sequenceIndex, effect, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<SlideAnimation> resp = createSpecialSlideAnimationInteractiveSequenceEffectWithHttpInfo(name, slideIndex, slideType, sequenceIndex, effect, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Add an animation effect to a special slide (master, layout, notes) interactive sequence.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequenceIndex The position of the interactive sequence. (required)
+     * @param effect Animation effect DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;SlideAnimation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SlideAnimation> createSpecialSlideAnimationInteractiveSequenceEffectWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer sequenceIndex, Effect effect, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = createSpecialSlideAnimationInteractiveSequenceEffectCall(name, slideIndex, slideType, sequenceIndex, effect, password, folder, storage, null, null);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Add an animation effect to a special slide (master, layout, notes) interactive sequence. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequenceIndex The position of the interactive sequence. (required)
+     * @param effect Animation effect DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createSpecialSlideAnimationInteractiveSequenceEffectAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer sequenceIndex, Effect effect, String password, String folder, String storage, final ApiCallback<SlideAnimation> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createSpecialSlideAnimationInteractiveSequenceEffectCall(name, slideIndex, slideType, sequenceIndex, effect, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createSpecialSlideParagraph
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param dto Paragraph DTO. (required)
+     * @param position Position of the new paragraph in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createSpecialSlideParagraphCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Paragraph dto, Integer position, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling createSpecialSlideParagraph(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling createSpecialSlideParagraph(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling createSpecialSlideParagraph(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling createSpecialSlideParagraph(Async)");
+        }
+        // verify the required parameter 'dto' is set
+        if (dto == null) {
+            throw new ApiException("Missing the required parameter 'dto' when calling createSpecialSlideParagraph(Async)");
+        }
+        Object postBody = dto;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "position", position);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Creates new paragraph.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param dto Paragraph DTO. (required)
+     * @param position Position of the new paragraph in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Paragraph
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Paragraph createSpecialSlideParagraph(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Paragraph dto, Integer position, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Paragraph> resp = createSpecialSlideParagraphWithHttpInfo(name, slideIndex, slideType, shapeIndex, dto, position, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Paragraph> resp = createSpecialSlideParagraphWithHttpInfo(name, slideIndex, slideType, shapeIndex, dto, position, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Creates new paragraph.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param dto Paragraph DTO. (required)
+     * @param position Position of the new paragraph in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Paragraph&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Paragraph> createSpecialSlideParagraphWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Paragraph dto, Integer position, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = createSpecialSlideParagraphCall(name, slideIndex, slideType, shapeIndex, dto, position, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Paragraph>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Creates new paragraph. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param dto Paragraph DTO. (required)
+     * @param position Position of the new paragraph in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createSpecialSlideParagraphAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Paragraph dto, Integer position, String password, String folder, String storage, final ApiCallback<Paragraph> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createSpecialSlideParagraphCall(name, slideIndex, slideType, shapeIndex, dto, position, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Paragraph>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createSpecialSlidePortion
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param dto Portion DTO. (required)
+     * @param position Position of the new portion in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createSpecialSlidePortionCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Portion dto, Integer position, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling createSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling createSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling createSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling createSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling createSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'dto' is set
+        if (dto == null) {
+            throw new ApiException("Missing the required parameter 'dto' when calling createSpecialSlidePortion(Async)");
+        }
+        Object postBody = dto;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "position", position);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Creates new portion.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param dto Portion DTO. (required)
+     * @param position Position of the new portion in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Portion
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Portion createSpecialSlidePortion(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Portion dto, Integer position, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Portion> resp = createSpecialSlidePortionWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, dto, position, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Portion> resp = createSpecialSlidePortionWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, dto, position, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Creates new portion.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param dto Portion DTO. (required)
+     * @param position Position of the new portion in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Portion&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Portion> createSpecialSlidePortionWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Portion dto, Integer position, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = createSpecialSlidePortionCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, dto, position, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Portion>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Creates new portion. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param dto Portion DTO. (required)
+     * @param position Position of the new portion in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createSpecialSlidePortionAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Portion dto, Integer position, String password, String folder, String storage, final ApiCallback<Portion> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createSpecialSlidePortionCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, dto, position, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Portion>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createSpecialSlideShape
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param dto Shape DTO. 
+     * @param shapeToClone Optional index for clone shape instead of adding a new one. 
+     * @param position Position of the new shape in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createSpecialSlideShapeCall(String name, Integer slideIndex, SpecialSlideType slideType, ShapeBase dto, Integer shapeToClone, Integer position, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling createSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling createSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling createSpecialSlideShape(Async)");
+        }
+        Object postBody = dto;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "shapeToClone", shapeToClone);
+        apiClient.addQueryParameter(queryParams, "position", position);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Create new shape.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param dto Shape DTO. 
+     * @param shapeToClone Optional index for clone shape instead of adding a new one. 
+     * @param position Position of the new shape in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ShapeBase
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ShapeBase createSpecialSlideShape(String name, Integer slideIndex, SpecialSlideType slideType, ShapeBase dto, Integer shapeToClone, Integer position, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<ShapeBase> resp = createSpecialSlideShapeWithHttpInfo(name, slideIndex, slideType, dto, shapeToClone, position, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<ShapeBase> resp = createSpecialSlideShapeWithHttpInfo(name, slideIndex, slideType, dto, shapeToClone, position, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Create new shape.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param dto Shape DTO. 
+     * @param shapeToClone Optional index for clone shape instead of adding a new one. 
+     * @param position Position of the new shape in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;ShapeBase&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ShapeBase> createSpecialSlideShapeWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, ShapeBase dto, Integer shapeToClone, Integer position, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = createSpecialSlideShapeCall(name, slideIndex, slideType, dto, shapeToClone, position, password, folder, storage, null, null);
+        Type returnType = new TypeToken<ShapeBase>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Create new shape. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param dto Shape DTO. 
+     * @param shapeToClone Optional index for clone shape instead of adding a new one. 
+     * @param position Position of the new shape in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createSpecialSlideShapeAsync(String name, Integer slideIndex, SpecialSlideType slideType, ShapeBase dto, Integer shapeToClone, Integer position, String password, String folder, String storage, final ApiCallback<ShapeBase> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createSpecialSlideShapeCall(name, slideIndex, slideType, dto, shapeToClone, position, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<ShapeBase>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createSpecialSlideSubshape
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param dto Shape DTO. 
+     * @param shapeToClone Optional index for clone shape instead of adding a new one. 
+     * @param position Position of the new shape in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createSpecialSlideSubshapeCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, ShapeBase dto, Integer shapeToClone, Integer position, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling createSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling createSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling createSpecialSlideSubshape(Async)");
+        }
+        Object postBody = dto;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "shapeToClone", shapeToClone);
+        apiClient.addQueryParameter(queryParams, "position", position);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Create new shape (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param dto Shape DTO. 
+     * @param shapeToClone Optional index for clone shape instead of adding a new one. 
+     * @param position Position of the new shape in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ShapeBase
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ShapeBase createSpecialSlideSubshape(String name, Integer slideIndex, SpecialSlideType slideType, String path, ShapeBase dto, Integer shapeToClone, Integer position, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<ShapeBase> resp = createSpecialSlideSubshapeWithHttpInfo(name, slideIndex, slideType, path, dto, shapeToClone, position, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<ShapeBase> resp = createSpecialSlideSubshapeWithHttpInfo(name, slideIndex, slideType, path, dto, shapeToClone, position, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Create new shape (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param dto Shape DTO. 
+     * @param shapeToClone Optional index for clone shape instead of adding a new one. 
+     * @param position Position of the new shape in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;ShapeBase&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ShapeBase> createSpecialSlideSubshapeWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, ShapeBase dto, Integer shapeToClone, Integer position, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = createSpecialSlideSubshapeCall(name, slideIndex, slideType, path, dto, shapeToClone, position, password, folder, storage, null, null);
+        Type returnType = new TypeToken<ShapeBase>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Create new shape (for smart art and group shapes). (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param dto Shape DTO. 
+     * @param shapeToClone Optional index for clone shape instead of adding a new one. 
+     * @param position Position of the new shape in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createSpecialSlideSubshapeAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, ShapeBase dto, Integer shapeToClone, Integer position, String password, String folder, String storage, final ApiCallback<ShapeBase> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createSpecialSlideSubshapeCall(name, slideIndex, slideType, path, dto, shapeToClone, position, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<ShapeBase>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createSpecialSlideSubshapeParagraph
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param dto Paragraph DTO. (required)
+     * @param position Position of the new paragraph in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createSpecialSlideSubshapeParagraphCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Paragraph dto, Integer position, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling createSpecialSlideSubshapeParagraph(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling createSpecialSlideSubshapeParagraph(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling createSpecialSlideSubshapeParagraph(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling createSpecialSlideSubshapeParagraph(Async)");
+        }
+        // verify the required parameter 'dto' is set
+        if (dto == null) {
+            throw new ApiException("Missing the required parameter 'dto' when calling createSpecialSlideSubshapeParagraph(Async)");
+        }
+        Object postBody = dto;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "position", position);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Creates new paragraph (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param dto Paragraph DTO. (required)
+     * @param position Position of the new paragraph in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Paragraph
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Paragraph createSpecialSlideSubshapeParagraph(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Paragraph dto, Integer position, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Paragraph> resp = createSpecialSlideSubshapeParagraphWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, dto, position, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Paragraph> resp = createSpecialSlideSubshapeParagraphWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, dto, position, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Creates new paragraph (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param dto Paragraph DTO. (required)
+     * @param position Position of the new paragraph in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Paragraph&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Paragraph> createSpecialSlideSubshapeParagraphWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Paragraph dto, Integer position, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = createSpecialSlideSubshapeParagraphCall(name, slideIndex, slideType, path, shapeIndex, dto, position, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Paragraph>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Creates new paragraph (for smart art and group shapes). (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param dto Paragraph DTO. (required)
+     * @param position Position of the new paragraph in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createSpecialSlideSubshapeParagraphAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Paragraph dto, Integer position, String password, String folder, String storage, final ApiCallback<Paragraph> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createSpecialSlideSubshapeParagraphCall(name, slideIndex, slideType, path, shapeIndex, dto, position, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Paragraph>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createSpecialSlideSubshapePortion
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param dto Portion DTO. (required)
+     * @param position Position of the new portion in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createSpecialSlideSubshapePortionCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Portion dto, Integer position, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling createSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling createSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling createSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling createSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling createSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'dto' is set
+        if (dto == null) {
+            throw new ApiException("Missing the required parameter 'dto' when calling createSpecialSlideSubshapePortion(Async)");
+        }
+        Object postBody = dto;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}/portions"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "position", position);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Creates new portion (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param dto Portion DTO. (required)
+     * @param position Position of the new portion in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Portion
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Portion createSpecialSlideSubshapePortion(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Portion dto, Integer position, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Portion> resp = createSpecialSlideSubshapePortionWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, dto, position, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Portion> resp = createSpecialSlideSubshapePortionWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, dto, position, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Creates new portion (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param dto Portion DTO. (required)
+     * @param position Position of the new portion in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Portion&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Portion> createSpecialSlideSubshapePortionWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Portion dto, Integer position, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = createSpecialSlideSubshapePortionCall(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, dto, position, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Portion>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Creates new portion (for smart art and group shapes). (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param dto Portion DTO. (required)
+     * @param position Position of the new portion in the list. Default is at the end of the list. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createSpecialSlideSubshapePortionAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Portion dto, Integer position, String password, String folder, String storage, final ApiCallback<Portion> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createSpecialSlideSubshapePortionCall(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, dto, position, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Portion>(){}.getType();
         apiClient.executeAsync(call, returnType, callback);
         return call;
     }
@@ -7941,927 +9124,6 @@ public class SlidesApi {
         return call;
     }
     /**
-     * Build call for deleteNotesSlideParagraph
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call deleteNotesSlideParagraphCall(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteNotesSlideParagraph(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteNotesSlideParagraph(Async)");
-        }
-        // verify the required parameter 'shapeIndex' is set
-        if (shapeIndex == null) {
-            throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteNotesSlideParagraph(Async)");
-        }
-        // verify the required parameter 'paragraphIndex' is set
-        if (paragraphIndex == null) {
-            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling deleteNotesSlideParagraph(Async)");
-        }
-        Object postBody = null;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs/{paragraphIndex}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "application/json"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Remove a paragraph.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return Paragraphs
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public Paragraphs deleteNotesSlideParagraph(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
-        try {
-            ApiResponse<Paragraphs> resp = deleteNotesSlideParagraphWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage);
-            return resp.getData();
-        } catch (NeedRepeatRequestException e) {
-            ApiResponse<Paragraphs> resp = deleteNotesSlideParagraphWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage);
-            return resp.getData();
-        }
-    }
-
-    /**
-     * Remove a paragraph.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ApiResponse&lt;Paragraphs&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Paragraphs> deleteNotesSlideParagraphWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = deleteNotesSlideParagraphCall(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage, null, null);
-        Type returnType = new TypeToken<Paragraphs>(){}.getType();
-        return apiClient.execute(call, returnType);
-    }
-
-    /**
-     * Remove a paragraph. (asynchronously)
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call deleteNotesSlideParagraphAsync(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ApiCallback<Paragraphs> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = deleteNotesSlideParagraphCall(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage, progressListener, progressRequestListener);
-        Type returnType = new TypeToken<Paragraphs>(){}.getType();
-        apiClient.executeAsync(call, returnType, callback);
-        return call;
-    }
-    /**
-     * Build call for deleteNotesSlideParagraphs
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphs The indices of the shapes to be deleted; delete all by default. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call deleteNotesSlideParagraphsCall(String name, Integer slideIndex, Integer shapeIndex, List<Integer> paragraphs, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteNotesSlideParagraphs(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteNotesSlideParagraphs(Async)");
-        }
-        // verify the required parameter 'shapeIndex' is set
-        if (shapeIndex == null) {
-            throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteNotesSlideParagraphs(Async)");
-        }
-        Object postBody = null;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "paragraphs", paragraphs);
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "application/json"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Remove a range of paragraphs.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphs The indices of the shapes to be deleted; delete all by default. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return Paragraphs
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public Paragraphs deleteNotesSlideParagraphs(String name, Integer slideIndex, Integer shapeIndex, List<Integer> paragraphs, String password, String folder, String storage) throws ApiException {
-        try {
-            ApiResponse<Paragraphs> resp = deleteNotesSlideParagraphsWithHttpInfo(name, slideIndex, shapeIndex, paragraphs, password, folder, storage);
-            return resp.getData();
-        } catch (NeedRepeatRequestException e) {
-            ApiResponse<Paragraphs> resp = deleteNotesSlideParagraphsWithHttpInfo(name, slideIndex, shapeIndex, paragraphs, password, folder, storage);
-            return resp.getData();
-        }
-    }
-
-    /**
-     * Remove a range of paragraphs.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphs The indices of the shapes to be deleted; delete all by default. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ApiResponse&lt;Paragraphs&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Paragraphs> deleteNotesSlideParagraphsWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, List<Integer> paragraphs, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = deleteNotesSlideParagraphsCall(name, slideIndex, shapeIndex, paragraphs, password, folder, storage, null, null);
-        Type returnType = new TypeToken<Paragraphs>(){}.getType();
-        return apiClient.execute(call, returnType);
-    }
-
-    /**
-     * Remove a range of paragraphs. (asynchronously)
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphs The indices of the shapes to be deleted; delete all by default. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call deleteNotesSlideParagraphsAsync(String name, Integer slideIndex, Integer shapeIndex, List<Integer> paragraphs, String password, String folder, String storage, final ApiCallback<Paragraphs> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = deleteNotesSlideParagraphsCall(name, slideIndex, shapeIndex, paragraphs, password, folder, storage, progressListener, progressRequestListener);
-        Type returnType = new TypeToken<Paragraphs>(){}.getType();
-        apiClient.executeAsync(call, returnType, callback);
-        return call;
-    }
-    /**
-     * Build call for deleteNotesSlidePortion
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param portionIndex Portion index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call deleteNotesSlidePortionCall(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteNotesSlidePortion(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteNotesSlidePortion(Async)");
-        }
-        // verify the required parameter 'shapeIndex' is set
-        if (shapeIndex == null) {
-            throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteNotesSlidePortion(Async)");
-        }
-        // verify the required parameter 'paragraphIndex' is set
-        if (paragraphIndex == null) {
-            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling deleteNotesSlidePortion(Async)");
-        }
-        // verify the required parameter 'portionIndex' is set
-        if (portionIndex == null) {
-            throw new ApiException("Missing the required parameter 'portionIndex' when calling deleteNotesSlidePortion(Async)");
-        }
-        Object postBody = null;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex)).replaceAll("\\{" + "portionIndex" + "\\}", apiClient.objectToString(portionIndex));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "application/json"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Remove a portion.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param portionIndex Portion index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return Portions
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public Portions deleteNotesSlidePortion(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage) throws ApiException {
-        try {
-            ApiResponse<Portions> resp = deleteNotesSlidePortionWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, portionIndex, password, folder, storage);
-            return resp.getData();
-        } catch (NeedRepeatRequestException e) {
-            ApiResponse<Portions> resp = deleteNotesSlidePortionWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, portionIndex, password, folder, storage);
-            return resp.getData();
-        }
-    }
-
-    /**
-     * Remove a portion.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param portionIndex Portion index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ApiResponse&lt;Portions&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Portions> deleteNotesSlidePortionWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = deleteNotesSlidePortionCall(name, slideIndex, shapeIndex, paragraphIndex, portionIndex, password, folder, storage, null, null);
-        Type returnType = new TypeToken<Portions>(){}.getType();
-        return apiClient.execute(call, returnType);
-    }
-
-    /**
-     * Remove a portion. (asynchronously)
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param portionIndex Portion index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call deleteNotesSlidePortionAsync(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage, final ApiCallback<Portions> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = deleteNotesSlidePortionCall(name, slideIndex, shapeIndex, paragraphIndex, portionIndex, password, folder, storage, progressListener, progressRequestListener);
-        Type returnType = new TypeToken<Portions>(){}.getType();
-        apiClient.executeAsync(call, returnType, callback);
-        return call;
-    }
-    /**
-     * Build call for deleteNotesSlidePortions
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param portions The indices of the shapes to be deleted; delete all by default. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call deleteNotesSlidePortionsCall(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, List<Integer> portions, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteNotesSlidePortions(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteNotesSlidePortions(Async)");
-        }
-        // verify the required parameter 'shapeIndex' is set
-        if (shapeIndex == null) {
-            throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteNotesSlidePortions(Async)");
-        }
-        // verify the required parameter 'paragraphIndex' is set
-        if (paragraphIndex == null) {
-            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling deleteNotesSlidePortions(Async)");
-        }
-        Object postBody = null;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "portions", portions);
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "application/json"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Remove a range of portions.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param portions The indices of the shapes to be deleted; delete all by default. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return Portions
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public Portions deleteNotesSlidePortions(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, List<Integer> portions, String password, String folder, String storage) throws ApiException {
-        try {
-            ApiResponse<Portions> resp = deleteNotesSlidePortionsWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, portions, password, folder, storage);
-            return resp.getData();
-        } catch (NeedRepeatRequestException e) {
-            ApiResponse<Portions> resp = deleteNotesSlidePortionsWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, portions, password, folder, storage);
-            return resp.getData();
-        }
-    }
-
-    /**
-     * Remove a range of portions.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param portions The indices of the shapes to be deleted; delete all by default. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ApiResponse&lt;Portions&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Portions> deleteNotesSlidePortionsWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, List<Integer> portions, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = deleteNotesSlidePortionsCall(name, slideIndex, shapeIndex, paragraphIndex, portions, password, folder, storage, null, null);
-        Type returnType = new TypeToken<Portions>(){}.getType();
-        return apiClient.execute(call, returnType);
-    }
-
-    /**
-     * Remove a range of portions. (asynchronously)
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param portions The indices of the shapes to be deleted; delete all by default. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call deleteNotesSlidePortionsAsync(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, List<Integer> portions, String password, String folder, String storage, final ApiCallback<Portions> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = deleteNotesSlidePortionsCall(name, slideIndex, shapeIndex, paragraphIndex, portions, password, folder, storage, progressListener, progressRequestListener);
-        Type returnType = new TypeToken<Portions>(){}.getType();
-        apiClient.executeAsync(call, returnType, callback);
-        return call;
-    }
-    /**
-     * Build call for deleteNotesSlideShape
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call deleteNotesSlideShapeCall(String name, Integer slideIndex, Integer shapeIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteNotesSlideShape(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteNotesSlideShape(Async)");
-        }
-        // verify the required parameter 'shapeIndex' is set
-        if (shapeIndex == null) {
-            throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteNotesSlideShape(Async)");
-        }
-        Object postBody = null;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "application/json"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Remove a shape.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return Shapes
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public Shapes deleteNotesSlideShape(String name, Integer slideIndex, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
-        try {
-            ApiResponse<Shapes> resp = deleteNotesSlideShapeWithHttpInfo(name, slideIndex, shapeIndex, password, folder, storage);
-            return resp.getData();
-        } catch (NeedRepeatRequestException e) {
-            ApiResponse<Shapes> resp = deleteNotesSlideShapeWithHttpInfo(name, slideIndex, shapeIndex, password, folder, storage);
-            return resp.getData();
-        }
-    }
-
-    /**
-     * Remove a shape.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ApiResponse&lt;Shapes&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Shapes> deleteNotesSlideShapeWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = deleteNotesSlideShapeCall(name, slideIndex, shapeIndex, password, folder, storage, null, null);
-        Type returnType = new TypeToken<Shapes>(){}.getType();
-        return apiClient.execute(call, returnType);
-    }
-
-    /**
-     * Remove a shape. (asynchronously)
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call deleteNotesSlideShapeAsync(String name, Integer slideIndex, Integer shapeIndex, String password, String folder, String storage, final ApiCallback<Shapes> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = deleteNotesSlideShapeCall(name, slideIndex, shapeIndex, password, folder, storage, progressListener, progressRequestListener);
-        Type returnType = new TypeToken<Shapes>(){}.getType();
-        apiClient.executeAsync(call, returnType, callback);
-        return call;
-    }
-    /**
-     * Build call for deleteNotesSlideShapes
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapes The indices of the shapes to be deleted; delete all by default. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call deleteNotesSlideShapesCall(String name, Integer slideIndex, List<Integer> shapes, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteNotesSlideShapes(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteNotesSlideShapes(Async)");
-        }
-        Object postBody = null;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "shapes", shapes);
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "application/json"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Remove a range of shapes.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapes The indices of the shapes to be deleted; delete all by default. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return Shapes
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public Shapes deleteNotesSlideShapes(String name, Integer slideIndex, List<Integer> shapes, String password, String folder, String storage) throws ApiException {
-        try {
-            ApiResponse<Shapes> resp = deleteNotesSlideShapesWithHttpInfo(name, slideIndex, shapes, password, folder, storage);
-            return resp.getData();
-        } catch (NeedRepeatRequestException e) {
-            ApiResponse<Shapes> resp = deleteNotesSlideShapesWithHttpInfo(name, slideIndex, shapes, password, folder, storage);
-            return resp.getData();
-        }
-    }
-
-    /**
-     * Remove a range of shapes.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapes The indices of the shapes to be deleted; delete all by default. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ApiResponse&lt;Shapes&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Shapes> deleteNotesSlideShapesWithHttpInfo(String name, Integer slideIndex, List<Integer> shapes, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = deleteNotesSlideShapesCall(name, slideIndex, shapes, password, folder, storage, null, null);
-        Type returnType = new TypeToken<Shapes>(){}.getType();
-        return apiClient.execute(call, returnType);
-    }
-
-    /**
-     * Remove a range of shapes. (asynchronously)
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapes The indices of the shapes to be deleted; delete all by default. 
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call deleteNotesSlideShapesAsync(String name, Integer slideIndex, List<Integer> shapes, String password, String folder, String storage, final ApiCallback<Shapes> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = deleteNotesSlideShapesCall(name, slideIndex, shapes, password, folder, storage, progressListener, progressRequestListener);
-        Type returnType = new TypeToken<Shapes>(){}.getType();
-        apiClient.executeAsync(call, returnType, callback);
-        return call;
-    }
-    /**
      * Build call for deleteParagraph
      * @param name Document name. (required)
      * @param slideIndex Slide index. (required)
@@ -10881,6 +11143,2882 @@ public class SlidesApi {
         return call;
     }
     /**
+     * Build call for deleteSpecialSlideAnimation
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideAnimationCall(String name, Integer slideIndex, SpecialSlideType slideType, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSpecialSlideAnimation(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSpecialSlideAnimation(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling deleteSpecialSlideAnimation(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/animation"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Remove animation from a special slide (master, layout, notes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return SlideAnimation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SlideAnimation deleteSpecialSlideAnimation(String name, Integer slideIndex, SpecialSlideType slideType, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<SlideAnimation> resp = deleteSpecialSlideAnimationWithHttpInfo(name, slideIndex, slideType, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<SlideAnimation> resp = deleteSpecialSlideAnimationWithHttpInfo(name, slideIndex, slideType, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Remove animation from a special slide (master, layout, notes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;SlideAnimation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SlideAnimation> deleteSpecialSlideAnimationWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteSpecialSlideAnimationCall(name, slideIndex, slideType, password, folder, storage, null, null);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Remove animation from a special slide (master, layout, notes). (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideAnimationAsync(String name, Integer slideIndex, SpecialSlideType slideType, String password, String folder, String storage, final ApiCallback<SlideAnimation> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteSpecialSlideAnimationCall(name, slideIndex, slideType, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteSpecialSlideAnimationEffect
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param effectIndex Index of the effect to be removed. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideAnimationEffectCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer effectIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSpecialSlideAnimationEffect(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSpecialSlideAnimationEffect(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling deleteSpecialSlideAnimationEffect(Async)");
+        }
+        // verify the required parameter 'effectIndex' is set
+        if (effectIndex == null) {
+            throw new ApiException("Missing the required parameter 'effectIndex' when calling deleteSpecialSlideAnimationEffect(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/animation/mainSequence/{effectIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "effectIndex" + "\\}", apiClient.objectToString(effectIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Remove an effect from special slide (master, layout, notes) animation.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param effectIndex Index of the effect to be removed. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return SlideAnimation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SlideAnimation deleteSpecialSlideAnimationEffect(String name, Integer slideIndex, SpecialSlideType slideType, Integer effectIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<SlideAnimation> resp = deleteSpecialSlideAnimationEffectWithHttpInfo(name, slideIndex, slideType, effectIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<SlideAnimation> resp = deleteSpecialSlideAnimationEffectWithHttpInfo(name, slideIndex, slideType, effectIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Remove an effect from special slide (master, layout, notes) animation.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param effectIndex Index of the effect to be removed. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;SlideAnimation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SlideAnimation> deleteSpecialSlideAnimationEffectWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer effectIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteSpecialSlideAnimationEffectCall(name, slideIndex, slideType, effectIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Remove an effect from special slide (master, layout, notes) animation. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param effectIndex Index of the effect to be removed. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideAnimationEffectAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer effectIndex, String password, String folder, String storage, final ApiCallback<SlideAnimation> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteSpecialSlideAnimationEffectCall(name, slideIndex, slideType, effectIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteSpecialSlideAnimationInteractiveSequence
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequenceIndex The index of an interactive sequence to be deleted. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideAnimationInteractiveSequenceCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer sequenceIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSpecialSlideAnimationInteractiveSequence(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSpecialSlideAnimationInteractiveSequence(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling deleteSpecialSlideAnimationInteractiveSequence(Async)");
+        }
+        // verify the required parameter 'sequenceIndex' is set
+        if (sequenceIndex == null) {
+            throw new ApiException("Missing the required parameter 'sequenceIndex' when calling deleteSpecialSlideAnimationInteractiveSequence(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/animation/interactiveSequences/{sequenceIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "sequenceIndex" + "\\}", apiClient.objectToString(sequenceIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Remove an interactive sequence from special slide (master, layout, notes) animation.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequenceIndex The index of an interactive sequence to be deleted. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return SlideAnimation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SlideAnimation deleteSpecialSlideAnimationInteractiveSequence(String name, Integer slideIndex, SpecialSlideType slideType, Integer sequenceIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<SlideAnimation> resp = deleteSpecialSlideAnimationInteractiveSequenceWithHttpInfo(name, slideIndex, slideType, sequenceIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<SlideAnimation> resp = deleteSpecialSlideAnimationInteractiveSequenceWithHttpInfo(name, slideIndex, slideType, sequenceIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Remove an interactive sequence from special slide (master, layout, notes) animation.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequenceIndex The index of an interactive sequence to be deleted. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;SlideAnimation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SlideAnimation> deleteSpecialSlideAnimationInteractiveSequenceWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer sequenceIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteSpecialSlideAnimationInteractiveSequenceCall(name, slideIndex, slideType, sequenceIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Remove an interactive sequence from special slide (master, layout, notes) animation. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequenceIndex The index of an interactive sequence to be deleted. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideAnimationInteractiveSequenceAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer sequenceIndex, String password, String folder, String storage, final ApiCallback<SlideAnimation> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteSpecialSlideAnimationInteractiveSequenceCall(name, slideIndex, slideType, sequenceIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteSpecialSlideAnimationInteractiveSequenceEffect
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequenceIndex Interactive sequence index. (required)
+     * @param effectIndex Index of the effect to be removed. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideAnimationInteractiveSequenceEffectCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer sequenceIndex, Integer effectIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSpecialSlideAnimationInteractiveSequenceEffect(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSpecialSlideAnimationInteractiveSequenceEffect(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling deleteSpecialSlideAnimationInteractiveSequenceEffect(Async)");
+        }
+        // verify the required parameter 'sequenceIndex' is set
+        if (sequenceIndex == null) {
+            throw new ApiException("Missing the required parameter 'sequenceIndex' when calling deleteSpecialSlideAnimationInteractiveSequenceEffect(Async)");
+        }
+        // verify the required parameter 'effectIndex' is set
+        if (effectIndex == null) {
+            throw new ApiException("Missing the required parameter 'effectIndex' when calling deleteSpecialSlideAnimationInteractiveSequenceEffect(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/animation/interactiveSequences/{sequenceIndex}/{effectIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "sequenceIndex" + "\\}", apiClient.objectToString(sequenceIndex)).replaceAll("\\{" + "effectIndex" + "\\}", apiClient.objectToString(effectIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Remove an effect from special slide (master, layout, notes) animation interactive sequence.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequenceIndex Interactive sequence index. (required)
+     * @param effectIndex Index of the effect to be removed. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return SlideAnimation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SlideAnimation deleteSpecialSlideAnimationInteractiveSequenceEffect(String name, Integer slideIndex, SpecialSlideType slideType, Integer sequenceIndex, Integer effectIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<SlideAnimation> resp = deleteSpecialSlideAnimationInteractiveSequenceEffectWithHttpInfo(name, slideIndex, slideType, sequenceIndex, effectIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<SlideAnimation> resp = deleteSpecialSlideAnimationInteractiveSequenceEffectWithHttpInfo(name, slideIndex, slideType, sequenceIndex, effectIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Remove an effect from special slide (master, layout, notes) animation interactive sequence.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequenceIndex Interactive sequence index. (required)
+     * @param effectIndex Index of the effect to be removed. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;SlideAnimation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SlideAnimation> deleteSpecialSlideAnimationInteractiveSequenceEffectWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer sequenceIndex, Integer effectIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteSpecialSlideAnimationInteractiveSequenceEffectCall(name, slideIndex, slideType, sequenceIndex, effectIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Remove an effect from special slide (master, layout, notes) animation interactive sequence. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequenceIndex Interactive sequence index. (required)
+     * @param effectIndex Index of the effect to be removed. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideAnimationInteractiveSequenceEffectAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer sequenceIndex, Integer effectIndex, String password, String folder, String storage, final ApiCallback<SlideAnimation> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteSpecialSlideAnimationInteractiveSequenceEffectCall(name, slideIndex, slideType, sequenceIndex, effectIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteSpecialSlideAnimationInteractiveSequences
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideAnimationInteractiveSequencesCall(String name, Integer slideIndex, SpecialSlideType slideType, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSpecialSlideAnimationInteractiveSequences(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSpecialSlideAnimationInteractiveSequences(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling deleteSpecialSlideAnimationInteractiveSequences(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/animation/interactiveSequences"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Clear all interactive sequences from special slide (master, layout, notes) animation.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return SlideAnimation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SlideAnimation deleteSpecialSlideAnimationInteractiveSequences(String name, Integer slideIndex, SpecialSlideType slideType, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<SlideAnimation> resp = deleteSpecialSlideAnimationInteractiveSequencesWithHttpInfo(name, slideIndex, slideType, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<SlideAnimation> resp = deleteSpecialSlideAnimationInteractiveSequencesWithHttpInfo(name, slideIndex, slideType, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Clear all interactive sequences from special slide (master, layout, notes) animation.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;SlideAnimation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SlideAnimation> deleteSpecialSlideAnimationInteractiveSequencesWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteSpecialSlideAnimationInteractiveSequencesCall(name, slideIndex, slideType, password, folder, storage, null, null);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Clear all interactive sequences from special slide (master, layout, notes) animation. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideAnimationInteractiveSequencesAsync(String name, Integer slideIndex, SpecialSlideType slideType, String password, String folder, String storage, final ApiCallback<SlideAnimation> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteSpecialSlideAnimationInteractiveSequencesCall(name, slideIndex, slideType, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteSpecialSlideAnimationMainSequence
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideAnimationMainSequenceCall(String name, Integer slideIndex, SpecialSlideType slideType, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSpecialSlideAnimationMainSequence(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSpecialSlideAnimationMainSequence(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling deleteSpecialSlideAnimationMainSequence(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/animation/mainSequence"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Clear main sequence in special slide (master, layout, notes) animation.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return SlideAnimation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SlideAnimation deleteSpecialSlideAnimationMainSequence(String name, Integer slideIndex, SpecialSlideType slideType, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<SlideAnimation> resp = deleteSpecialSlideAnimationMainSequenceWithHttpInfo(name, slideIndex, slideType, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<SlideAnimation> resp = deleteSpecialSlideAnimationMainSequenceWithHttpInfo(name, slideIndex, slideType, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Clear main sequence in special slide (master, layout, notes) animation.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;SlideAnimation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SlideAnimation> deleteSpecialSlideAnimationMainSequenceWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteSpecialSlideAnimationMainSequenceCall(name, slideIndex, slideType, password, folder, storage, null, null);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Clear main sequence in special slide (master, layout, notes) animation. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideAnimationMainSequenceAsync(String name, Integer slideIndex, SpecialSlideType slideType, String password, String folder, String storage, final ApiCallback<SlideAnimation> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteSpecialSlideAnimationMainSequenceCall(name, slideIndex, slideType, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteSpecialSlideParagraph
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideParagraphCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSpecialSlideParagraph(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSpecialSlideParagraph(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling deleteSpecialSlideParagraph(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteSpecialSlideParagraph(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling deleteSpecialSlideParagraph(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Remove a paragraph.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Paragraphs
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Paragraphs deleteSpecialSlideParagraph(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Paragraphs> resp = deleteSpecialSlideParagraphWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Paragraphs> resp = deleteSpecialSlideParagraphWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Remove a paragraph.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Paragraphs&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Paragraphs> deleteSpecialSlideParagraphWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteSpecialSlideParagraphCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Paragraphs>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Remove a paragraph. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideParagraphAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ApiCallback<Paragraphs> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteSpecialSlideParagraphCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Paragraphs>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteSpecialSlideParagraphs
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphs The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideParagraphsCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, List<Integer> paragraphs, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSpecialSlideParagraphs(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSpecialSlideParagraphs(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling deleteSpecialSlideParagraphs(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteSpecialSlideParagraphs(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "paragraphs", paragraphs);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Remove a range of paragraphs.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphs The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Paragraphs
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Paragraphs deleteSpecialSlideParagraphs(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, List<Integer> paragraphs, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Paragraphs> resp = deleteSpecialSlideParagraphsWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphs, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Paragraphs> resp = deleteSpecialSlideParagraphsWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphs, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Remove a range of paragraphs.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphs The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Paragraphs&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Paragraphs> deleteSpecialSlideParagraphsWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, List<Integer> paragraphs, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteSpecialSlideParagraphsCall(name, slideIndex, slideType, shapeIndex, paragraphs, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Paragraphs>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Remove a range of paragraphs. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphs The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideParagraphsAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, List<Integer> paragraphs, String password, String folder, String storage, final ApiCallback<Paragraphs> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteSpecialSlideParagraphsCall(name, slideIndex, slideType, shapeIndex, paragraphs, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Paragraphs>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteSpecialSlidePortion
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlidePortionCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling deleteSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling deleteSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'portionIndex' is set
+        if (portionIndex == null) {
+            throw new ApiException("Missing the required parameter 'portionIndex' when calling deleteSpecialSlidePortion(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex)).replaceAll("\\{" + "portionIndex" + "\\}", apiClient.objectToString(portionIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Remove a portion.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Portions
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Portions deleteSpecialSlidePortion(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Portions> resp = deleteSpecialSlidePortionWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, portionIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Portions> resp = deleteSpecialSlidePortionWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, portionIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Remove a portion.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Portions&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Portions> deleteSpecialSlidePortionWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteSpecialSlidePortionCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, portionIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Portions>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Remove a portion. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlidePortionAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage, final ApiCallback<Portions> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteSpecialSlidePortionCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, portionIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Portions>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteSpecialSlidePortions
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portions The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlidePortionsCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, List<Integer> portions, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSpecialSlidePortions(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSpecialSlidePortions(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling deleteSpecialSlidePortions(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteSpecialSlidePortions(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling deleteSpecialSlidePortions(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "portions", portions);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Remove a range of portions.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portions The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Portions
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Portions deleteSpecialSlidePortions(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, List<Integer> portions, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Portions> resp = deleteSpecialSlidePortionsWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, portions, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Portions> resp = deleteSpecialSlidePortionsWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, portions, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Remove a range of portions.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portions The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Portions&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Portions> deleteSpecialSlidePortionsWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, List<Integer> portions, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteSpecialSlidePortionsCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, portions, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Portions>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Remove a range of portions. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portions The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlidePortionsAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, List<Integer> portions, String password, String folder, String storage, final ApiCallback<Portions> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteSpecialSlidePortionsCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, portions, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Portions>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteSpecialSlideShape
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideShapeCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling deleteSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteSpecialSlideShape(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Remove a shape.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Shapes
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Shapes deleteSpecialSlideShape(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Shapes> resp = deleteSpecialSlideShapeWithHttpInfo(name, slideIndex, slideType, shapeIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Shapes> resp = deleteSpecialSlideShapeWithHttpInfo(name, slideIndex, slideType, shapeIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Remove a shape.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Shapes&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Shapes> deleteSpecialSlideShapeWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteSpecialSlideShapeCall(name, slideIndex, slideType, shapeIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Shapes>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Remove a shape. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideShapeAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage, final ApiCallback<Shapes> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteSpecialSlideShapeCall(name, slideIndex, slideType, shapeIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Shapes>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteSpecialSlideShapes
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapes The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideShapesCall(String name, Integer slideIndex, SpecialSlideType slideType, List<Integer> shapes, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSpecialSlideShapes(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSpecialSlideShapes(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling deleteSpecialSlideShapes(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "shapes", shapes);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Remove a range of shapes.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapes The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Shapes
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Shapes deleteSpecialSlideShapes(String name, Integer slideIndex, SpecialSlideType slideType, List<Integer> shapes, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Shapes> resp = deleteSpecialSlideShapesWithHttpInfo(name, slideIndex, slideType, shapes, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Shapes> resp = deleteSpecialSlideShapesWithHttpInfo(name, slideIndex, slideType, shapes, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Remove a range of shapes.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapes The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Shapes&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Shapes> deleteSpecialSlideShapesWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, List<Integer> shapes, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteSpecialSlideShapesCall(name, slideIndex, slideType, shapes, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Shapes>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Remove a range of shapes. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapes The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideShapesAsync(String name, Integer slideIndex, SpecialSlideType slideType, List<Integer> shapes, String password, String folder, String storage, final ApiCallback<Shapes> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteSpecialSlideShapesCall(name, slideIndex, slideType, shapes, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Shapes>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteSpecialSlideSubshape
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideSubshapeCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling deleteSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteSpecialSlideSubshape(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Remove a shape (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Shapes
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Shapes deleteSpecialSlideSubshape(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Shapes> resp = deleteSpecialSlideSubshapeWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Shapes> resp = deleteSpecialSlideSubshapeWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Remove a shape (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Shapes&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Shapes> deleteSpecialSlideSubshapeWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteSpecialSlideSubshapeCall(name, slideIndex, slideType, path, shapeIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Shapes>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Remove a shape (for smart art and group shapes). (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideSubshapeAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, String password, String folder, String storage, final ApiCallback<Shapes> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteSpecialSlideSubshapeCall(name, slideIndex, slideType, path, shapeIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Shapes>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteSpecialSlideSubshapeParagraph
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideSubshapeParagraphCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSpecialSlideSubshapeParagraph(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSpecialSlideSubshapeParagraph(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling deleteSpecialSlideSubshapeParagraph(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteSpecialSlideSubshapeParagraph(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling deleteSpecialSlideSubshapeParagraph(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Remove a paragraph (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Paragraphs
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Paragraphs deleteSpecialSlideSubshapeParagraph(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Paragraphs> resp = deleteSpecialSlideSubshapeParagraphWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Paragraphs> resp = deleteSpecialSlideSubshapeParagraphWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Remove a paragraph (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Paragraphs&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Paragraphs> deleteSpecialSlideSubshapeParagraphWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteSpecialSlideSubshapeParagraphCall(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Paragraphs>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Remove a paragraph (for smart art and group shapes). (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideSubshapeParagraphAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ApiCallback<Paragraphs> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteSpecialSlideSubshapeParagraphCall(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Paragraphs>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteSpecialSlideSubshapeParagraphs
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphs The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideSubshapeParagraphsCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, List<Integer> paragraphs, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSpecialSlideSubshapeParagraphs(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSpecialSlideSubshapeParagraphs(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling deleteSpecialSlideSubshapeParagraphs(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteSpecialSlideSubshapeParagraphs(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "paragraphs", paragraphs);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Remove a range of paragraphs (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphs The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Paragraphs
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Paragraphs deleteSpecialSlideSubshapeParagraphs(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, List<Integer> paragraphs, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Paragraphs> resp = deleteSpecialSlideSubshapeParagraphsWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphs, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Paragraphs> resp = deleteSpecialSlideSubshapeParagraphsWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphs, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Remove a range of paragraphs (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphs The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Paragraphs&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Paragraphs> deleteSpecialSlideSubshapeParagraphsWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, List<Integer> paragraphs, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteSpecialSlideSubshapeParagraphsCall(name, slideIndex, slideType, path, shapeIndex, paragraphs, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Paragraphs>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Remove a range of paragraphs (for smart art and group shapes). (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphs The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideSubshapeParagraphsAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, List<Integer> paragraphs, String password, String folder, String storage, final ApiCallback<Paragraphs> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteSpecialSlideSubshapeParagraphsCall(name, slideIndex, slideType, path, shapeIndex, paragraphs, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Paragraphs>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteSpecialSlideSubshapePortion
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideSubshapePortionCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling deleteSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling deleteSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'portionIndex' is set
+        if (portionIndex == null) {
+            throw new ApiException("Missing the required parameter 'portionIndex' when calling deleteSpecialSlideSubshapePortion(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex)).replaceAll("\\{" + "portionIndex" + "\\}", apiClient.objectToString(portionIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Remove a portion (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Portions
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Portions deleteSpecialSlideSubshapePortion(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Portions> resp = deleteSpecialSlideSubshapePortionWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, portionIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Portions> resp = deleteSpecialSlideSubshapePortionWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, portionIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Remove a portion (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Portions&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Portions> deleteSpecialSlideSubshapePortionWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteSpecialSlideSubshapePortionCall(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, portionIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Portions>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Remove a portion (for smart art and group shapes). (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideSubshapePortionAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage, final ApiCallback<Portions> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteSpecialSlideSubshapePortionCall(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, portionIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Portions>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteSpecialSlideSubshapePortions
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portions The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideSubshapePortionsCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, List<Integer> portions, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSpecialSlideSubshapePortions(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSpecialSlideSubshapePortions(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling deleteSpecialSlideSubshapePortions(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling deleteSpecialSlideSubshapePortions(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling deleteSpecialSlideSubshapePortions(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}/portions"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "portions", portions);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Remove a range of portions (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portions The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Portions
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Portions deleteSpecialSlideSubshapePortions(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, List<Integer> portions, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Portions> resp = deleteSpecialSlideSubshapePortionsWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, portions, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Portions> resp = deleteSpecialSlideSubshapePortionsWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, portions, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Remove a range of portions (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portions The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Portions&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Portions> deleteSpecialSlideSubshapePortionsWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, List<Integer> portions, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteSpecialSlideSubshapePortionsCall(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, portions, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Portions>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Remove a range of portions (for smart art and group shapes). (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portions The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideSubshapePortionsAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, List<Integer> portions, String password, String folder, String storage, final ApiCallback<Portions> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteSpecialSlideSubshapePortionsCall(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, portions, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Portions>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteSpecialSlideSubshapes
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapes The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideSubshapesCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, List<Integer> shapes, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSpecialSlideSubshapes(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling deleteSpecialSlideSubshapes(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling deleteSpecialSlideSubshapes(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "shapes", shapes);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Remove a range of shapes (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapes The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Shapes
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Shapes deleteSpecialSlideSubshapes(String name, Integer slideIndex, SpecialSlideType slideType, String path, List<Integer> shapes, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Shapes> resp = deleteSpecialSlideSubshapesWithHttpInfo(name, slideIndex, slideType, path, shapes, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Shapes> resp = deleteSpecialSlideSubshapesWithHttpInfo(name, slideIndex, slideType, path, shapes, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Remove a range of shapes (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapes The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Shapes&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Shapes> deleteSpecialSlideSubshapesWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, List<Integer> shapes, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteSpecialSlideSubshapesCall(name, slideIndex, slideType, path, shapes, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Shapes>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Remove a range of shapes (for smart art and group shapes). (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapes The indices of the shapes to be deleted; delete all by default. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteSpecialSlideSubshapesAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, List<Integer> shapes, String password, String folder, String storage, final ApiCallback<Shapes> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteSpecialSlideSubshapesCall(name, slideIndex, slideType, path, shapes, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Shapes>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
      * Build call for deleteSubshape
      * @param name Document name. (required)
      * @param slideIndex Slide index. (required)
@@ -11866,7 +15004,7 @@ public class SlidesApi {
         if (accept != null) headerParams.put("Accept", accept);
 
         final String[] contentTypes = {
-            "multipart/form-data"
+            "application/json"
         };
         final String contentType = apiClient.selectHeaderContentType(contentTypes);
         headerParams.put("Content-Type", contentType);
@@ -13603,185 +16741,6 @@ public class SlidesApi {
         return call;
     }
     /**
-     * Build call for downloadNotesSlideShape
-     * @param name Presentation name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Index of shape starting from 1 (required)
-     * @param format Export picture format. (required)
-     * @param options export options 
-     * @param scaleX X scale ratio. 
-     * @param scaleY Y scale ratio. 
-     * @param bounds Shape thumbnail bounds type. 
-     * @param password Document password. 
-     * @param folder Presentation folder. 
-     * @param storage Presentation storage. 
-     * @param fontsFolder Fonts folder. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call downloadNotesSlideShapeCall(String name, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling downloadNotesSlideShape(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling downloadNotesSlideShape(Async)");
-        }
-        // verify the required parameter 'shapeIndex' is set
-        if (shapeIndex == null) {
-            throw new ApiException("Missing the required parameter 'shapeIndex' when calling downloadNotesSlideShape(Async)");
-        }
-        // verify the required parameter 'format' is set
-        if (format == null) {
-            throw new ApiException("Missing the required parameter 'format' when calling downloadNotesSlideShape(Async)");
-        }
-        Object postBody = options;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/{format}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "format" + "\\}", apiClient.objectToString(format));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "scaleX", scaleX);
-        apiClient.addQueryParameter(queryParams, "scaleY", scaleY);
-        apiClient.addQueryParameter(queryParams, "bounds", bounds);
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-        apiClient.addQueryParameter(queryParams, "fontsFolder", fontsFolder);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "multipart/form-data"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Render shape to specified picture format.
-     * 
-     * @param name Presentation name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Index of shape starting from 1 (required)
-     * @param format Export picture format. (required)
-     * @param options export options 
-     * @param scaleX X scale ratio. 
-     * @param scaleY Y scale ratio. 
-     * @param bounds Shape thumbnail bounds type. 
-     * @param password Document password. 
-     * @param folder Presentation folder. 
-     * @param storage Presentation storage. 
-     * @param fontsFolder Fonts folder. 
-     * @return File
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public File downloadNotesSlideShape(String name, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder) throws ApiException {
-        try {
-            ApiResponse<File> resp = downloadNotesSlideShapeWithHttpInfo(name, slideIndex, shapeIndex, format, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder);
-            return resp.getData();
-        } catch (NeedRepeatRequestException e) {
-            ApiResponse<File> resp = downloadNotesSlideShapeWithHttpInfo(name, slideIndex, shapeIndex, format, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder);
-            return resp.getData();
-        }
-    }
-
-    /**
-     * Render shape to specified picture format.
-     * 
-     * @param name Presentation name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Index of shape starting from 1 (required)
-     * @param format Export picture format. (required)
-     * @param options export options 
-     * @param scaleX X scale ratio. 
-     * @param scaleY Y scale ratio. 
-     * @param bounds Shape thumbnail bounds type. 
-     * @param password Document password. 
-     * @param folder Presentation folder. 
-     * @param storage Presentation storage. 
-     * @param fontsFolder Fonts folder. 
-     * @return ApiResponse&lt;File&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<File> downloadNotesSlideShapeWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder) throws ApiException {
-        com.squareup.okhttp.Call call = downloadNotesSlideShapeCall(name, slideIndex, shapeIndex, format, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder, null, null);
-        Type returnType = new TypeToken<File>(){}.getType();
-        return apiClient.execute(call, returnType);
-    }
-
-    /**
-     * Render shape to specified picture format. (asynchronously)
-     * 
-     * @param name Presentation name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Index of shape starting from 1 (required)
-     * @param format Export picture format. (required)
-     * @param options export options 
-     * @param scaleX X scale ratio. 
-     * @param scaleY Y scale ratio. 
-     * @param bounds Shape thumbnail bounds type. 
-     * @param password Document password. 
-     * @param folder Presentation folder. 
-     * @param storage Presentation storage. 
-     * @param fontsFolder Fonts folder. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call downloadNotesSlideShapeAsync(String name, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder, final ApiCallback<File> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = downloadNotesSlideShapeCall(name, slideIndex, shapeIndex, format, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder, progressListener, progressRequestListener);
-        Type returnType = new TypeToken<File>(){}.getType();
-        apiClient.executeAsync(call, returnType, callback);
-        return call;
-    }
-    /**
      * Build call for downloadPresentation
      * @param name Document name. (required)
      * @param format Export format. (required)
@@ -14125,12 +17084,13 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Fonts folder. 
+     * @param options Export options. 
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call downloadShapeOnlineCall(byte[] document, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String storage, String fontsFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call downloadShapeOnlineCall(byte[] document, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String storage, String fontsFolder, IShapeExportOptions options, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'document' is set
         if (document == null) {
             throw new ApiException("Missing the required parameter 'document' when calling downloadShapeOnline(Async)");
@@ -14147,7 +17107,7 @@ public class SlidesApi {
         if (format == null) {
             throw new ApiException("Missing the required parameter 'format' when calling downloadShapeOnline(Async)");
         }
-        Object postBody = null;
+        Object postBody = options;
 
         // create path and map variables
         String methodPath = "/slides/slides/{slideIndex}/shapes/{shapeIndex}/{format}"
@@ -14207,15 +17167,16 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Fonts folder. 
+     * @param options Export options. 
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File downloadShapeOnline(byte[] document, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String storage, String fontsFolder) throws ApiException {
+    public File downloadShapeOnline(byte[] document, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String storage, String fontsFolder, IShapeExportOptions options) throws ApiException {
         try {
-            ApiResponse<File> resp = downloadShapeOnlineWithHttpInfo(document, slideIndex, shapeIndex, format, scaleX, scaleY, bounds, password, storage, fontsFolder);
+            ApiResponse<File> resp = downloadShapeOnlineWithHttpInfo(document, slideIndex, shapeIndex, format, scaleX, scaleY, bounds, password, storage, fontsFolder, options);
             return resp.getData();
         } catch (NeedRepeatRequestException e) {
-            ApiResponse<File> resp = downloadShapeOnlineWithHttpInfo(document, slideIndex, shapeIndex, format, scaleX, scaleY, bounds, password, storage, fontsFolder);
+            ApiResponse<File> resp = downloadShapeOnlineWithHttpInfo(document, slideIndex, shapeIndex, format, scaleX, scaleY, bounds, password, storage, fontsFolder, options);
             return resp.getData();
         }
     }
@@ -14233,11 +17194,12 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Fonts folder. 
+     * @param options Export options. 
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> downloadShapeOnlineWithHttpInfo(byte[] document, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String storage, String fontsFolder) throws ApiException {
-        com.squareup.okhttp.Call call = downloadShapeOnlineCall(document, slideIndex, shapeIndex, format, scaleX, scaleY, bounds, password, storage, fontsFolder, null, null);
+    public ApiResponse<File> downloadShapeOnlineWithHttpInfo(byte[] document, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String storage, String fontsFolder, IShapeExportOptions options) throws ApiException {
+        com.squareup.okhttp.Call call = downloadShapeOnlineCall(document, slideIndex, shapeIndex, format, scaleX, scaleY, bounds, password, storage, fontsFolder, options, null, null);
         Type returnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, returnType);
     }
@@ -14255,11 +17217,12 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Fonts folder. 
+     * @param options Export options. 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call downloadShapeOnlineAsync(byte[] document, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String storage, String fontsFolder, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call downloadShapeOnlineAsync(byte[] document, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String storage, String fontsFolder, IShapeExportOptions options, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -14280,7 +17243,7 @@ public class SlidesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = downloadShapeOnlineCall(document, slideIndex, shapeIndex, format, scaleX, scaleY, bounds, password, storage, fontsFolder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = downloadShapeOnlineCall(document, slideIndex, shapeIndex, format, scaleX, scaleY, bounds, password, storage, fontsFolder, options, progressListener, progressRequestListener);
         Type returnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, returnType, callback);
         return call;
@@ -14461,12 +17424,13 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Storage folder containing custom fonts to be used with the document. 
+     * @param options Export options. 
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call downloadSlideOnlineCall(byte[] document, Integer slideIndex, SlideExportFormat format, Integer width, Integer height, String password, String storage, String fontsFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call downloadSlideOnlineCall(byte[] document, Integer slideIndex, SlideExportFormat format, Integer width, Integer height, String password, String storage, String fontsFolder, ExportOptions options, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'document' is set
         if (document == null) {
             throw new ApiException("Missing the required parameter 'document' when calling downloadSlideOnline(Async)");
@@ -14479,7 +17443,7 @@ public class SlidesApi {
         if (format == null) {
             throw new ApiException("Missing the required parameter 'format' when calling downloadSlideOnline(Async)");
         }
-        Object postBody = null;
+        Object postBody = options;
 
         // create path and map variables
         String methodPath = "/slides/slides/{slideIndex}/{format}"
@@ -14536,15 +17500,16 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Storage folder containing custom fonts to be used with the document. 
+     * @param options Export options. 
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File downloadSlideOnline(byte[] document, Integer slideIndex, SlideExportFormat format, Integer width, Integer height, String password, String storage, String fontsFolder) throws ApiException {
+    public File downloadSlideOnline(byte[] document, Integer slideIndex, SlideExportFormat format, Integer width, Integer height, String password, String storage, String fontsFolder, ExportOptions options) throws ApiException {
         try {
-            ApiResponse<File> resp = downloadSlideOnlineWithHttpInfo(document, slideIndex, format, width, height, password, storage, fontsFolder);
+            ApiResponse<File> resp = downloadSlideOnlineWithHttpInfo(document, slideIndex, format, width, height, password, storage, fontsFolder, options);
             return resp.getData();
         } catch (NeedRepeatRequestException e) {
-            ApiResponse<File> resp = downloadSlideOnlineWithHttpInfo(document, slideIndex, format, width, height, password, storage, fontsFolder);
+            ApiResponse<File> resp = downloadSlideOnlineWithHttpInfo(document, slideIndex, format, width, height, password, storage, fontsFolder, options);
             return resp.getData();
         }
     }
@@ -14560,11 +17525,12 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Storage folder containing custom fonts to be used with the document. 
+     * @param options Export options. 
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> downloadSlideOnlineWithHttpInfo(byte[] document, Integer slideIndex, SlideExportFormat format, Integer width, Integer height, String password, String storage, String fontsFolder) throws ApiException {
-        com.squareup.okhttp.Call call = downloadSlideOnlineCall(document, slideIndex, format, width, height, password, storage, fontsFolder, null, null);
+    public ApiResponse<File> downloadSlideOnlineWithHttpInfo(byte[] document, Integer slideIndex, SlideExportFormat format, Integer width, Integer height, String password, String storage, String fontsFolder, ExportOptions options) throws ApiException {
+        com.squareup.okhttp.Call call = downloadSlideOnlineCall(document, slideIndex, format, width, height, password, storage, fontsFolder, options, null, null);
         Type returnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, returnType);
     }
@@ -14580,11 +17546,12 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Storage folder containing custom fonts to be used with the document. 
+     * @param options Export options. 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call downloadSlideOnlineAsync(byte[] document, Integer slideIndex, SlideExportFormat format, Integer width, Integer height, String password, String storage, String fontsFolder, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call downloadSlideOnlineAsync(byte[] document, Integer slideIndex, SlideExportFormat format, Integer width, Integer height, String password, String storage, String fontsFolder, ExportOptions options, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -14605,7 +17572,385 @@ public class SlidesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = downloadSlideOnlineCall(document, slideIndex, format, width, height, password, storage, fontsFolder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = downloadSlideOnlineCall(document, slideIndex, format, width, height, password, storage, fontsFolder, options, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for downloadSpecialSlideShape
+     * @param name Presentation name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Index of shape starting from 1 (required)
+     * @param format Export picture format. (required)
+     * @param options Export options 
+     * @param scaleX X scale ratio. 
+     * @param scaleY Y scale ratio. 
+     * @param bounds Shape thumbnail bounds type. 
+     * @param password Document password. 
+     * @param folder Presentation folder. 
+     * @param storage Presentation storage. 
+     * @param fontsFolder Fonts folder. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call downloadSpecialSlideShapeCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, ShapeExportFormat format, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling downloadSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling downloadSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling downloadSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling downloadSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'format' is set
+        if (format == null) {
+            throw new ApiException("Missing the required parameter 'format' when calling downloadSpecialSlideShape(Async)");
+        }
+        Object postBody = options;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/{format}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "format" + "\\}", apiClient.objectToString(format));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "scaleX", scaleX);
+        apiClient.addQueryParameter(queryParams, "scaleY", scaleY);
+        apiClient.addQueryParameter(queryParams, "bounds", bounds);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+        apiClient.addQueryParameter(queryParams, "fontsFolder", fontsFolder);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "multipart/form-data"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Render shape to specified picture format.
+     * 
+     * @param name Presentation name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Index of shape starting from 1 (required)
+     * @param format Export picture format. (required)
+     * @param options Export options 
+     * @param scaleX X scale ratio. 
+     * @param scaleY Y scale ratio. 
+     * @param bounds Shape thumbnail bounds type. 
+     * @param password Document password. 
+     * @param folder Presentation folder. 
+     * @param storage Presentation storage. 
+     * @param fontsFolder Fonts folder. 
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File downloadSpecialSlideShape(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, ShapeExportFormat format, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder) throws ApiException {
+        try {
+            ApiResponse<File> resp = downloadSpecialSlideShapeWithHttpInfo(name, slideIndex, slideType, shapeIndex, format, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<File> resp = downloadSpecialSlideShapeWithHttpInfo(name, slideIndex, slideType, shapeIndex, format, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Render shape to specified picture format.
+     * 
+     * @param name Presentation name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Index of shape starting from 1 (required)
+     * @param format Export picture format. (required)
+     * @param options Export options 
+     * @param scaleX X scale ratio. 
+     * @param scaleY Y scale ratio. 
+     * @param bounds Shape thumbnail bounds type. 
+     * @param password Document password. 
+     * @param folder Presentation folder. 
+     * @param storage Presentation storage. 
+     * @param fontsFolder Fonts folder. 
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<File> downloadSpecialSlideShapeWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, ShapeExportFormat format, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder) throws ApiException {
+        com.squareup.okhttp.Call call = downloadSpecialSlideShapeCall(name, slideIndex, slideType, shapeIndex, format, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder, null, null);
+        Type returnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Render shape to specified picture format. (asynchronously)
+     * 
+     * @param name Presentation name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Index of shape starting from 1 (required)
+     * @param format Export picture format. (required)
+     * @param options Export options 
+     * @param scaleX X scale ratio. 
+     * @param scaleY Y scale ratio. 
+     * @param bounds Shape thumbnail bounds type. 
+     * @param password Document password. 
+     * @param folder Presentation folder. 
+     * @param storage Presentation storage. 
+     * @param fontsFolder Fonts folder. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call downloadSpecialSlideShapeAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, ShapeExportFormat format, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = downloadSpecialSlideShapeCall(name, slideIndex, slideType, shapeIndex, format, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for downloadSpecialSlideSubshape
+     * @param name Presentation name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Index of shape starting from 1 (required)
+     * @param format Export picture format. (required)
+     * @param options export options 
+     * @param scaleX X scale ratio. 
+     * @param scaleY Y scale ratio. 
+     * @param bounds Shape thumbnail bounds type. 
+     * @param password Document password. 
+     * @param folder Presentation folder. 
+     * @param storage Presentation storage. 
+     * @param fontsFolder Fonts folder. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call downloadSpecialSlideSubshapeCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, ShapeExportFormat format, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling downloadSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling downloadSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling downloadSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling downloadSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'format' is set
+        if (format == null) {
+            throw new ApiException("Missing the required parameter 'format' when calling downloadSpecialSlideSubshape(Async)");
+        }
+        Object postBody = options;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/{format}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "format" + "\\}", apiClient.objectToString(format));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "scaleX", scaleX);
+        apiClient.addQueryParameter(queryParams, "scaleY", scaleY);
+        apiClient.addQueryParameter(queryParams, "bounds", bounds);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+        apiClient.addQueryParameter(queryParams, "fontsFolder", fontsFolder);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "multipart/form-data"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Render shape to specified picture format (for smart art and group shapes).
+     * 
+     * @param name Presentation name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Index of shape starting from 1 (required)
+     * @param format Export picture format. (required)
+     * @param options export options 
+     * @param scaleX X scale ratio. 
+     * @param scaleY Y scale ratio. 
+     * @param bounds Shape thumbnail bounds type. 
+     * @param password Document password. 
+     * @param folder Presentation folder. 
+     * @param storage Presentation storage. 
+     * @param fontsFolder Fonts folder. 
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File downloadSpecialSlideSubshape(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, ShapeExportFormat format, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder) throws ApiException {
+        try {
+            ApiResponse<File> resp = downloadSpecialSlideSubshapeWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, format, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<File> resp = downloadSpecialSlideSubshapeWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, format, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Render shape to specified picture format (for smart art and group shapes).
+     * 
+     * @param name Presentation name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Index of shape starting from 1 (required)
+     * @param format Export picture format. (required)
+     * @param options export options 
+     * @param scaleX X scale ratio. 
+     * @param scaleY Y scale ratio. 
+     * @param bounds Shape thumbnail bounds type. 
+     * @param password Document password. 
+     * @param folder Presentation folder. 
+     * @param storage Presentation storage. 
+     * @param fontsFolder Fonts folder. 
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<File> downloadSpecialSlideSubshapeWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, ShapeExportFormat format, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder) throws ApiException {
+        com.squareup.okhttp.Call call = downloadSpecialSlideSubshapeCall(name, slideIndex, slideType, path, shapeIndex, format, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder, null, null);
+        Type returnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Render shape to specified picture format (for smart art and group shapes). (asynchronously)
+     * 
+     * @param name Presentation name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Index of shape starting from 1 (required)
+     * @param format Export picture format. (required)
+     * @param options export options 
+     * @param scaleX X scale ratio. 
+     * @param scaleY Y scale ratio. 
+     * @param bounds Shape thumbnail bounds type. 
+     * @param password Document password. 
+     * @param folder Presentation folder. 
+     * @param storage Presentation storage. 
+     * @param fontsFolder Fonts folder. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call downloadSpecialSlideSubshapeAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, ShapeExportFormat format, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = downloadSpecialSlideSubshapeCall(name, slideIndex, slideType, path, shapeIndex, format, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder, progressListener, progressRequestListener);
         Type returnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, returnType, callback);
         return call;
@@ -17160,912 +20505,6 @@ public class SlidesApi {
 
         com.squareup.okhttp.Call call = getNotesSlideOnlineCall(document, slideIndex, password, progressListener, progressRequestListener);
         Type returnType = new TypeToken<NotesSlide>(){}.getType();
-        apiClient.executeAsync(call, returnType, callback);
-        return call;
-    }
-    /**
-     * Build call for getNotesSlideParagraph
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call getNotesSlideParagraphCall(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getNotesSlideParagraph(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling getNotesSlideParagraph(Async)");
-        }
-        // verify the required parameter 'shapeIndex' is set
-        if (shapeIndex == null) {
-            throw new ApiException("Missing the required parameter 'shapeIndex' when calling getNotesSlideParagraph(Async)");
-        }
-        // verify the required parameter 'paragraphIndex' is set
-        if (paragraphIndex == null) {
-            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getNotesSlideParagraph(Async)");
-        }
-        Object postBody = null;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs/{paragraphIndex}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "application/json"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Read shape paragraph info.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return Paragraph
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public Paragraph getNotesSlideParagraph(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
-        try {
-            ApiResponse<Paragraph> resp = getNotesSlideParagraphWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage);
-            return resp.getData();
-        } catch (NeedRepeatRequestException e) {
-            ApiResponse<Paragraph> resp = getNotesSlideParagraphWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage);
-            return resp.getData();
-        }
-    }
-
-    /**
-     * Read shape paragraph info.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ApiResponse&lt;Paragraph&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Paragraph> getNotesSlideParagraphWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getNotesSlideParagraphCall(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage, null, null);
-        Type returnType = new TypeToken<Paragraph>(){}.getType();
-        return apiClient.execute(call, returnType);
-    }
-
-    /**
-     * Read shape paragraph info. (asynchronously)
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call getNotesSlideParagraphAsync(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ApiCallback<Paragraph> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getNotesSlideParagraphCall(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage, progressListener, progressRequestListener);
-        Type returnType = new TypeToken<Paragraph>(){}.getType();
-        apiClient.executeAsync(call, returnType, callback);
-        return call;
-    }
-    /**
-     * Build call for getNotesSlideParagraphs
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call getNotesSlideParagraphsCall(String name, Integer slideIndex, Integer shapeIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getNotesSlideParagraphs(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling getNotesSlideParagraphs(Async)");
-        }
-        // verify the required parameter 'shapeIndex' is set
-        if (shapeIndex == null) {
-            throw new ApiException("Missing the required parameter 'shapeIndex' when calling getNotesSlideParagraphs(Async)");
-        }
-        Object postBody = null;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "application/json"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Read shape paragraphs info.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return Paragraphs
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public Paragraphs getNotesSlideParagraphs(String name, Integer slideIndex, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
-        try {
-            ApiResponse<Paragraphs> resp = getNotesSlideParagraphsWithHttpInfo(name, slideIndex, shapeIndex, password, folder, storage);
-            return resp.getData();
-        } catch (NeedRepeatRequestException e) {
-            ApiResponse<Paragraphs> resp = getNotesSlideParagraphsWithHttpInfo(name, slideIndex, shapeIndex, password, folder, storage);
-            return resp.getData();
-        }
-    }
-
-    /**
-     * Read shape paragraphs info.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ApiResponse&lt;Paragraphs&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Paragraphs> getNotesSlideParagraphsWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getNotesSlideParagraphsCall(name, slideIndex, shapeIndex, password, folder, storage, null, null);
-        Type returnType = new TypeToken<Paragraphs>(){}.getType();
-        return apiClient.execute(call, returnType);
-    }
-
-    /**
-     * Read shape paragraphs info. (asynchronously)
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call getNotesSlideParagraphsAsync(String name, Integer slideIndex, Integer shapeIndex, String password, String folder, String storage, final ApiCallback<Paragraphs> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getNotesSlideParagraphsCall(name, slideIndex, shapeIndex, password, folder, storage, progressListener, progressRequestListener);
-        Type returnType = new TypeToken<Paragraphs>(){}.getType();
-        apiClient.executeAsync(call, returnType, callback);
-        return call;
-    }
-    /**
-     * Build call for getNotesSlidePortion
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param portionIndex Portion index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call getNotesSlidePortionCall(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getNotesSlidePortion(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling getNotesSlidePortion(Async)");
-        }
-        // verify the required parameter 'shapeIndex' is set
-        if (shapeIndex == null) {
-            throw new ApiException("Missing the required parameter 'shapeIndex' when calling getNotesSlidePortion(Async)");
-        }
-        // verify the required parameter 'paragraphIndex' is set
-        if (paragraphIndex == null) {
-            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getNotesSlidePortion(Async)");
-        }
-        // verify the required parameter 'portionIndex' is set
-        if (portionIndex == null) {
-            throw new ApiException("Missing the required parameter 'portionIndex' when calling getNotesSlidePortion(Async)");
-        }
-        Object postBody = null;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex)).replaceAll("\\{" + "portionIndex" + "\\}", apiClient.objectToString(portionIndex));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "application/json"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Read paragraph portion info.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param portionIndex Portion index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return Portion
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public Portion getNotesSlidePortion(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage) throws ApiException {
-        try {
-            ApiResponse<Portion> resp = getNotesSlidePortionWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, portionIndex, password, folder, storage);
-            return resp.getData();
-        } catch (NeedRepeatRequestException e) {
-            ApiResponse<Portion> resp = getNotesSlidePortionWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, portionIndex, password, folder, storage);
-            return resp.getData();
-        }
-    }
-
-    /**
-     * Read paragraph portion info.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param portionIndex Portion index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ApiResponse&lt;Portion&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Portion> getNotesSlidePortionWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getNotesSlidePortionCall(name, slideIndex, shapeIndex, paragraphIndex, portionIndex, password, folder, storage, null, null);
-        Type returnType = new TypeToken<Portion>(){}.getType();
-        return apiClient.execute(call, returnType);
-    }
-
-    /**
-     * Read paragraph portion info. (asynchronously)
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param portionIndex Portion index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call getNotesSlidePortionAsync(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage, final ApiCallback<Portion> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getNotesSlidePortionCall(name, slideIndex, shapeIndex, paragraphIndex, portionIndex, password, folder, storage, progressListener, progressRequestListener);
-        Type returnType = new TypeToken<Portion>(){}.getType();
-        apiClient.executeAsync(call, returnType, callback);
-        return call;
-    }
-    /**
-     * Build call for getNotesSlidePortions
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call getNotesSlidePortionsCall(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getNotesSlidePortions(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling getNotesSlidePortions(Async)");
-        }
-        // verify the required parameter 'shapeIndex' is set
-        if (shapeIndex == null) {
-            throw new ApiException("Missing the required parameter 'shapeIndex' when calling getNotesSlidePortions(Async)");
-        }
-        // verify the required parameter 'paragraphIndex' is set
-        if (paragraphIndex == null) {
-            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getNotesSlidePortions(Async)");
-        }
-        Object postBody = null;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "application/json"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Read paragraph portions info.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return Portions
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public Portions getNotesSlidePortions(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
-        try {
-            ApiResponse<Portions> resp = getNotesSlidePortionsWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage);
-            return resp.getData();
-        } catch (NeedRepeatRequestException e) {
-            ApiResponse<Portions> resp = getNotesSlidePortionsWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage);
-            return resp.getData();
-        }
-    }
-
-    /**
-     * Read paragraph portions info.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ApiResponse&lt;Portions&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Portions> getNotesSlidePortionsWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getNotesSlidePortionsCall(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage, null, null);
-        Type returnType = new TypeToken<Portions>(){}.getType();
-        return apiClient.execute(call, returnType);
-    }
-
-    /**
-     * Read paragraph portions info. (asynchronously)
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call getNotesSlidePortionsAsync(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ApiCallback<Portions> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getNotesSlidePortionsCall(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage, progressListener, progressRequestListener);
-        Type returnType = new TypeToken<Portions>(){}.getType();
-        apiClient.executeAsync(call, returnType, callback);
-        return call;
-    }
-    /**
-     * Build call for getNotesSlideShape
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call getNotesSlideShapeCall(String name, Integer slideIndex, Integer shapeIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getNotesSlideShape(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling getNotesSlideShape(Async)");
-        }
-        // verify the required parameter 'shapeIndex' is set
-        if (shapeIndex == null) {
-            throw new ApiException("Missing the required parameter 'shapeIndex' when calling getNotesSlideShape(Async)");
-        }
-        Object postBody = null;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "application/json"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Read slide shape info.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ShapeBase
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ShapeBase getNotesSlideShape(String name, Integer slideIndex, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
-        try {
-            ApiResponse<ShapeBase> resp = getNotesSlideShapeWithHttpInfo(name, slideIndex, shapeIndex, password, folder, storage);
-            return resp.getData();
-        } catch (NeedRepeatRequestException e) {
-            ApiResponse<ShapeBase> resp = getNotesSlideShapeWithHttpInfo(name, slideIndex, shapeIndex, password, folder, storage);
-            return resp.getData();
-        }
-    }
-
-    /**
-     * Read slide shape info.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ApiResponse&lt;ShapeBase&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<ShapeBase> getNotesSlideShapeWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getNotesSlideShapeCall(name, slideIndex, shapeIndex, password, folder, storage, null, null);
-        Type returnType = new TypeToken<ShapeBase>(){}.getType();
-        return apiClient.execute(call, returnType);
-    }
-
-    /**
-     * Read slide shape info. (asynchronously)
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call getNotesSlideShapeAsync(String name, Integer slideIndex, Integer shapeIndex, String password, String folder, String storage, final ApiCallback<ShapeBase> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getNotesSlideShapeCall(name, slideIndex, shapeIndex, password, folder, storage, progressListener, progressRequestListener);
-        Type returnType = new TypeToken<ShapeBase>(){}.getType();
-        apiClient.executeAsync(call, returnType, callback);
-        return call;
-    }
-    /**
-     * Build call for getNotesSlideShapes
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call getNotesSlideShapesCall(String name, Integer slideIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getNotesSlideShapes(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling getNotesSlideShapes(Async)");
-        }
-        Object postBody = null;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "application/json"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Read slide shapes info.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return Shapes
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public Shapes getNotesSlideShapes(String name, Integer slideIndex, String password, String folder, String storage) throws ApiException {
-        try {
-            ApiResponse<Shapes> resp = getNotesSlideShapesWithHttpInfo(name, slideIndex, password, folder, storage);
-            return resp.getData();
-        } catch (NeedRepeatRequestException e) {
-            ApiResponse<Shapes> resp = getNotesSlideShapesWithHttpInfo(name, slideIndex, password, folder, storage);
-            return resp.getData();
-        }
-    }
-
-    /**
-     * Read slide shapes info.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ApiResponse&lt;Shapes&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Shapes> getNotesSlideShapesWithHttpInfo(String name, Integer slideIndex, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getNotesSlideShapesCall(name, slideIndex, password, folder, storage, null, null);
-        Type returnType = new TypeToken<Shapes>(){}.getType();
-        return apiClient.execute(call, returnType);
-    }
-
-    /**
-     * Read slide shapes info. (asynchronously)
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call getNotesSlideShapesAsync(String name, Integer slideIndex, String password, String folder, String storage, final ApiCallback<Shapes> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getNotesSlideShapesCall(name, slideIndex, password, folder, storage, progressListener, progressRequestListener);
-        Type returnType = new TypeToken<Shapes>(){}.getType();
         apiClient.executeAsync(call, returnType, callback);
         return call;
     }
@@ -20880,6 +23319,2090 @@ public class SlidesApi {
 
         com.squareup.okhttp.Call call = getSlidesCall(name, password, folder, storage, progressListener, progressRequestListener);
         Type returnType = new TypeToken<Slides>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSpecialSlideAnimation
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. If specified, only effects related to that shape are returned. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideAnimationCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getSpecialSlideAnimation(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling getSpecialSlideAnimation(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling getSpecialSlideAnimation(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/animation"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "shapeIndex", shapeIndex);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Read special slide (master, layout, notes) animation effects.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. If specified, only effects related to that shape are returned. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return SlideAnimation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SlideAnimation getSpecialSlideAnimation(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<SlideAnimation> resp = getSpecialSlideAnimationWithHttpInfo(name, slideIndex, slideType, shapeIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<SlideAnimation> resp = getSpecialSlideAnimationWithHttpInfo(name, slideIndex, slideType, shapeIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Read special slide (master, layout, notes) animation effects.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. If specified, only effects related to that shape are returned. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;SlideAnimation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SlideAnimation> getSpecialSlideAnimationWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getSpecialSlideAnimationCall(name, slideIndex, slideType, shapeIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Read special slide (master, layout, notes) animation effects. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. If specified, only effects related to that shape are returned. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideAnimationAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage, final ApiCallback<SlideAnimation> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSpecialSlideAnimationCall(name, slideIndex, slideType, shapeIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSpecialSlideParagraph
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideParagraphCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getSpecialSlideParagraph(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling getSpecialSlideParagraph(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling getSpecialSlideParagraph(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling getSpecialSlideParagraph(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getSpecialSlideParagraph(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Read shape paragraph info.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Paragraph
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Paragraph getSpecialSlideParagraph(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Paragraph> resp = getSpecialSlideParagraphWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Paragraph> resp = getSpecialSlideParagraphWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Read shape paragraph info.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Paragraph&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Paragraph> getSpecialSlideParagraphWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getSpecialSlideParagraphCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Paragraph>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Read shape paragraph info. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideParagraphAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ApiCallback<Paragraph> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSpecialSlideParagraphCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Paragraph>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSpecialSlideParagraphs
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideParagraphsCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getSpecialSlideParagraphs(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling getSpecialSlideParagraphs(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling getSpecialSlideParagraphs(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling getSpecialSlideParagraphs(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Read special shape paragraphs info.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Paragraphs
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Paragraphs getSpecialSlideParagraphs(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Paragraphs> resp = getSpecialSlideParagraphsWithHttpInfo(name, slideIndex, slideType, shapeIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Paragraphs> resp = getSpecialSlideParagraphsWithHttpInfo(name, slideIndex, slideType, shapeIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Read special shape paragraphs info.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Paragraphs&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Paragraphs> getSpecialSlideParagraphsWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getSpecialSlideParagraphsCall(name, slideIndex, slideType, shapeIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Paragraphs>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Read special shape paragraphs info. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideParagraphsAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage, final ApiCallback<Paragraphs> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSpecialSlideParagraphsCall(name, slideIndex, slideType, shapeIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Paragraphs>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSpecialSlidePortion
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlidePortionCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling getSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling getSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling getSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'portionIndex' is set
+        if (portionIndex == null) {
+            throw new ApiException("Missing the required parameter 'portionIndex' when calling getSpecialSlidePortion(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex)).replaceAll("\\{" + "portionIndex" + "\\}", apiClient.objectToString(portionIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Read paragraph portion info.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Portion
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Portion getSpecialSlidePortion(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Portion> resp = getSpecialSlidePortionWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, portionIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Portion> resp = getSpecialSlidePortionWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, portionIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Read paragraph portion info.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Portion&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Portion> getSpecialSlidePortionWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getSpecialSlidePortionCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, portionIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Portion>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Read paragraph portion info. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlidePortionAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage, final ApiCallback<Portion> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSpecialSlidePortionCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, portionIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Portion>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSpecialSlidePortions
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlidePortionsCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getSpecialSlidePortions(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling getSpecialSlidePortions(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling getSpecialSlidePortions(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling getSpecialSlidePortions(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getSpecialSlidePortions(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Read paragraph portions info.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Portions
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Portions getSpecialSlidePortions(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Portions> resp = getSpecialSlidePortionsWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Portions> resp = getSpecialSlidePortionsWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Read paragraph portions info.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Portions&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Portions> getSpecialSlidePortionsWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getSpecialSlidePortionsCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Portions>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Read paragraph portions info. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlidePortionsAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ApiCallback<Portions> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSpecialSlidePortionsCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Portions>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSpecialSlideShape
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideShapeCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling getSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling getSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling getSpecialSlideShape(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Read special slide shape info.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ShapeBase
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ShapeBase getSpecialSlideShape(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<ShapeBase> resp = getSpecialSlideShapeWithHttpInfo(name, slideIndex, slideType, shapeIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<ShapeBase> resp = getSpecialSlideShapeWithHttpInfo(name, slideIndex, slideType, shapeIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Read special slide shape info.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;ShapeBase&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ShapeBase> getSpecialSlideShapeWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getSpecialSlideShapeCall(name, slideIndex, slideType, shapeIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<ShapeBase>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Read special slide shape info. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideShapeAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage, final ApiCallback<ShapeBase> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSpecialSlideShapeCall(name, slideIndex, slideType, shapeIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<ShapeBase>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSpecialSlideShapes
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideShapesCall(String name, Integer slideIndex, SpecialSlideType slideType, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getSpecialSlideShapes(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling getSpecialSlideShapes(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling getSpecialSlideShapes(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Read special slide shapes info.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Shapes
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Shapes getSpecialSlideShapes(String name, Integer slideIndex, SpecialSlideType slideType, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Shapes> resp = getSpecialSlideShapesWithHttpInfo(name, slideIndex, slideType, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Shapes> resp = getSpecialSlideShapesWithHttpInfo(name, slideIndex, slideType, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Read special slide shapes info.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Shapes&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Shapes> getSpecialSlideShapesWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getSpecialSlideShapesCall(name, slideIndex, slideType, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Shapes>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Read special slide shapes info. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideShapesAsync(String name, Integer slideIndex, SpecialSlideType slideType, String password, String folder, String storage, final ApiCallback<Shapes> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSpecialSlideShapesCall(name, slideIndex, slideType, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Shapes>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSpecialSlideSubshape
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideSubshapeCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling getSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling getSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling getSpecialSlideSubshape(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Read special slide shape info (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ShapeBase
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ShapeBase getSpecialSlideSubshape(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<ShapeBase> resp = getSpecialSlideSubshapeWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<ShapeBase> resp = getSpecialSlideSubshapeWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Read special slide shape info (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;ShapeBase&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ShapeBase> getSpecialSlideSubshapeWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getSpecialSlideSubshapeCall(name, slideIndex, slideType, path, shapeIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<ShapeBase>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Read special slide shape info (for smart art and group shapes). (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideSubshapeAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, String password, String folder, String storage, final ApiCallback<ShapeBase> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSpecialSlideSubshapeCall(name, slideIndex, slideType, path, shapeIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<ShapeBase>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSpecialSlideSubshapeParagraph
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideSubshapeParagraphCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getSpecialSlideSubshapeParagraph(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling getSpecialSlideSubshapeParagraph(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling getSpecialSlideSubshapeParagraph(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling getSpecialSlideSubshapeParagraph(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getSpecialSlideSubshapeParagraph(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Read shape paragraph info (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Paragraph
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Paragraph getSpecialSlideSubshapeParagraph(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Paragraph> resp = getSpecialSlideSubshapeParagraphWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Paragraph> resp = getSpecialSlideSubshapeParagraphWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Read shape paragraph info (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Paragraph&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Paragraph> getSpecialSlideSubshapeParagraphWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getSpecialSlideSubshapeParagraphCall(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Paragraph>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Read shape paragraph info (for smart art and group shapes). (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideSubshapeParagraphAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ApiCallback<Paragraph> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSpecialSlideSubshapeParagraphCall(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Paragraph>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSpecialSlideSubshapeParagraphs
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideSubshapeParagraphsCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getSpecialSlideSubshapeParagraphs(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling getSpecialSlideSubshapeParagraphs(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling getSpecialSlideSubshapeParagraphs(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling getSpecialSlideSubshapeParagraphs(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Read shape paragraphs info (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Paragraphs
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Paragraphs getSpecialSlideSubshapeParagraphs(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Paragraphs> resp = getSpecialSlideSubshapeParagraphsWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Paragraphs> resp = getSpecialSlideSubshapeParagraphsWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Read shape paragraphs info (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Paragraphs&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Paragraphs> getSpecialSlideSubshapeParagraphsWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getSpecialSlideSubshapeParagraphsCall(name, slideIndex, slideType, path, shapeIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Paragraphs>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Read shape paragraphs info (for smart art and group shapes). (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideSubshapeParagraphsAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, String password, String folder, String storage, final ApiCallback<Paragraphs> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSpecialSlideSubshapeParagraphsCall(name, slideIndex, slideType, path, shapeIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Paragraphs>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSpecialSlideSubshapePortion
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideSubshapePortionCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling getSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling getSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling getSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'portionIndex' is set
+        if (portionIndex == null) {
+            throw new ApiException("Missing the required parameter 'portionIndex' when calling getSpecialSlideSubshapePortion(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex)).replaceAll("\\{" + "portionIndex" + "\\}", apiClient.objectToString(portionIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Read paragraph portion info (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Portion
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Portion getSpecialSlideSubshapePortion(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Portion> resp = getSpecialSlideSubshapePortionWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, portionIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Portion> resp = getSpecialSlideSubshapePortionWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, portionIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Read paragraph portion info (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Portion&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Portion> getSpecialSlideSubshapePortionWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getSpecialSlideSubshapePortionCall(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, portionIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Portion>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Read paragraph portion info (for smart art and group shapes). (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideSubshapePortionAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage, final ApiCallback<Portion> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSpecialSlideSubshapePortionCall(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, portionIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Portion>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSpecialSlideSubshapePortions
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideSubshapePortionsCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getSpecialSlideSubshapePortions(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling getSpecialSlideSubshapePortions(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling getSpecialSlideSubshapePortions(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling getSpecialSlideSubshapePortions(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getSpecialSlideSubshapePortions(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}/portions"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Read paragraph portions info (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Portions
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Portions getSpecialSlideSubshapePortions(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Portions> resp = getSpecialSlideSubshapePortionsWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Portions> resp = getSpecialSlideSubshapePortionsWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Read paragraph portions info (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Portions&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Portions> getSpecialSlideSubshapePortionsWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getSpecialSlideSubshapePortionsCall(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Portions>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Read paragraph portions info (for smart art and group shapes). (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideSubshapePortionsAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ApiCallback<Portions> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSpecialSlideSubshapePortionsCall(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Portions>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSpecialSlideSubshapes
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path (for smart art and group shapes). 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideSubshapesCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getSpecialSlideSubshapes(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling getSpecialSlideSubshapes(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling getSpecialSlideSubshapes(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Read special slide shapes info.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path (for smart art and group shapes). 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Shapes
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Shapes getSpecialSlideSubshapes(String name, Integer slideIndex, SpecialSlideType slideType, String path, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Shapes> resp = getSpecialSlideSubshapesWithHttpInfo(name, slideIndex, slideType, path, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Shapes> resp = getSpecialSlideSubshapesWithHttpInfo(name, slideIndex, slideType, path, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Read special slide shapes info.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path (for smart art and group shapes). 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Shapes&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Shapes> getSpecialSlideSubshapesWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getSpecialSlideSubshapesCall(name, slideIndex, slideType, path, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Shapes>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Read special slide shapes info. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path (for smart art and group shapes). 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSpecialSlideSubshapesAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, String password, String folder, String storage, final ApiCallback<Shapes> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSpecialSlideSubshapesCall(name, slideIndex, slideType, path, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Shapes>(){}.getType();
         apiClient.executeAsync(call, returnType, callback);
         return call;
     }
@@ -24713,190 +29236,6 @@ public class SlidesApi {
         return call;
     }
     /**
-     * Build call for saveNotesSlideShape
-     * @param name Presentation name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Index of shape starting from 1 (required)
-     * @param format Export picture format. (required)
-     * @param outPath Output path. (required)
-     * @param options export options 
-     * @param scaleX X scale ratio. 
-     * @param scaleY Y scale ratio. 
-     * @param bounds Shape thumbnail bounds type. 
-     * @param password Document password. 
-     * @param folder Presentation folder. 
-     * @param storage Presentation storage. 
-     * @param fontsFolder Fonts folder. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call saveNotesSlideShapeCall(String name, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, String outPath, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling saveNotesSlideShape(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling saveNotesSlideShape(Async)");
-        }
-        // verify the required parameter 'shapeIndex' is set
-        if (shapeIndex == null) {
-            throw new ApiException("Missing the required parameter 'shapeIndex' when calling saveNotesSlideShape(Async)");
-        }
-        // verify the required parameter 'format' is set
-        if (format == null) {
-            throw new ApiException("Missing the required parameter 'format' when calling saveNotesSlideShape(Async)");
-        }
-        // verify the required parameter 'outPath' is set
-        if (outPath == null) {
-            throw new ApiException("Missing the required parameter 'outPath' when calling saveNotesSlideShape(Async)");
-        }
-        Object postBody = options;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/{format}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "format" + "\\}", apiClient.objectToString(format));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "outPath", outPath);
-        apiClient.addQueryParameter(queryParams, "scaleX", scaleX);
-        apiClient.addQueryParameter(queryParams, "scaleY", scaleY);
-        apiClient.addQueryParameter(queryParams, "bounds", bounds);
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-        apiClient.addQueryParameter(queryParams, "fontsFolder", fontsFolder);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "application/json"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Render shape to specified picture format.
-     * 
-     * @param name Presentation name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Index of shape starting from 1 (required)
-     * @param format Export picture format. (required)
-     * @param outPath Output path. (required)
-     * @param options export options 
-     * @param scaleX X scale ratio. 
-     * @param scaleY Y scale ratio. 
-     * @param bounds Shape thumbnail bounds type. 
-     * @param password Document password. 
-     * @param folder Presentation folder. 
-     * @param storage Presentation storage. 
-     * @param fontsFolder Fonts folder. 
-     
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void saveNotesSlideShape(String name, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, String outPath, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder) throws ApiException {
-        try {
-            saveNotesSlideShapeWithHttpInfo(name, slideIndex, shapeIndex, format, outPath, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder);
-        } catch (NeedRepeatRequestException e) {
-            saveNotesSlideShapeWithHttpInfo(name, slideIndex, shapeIndex, format, outPath, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder);
-        }
-    }
-
-    /**
-     * Render shape to specified picture format.
-     * 
-     * @param name Presentation name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Index of shape starting from 1 (required)
-     * @param format Export picture format. (required)
-     * @param outPath Output path. (required)
-     * @param options export options 
-     * @param scaleX X scale ratio. 
-     * @param scaleY Y scale ratio. 
-     * @param bounds Shape thumbnail bounds type. 
-     * @param password Document password. 
-     * @param folder Presentation folder. 
-     * @param storage Presentation storage. 
-     * @param fontsFolder Fonts folder. 
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> saveNotesSlideShapeWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, String outPath, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder) throws ApiException {
-        com.squareup.okhttp.Call call = saveNotesSlideShapeCall(name, slideIndex, shapeIndex, format, outPath, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder, null, null);
-        return apiClient.execute(call);
-    }
-
-    /**
-     * Render shape to specified picture format. (asynchronously)
-     * 
-     * @param name Presentation name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Index of shape starting from 1 (required)
-     * @param format Export picture format. (required)
-     * @param outPath Output path. (required)
-     * @param options export options 
-     * @param scaleX X scale ratio. 
-     * @param scaleY Y scale ratio. 
-     * @param bounds Shape thumbnail bounds type. 
-     * @param password Document password. 
-     * @param folder Presentation folder. 
-     * @param storage Presentation storage. 
-     * @param fontsFolder Fonts folder. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call saveNotesSlideShapeAsync(String name, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, String outPath, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder, final ApiCallback<Void> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = saveNotesSlideShapeCall(name, slideIndex, shapeIndex, format, outPath, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
-        return call;
-    }
-    /**
      * Build call for savePresentation
      * @param name Document name. (required)
      * @param format Export format. (required)
@@ -25251,12 +29590,13 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Fonts folder. 
+     * @param options Export options. 
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call saveShapeOnlineCall(byte[] document, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, String outPath, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String storage, String fontsFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call saveShapeOnlineCall(byte[] document, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, String outPath, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String storage, String fontsFolder, IShapeExportOptions options, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'document' is set
         if (document == null) {
             throw new ApiException("Missing the required parameter 'document' when calling saveShapeOnline(Async)");
@@ -25277,7 +29617,7 @@ public class SlidesApi {
         if (outPath == null) {
             throw new ApiException("Missing the required parameter 'outPath' when calling saveShapeOnline(Async)");
         }
-        Object postBody = null;
+        Object postBody = options;
 
         // create path and map variables
         String methodPath = "/slides/slides/{slideIndex}/shapes/{shapeIndex}/{format}"
@@ -25339,14 +29679,15 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Fonts folder. 
+     * @param options Export options. 
      
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void saveShapeOnline(byte[] document, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, String outPath, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String storage, String fontsFolder) throws ApiException {
+    public void saveShapeOnline(byte[] document, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, String outPath, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String storage, String fontsFolder, IShapeExportOptions options) throws ApiException {
         try {
-            saveShapeOnlineWithHttpInfo(document, slideIndex, shapeIndex, format, outPath, scaleX, scaleY, bounds, password, storage, fontsFolder);
+            saveShapeOnlineWithHttpInfo(document, slideIndex, shapeIndex, format, outPath, scaleX, scaleY, bounds, password, storage, fontsFolder, options);
         } catch (NeedRepeatRequestException e) {
-            saveShapeOnlineWithHttpInfo(document, slideIndex, shapeIndex, format, outPath, scaleX, scaleY, bounds, password, storage, fontsFolder);
+            saveShapeOnlineWithHttpInfo(document, slideIndex, shapeIndex, format, outPath, scaleX, scaleY, bounds, password, storage, fontsFolder, options);
         }
     }
 
@@ -25364,11 +29705,12 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Fonts folder. 
+     * @param options Export options. 
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> saveShapeOnlineWithHttpInfo(byte[] document, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, String outPath, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String storage, String fontsFolder) throws ApiException {
-        com.squareup.okhttp.Call call = saveShapeOnlineCall(document, slideIndex, shapeIndex, format, outPath, scaleX, scaleY, bounds, password, storage, fontsFolder, null, null);
+    public ApiResponse<Void> saveShapeOnlineWithHttpInfo(byte[] document, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, String outPath, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String storage, String fontsFolder, IShapeExportOptions options) throws ApiException {
+        com.squareup.okhttp.Call call = saveShapeOnlineCall(document, slideIndex, shapeIndex, format, outPath, scaleX, scaleY, bounds, password, storage, fontsFolder, options, null, null);
         return apiClient.execute(call);
     }
 
@@ -25386,11 +29728,12 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Fonts folder. 
+     * @param options Export options. 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call saveShapeOnlineAsync(byte[] document, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, String outPath, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String storage, String fontsFolder, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call saveShapeOnlineAsync(byte[] document, Integer slideIndex, Integer shapeIndex, ShapeExportFormat format, String outPath, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String storage, String fontsFolder, IShapeExportOptions options, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -25411,7 +29754,7 @@ public class SlidesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = saveShapeOnlineCall(document, slideIndex, shapeIndex, format, outPath, scaleX, scaleY, bounds, password, storage, fontsFolder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = saveShapeOnlineCall(document, slideIndex, shapeIndex, format, outPath, scaleX, scaleY, bounds, password, storage, fontsFolder, options, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -25597,12 +29940,13 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Storage folder containing custom fonts to be used with the document. 
+     * @param options Export options. 
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call saveSlideOnlineCall(byte[] document, Integer slideIndex, SlideExportFormat format, String outPath, Integer width, Integer height, String password, String storage, String fontsFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call saveSlideOnlineCall(byte[] document, Integer slideIndex, SlideExportFormat format, String outPath, Integer width, Integer height, String password, String storage, String fontsFolder, ExportOptions options, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'document' is set
         if (document == null) {
             throw new ApiException("Missing the required parameter 'document' when calling saveSlideOnline(Async)");
@@ -25619,7 +29963,7 @@ public class SlidesApi {
         if (outPath == null) {
             throw new ApiException("Missing the required parameter 'outPath' when calling saveSlideOnline(Async)");
         }
-        Object postBody = null;
+        Object postBody = options;
 
         // create path and map variables
         String methodPath = "/slides/slides/{slideIndex}/{format}"
@@ -25678,14 +30022,15 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Storage folder containing custom fonts to be used with the document. 
+     * @param options Export options. 
      
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void saveSlideOnline(byte[] document, Integer slideIndex, SlideExportFormat format, String outPath, Integer width, Integer height, String password, String storage, String fontsFolder) throws ApiException {
+    public void saveSlideOnline(byte[] document, Integer slideIndex, SlideExportFormat format, String outPath, Integer width, Integer height, String password, String storage, String fontsFolder, ExportOptions options) throws ApiException {
         try {
-            saveSlideOnlineWithHttpInfo(document, slideIndex, format, outPath, width, height, password, storage, fontsFolder);
+            saveSlideOnlineWithHttpInfo(document, slideIndex, format, outPath, width, height, password, storage, fontsFolder, options);
         } catch (NeedRepeatRequestException e) {
-            saveSlideOnlineWithHttpInfo(document, slideIndex, format, outPath, width, height, password, storage, fontsFolder);
+            saveSlideOnlineWithHttpInfo(document, slideIndex, format, outPath, width, height, password, storage, fontsFolder, options);
         }
     }
 
@@ -25701,11 +30046,12 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Storage folder containing custom fonts to be used with the document. 
+     * @param options Export options. 
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> saveSlideOnlineWithHttpInfo(byte[] document, Integer slideIndex, SlideExportFormat format, String outPath, Integer width, Integer height, String password, String storage, String fontsFolder) throws ApiException {
-        com.squareup.okhttp.Call call = saveSlideOnlineCall(document, slideIndex, format, outPath, width, height, password, storage, fontsFolder, null, null);
+    public ApiResponse<Void> saveSlideOnlineWithHttpInfo(byte[] document, Integer slideIndex, SlideExportFormat format, String outPath, Integer width, Integer height, String password, String storage, String fontsFolder, ExportOptions options) throws ApiException {
+        com.squareup.okhttp.Call call = saveSlideOnlineCall(document, slideIndex, format, outPath, width, height, password, storage, fontsFolder, options, null, null);
         return apiClient.execute(call);
     }
 
@@ -25721,11 +30067,12 @@ public class SlidesApi {
      * @param password Document password. 
      * @param storage Document storage. 
      * @param fontsFolder Storage folder containing custom fonts to be used with the document. 
+     * @param options Export options. 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call saveSlideOnlineAsync(byte[] document, Integer slideIndex, SlideExportFormat format, String outPath, Integer width, Integer height, String password, String storage, String fontsFolder, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call saveSlideOnlineAsync(byte[] document, Integer slideIndex, SlideExportFormat format, String outPath, Integer width, Integer height, String password, String storage, String fontsFolder, ExportOptions options, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -25746,7 +30093,395 @@ public class SlidesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = saveSlideOnlineCall(document, slideIndex, format, outPath, width, height, password, storage, fontsFolder, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = saveSlideOnlineCall(document, slideIndex, format, outPath, width, height, password, storage, fontsFolder, options, progressListener, progressRequestListener);
+        apiClient.executeAsync(call, callback);
+        return call;
+    }
+    /**
+     * Build call for saveSpecialSlideShape
+     * @param name Presentation name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Index of shape starting from 1 (required)
+     * @param format Export picture format. (required)
+     * @param outPath Output path. (required)
+     * @param options export options 
+     * @param scaleX X scale ratio. 
+     * @param scaleY Y scale ratio. 
+     * @param bounds Shape thumbnail bounds type. 
+     * @param password Document password. 
+     * @param folder Presentation folder. 
+     * @param storage Presentation storage. 
+     * @param fontsFolder Fonts folder. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call saveSpecialSlideShapeCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, ShapeExportFormat format, String outPath, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling saveSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling saveSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling saveSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling saveSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'format' is set
+        if (format == null) {
+            throw new ApiException("Missing the required parameter 'format' when calling saveSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling saveSpecialSlideShape(Async)");
+        }
+        Object postBody = options;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/{format}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "format" + "\\}", apiClient.objectToString(format));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "outPath", outPath);
+        apiClient.addQueryParameter(queryParams, "scaleX", scaleX);
+        apiClient.addQueryParameter(queryParams, "scaleY", scaleY);
+        apiClient.addQueryParameter(queryParams, "bounds", bounds);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+        apiClient.addQueryParameter(queryParams, "fontsFolder", fontsFolder);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Render shape to specified picture format.
+     * 
+     * @param name Presentation name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Index of shape starting from 1 (required)
+     * @param format Export picture format. (required)
+     * @param outPath Output path. (required)
+     * @param options export options 
+     * @param scaleX X scale ratio. 
+     * @param scaleY Y scale ratio. 
+     * @param bounds Shape thumbnail bounds type. 
+     * @param password Document password. 
+     * @param folder Presentation folder. 
+     * @param storage Presentation storage. 
+     * @param fontsFolder Fonts folder. 
+     
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void saveSpecialSlideShape(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, ShapeExportFormat format, String outPath, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder) throws ApiException {
+        try {
+            saveSpecialSlideShapeWithHttpInfo(name, slideIndex, slideType, shapeIndex, format, outPath, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder);
+        } catch (NeedRepeatRequestException e) {
+            saveSpecialSlideShapeWithHttpInfo(name, slideIndex, slideType, shapeIndex, format, outPath, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder);
+        }
+    }
+
+    /**
+     * Render shape to specified picture format.
+     * 
+     * @param name Presentation name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Index of shape starting from 1 (required)
+     * @param format Export picture format. (required)
+     * @param outPath Output path. (required)
+     * @param options export options 
+     * @param scaleX X scale ratio. 
+     * @param scaleY Y scale ratio. 
+     * @param bounds Shape thumbnail bounds type. 
+     * @param password Document password. 
+     * @param folder Presentation folder. 
+     * @param storage Presentation storage. 
+     * @param fontsFolder Fonts folder. 
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> saveSpecialSlideShapeWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, ShapeExportFormat format, String outPath, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder) throws ApiException {
+        com.squareup.okhttp.Call call = saveSpecialSlideShapeCall(name, slideIndex, slideType, shapeIndex, format, outPath, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder, null, null);
+        return apiClient.execute(call);
+    }
+
+    /**
+     * Render shape to specified picture format. (asynchronously)
+     * 
+     * @param name Presentation name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Index of shape starting from 1 (required)
+     * @param format Export picture format. (required)
+     * @param outPath Output path. (required)
+     * @param options export options 
+     * @param scaleX X scale ratio. 
+     * @param scaleY Y scale ratio. 
+     * @param bounds Shape thumbnail bounds type. 
+     * @param password Document password. 
+     * @param folder Presentation folder. 
+     * @param storage Presentation storage. 
+     * @param fontsFolder Fonts folder. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call saveSpecialSlideShapeAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, ShapeExportFormat format, String outPath, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder, final ApiCallback<Void> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = saveSpecialSlideShapeCall(name, slideIndex, slideType, shapeIndex, format, outPath, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder, progressListener, progressRequestListener);
+        apiClient.executeAsync(call, callback);
+        return call;
+    }
+    /**
+     * Build call for saveSpecialSlideSubshape
+     * @param name Presentation name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path (for smart art and group shapes). 
+     * @param shapeIndex Index of shape starting from 1 (required)
+     * @param format Export picture format. (required)
+     * @param outPath Output path. (required)
+     * @param options export options 
+     * @param scaleX X scale ratio. 
+     * @param scaleY Y scale ratio. 
+     * @param bounds Shape thumbnail bounds type. 
+     * @param password Document password. 
+     * @param folder Presentation folder. 
+     * @param storage Presentation storage. 
+     * @param fontsFolder Fonts folder. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call saveSpecialSlideSubshapeCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, ShapeExportFormat format, String outPath, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling saveSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling saveSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling saveSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling saveSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'format' is set
+        if (format == null) {
+            throw new ApiException("Missing the required parameter 'format' when calling saveSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling saveSpecialSlideSubshape(Async)");
+        }
+        Object postBody = options;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/{format}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "format" + "\\}", apiClient.objectToString(format));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "outPath", outPath);
+        apiClient.addQueryParameter(queryParams, "scaleX", scaleX);
+        apiClient.addQueryParameter(queryParams, "scaleY", scaleY);
+        apiClient.addQueryParameter(queryParams, "bounds", bounds);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+        apiClient.addQueryParameter(queryParams, "fontsFolder", fontsFolder);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Render shape to specified picture format.
+     * 
+     * @param name Presentation name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path (for smart art and group shapes). 
+     * @param shapeIndex Index of shape starting from 1 (required)
+     * @param format Export picture format. (required)
+     * @param outPath Output path. (required)
+     * @param options export options 
+     * @param scaleX X scale ratio. 
+     * @param scaleY Y scale ratio. 
+     * @param bounds Shape thumbnail bounds type. 
+     * @param password Document password. 
+     * @param folder Presentation folder. 
+     * @param storage Presentation storage. 
+     * @param fontsFolder Fonts folder. 
+     
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void saveSpecialSlideSubshape(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, ShapeExportFormat format, String outPath, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder) throws ApiException {
+        try {
+            saveSpecialSlideSubshapeWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, format, outPath, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder);
+        } catch (NeedRepeatRequestException e) {
+            saveSpecialSlideSubshapeWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, format, outPath, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder);
+        }
+    }
+
+    /**
+     * Render shape to specified picture format.
+     * 
+     * @param name Presentation name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path (for smart art and group shapes). 
+     * @param shapeIndex Index of shape starting from 1 (required)
+     * @param format Export picture format. (required)
+     * @param outPath Output path. (required)
+     * @param options export options 
+     * @param scaleX X scale ratio. 
+     * @param scaleY Y scale ratio. 
+     * @param bounds Shape thumbnail bounds type. 
+     * @param password Document password. 
+     * @param folder Presentation folder. 
+     * @param storage Presentation storage. 
+     * @param fontsFolder Fonts folder. 
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> saveSpecialSlideSubshapeWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, ShapeExportFormat format, String outPath, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder) throws ApiException {
+        com.squareup.okhttp.Call call = saveSpecialSlideSubshapeCall(name, slideIndex, slideType, path, shapeIndex, format, outPath, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder, null, null);
+        return apiClient.execute(call);
+    }
+
+    /**
+     * Render shape to specified picture format. (asynchronously)
+     * 
+     * @param name Presentation name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path (for smart art and group shapes). 
+     * @param shapeIndex Index of shape starting from 1 (required)
+     * @param format Export picture format. (required)
+     * @param outPath Output path. (required)
+     * @param options export options 
+     * @param scaleX X scale ratio. 
+     * @param scaleY Y scale ratio. 
+     * @param bounds Shape thumbnail bounds type. 
+     * @param password Document password. 
+     * @param folder Presentation folder. 
+     * @param storage Presentation storage. 
+     * @param fontsFolder Fonts folder. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call saveSpecialSlideSubshapeAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, ShapeExportFormat format, String outPath, IShapeExportOptions options, Double scaleX, Double scaleY, ShapeThumbnailBounds bounds, String password, String folder, String storage, String fontsFolder, final ApiCallback<Void> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = saveSpecialSlideSubshapeCall(name, slideIndex, slideType, path, shapeIndex, format, outPath, options, scaleX, scaleY, bounds, password, folder, storage, fontsFolder, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -27648,6 +32383,161 @@ public class SlidesApi {
         return call;
     }
     /**
+     * Build call for setSpecialSlideAnimation
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param animation Animation DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call setSpecialSlideAnimationCall(String name, Integer slideIndex, SpecialSlideType slideType, SlideAnimation animation, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling setSpecialSlideAnimation(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling setSpecialSlideAnimation(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling setSpecialSlideAnimation(Async)");
+        }
+        // verify the required parameter 'animation' is set
+        if (animation == null) {
+            throw new ApiException("Missing the required parameter 'animation' when calling setSpecialSlideAnimation(Async)");
+        }
+        Object postBody = animation;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/animation"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Set special slide (master, layout, notes) animation.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param animation Animation DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return SlideAnimation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SlideAnimation setSpecialSlideAnimation(String name, Integer slideIndex, SpecialSlideType slideType, SlideAnimation animation, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<SlideAnimation> resp = setSpecialSlideAnimationWithHttpInfo(name, slideIndex, slideType, animation, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<SlideAnimation> resp = setSpecialSlideAnimationWithHttpInfo(name, slideIndex, slideType, animation, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Set special slide (master, layout, notes) animation.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param animation Animation DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;SlideAnimation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SlideAnimation> setSpecialSlideAnimationWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, SlideAnimation animation, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = setSpecialSlideAnimationCall(name, slideIndex, slideType, animation, password, folder, storage, null, null);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Set special slide (master, layout, notes) animation. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param animation Animation DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call setSpecialSlideAnimationAsync(String name, Integer slideIndex, SpecialSlideType slideType, SlideAnimation animation, String password, String folder, String storage, final ApiCallback<SlideAnimation> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = setSpecialSlideAnimationCall(name, slideIndex, slideType, animation, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
      * Build call for setViewProperties
      * @param name Document name. (required)
      * @param dto The view properties data. (required)
@@ -29508,495 +34398,6 @@ public class SlidesApi {
         return call;
     }
     /**
-     * Build call for updateNotesSlideParagraph
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param dto Paragraph DTO. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call updateNotesSlideParagraphCall(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Paragraph dto, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling updateNotesSlideParagraph(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling updateNotesSlideParagraph(Async)");
-        }
-        // verify the required parameter 'shapeIndex' is set
-        if (shapeIndex == null) {
-            throw new ApiException("Missing the required parameter 'shapeIndex' when calling updateNotesSlideParagraph(Async)");
-        }
-        // verify the required parameter 'paragraphIndex' is set
-        if (paragraphIndex == null) {
-            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling updateNotesSlideParagraph(Async)");
-        }
-        // verify the required parameter 'dto' is set
-        if (dto == null) {
-            throw new ApiException("Missing the required parameter 'dto' when calling updateNotesSlideParagraph(Async)");
-        }
-        Object postBody = dto;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs/{paragraphIndex}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "application/json"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Update paragraph properties.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param dto Paragraph DTO. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return Paragraph
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public Paragraph updateNotesSlideParagraph(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Paragraph dto, String password, String folder, String storage) throws ApiException {
-        try {
-            ApiResponse<Paragraph> resp = updateNotesSlideParagraphWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, dto, password, folder, storage);
-            return resp.getData();
-        } catch (NeedRepeatRequestException e) {
-            ApiResponse<Paragraph> resp = updateNotesSlideParagraphWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, dto, password, folder, storage);
-            return resp.getData();
-        }
-    }
-
-    /**
-     * Update paragraph properties.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param dto Paragraph DTO. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ApiResponse&lt;Paragraph&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Paragraph> updateNotesSlideParagraphWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Paragraph dto, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = updateNotesSlideParagraphCall(name, slideIndex, shapeIndex, paragraphIndex, dto, password, folder, storage, null, null);
-        Type returnType = new TypeToken<Paragraph>(){}.getType();
-        return apiClient.execute(call, returnType);
-    }
-
-    /**
-     * Update paragraph properties. (asynchronously)
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param dto Paragraph DTO. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call updateNotesSlideParagraphAsync(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Paragraph dto, String password, String folder, String storage, final ApiCallback<Paragraph> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = updateNotesSlideParagraphCall(name, slideIndex, shapeIndex, paragraphIndex, dto, password, folder, storage, progressListener, progressRequestListener);
-        Type returnType = new TypeToken<Paragraph>(){}.getType();
-        apiClient.executeAsync(call, returnType, callback);
-        return call;
-    }
-    /**
-     * Build call for updateNotesSlidePortion
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param portionIndex Portion index. (required)
-     * @param dto Portion DTO. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call updateNotesSlidePortionCall(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, Portion dto, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling updateNotesSlidePortion(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling updateNotesSlidePortion(Async)");
-        }
-        // verify the required parameter 'shapeIndex' is set
-        if (shapeIndex == null) {
-            throw new ApiException("Missing the required parameter 'shapeIndex' when calling updateNotesSlidePortion(Async)");
-        }
-        // verify the required parameter 'paragraphIndex' is set
-        if (paragraphIndex == null) {
-            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling updateNotesSlidePortion(Async)");
-        }
-        // verify the required parameter 'portionIndex' is set
-        if (portionIndex == null) {
-            throw new ApiException("Missing the required parameter 'portionIndex' when calling updateNotesSlidePortion(Async)");
-        }
-        // verify the required parameter 'dto' is set
-        if (dto == null) {
-            throw new ApiException("Missing the required parameter 'dto' when calling updateNotesSlidePortion(Async)");
-        }
-        Object postBody = dto;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex)).replaceAll("\\{" + "portionIndex" + "\\}", apiClient.objectToString(portionIndex));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "application/json"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Update portion properties.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param portionIndex Portion index. (required)
-     * @param dto Portion DTO. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return Portion
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public Portion updateNotesSlidePortion(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, Portion dto, String password, String folder, String storage) throws ApiException {
-        try {
-            ApiResponse<Portion> resp = updateNotesSlidePortionWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, portionIndex, dto, password, folder, storage);
-            return resp.getData();
-        } catch (NeedRepeatRequestException e) {
-            ApiResponse<Portion> resp = updateNotesSlidePortionWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, portionIndex, dto, password, folder, storage);
-            return resp.getData();
-        }
-    }
-
-    /**
-     * Update portion properties.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param portionIndex Portion index. (required)
-     * @param dto Portion DTO. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ApiResponse&lt;Portion&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Portion> updateNotesSlidePortionWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, Portion dto, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = updateNotesSlidePortionCall(name, slideIndex, shapeIndex, paragraphIndex, portionIndex, dto, password, folder, storage, null, null);
-        Type returnType = new TypeToken<Portion>(){}.getType();
-        return apiClient.execute(call, returnType);
-    }
-
-    /**
-     * Update portion properties. (asynchronously)
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param paragraphIndex Paragraph index. (required)
-     * @param portionIndex Portion index. (required)
-     * @param dto Portion DTO. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call updateNotesSlidePortionAsync(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, Portion dto, String password, String folder, String storage, final ApiCallback<Portion> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = updateNotesSlidePortionCall(name, slideIndex, shapeIndex, paragraphIndex, portionIndex, dto, password, folder, storage, progressListener, progressRequestListener);
-        Type returnType = new TypeToken<Portion>(){}.getType();
-        apiClient.executeAsync(call, returnType, callback);
-        return call;
-    }
-    /**
-     * Build call for updateNotesSlideShape
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param dto Shape DTO. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call updateNotesSlideShapeCall(String name, Integer slideIndex, Integer shapeIndex, ShapeBase dto, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling updateNotesSlideShape(Async)");
-        }
-        // verify the required parameter 'slideIndex' is set
-        if (slideIndex == null) {
-            throw new ApiException("Missing the required parameter 'slideIndex' when calling updateNotesSlideShape(Async)");
-        }
-        // verify the required parameter 'shapeIndex' is set
-        if (shapeIndex == null) {
-            throw new ApiException("Missing the required parameter 'shapeIndex' when calling updateNotesSlideShape(Async)");
-        }
-        // verify the required parameter 'dto' is set
-        if (dto == null) {
-            throw new ApiException("Missing the required parameter 'dto' when calling updateNotesSlideShape(Async)");
-        }
-        Object postBody = dto;
-
-        // create path and map variables
-        String methodPath = "/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
-
-        List<Pair> queryParams = new ArrayList<Pair>();
-        apiClient.addQueryParameter(queryParams, "folder", folder);
-        apiClient.addQueryParameter(queryParams, "storage", storage);
-
-        Map<String, String> headerParams = new HashMap<String, String>();
-        if (password != null)
-        headerParams.put("password", apiClient.parameterToString(password));
-
-        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
-
-        final String[] accepts = {
-            "application/json"
-        };
-        final String accept = apiClient.selectHeaderAccept(accepts);
-        if (accept != null) headerParams.put("Accept", accept);
-
-        final String[] contentTypes = {
-            "application/json"
-        };
-        final String contentType = apiClient.selectHeaderContentType(contentTypes);
-        headerParams.put("Content-Type", contentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-        return apiClient.buildCall(methodPath, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
-    }
-
-    /**
-     * Update shape properties.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param dto Shape DTO. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ShapeBase
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ShapeBase updateNotesSlideShape(String name, Integer slideIndex, Integer shapeIndex, ShapeBase dto, String password, String folder, String storage) throws ApiException {
-        try {
-            ApiResponse<ShapeBase> resp = updateNotesSlideShapeWithHttpInfo(name, slideIndex, shapeIndex, dto, password, folder, storage);
-            return resp.getData();
-        } catch (NeedRepeatRequestException e) {
-            ApiResponse<ShapeBase> resp = updateNotesSlideShapeWithHttpInfo(name, slideIndex, shapeIndex, dto, password, folder, storage);
-            return resp.getData();
-        }
-    }
-
-    /**
-     * Update shape properties.
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param dto Shape DTO. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @return ApiResponse&lt;ShapeBase&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<ShapeBase> updateNotesSlideShapeWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, ShapeBase dto, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = updateNotesSlideShapeCall(name, slideIndex, shapeIndex, dto, password, folder, storage, null, null);
-        Type returnType = new TypeToken<ShapeBase>(){}.getType();
-        return apiClient.execute(call, returnType);
-    }
-
-    /**
-     * Update shape properties. (asynchronously)
-     * 
-     * @param name Document name. (required)
-     * @param slideIndex Slide index. (required)
-     * @param shapeIndex Shape index. (required)
-     * @param dto Shape DTO. (required)
-     * @param password Document password. 
-     * @param folder Document folder. 
-     * @param storage Document storage. 
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call updateNotesSlideShapeAsync(String name, Integer slideIndex, Integer shapeIndex, ShapeBase dto, String password, String folder, String storage, final ApiCallback<ShapeBase> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = updateNotesSlideShapeCall(name, slideIndex, shapeIndex, dto, password, folder, storage, progressListener, progressRequestListener);
-        Type returnType = new TypeToken<ShapeBase>(){}.getType();
-        apiClient.executeAsync(call, returnType, callback);
-        return call;
-    }
-    /**
      * Build call for updateParagraph
      * @param name Document name. (required)
      * @param slideIndex Slide index. (required)
@@ -30777,6 +35178,1378 @@ public class SlidesApi {
 
         com.squareup.okhttp.Call call = updateSlideCall(name, slideIndex, slideDto, password, folder, storage, progressListener, progressRequestListener);
         Type returnType = new TypeToken<Slide>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateSpecialSlideAnimationEffect
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param effectIndex The position of the effect to be modified. (required)
+     * @param effect Animation effect DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateSpecialSlideAnimationEffectCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer effectIndex, Effect effect, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling updateSpecialSlideAnimationEffect(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling updateSpecialSlideAnimationEffect(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling updateSpecialSlideAnimationEffect(Async)");
+        }
+        // verify the required parameter 'effectIndex' is set
+        if (effectIndex == null) {
+            throw new ApiException("Missing the required parameter 'effectIndex' when calling updateSpecialSlideAnimationEffect(Async)");
+        }
+        // verify the required parameter 'effect' is set
+        if (effect == null) {
+            throw new ApiException("Missing the required parameter 'effect' when calling updateSpecialSlideAnimationEffect(Async)");
+        }
+        Object postBody = effect;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/animation/mainSequence/{effectIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "effectIndex" + "\\}", apiClient.objectToString(effectIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Modify an animation effect for a special slide (master, layout, notes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param effectIndex The position of the effect to be modified. (required)
+     * @param effect Animation effect DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return SlideAnimation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SlideAnimation updateSpecialSlideAnimationEffect(String name, Integer slideIndex, SpecialSlideType slideType, Integer effectIndex, Effect effect, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<SlideAnimation> resp = updateSpecialSlideAnimationEffectWithHttpInfo(name, slideIndex, slideType, effectIndex, effect, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<SlideAnimation> resp = updateSpecialSlideAnimationEffectWithHttpInfo(name, slideIndex, slideType, effectIndex, effect, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Modify an animation effect for a special slide (master, layout, notes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param effectIndex The position of the effect to be modified. (required)
+     * @param effect Animation effect DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;SlideAnimation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SlideAnimation> updateSpecialSlideAnimationEffectWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer effectIndex, Effect effect, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = updateSpecialSlideAnimationEffectCall(name, slideIndex, slideType, effectIndex, effect, password, folder, storage, null, null);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Modify an animation effect for a special slide (master, layout, notes). (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param effectIndex The position of the effect to be modified. (required)
+     * @param effect Animation effect DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateSpecialSlideAnimationEffectAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer effectIndex, Effect effect, String password, String folder, String storage, final ApiCallback<SlideAnimation> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateSpecialSlideAnimationEffectCall(name, slideIndex, slideType, effectIndex, effect, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateSpecialSlideAnimationInteractiveSequenceEffect
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequenceIndex The position of the interactive sequence. (required)
+     * @param effectIndex The position of the effect to be modified. (required)
+     * @param effect Animation effect DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateSpecialSlideAnimationInteractiveSequenceEffectCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer sequenceIndex, Integer effectIndex, Effect effect, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling updateSpecialSlideAnimationInteractiveSequenceEffect(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling updateSpecialSlideAnimationInteractiveSequenceEffect(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling updateSpecialSlideAnimationInteractiveSequenceEffect(Async)");
+        }
+        // verify the required parameter 'sequenceIndex' is set
+        if (sequenceIndex == null) {
+            throw new ApiException("Missing the required parameter 'sequenceIndex' when calling updateSpecialSlideAnimationInteractiveSequenceEffect(Async)");
+        }
+        // verify the required parameter 'effectIndex' is set
+        if (effectIndex == null) {
+            throw new ApiException("Missing the required parameter 'effectIndex' when calling updateSpecialSlideAnimationInteractiveSequenceEffect(Async)");
+        }
+        // verify the required parameter 'effect' is set
+        if (effect == null) {
+            throw new ApiException("Missing the required parameter 'effect' when calling updateSpecialSlideAnimationInteractiveSequenceEffect(Async)");
+        }
+        Object postBody = effect;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/animation/interactiveSequences/{sequenceIndex}/{effectIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "sequenceIndex" + "\\}", apiClient.objectToString(sequenceIndex)).replaceAll("\\{" + "effectIndex" + "\\}", apiClient.objectToString(effectIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Modify an animation effect for a special slide (master, layout, notes) interactive sequence.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequenceIndex The position of the interactive sequence. (required)
+     * @param effectIndex The position of the effect to be modified. (required)
+     * @param effect Animation effect DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return SlideAnimation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SlideAnimation updateSpecialSlideAnimationInteractiveSequenceEffect(String name, Integer slideIndex, SpecialSlideType slideType, Integer sequenceIndex, Integer effectIndex, Effect effect, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<SlideAnimation> resp = updateSpecialSlideAnimationInteractiveSequenceEffectWithHttpInfo(name, slideIndex, slideType, sequenceIndex, effectIndex, effect, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<SlideAnimation> resp = updateSpecialSlideAnimationInteractiveSequenceEffectWithHttpInfo(name, slideIndex, slideType, sequenceIndex, effectIndex, effect, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Modify an animation effect for a special slide (master, layout, notes) interactive sequence.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequenceIndex The position of the interactive sequence. (required)
+     * @param effectIndex The position of the effect to be modified. (required)
+     * @param effect Animation effect DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;SlideAnimation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SlideAnimation> updateSpecialSlideAnimationInteractiveSequenceEffectWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer sequenceIndex, Integer effectIndex, Effect effect, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = updateSpecialSlideAnimationInteractiveSequenceEffectCall(name, slideIndex, slideType, sequenceIndex, effectIndex, effect, password, folder, storage, null, null);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Modify an animation effect for a special slide (master, layout, notes) interactive sequence. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param sequenceIndex The position of the interactive sequence. (required)
+     * @param effectIndex The position of the effect to be modified. (required)
+     * @param effect Animation effect DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateSpecialSlideAnimationInteractiveSequenceEffectAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer sequenceIndex, Integer effectIndex, Effect effect, String password, String folder, String storage, final ApiCallback<SlideAnimation> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateSpecialSlideAnimationInteractiveSequenceEffectCall(name, slideIndex, slideType, sequenceIndex, effectIndex, effect, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<SlideAnimation>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateSpecialSlideParagraph
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param dto Paragraph DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateSpecialSlideParagraphCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Paragraph dto, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling updateSpecialSlideParagraph(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling updateSpecialSlideParagraph(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling updateSpecialSlideParagraph(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling updateSpecialSlideParagraph(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling updateSpecialSlideParagraph(Async)");
+        }
+        // verify the required parameter 'dto' is set
+        if (dto == null) {
+            throw new ApiException("Missing the required parameter 'dto' when calling updateSpecialSlideParagraph(Async)");
+        }
+        Object postBody = dto;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Update paragraph properties.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param dto Paragraph DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Paragraph
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Paragraph updateSpecialSlideParagraph(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Paragraph dto, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Paragraph> resp = updateSpecialSlideParagraphWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, dto, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Paragraph> resp = updateSpecialSlideParagraphWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, dto, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Update paragraph properties.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param dto Paragraph DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Paragraph&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Paragraph> updateSpecialSlideParagraphWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Paragraph dto, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = updateSpecialSlideParagraphCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, dto, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Paragraph>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Update paragraph properties. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param dto Paragraph DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateSpecialSlideParagraphAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Paragraph dto, String password, String folder, String storage, final ApiCallback<Paragraph> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateSpecialSlideParagraphCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, dto, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Paragraph>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateSpecialSlidePortion
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param dto Portion DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateSpecialSlidePortionCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, Portion dto, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling updateSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling updateSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling updateSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling updateSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling updateSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'portionIndex' is set
+        if (portionIndex == null) {
+            throw new ApiException("Missing the required parameter 'portionIndex' when calling updateSpecialSlidePortion(Async)");
+        }
+        // verify the required parameter 'dto' is set
+        if (dto == null) {
+            throw new ApiException("Missing the required parameter 'dto' when calling updateSpecialSlidePortion(Async)");
+        }
+        Object postBody = dto;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex)).replaceAll("\\{" + "portionIndex" + "\\}", apiClient.objectToString(portionIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Update portion properties.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param dto Portion DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Portion
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Portion updateSpecialSlidePortion(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, Portion dto, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Portion> resp = updateSpecialSlidePortionWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, portionIndex, dto, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Portion> resp = updateSpecialSlidePortionWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, portionIndex, dto, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Update portion properties.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param dto Portion DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Portion&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Portion> updateSpecialSlidePortionWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, Portion dto, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = updateSpecialSlidePortionCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, portionIndex, dto, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Portion>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Update portion properties. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param dto Portion DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateSpecialSlidePortionAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, Portion dto, String password, String folder, String storage, final ApiCallback<Portion> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateSpecialSlidePortionCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, portionIndex, dto, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Portion>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateSpecialSlideShape
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param dto Shape DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateSpecialSlideShapeCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, ShapeBase dto, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling updateSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling updateSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling updateSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling updateSpecialSlideShape(Async)");
+        }
+        // verify the required parameter 'dto' is set
+        if (dto == null) {
+            throw new ApiException("Missing the required parameter 'dto' when calling updateSpecialSlideShape(Async)");
+        }
+        Object postBody = dto;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Update shape properties.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param dto Shape DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ShapeBase
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ShapeBase updateSpecialSlideShape(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, ShapeBase dto, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<ShapeBase> resp = updateSpecialSlideShapeWithHttpInfo(name, slideIndex, slideType, shapeIndex, dto, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<ShapeBase> resp = updateSpecialSlideShapeWithHttpInfo(name, slideIndex, slideType, shapeIndex, dto, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Update shape properties.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param dto Shape DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;ShapeBase&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ShapeBase> updateSpecialSlideShapeWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, ShapeBase dto, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = updateSpecialSlideShapeCall(name, slideIndex, slideType, shapeIndex, dto, password, folder, storage, null, null);
+        Type returnType = new TypeToken<ShapeBase>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Update shape properties. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param shapeIndex Shape index. (required)
+     * @param dto Shape DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateSpecialSlideShapeAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, ShapeBase dto, String password, String folder, String storage, final ApiCallback<ShapeBase> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateSpecialSlideShapeCall(name, slideIndex, slideType, shapeIndex, dto, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<ShapeBase>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateSpecialSlideSubshape
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param dto Shape DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateSpecialSlideSubshapeCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, ShapeBase dto, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling updateSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling updateSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling updateSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling updateSpecialSlideSubshape(Async)");
+        }
+        // verify the required parameter 'dto' is set
+        if (dto == null) {
+            throw new ApiException("Missing the required parameter 'dto' when calling updateSpecialSlideSubshape(Async)");
+        }
+        Object postBody = dto;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Update shape properties (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param dto Shape DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ShapeBase
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ShapeBase updateSpecialSlideSubshape(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, ShapeBase dto, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<ShapeBase> resp = updateSpecialSlideSubshapeWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, dto, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<ShapeBase> resp = updateSpecialSlideSubshapeWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, dto, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Update shape properties (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param dto Shape DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;ShapeBase&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ShapeBase> updateSpecialSlideSubshapeWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, ShapeBase dto, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = updateSpecialSlideSubshapeCall(name, slideIndex, slideType, path, shapeIndex, dto, password, folder, storage, null, null);
+        Type returnType = new TypeToken<ShapeBase>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Update shape properties (for smart art and group shapes). (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param dto Shape DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateSpecialSlideSubshapeAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, ShapeBase dto, String password, String folder, String storage, final ApiCallback<ShapeBase> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateSpecialSlideSubshapeCall(name, slideIndex, slideType, path, shapeIndex, dto, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<ShapeBase>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateSpecialSlideSubshapeParagraph
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param dto Paragraph DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateSpecialSlideSubshapeParagraphCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Paragraph dto, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling updateSpecialSlideSubshapeParagraph(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling updateSpecialSlideSubshapeParagraph(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling updateSpecialSlideSubshapeParagraph(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling updateSpecialSlideSubshapeParagraph(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling updateSpecialSlideSubshapeParagraph(Async)");
+        }
+        // verify the required parameter 'dto' is set
+        if (dto == null) {
+            throw new ApiException("Missing the required parameter 'dto' when calling updateSpecialSlideSubshapeParagraph(Async)");
+        }
+        Object postBody = dto;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Update paragraph properties (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param dto Paragraph DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Paragraph
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Paragraph updateSpecialSlideSubshapeParagraph(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Paragraph dto, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Paragraph> resp = updateSpecialSlideSubshapeParagraphWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, dto, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Paragraph> resp = updateSpecialSlideSubshapeParagraphWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, dto, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Update paragraph properties (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param dto Paragraph DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Paragraph&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Paragraph> updateSpecialSlideSubshapeParagraphWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Paragraph dto, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = updateSpecialSlideSubshapeParagraphCall(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, dto, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Paragraph>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Update paragraph properties (for smart art and group shapes). (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param dto Paragraph DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateSpecialSlideSubshapeParagraphAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Paragraph dto, String password, String folder, String storage, final ApiCallback<Paragraph> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateSpecialSlideSubshapeParagraphCall(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, dto, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Paragraph>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateSpecialSlideSubshapePortion
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param dto Portion DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateSpecialSlideSubshapePortionCall(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, Portion dto, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling updateSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling updateSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'slideType' is set
+        if (slideType == null) {
+            throw new ApiException("Missing the required parameter 'slideType' when calling updateSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling updateSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling updateSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'portionIndex' is set
+        if (portionIndex == null) {
+            throw new ApiException("Missing the required parameter 'portionIndex' when calling updateSpecialSlideSubshapePortion(Async)");
+        }
+        // verify the required parameter 'dto' is set
+        if (dto == null) {
+            throw new ApiException("Missing the required parameter 'dto' when calling updateSpecialSlideSubshapePortion(Async)");
+        }
+        Object postBody = dto;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "slideType" + "\\}", apiClient.objectToString(slideType)).replaceAll("\\{" + "path" + "\\}", apiClient.objectToString(path)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex)).replaceAll("\\{" + "portionIndex" + "\\}", apiClient.objectToString(portionIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Update portion properties (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param dto Portion DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Portion
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Portion updateSpecialSlideSubshapePortion(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, Portion dto, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Portion> resp = updateSpecialSlideSubshapePortionWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, portionIndex, dto, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Portion> resp = updateSpecialSlideSubshapePortionWithHttpInfo(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, portionIndex, dto, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Update portion properties (for smart art and group shapes).
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param dto Portion DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Portion&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Portion> updateSpecialSlideSubshapePortionWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, Portion dto, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = updateSpecialSlideSubshapePortionCall(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, portionIndex, dto, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Portion>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Update portion properties (for smart art and group shapes). (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Parent slide index. (required)
+     * @param slideType Slide type (master, layout or notes). (required)
+     * @param path Shape path. 
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param dto Portion DTO. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateSpecialSlideSubshapePortionAsync(String name, Integer slideIndex, SpecialSlideType slideType, String path, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, Portion dto, String password, String folder, String storage, final ApiCallback<Portion> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateSpecialSlideSubshapePortionCall(name, slideIndex, slideType, path, shapeIndex, paragraphIndex, portionIndex, dto, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Portion>(){}.getType();
         apiClient.executeAsync(call, returnType, callback);
         return call;
     }

@@ -62,10 +62,10 @@ public class ExportOptions {
   }
 
    /**
-   * Setting user password to protect the PDF document. 
+   * Default regular font for rendering the presentation. 
    * @return defaultRegularFont
   **/
-  @ApiModelProperty(value = "Setting user password to protect the PDF document. ")
+  @ApiModelProperty(value = "Default regular font for rendering the presentation. ")
   public String getDefaultRegularFont() {
     return defaultRegularFont;
   }
