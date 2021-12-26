@@ -28433,10 +28433,11 @@ public class SlidesApiTest extends ApiTest {
         String valueName = (String)getTestValue("String", "getAnimation", "name");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "getAnimation", "slideIndex");
         Integer valueShapeIndex = (Integer)getTestValue("Integer", "getAnimation", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getAnimation", "paragraphIndex");
         String valuePassword = (String)getTestValue("String", "getAnimation", "password");
         String valueFolder = (String)getTestValue("String", "getAnimation", "folder");
         String valueStorage = (String)getTestValue("String", "getAnimation", "storage");
-        response = api.getAnimation(valueName, valueSlideIndex, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+        response = api.getAnimation(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
         assertNotNull(response);
     }
 
@@ -28454,13 +28455,14 @@ public class SlidesApiTest extends ApiTest {
         String valueName = (String)getTestValue("String", "getAnimation", "name");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "getAnimation", "slideIndex");
         Integer valueShapeIndex = (Integer)getTestValue("Integer", "getAnimation", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getAnimation", "paragraphIndex");
         String valuePassword = (String)getTestValue("String", "getAnimation", "password");
         String valueFolder = (String)getTestValue("String", "getAnimation", "folder");
         String valueStorage = (String)getTestValue("String", "getAnimation", "storage");
         try {
             valueName = (String)invalidizeTestValue("String", valueName, "getAnimation", "name");
             initialize("getAnimation", "name", valueName);
-            SlideAnimation response = api.getAnimation(valueName, valueSlideIndex, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            SlideAnimation response = api.getAnimation(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "name", "getAnimation", valueName);
@@ -28483,13 +28485,14 @@ public class SlidesApiTest extends ApiTest {
         String valueName = (String)getTestValue("String", "getAnimation", "name");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "getAnimation", "slideIndex");
         Integer valueShapeIndex = (Integer)getTestValue("Integer", "getAnimation", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getAnimation", "paragraphIndex");
         String valuePassword = (String)getTestValue("String", "getAnimation", "password");
         String valueFolder = (String)getTestValue("String", "getAnimation", "folder");
         String valueStorage = (String)getTestValue("String", "getAnimation", "storage");
         try {
             valueSlideIndex = (Integer)invalidizeTestValue("Integer", valueSlideIndex, "getAnimation", "slideIndex");
             initialize("getAnimation", "slideIndex", valueSlideIndex);
-            SlideAnimation response = api.getAnimation(valueName, valueSlideIndex, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            SlideAnimation response = api.getAnimation(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "slideIndex", "getAnimation", valueSlideIndex);
@@ -28512,13 +28515,14 @@ public class SlidesApiTest extends ApiTest {
         String valueName = (String)getTestValue("String", "getAnimation", "name");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "getAnimation", "slideIndex");
         Integer valueShapeIndex = (Integer)getTestValue("Integer", "getAnimation", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getAnimation", "paragraphIndex");
         String valuePassword = (String)getTestValue("String", "getAnimation", "password");
         String valueFolder = (String)getTestValue("String", "getAnimation", "folder");
         String valueStorage = (String)getTestValue("String", "getAnimation", "storage");
         try {
             valueShapeIndex = (Integer)invalidizeTestValue("Integer", valueShapeIndex, "getAnimation", "shapeIndex");
             initialize("getAnimation", "shapeIndex", valueShapeIndex);
-            SlideAnimation response = api.getAnimation(valueName, valueSlideIndex, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            SlideAnimation response = api.getAnimation(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "shapeIndex", "getAnimation", valueShapeIndex);
@@ -28536,18 +28540,49 @@ public class SlidesApiTest extends ApiTest {
      *          if the Api call fails
      */
     @Test
+    public void getAnimationInvalidParagraphIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getAnimation", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getAnimation", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getAnimation", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getAnimation", "paragraphIndex");
+        String valuePassword = (String)getTestValue("String", "getAnimation", "password");
+        String valueFolder = (String)getTestValue("String", "getAnimation", "folder");
+        String valueStorage = (String)getTestValue("String", "getAnimation", "storage");
+        try {
+            valueParagraphIndex = (Integer)invalidizeTestValue("Integer", valueParagraphIndex, "getAnimation", "paragraphIndex");
+            initialize("getAnimation", "paragraphIndex", valueParagraphIndex);
+            SlideAnimation response = api.getAnimation(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "paragraphIndex", "getAnimation", valueParagraphIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("paragraphIndex", "getAnimation");
+        }
+    }
+    /**
+     * Read slide animation effects.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
     public void getAnimationInvalidPasswordTest() throws ApiException {
         Boolean needAssertResponse = false;
         String valueName = (String)getTestValue("String", "getAnimation", "name");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "getAnimation", "slideIndex");
         Integer valueShapeIndex = (Integer)getTestValue("Integer", "getAnimation", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getAnimation", "paragraphIndex");
         String valuePassword = (String)getTestValue("String", "getAnimation", "password");
         String valueFolder = (String)getTestValue("String", "getAnimation", "folder");
         String valueStorage = (String)getTestValue("String", "getAnimation", "storage");
         try {
             valuePassword = (String)invalidizeTestValue("String", valuePassword, "getAnimation", "password");
             initialize("getAnimation", "password", valuePassword);
-            SlideAnimation response = api.getAnimation(valueName, valueSlideIndex, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            SlideAnimation response = api.getAnimation(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "password", "getAnimation", valuePassword);
@@ -28570,13 +28605,14 @@ public class SlidesApiTest extends ApiTest {
         String valueName = (String)getTestValue("String", "getAnimation", "name");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "getAnimation", "slideIndex");
         Integer valueShapeIndex = (Integer)getTestValue("Integer", "getAnimation", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getAnimation", "paragraphIndex");
         String valuePassword = (String)getTestValue("String", "getAnimation", "password");
         String valueFolder = (String)getTestValue("String", "getAnimation", "folder");
         String valueStorage = (String)getTestValue("String", "getAnimation", "storage");
         try {
             valueFolder = (String)invalidizeTestValue("String", valueFolder, "getAnimation", "folder");
             initialize("getAnimation", "folder", valueFolder);
-            SlideAnimation response = api.getAnimation(valueName, valueSlideIndex, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            SlideAnimation response = api.getAnimation(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "folder", "getAnimation", valueFolder);
@@ -28599,13 +28635,14 @@ public class SlidesApiTest extends ApiTest {
         String valueName = (String)getTestValue("String", "getAnimation", "name");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "getAnimation", "slideIndex");
         Integer valueShapeIndex = (Integer)getTestValue("Integer", "getAnimation", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getAnimation", "paragraphIndex");
         String valuePassword = (String)getTestValue("String", "getAnimation", "password");
         String valueFolder = (String)getTestValue("String", "getAnimation", "folder");
         String valueStorage = (String)getTestValue("String", "getAnimation", "storage");
         try {
             valueStorage = (String)invalidizeTestValue("String", valueStorage, "getAnimation", "storage");
             initialize("getAnimation", "storage", valueStorage);
-            SlideAnimation response = api.getAnimation(valueName, valueSlideIndex, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            SlideAnimation response = api.getAnimation(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "storage", "getAnimation", valueStorage);
@@ -34208,10 +34245,11 @@ public class SlidesApiTest extends ApiTest {
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "slideIndex");
         SpecialSlideType valueSlideType = (SpecialSlideType)getTestValue("SpecialSlideType", "getSpecialSlideAnimation", "slideType");
         Integer valueShapeIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "paragraphIndex");
         String valuePassword = (String)getTestValue("String", "getSpecialSlideAnimation", "password");
         String valueFolder = (String)getTestValue("String", "getSpecialSlideAnimation", "folder");
         String valueStorage = (String)getTestValue("String", "getSpecialSlideAnimation", "storage");
-        response = api.getSpecialSlideAnimation(valueName, valueSlideIndex, valueSlideType, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+        response = api.getSpecialSlideAnimation(valueName, valueSlideIndex, valueSlideType, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
         assertNotNull(response);
     }
 
@@ -34230,13 +34268,14 @@ public class SlidesApiTest extends ApiTest {
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "slideIndex");
         SpecialSlideType valueSlideType = (SpecialSlideType)getTestValue("SpecialSlideType", "getSpecialSlideAnimation", "slideType");
         Integer valueShapeIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "paragraphIndex");
         String valuePassword = (String)getTestValue("String", "getSpecialSlideAnimation", "password");
         String valueFolder = (String)getTestValue("String", "getSpecialSlideAnimation", "folder");
         String valueStorage = (String)getTestValue("String", "getSpecialSlideAnimation", "storage");
         try {
             valueName = (String)invalidizeTestValue("String", valueName, "getSpecialSlideAnimation", "name");
             initialize("getSpecialSlideAnimation", "name", valueName);
-            SlideAnimation response = api.getSpecialSlideAnimation(valueName, valueSlideIndex, valueSlideType, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            SlideAnimation response = api.getSpecialSlideAnimation(valueName, valueSlideIndex, valueSlideType, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "name", "getSpecialSlideAnimation", valueName);
@@ -34260,13 +34299,14 @@ public class SlidesApiTest extends ApiTest {
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "slideIndex");
         SpecialSlideType valueSlideType = (SpecialSlideType)getTestValue("SpecialSlideType", "getSpecialSlideAnimation", "slideType");
         Integer valueShapeIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "paragraphIndex");
         String valuePassword = (String)getTestValue("String", "getSpecialSlideAnimation", "password");
         String valueFolder = (String)getTestValue("String", "getSpecialSlideAnimation", "folder");
         String valueStorage = (String)getTestValue("String", "getSpecialSlideAnimation", "storage");
         try {
             valueSlideIndex = (Integer)invalidizeTestValue("Integer", valueSlideIndex, "getSpecialSlideAnimation", "slideIndex");
             initialize("getSpecialSlideAnimation", "slideIndex", valueSlideIndex);
-            SlideAnimation response = api.getSpecialSlideAnimation(valueName, valueSlideIndex, valueSlideType, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            SlideAnimation response = api.getSpecialSlideAnimation(valueName, valueSlideIndex, valueSlideType, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "slideIndex", "getSpecialSlideAnimation", valueSlideIndex);
@@ -34290,13 +34330,14 @@ public class SlidesApiTest extends ApiTest {
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "slideIndex");
         SpecialSlideType valueSlideType = (SpecialSlideType)getTestValue("SpecialSlideType", "getSpecialSlideAnimation", "slideType");
         Integer valueShapeIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "paragraphIndex");
         String valuePassword = (String)getTestValue("String", "getSpecialSlideAnimation", "password");
         String valueFolder = (String)getTestValue("String", "getSpecialSlideAnimation", "folder");
         String valueStorage = (String)getTestValue("String", "getSpecialSlideAnimation", "storage");
         try {
             valueSlideType = (SpecialSlideType)invalidizeTestValue("SpecialSlideType", valueSlideType, "getSpecialSlideAnimation", "slideType");
             initialize("getSpecialSlideAnimation", "slideType", valueSlideType);
-            SlideAnimation response = api.getSpecialSlideAnimation(valueName, valueSlideIndex, valueSlideType, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            SlideAnimation response = api.getSpecialSlideAnimation(valueName, valueSlideIndex, valueSlideType, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "slideType", "getSpecialSlideAnimation", valueSlideType);
@@ -34320,13 +34361,14 @@ public class SlidesApiTest extends ApiTest {
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "slideIndex");
         SpecialSlideType valueSlideType = (SpecialSlideType)getTestValue("SpecialSlideType", "getSpecialSlideAnimation", "slideType");
         Integer valueShapeIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "paragraphIndex");
         String valuePassword = (String)getTestValue("String", "getSpecialSlideAnimation", "password");
         String valueFolder = (String)getTestValue("String", "getSpecialSlideAnimation", "folder");
         String valueStorage = (String)getTestValue("String", "getSpecialSlideAnimation", "storage");
         try {
             valueShapeIndex = (Integer)invalidizeTestValue("Integer", valueShapeIndex, "getSpecialSlideAnimation", "shapeIndex");
             initialize("getSpecialSlideAnimation", "shapeIndex", valueShapeIndex);
-            SlideAnimation response = api.getSpecialSlideAnimation(valueName, valueSlideIndex, valueSlideType, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            SlideAnimation response = api.getSpecialSlideAnimation(valueName, valueSlideIndex, valueSlideType, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "shapeIndex", "getSpecialSlideAnimation", valueShapeIndex);
@@ -34344,19 +34386,51 @@ public class SlidesApiTest extends ApiTest {
      *          if the Api call fails
      */
     @Test
+    public void getSpecialSlideAnimationInvalidParagraphIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getSpecialSlideAnimation", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "slideIndex");
+        SpecialSlideType valueSlideType = (SpecialSlideType)getTestValue("SpecialSlideType", "getSpecialSlideAnimation", "slideType");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "paragraphIndex");
+        String valuePassword = (String)getTestValue("String", "getSpecialSlideAnimation", "password");
+        String valueFolder = (String)getTestValue("String", "getSpecialSlideAnimation", "folder");
+        String valueStorage = (String)getTestValue("String", "getSpecialSlideAnimation", "storage");
+        try {
+            valueParagraphIndex = (Integer)invalidizeTestValue("Integer", valueParagraphIndex, "getSpecialSlideAnimation", "paragraphIndex");
+            initialize("getSpecialSlideAnimation", "paragraphIndex", valueParagraphIndex);
+            SlideAnimation response = api.getSpecialSlideAnimation(valueName, valueSlideIndex, valueSlideType, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "paragraphIndex", "getSpecialSlideAnimation", valueParagraphIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("paragraphIndex", "getSpecialSlideAnimation");
+        }
+    }
+    /**
+     * Read special slide (master, layout, notes) animation effects.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
     public void getSpecialSlideAnimationInvalidPasswordTest() throws ApiException {
         Boolean needAssertResponse = false;
         String valueName = (String)getTestValue("String", "getSpecialSlideAnimation", "name");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "slideIndex");
         SpecialSlideType valueSlideType = (SpecialSlideType)getTestValue("SpecialSlideType", "getSpecialSlideAnimation", "slideType");
         Integer valueShapeIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "paragraphIndex");
         String valuePassword = (String)getTestValue("String", "getSpecialSlideAnimation", "password");
         String valueFolder = (String)getTestValue("String", "getSpecialSlideAnimation", "folder");
         String valueStorage = (String)getTestValue("String", "getSpecialSlideAnimation", "storage");
         try {
             valuePassword = (String)invalidizeTestValue("String", valuePassword, "getSpecialSlideAnimation", "password");
             initialize("getSpecialSlideAnimation", "password", valuePassword);
-            SlideAnimation response = api.getSpecialSlideAnimation(valueName, valueSlideIndex, valueSlideType, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            SlideAnimation response = api.getSpecialSlideAnimation(valueName, valueSlideIndex, valueSlideType, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "password", "getSpecialSlideAnimation", valuePassword);
@@ -34380,13 +34454,14 @@ public class SlidesApiTest extends ApiTest {
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "slideIndex");
         SpecialSlideType valueSlideType = (SpecialSlideType)getTestValue("SpecialSlideType", "getSpecialSlideAnimation", "slideType");
         Integer valueShapeIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "paragraphIndex");
         String valuePassword = (String)getTestValue("String", "getSpecialSlideAnimation", "password");
         String valueFolder = (String)getTestValue("String", "getSpecialSlideAnimation", "folder");
         String valueStorage = (String)getTestValue("String", "getSpecialSlideAnimation", "storage");
         try {
             valueFolder = (String)invalidizeTestValue("String", valueFolder, "getSpecialSlideAnimation", "folder");
             initialize("getSpecialSlideAnimation", "folder", valueFolder);
-            SlideAnimation response = api.getSpecialSlideAnimation(valueName, valueSlideIndex, valueSlideType, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            SlideAnimation response = api.getSpecialSlideAnimation(valueName, valueSlideIndex, valueSlideType, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "folder", "getSpecialSlideAnimation", valueFolder);
@@ -34410,13 +34485,14 @@ public class SlidesApiTest extends ApiTest {
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "slideIndex");
         SpecialSlideType valueSlideType = (SpecialSlideType)getTestValue("SpecialSlideType", "getSpecialSlideAnimation", "slideType");
         Integer valueShapeIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getSpecialSlideAnimation", "paragraphIndex");
         String valuePassword = (String)getTestValue("String", "getSpecialSlideAnimation", "password");
         String valueFolder = (String)getTestValue("String", "getSpecialSlideAnimation", "folder");
         String valueStorage = (String)getTestValue("String", "getSpecialSlideAnimation", "storage");
         try {
             valueStorage = (String)invalidizeTestValue("String", valueStorage, "getSpecialSlideAnimation", "storage");
             initialize("getSpecialSlideAnimation", "storage", valueStorage);
-            SlideAnimation response = api.getSpecialSlideAnimation(valueName, valueSlideIndex, valueSlideType, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            SlideAnimation response = api.getSpecialSlideAnimation(valueName, valueSlideIndex, valueSlideType, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "storage", "getSpecialSlideAnimation", valueStorage);

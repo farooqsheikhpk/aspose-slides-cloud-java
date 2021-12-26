@@ -171,7 +171,7 @@ public class ImageExportOptions extends ExportOptions {
    * Gets or sets the position of the notes on the page.
    * @return notesPosition
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the position of the notes on the page.")
+  @ApiModelProperty(value = "Gets or sets the position of the notes on the page.")
   public NotesPositionEnum getNotesPosition() {
     return notesPosition;
   }
@@ -189,7 +189,7 @@ public class ImageExportOptions extends ExportOptions {
    * Gets or sets the position of the comments on the page.
    * @return commentsPosition
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the position of the comments on the page.")
+  @ApiModelProperty(value = "Gets or sets the position of the comments on the page.")
   public CommentsPositionEnum getCommentsPosition() {
     return commentsPosition;
   }
@@ -207,7 +207,7 @@ public class ImageExportOptions extends ExportOptions {
    * Gets or sets the width of the comment output area in pixels (Applies only if comments are displayed on the right).
    * @return commentsAreaWidth
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the width of the comment output area in pixels (Applies only if comments are displayed on the right).")
+  @ApiModelProperty(value = "Gets or sets the width of the comment output area in pixels (Applies only if comments are displayed on the right).")
   public Integer getCommentsAreaWidth() {
     return commentsAreaWidth;
   }

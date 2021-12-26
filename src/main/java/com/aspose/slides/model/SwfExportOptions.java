@@ -219,7 +219,7 @@ public class SwfExportOptions extends ExportOptions {
    * Specifies whether the generated document should include hidden slides or not. Default is false. 
    * @return showHiddenSlides
   **/
-  @ApiModelProperty(required = true, value = "Specifies whether the generated document should include hidden slides or not. Default is false. ")
+  @ApiModelProperty(value = "Specifies whether the generated document should include hidden slides or not. Default is false. ")
   public Boolean isShowHiddenSlides() {
     return showHiddenSlides;
   }
@@ -237,7 +237,7 @@ public class SwfExportOptions extends ExportOptions {
    * Specifies whether the generated SWF document should be compressed or not. Default is true. 
    * @return compressed
   **/
-  @ApiModelProperty(required = true, value = "Specifies whether the generated SWF document should be compressed or not. Default is true. ")
+  @ApiModelProperty(value = "Specifies whether the generated SWF document should be compressed or not. Default is true. ")
   public Boolean isCompressed() {
     return compressed;
   }
@@ -255,7 +255,7 @@ public class SwfExportOptions extends ExportOptions {
    * Specifies whether the generated SWF document should include the integrated document viewer or not. Default is true. 
    * @return viewerIncluded
   **/
-  @ApiModelProperty(required = true, value = "Specifies whether the generated SWF document should include the integrated document viewer or not. Default is true. ")
+  @ApiModelProperty(value = "Specifies whether the generated SWF document should include the integrated document viewer or not. Default is true. ")
   public Boolean isViewerIncluded() {
     return viewerIncluded;
   }
@@ -273,7 +273,7 @@ public class SwfExportOptions extends ExportOptions {
    * Specifies whether border around pages should be shown. Default is true. 
    * @return showPageBorder
   **/
-  @ApiModelProperty(required = true, value = "Specifies whether border around pages should be shown. Default is true. ")
+  @ApiModelProperty(value = "Specifies whether border around pages should be shown. Default is true. ")
   public Boolean isShowPageBorder() {
     return showPageBorder;
   }
@@ -291,7 +291,7 @@ public class SwfExportOptions extends ExportOptions {
    * Show/hide fullscreen button. Can be overridden in flashvars. Default is true. 
    * @return showFullScreen
   **/
-  @ApiModelProperty(required = true, value = "Show/hide fullscreen button. Can be overridden in flashvars. Default is true. ")
+  @ApiModelProperty(value = "Show/hide fullscreen button. Can be overridden in flashvars. Default is true. ")
   public Boolean isShowFullScreen() {
     return showFullScreen;
   }
@@ -309,7 +309,7 @@ public class SwfExportOptions extends ExportOptions {
    * Show/hide page stepper. Can be overridden in flashvars. Default is true. 
    * @return showPageStepper
   **/
-  @ApiModelProperty(required = true, value = "Show/hide page stepper. Can be overridden in flashvars. Default is true. ")
+  @ApiModelProperty(value = "Show/hide page stepper. Can be overridden in flashvars. Default is true. ")
   public Boolean isShowPageStepper() {
     return showPageStepper;
   }
@@ -327,7 +327,7 @@ public class SwfExportOptions extends ExportOptions {
    * Show/hide search section. Can be overridden in flashvars. Default is true. 
    * @return showSearch
   **/
-  @ApiModelProperty(required = true, value = "Show/hide search section. Can be overridden in flashvars. Default is true. ")
+  @ApiModelProperty(value = "Show/hide search section. Can be overridden in flashvars. Default is true. ")
   public Boolean isShowSearch() {
     return showSearch;
   }
@@ -345,7 +345,7 @@ public class SwfExportOptions extends ExportOptions {
    * Show/hide whole top pane. Can be overridden in flashvars. Default is true. 
    * @return showTopPane
   **/
-  @ApiModelProperty(required = true, value = "Show/hide whole top pane. Can be overridden in flashvars. Default is true. ")
+  @ApiModelProperty(value = "Show/hide whole top pane. Can be overridden in flashvars. Default is true. ")
   public Boolean isShowTopPane() {
     return showTopPane;
   }
@@ -363,7 +363,7 @@ public class SwfExportOptions extends ExportOptions {
    * Show/hide bottom pane. Can be overridden in flashvars. Default is true. 
    * @return showBottomPane
   **/
-  @ApiModelProperty(required = true, value = "Show/hide bottom pane. Can be overridden in flashvars. Default is true. ")
+  @ApiModelProperty(value = "Show/hide bottom pane. Can be overridden in flashvars. Default is true. ")
   public Boolean isShowBottomPane() {
     return showBottomPane;
   }
@@ -381,7 +381,7 @@ public class SwfExportOptions extends ExportOptions {
    * Show/hide left pane. Can be overridden in flashvars. Default is true. 
    * @return showLeftPane
   **/
-  @ApiModelProperty(required = true, value = "Show/hide left pane. Can be overridden in flashvars. Default is true. ")
+  @ApiModelProperty(value = "Show/hide left pane. Can be overridden in flashvars. Default is true. ")
   public Boolean isShowLeftPane() {
     return showLeftPane;
   }
@@ -399,7 +399,7 @@ public class SwfExportOptions extends ExportOptions {
    * Start with opened left pane. Can be overridden in flashvars. Default is false. 
    * @return startOpenLeftPane
   **/
-  @ApiModelProperty(required = true, value = "Start with opened left pane. Can be overridden in flashvars. Default is false. ")
+  @ApiModelProperty(value = "Start with opened left pane. Can be overridden in flashvars. Default is false. ")
   public Boolean isStartOpenLeftPane() {
     return startOpenLeftPane;
   }
@@ -417,7 +417,7 @@ public class SwfExportOptions extends ExportOptions {
    * Enable/disable context menu. Default is true. 
    * @return enableContextMenu
   **/
-  @ApiModelProperty(required = true, value = "Enable/disable context menu. Default is true. ")
+  @ApiModelProperty(value = "Enable/disable context menu. Default is true. ")
   public Boolean isEnableContextMenu() {
     return enableContextMenu;
   }
@@ -471,7 +471,7 @@ public class SwfExportOptions extends ExportOptions {
    * Specifies the quality of JPEG images. Default is 95.
    * @return jpegQuality
   **/
-  @ApiModelProperty(required = true, value = "Specifies the quality of JPEG images. Default is 95.")
+  @ApiModelProperty(value = "Specifies the quality of JPEG images. Default is 95.")
   public Integer getJpegQuality() {
     return jpegQuality;
   }
@@ -489,7 +489,7 @@ public class SwfExportOptions extends ExportOptions {
    * Gets or sets the position of the notes on the page.
    * @return notesPosition
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the position of the notes on the page.")
+  @ApiModelProperty(value = "Gets or sets the position of the notes on the page.")
   public NotesPositionEnum getNotesPosition() {
     return notesPosition;
   }
@@ -507,7 +507,7 @@ public class SwfExportOptions extends ExportOptions {
    * Gets or sets the position of the comments on the page.
    * @return commentsPosition
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the position of the comments on the page.")
+  @ApiModelProperty(value = "Gets or sets the position of the comments on the page.")
   public CommentsPositionEnum getCommentsPosition() {
     return commentsPosition;
   }
@@ -525,7 +525,7 @@ public class SwfExportOptions extends ExportOptions {
    * Gets or sets the width of the comment output area in pixels (Applies only if comments are displayed on the right).
    * @return commentsAreaWidth
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the width of the comment output area in pixels (Applies only if comments are displayed on the right).")
+  @ApiModelProperty(value = "Gets or sets the width of the comment output area in pixels (Applies only if comments are displayed on the right).")
   public Integer getCommentsAreaWidth() {
     return commentsAreaWidth;
   }
@@ -561,7 +561,7 @@ public class SwfExportOptions extends ExportOptions {
    * True if comments that have no author are displayed. (Applies only if comments are displayed).
    * @return showCommentsByNoAuthor
   **/
-  @ApiModelProperty(required = true, value = "True if comments that have no author are displayed. (Applies only if comments are displayed).")
+  @ApiModelProperty(value = "True if comments that have no author are displayed. (Applies only if comments are displayed).")
   public Boolean isShowCommentsByNoAuthor() {
     return showCommentsByNoAuthor;
   }

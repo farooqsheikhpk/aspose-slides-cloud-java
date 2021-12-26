@@ -608,6 +608,9 @@ public class Effect {
   @SerializedName(value = "shapeIndex", alternate = { "ShapeIndex" })
   private Integer shapeIndex;
 
+  @SerializedName(value = "paragraphIndex", alternate = { "ParagraphIndex" })
+  private Integer paragraphIndex;
+
   /**
    * Effect trigger type.
    */
@@ -815,6 +818,24 @@ public class Effect {
     this.shapeIndex = shapeIndex;
   }
 
+  public Effect paragraphIndex(Integer paragraphIndex) {
+    this.paragraphIndex = paragraphIndex;
+    return this;
+  }
+
+   /**
+   * Paragraph index.
+   * @return paragraphIndex
+  **/
+  @ApiModelProperty(value = "Paragraph index.")
+  public Integer getParagraphIndex() {
+    return paragraphIndex;
+  }
+
+  public void setParagraphIndex(Integer paragraphIndex) {
+    this.paragraphIndex = paragraphIndex;
+  }
+
   public Effect triggerType(TriggerTypeEnum triggerType) {
     this.triggerType = triggerType;
     return this;
@@ -1005,12 +1026,12 @@ public class Effect {
       return false;
     }
     Effect effect = (Effect) o;
-    return true && Objects.equals(this.type, effect.type) && Objects.equals(this.subtype, effect.subtype) && Objects.equals(this.presetClassType, effect.presetClassType) && Objects.equals(this.shapeIndex, effect.shapeIndex) && Objects.equals(this.triggerType, effect.triggerType) && Objects.equals(this.accelerate, effect.accelerate) && Objects.equals(this.autoReverse, effect.autoReverse) && Objects.equals(this.decelerate, effect.decelerate) && Objects.equals(this.duration, effect.duration) && Objects.equals(this.repeatCount, effect.repeatCount) && Objects.equals(this.repeatDuration, effect.repeatDuration) && Objects.equals(this.restart, effect.restart) && Objects.equals(this.speed, effect.speed) && Objects.equals(this.triggerDelayTime, effect.triggerDelayTime);
+    return true && Objects.equals(this.type, effect.type) && Objects.equals(this.subtype, effect.subtype) && Objects.equals(this.presetClassType, effect.presetClassType) && Objects.equals(this.shapeIndex, effect.shapeIndex) && Objects.equals(this.paragraphIndex, effect.paragraphIndex) && Objects.equals(this.triggerType, effect.triggerType) && Objects.equals(this.accelerate, effect.accelerate) && Objects.equals(this.autoReverse, effect.autoReverse) && Objects.equals(this.decelerate, effect.decelerate) && Objects.equals(this.duration, effect.duration) && Objects.equals(this.repeatCount, effect.repeatCount) && Objects.equals(this.repeatDuration, effect.repeatDuration) && Objects.equals(this.restart, effect.restart) && Objects.equals(this.speed, effect.speed) && Objects.equals(this.triggerDelayTime, effect.triggerDelayTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, subtype, presetClassType, shapeIndex, triggerType, accelerate, autoReverse, decelerate, duration, repeatCount, repeatDuration, restart, speed, triggerDelayTime);
+    return Objects.hash(type, subtype, presetClassType, shapeIndex, paragraphIndex, triggerType, accelerate, autoReverse, decelerate, duration, repeatCount, repeatDuration, restart, speed, triggerDelayTime);
   }
 
 
@@ -1023,6 +1044,7 @@ public class Effect {
     sb.append("    subtype: ").append(toIndentedString(subtype)).append("\n");
     sb.append("    presetClassType: ").append(toIndentedString(presetClassType)).append("\n");
     sb.append("    shapeIndex: ").append(toIndentedString(shapeIndex)).append("\n");
+    sb.append("    paragraphIndex: ").append(toIndentedString(paragraphIndex)).append("\n");
     sb.append("    triggerType: ").append(toIndentedString(triggerType)).append("\n");
     sb.append("    accelerate: ").append(toIndentedString(accelerate)).append("\n");
     sb.append("    autoReverse: ").append(toIndentedString(autoReverse)).append("\n");

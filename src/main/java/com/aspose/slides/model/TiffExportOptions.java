@@ -104,12 +104,6 @@ public class TiffExportOptions extends ExportOptions {
   @SerializedName(value = "compression", alternate = { "Compression" })
   private CompressionEnum compression;
 
-  @SerializedName(value = "width", alternate = { "Width" })
-  private Integer width;
-
-  @SerializedName(value = "height", alternate = { "Height" })
-  private Integer height;
-
   @SerializedName(value = "dpiX", alternate = { "DpiX" })
   private Integer dpiX;
 
@@ -303,49 +297,13 @@ public class TiffExportOptions extends ExportOptions {
    * Compression type.
    * @return compression
   **/
-  @ApiModelProperty(required = true, value = "Compression type.")
+  @ApiModelProperty(value = "Compression type.")
   public CompressionEnum getCompression() {
     return compression;
   }
 
   public void setCompression(CompressionEnum compression) {
     this.compression = compression;
-  }
-
-  public TiffExportOptions width(Integer width) {
-    this.width = width;
-    return this;
-  }
-
-   /**
-   * Width.
-   * @return width
-  **/
-  @ApiModelProperty(value = "Width.")
-  public Integer getWidth() {
-    return width;
-  }
-
-  public void setWidth(Integer width) {
-    this.width = width;
-  }
-
-  public TiffExportOptions height(Integer height) {
-    this.height = height;
-    return this;
-  }
-
-   /**
-   * Height.
-   * @return height
-  **/
-  @ApiModelProperty(value = "Height.")
-  public Integer getHeight() {
-    return height;
-  }
-
-  public void setHeight(Integer height) {
-    this.height = height;
   }
 
   public TiffExportOptions dpiX(Integer dpiX) {
@@ -393,7 +351,7 @@ public class TiffExportOptions extends ExportOptions {
    * Specifies whether the generated document should include hidden slides or not. Default is false. 
    * @return showHiddenSlides
   **/
-  @ApiModelProperty(required = true, value = "Specifies whether the generated document should include hidden slides or not. Default is false. ")
+  @ApiModelProperty(value = "Specifies whether the generated document should include hidden slides or not. Default is false. ")
   public Boolean isShowHiddenSlides() {
     return showHiddenSlides;
   }
@@ -411,7 +369,7 @@ public class TiffExportOptions extends ExportOptions {
    * Specifies the pixel format for the generated images. Read/write ImagePixelFormat.
    * @return pixelFormat
   **/
-  @ApiModelProperty(required = true, value = "Specifies the pixel format for the generated images. Read/write ImagePixelFormat.")
+  @ApiModelProperty(value = "Specifies the pixel format for the generated images. Read/write ImagePixelFormat.")
   public PixelFormatEnum getPixelFormat() {
     return pixelFormat;
   }
@@ -429,7 +387,7 @@ public class TiffExportOptions extends ExportOptions {
    * Gets or sets the position of the notes on the page.
    * @return notesPosition
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the position of the notes on the page.")
+  @ApiModelProperty(value = "Gets or sets the position of the notes on the page.")
   public NotesPositionEnum getNotesPosition() {
     return notesPosition;
   }
@@ -447,7 +405,7 @@ public class TiffExportOptions extends ExportOptions {
    * Gets or sets the position of the comments on the page.
    * @return commentsPosition
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the position of the comments on the page.")
+  @ApiModelProperty(value = "Gets or sets the position of the comments on the page.")
   public CommentsPositionEnum getCommentsPosition() {
     return commentsPosition;
   }
@@ -465,7 +423,7 @@ public class TiffExportOptions extends ExportOptions {
    * Gets or sets the width of the comment output area in pixels (Applies only if comments are displayed on the right).
    * @return commentsAreaWidth
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the width of the comment output area in pixels (Applies only if comments are displayed on the right).")
+  @ApiModelProperty(value = "Gets or sets the width of the comment output area in pixels (Applies only if comments are displayed on the right).")
   public Integer getCommentsAreaWidth() {
     return commentsAreaWidth;
   }
@@ -501,7 +459,7 @@ public class TiffExportOptions extends ExportOptions {
    * True if comments that have no author are displayed. (Applies only if comments are displayed).
    * @return showCommentsByNoAuthor
   **/
-  @ApiModelProperty(required = true, value = "True if comments that have no author are displayed. (Applies only if comments are displayed).")
+  @ApiModelProperty(value = "True if comments that have no author are displayed. (Applies only if comments are displayed).")
   public Boolean isShowCommentsByNoAuthor() {
     return showCommentsByNoAuthor;
   }
@@ -520,12 +478,12 @@ public class TiffExportOptions extends ExportOptions {
       return false;
     }
     TiffExportOptions tiffExportOptions = (TiffExportOptions) o;
-    return true && Objects.equals(this.compression, tiffExportOptions.compression) && Objects.equals(this.width, tiffExportOptions.width) && Objects.equals(this.height, tiffExportOptions.height) && Objects.equals(this.dpiX, tiffExportOptions.dpiX) && Objects.equals(this.dpiY, tiffExportOptions.dpiY) && Objects.equals(this.showHiddenSlides, tiffExportOptions.showHiddenSlides) && Objects.equals(this.pixelFormat, tiffExportOptions.pixelFormat) && Objects.equals(this.notesPosition, tiffExportOptions.notesPosition) && Objects.equals(this.commentsPosition, tiffExportOptions.commentsPosition) && Objects.equals(this.commentsAreaWidth, tiffExportOptions.commentsAreaWidth) && Objects.equals(this.commentsAreaColor, tiffExportOptions.commentsAreaColor) && Objects.equals(this.showCommentsByNoAuthor, tiffExportOptions.showCommentsByNoAuthor) && super.equals(o);
+    return true && Objects.equals(this.compression, tiffExportOptions.compression) && Objects.equals(this.dpiX, tiffExportOptions.dpiX) && Objects.equals(this.dpiY, tiffExportOptions.dpiY) && Objects.equals(this.showHiddenSlides, tiffExportOptions.showHiddenSlides) && Objects.equals(this.pixelFormat, tiffExportOptions.pixelFormat) && Objects.equals(this.notesPosition, tiffExportOptions.notesPosition) && Objects.equals(this.commentsPosition, tiffExportOptions.commentsPosition) && Objects.equals(this.commentsAreaWidth, tiffExportOptions.commentsAreaWidth) && Objects.equals(this.commentsAreaColor, tiffExportOptions.commentsAreaColor) && Objects.equals(this.showCommentsByNoAuthor, tiffExportOptions.showCommentsByNoAuthor) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(compression, width, height, dpiX, dpiY, showHiddenSlides, pixelFormat, notesPosition, commentsPosition, commentsAreaWidth, commentsAreaColor, showCommentsByNoAuthor, super.hashCode());
+    return Objects.hash(compression, dpiX, dpiY, showHiddenSlides, pixelFormat, notesPosition, commentsPosition, commentsAreaWidth, commentsAreaColor, showCommentsByNoAuthor, super.hashCode());
   }
 
 
@@ -535,8 +493,6 @@ public class TiffExportOptions extends ExportOptions {
     sb.append("class TiffExportOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    compression: ").append(toIndentedString(compression)).append("\n");
-    sb.append("    width: ").append(toIndentedString(width)).append("\n");
-    sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    dpiX: ").append(toIndentedString(dpiX)).append("\n");
     sb.append("    dpiY: ").append(toIndentedString(dpiY)).append("\n");
     sb.append("    showHiddenSlides: ").append(toIndentedString(showHiddenSlides)).append("\n");

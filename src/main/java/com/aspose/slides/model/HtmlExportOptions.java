@@ -250,7 +250,7 @@ public class HtmlExportOptions extends ExportOptions {
    * Get or sets flag for save presentation as zip file
    * @return saveAsZip
   **/
-  @ApiModelProperty(required = true, value = "Get or sets flag for save presentation as zip file")
+  @ApiModelProperty(value = "Get or sets flag for save presentation as zip file")
   public Boolean isSaveAsZip() {
     return saveAsZip;
   }
@@ -286,7 +286,7 @@ public class HtmlExportOptions extends ExportOptions {
    * Specifies whether the generated document should include hidden slides or not. Default is false. 
    * @return showHiddenSlides
   **/
-  @ApiModelProperty(required = true, value = "Specifies whether the generated document should include hidden slides or not. Default is false. ")
+  @ApiModelProperty(value = "Specifies whether the generated document should include hidden slides or not. Default is false. ")
   public Boolean isShowHiddenSlides() {
     return showHiddenSlides;
   }
@@ -304,7 +304,7 @@ public class HtmlExportOptions extends ExportOptions {
    * True to make layout responsive by excluding width and height attributes from svg container.
    * @return svgResponsiveLayout
   **/
-  @ApiModelProperty(required = true, value = "True to make layout responsive by excluding width and height attributes from svg container.")
+  @ApiModelProperty(value = "True to make layout responsive by excluding width and height attributes from svg container.")
   public Boolean isSvgResponsiveLayout() {
     return svgResponsiveLayout;
   }
@@ -322,7 +322,7 @@ public class HtmlExportOptions extends ExportOptions {
    * Returns or sets a value determining the quality of the JPEG images inside PDF document.
    * @return jpegQuality
   **/
-  @ApiModelProperty(required = true, value = "Returns or sets a value determining the quality of the JPEG images inside PDF document.")
+  @ApiModelProperty(value = "Returns or sets a value determining the quality of the JPEG images inside PDF document.")
   public Integer getJpegQuality() {
     return jpegQuality;
   }
@@ -358,7 +358,7 @@ public class HtmlExportOptions extends ExportOptions {
    * A boolean flag indicates if the cropped parts remain as part of the document. If true the cropped  parts will removed, if false they will be serialized in the document (which can possible lead to a  larger file)
    * @return deletePicturesCroppedAreas
   **/
-  @ApiModelProperty(required = true, value = "A boolean flag indicates if the cropped parts remain as part of the document. If true the cropped  parts will removed, if false they will be serialized in the document (which can possible lead to a  larger file)")
+  @ApiModelProperty(value = "A boolean flag indicates if the cropped parts remain as part of the document. If true the cropped  parts will removed, if false they will be serialized in the document (which can possible lead to a  larger file)")
   public Boolean isDeletePicturesCroppedAreas() {
     return deletePicturesCroppedAreas;
   }
@@ -376,7 +376,7 @@ public class HtmlExportOptions extends ExportOptions {
    * Gets or sets the position of the notes on the page.
    * @return notesPosition
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the position of the notes on the page.")
+  @ApiModelProperty(value = "Gets or sets the position of the notes on the page.")
   public NotesPositionEnum getNotesPosition() {
     return notesPosition;
   }
@@ -394,7 +394,7 @@ public class HtmlExportOptions extends ExportOptions {
    * Gets or sets the position of the comments on the page.
    * @return commentsPosition
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the position of the comments on the page.")
+  @ApiModelProperty(value = "Gets or sets the position of the comments on the page.")
   public CommentsPositionEnum getCommentsPosition() {
     return commentsPosition;
   }
@@ -412,7 +412,7 @@ public class HtmlExportOptions extends ExportOptions {
    * Gets or sets the width of the comment output area in pixels (Applies only if comments are displayed on the right).
    * @return commentsAreaWidth
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the width of the comment output area in pixels (Applies only if comments are displayed on the right).")
+  @ApiModelProperty(value = "Gets or sets the width of the comment output area in pixels (Applies only if comments are displayed on the right).")
   public Integer getCommentsAreaWidth() {
     return commentsAreaWidth;
   }
@@ -448,7 +448,7 @@ public class HtmlExportOptions extends ExportOptions {
    * True if comments that have no author are displayed. (Applies only if comments are displayed).
    * @return showCommentsByNoAuthor
   **/
-  @ApiModelProperty(required = true, value = "True if comments that have no author are displayed. (Applies only if comments are displayed).")
+  @ApiModelProperty(value = "True if comments that have no author are displayed. (Applies only if comments are displayed).")
   public Boolean isShowCommentsByNoAuthor() {
     return showCommentsByNoAuthor;
   }

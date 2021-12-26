@@ -28,9 +28,6 @@
 package com.aspose.slides.model;
 
 import java.util.Objects;
-import com.aspose.slides.model.ExportOptions;
-import com.aspose.slides.model.OutputFile;
-import com.aspose.slides.model.Task;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -44,64 +41,44 @@ import java.util.Hashtable;
 import java.util.Map;
 
 /**
- * Save slide task.
+ * ShapeBevel
  */
-@ApiModel(description = "Save slide task.")
-public class Save extends Task {
+@ApiModel(description = "ShapeBevel")
+public class ShapeBevel {
   /**
-   * Format.
+   * Bevel type
    */
-  @JsonAdapter(FormatEnum.Adapter.class)
-  public enum FormatEnum {
-    PDF("Pdf"),
+  @JsonAdapter(BevelTypeEnum.Adapter.class)
+  public enum BevelTypeEnum {
+    ANGLE("Angle"),
     
-    XPS("Xps"),
+    ARTDECO("ArtDeco"),
     
-    TIFF("Tiff"),
+    CIRCLE("Circle"),
     
-    PPTX("Pptx"),
+    CONVEX("Convex"),
     
-    ODP("Odp"),
+    COOLSLANT("CoolSlant"),
     
-    OTP("Otp"),
+    CROSS("Cross"),
     
-    PPT("Ppt"),
+    DIVOT("Divot"),
     
-    PPS("Pps"),
+    HARDEDGE("HardEdge"),
     
-    PPSX("Ppsx"),
+    RELAXEDINSET("RelaxedInset"),
     
-    PPTM("Pptm"),
+    RIBLET("Riblet"),
     
-    PPSM("Ppsm"),
+    SLOPE("Slope"),
     
-    POT("Pot"),
+    SOFTROUND("SoftRound"),
     
-    POTX("Potx"),
-    
-    POTM("Potm"),
-    
-    HTML("Html"),
-    
-    HTML5("Html5"),
-    
-    SWF("Swf"),
-    
-    SVG("Svg"),
-    
-    JPEG("Jpeg"),
-    
-    PNG("Png"),
-    
-    GIF("Gif"),
-    
-    BMP("Bmp"),
-    
-    FODP("Fodp");
+    NOTDEFINED("NotDefined");
 
     private String value;
 
-    FormatEnum(String value) {
+    BevelTypeEnum(String value) {
       this.value = value;
     }
 
@@ -114,8 +91,8 @@ public class Save extends Task {
       return String.valueOf(value);
     }
 
-    public static FormatEnum fromValue(String text) {
-      for (FormatEnum b : FormatEnum.values()) {
+    public static BevelTypeEnum fromValue(String text) {
+      for (BevelTypeEnum b : BevelTypeEnum.values()) {
         if (String.valueOf(b.value).equals(text)) {
           return b;
         }
@@ -123,87 +100,86 @@ public class Save extends Task {
       return null;
     }
 
-    public static class Adapter extends TypeAdapter<FormatEnum> {
+    public static class Adapter extends TypeAdapter<BevelTypeEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final FormatEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final BevelTypeEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public FormatEnum read(final JsonReader jsonReader) throws IOException {
+      public BevelTypeEnum read(final JsonReader jsonReader) throws IOException {
         String value = jsonReader.nextString();
-        return FormatEnum.fromValue(String.valueOf(value));
+        return BevelTypeEnum.fromValue(String.valueOf(value));
       }
     }
   }
 
-  @SerializedName(value = "format", alternate = { "Format" })
-  private FormatEnum format;
+  @SerializedName(value = "bevelType", alternate = { "BevelType" })
+  private BevelTypeEnum bevelType;
 
-  @SerializedName(value = "output", alternate = { "Output" })
-  private OutputFile output;
+  @SerializedName(value = "width", alternate = { "Width" })
+  private Double width;
 
-  @SerializedName(value = "options", alternate = { "Options" })
-  private ExportOptions options;
+  @SerializedName(value = "height", alternate = { "Height" })
+  private Double height;
 
 
-  public Save() {
+  public ShapeBevel() {
     super();
-    setType(TypeEnum.SAVE);
   }
 
-  public Save format(FormatEnum format) {
-    this.format = format;
+  public ShapeBevel bevelType(BevelTypeEnum bevelType) {
+    this.bevelType = bevelType;
     return this;
   }
 
    /**
-   * Format.
-   * @return format
+   * Bevel type
+   * @return bevelType
   **/
-  @ApiModelProperty(required = true, value = "Format.")
-  public FormatEnum getFormat() {
-    return format;
+  @ApiModelProperty(value = "Bevel type")
+  public BevelTypeEnum getBevelType() {
+    return bevelType;
   }
 
-  public void setFormat(FormatEnum format) {
-    this.format = format;
+  public void setBevelType(BevelTypeEnum bevelType) {
+    this.bevelType = bevelType;
   }
 
-  public Save output(OutputFile output) {
-    this.output = output;
+  public ShapeBevel width(Double width) {
+    this.width = width;
     return this;
   }
 
    /**
-   * Output file.
-   * @return output
+   * Bevel width
+   * @return width
   **/
-  @ApiModelProperty(value = "Output file.")
-  public OutputFile getOutput() {
-    return output;
+  @ApiModelProperty(value = "Bevel width")
+  public Double getWidth() {
+    return width;
   }
 
-  public void setOutput(OutputFile output) {
-    this.output = output;
+  public void setWidth(Double width) {
+    this.width = width;
   }
 
-  public Save options(ExportOptions options) {
-    this.options = options;
+  public ShapeBevel height(Double height) {
+    this.height = height;
     return this;
   }
 
    /**
-   * Save options.
-   * @return options
+   * Bevel height
+   * @return height
   **/
-  @ApiModelProperty(value = "Save options.")
-  public ExportOptions getOptions() {
-    return options;
+  @ApiModelProperty(value = "Bevel height")
+  public Double getHeight() {
+    return height;
   }
 
-  public void setOptions(ExportOptions options) {
-    this.options = options;
+  public void setHeight(Double height) {
+    this.height = height;
   }
 
 
@@ -215,24 +191,24 @@ public class Save extends Task {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Save save = (Save) o;
-    return true && Objects.equals(this.format, save.format) && Objects.equals(this.output, save.output) && Objects.equals(this.options, save.options) && super.equals(o);
+    ShapeBevel shapeBevel = (ShapeBevel) o;
+    return true && Objects.equals(this.bevelType, shapeBevel.bevelType) && Objects.equals(this.width, shapeBevel.width) && Objects.equals(this.height, shapeBevel.height);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(format, output, options, super.hashCode());
+    return Objects.hash(bevelType, width, height);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Save {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    output: ").append(toIndentedString(output)).append("\n");
-    sb.append("    options: ").append(toIndentedString(options)).append("\n");
+    sb.append("class ShapeBevel {\n");
+    
+    sb.append("    bevelType: ").append(toIndentedString(bevelType)).append("\n");
+    sb.append("    width: ").append(toIndentedString(width)).append("\n");
+    sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -252,7 +228,4 @@ public class Save extends Task {
 
   private static final Map<String, Object> typeDeterminers = new Hashtable<String, Object>();
 
-  static {
-      typeDeterminers.put("Type", TypeEnum.SAVE);
-  }
 }

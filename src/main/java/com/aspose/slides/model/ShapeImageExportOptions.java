@@ -120,7 +120,7 @@ public class ShapeImageExportOptions {
    * Get or sets scaling ratio by X axis.
    * @return scaleX
   **/
-  @ApiModelProperty(required = true, value = "Get or sets scaling ratio by X axis.")
+  @ApiModelProperty(value = "Get or sets scaling ratio by X axis.")
   public Double getScaleX() {
     return scaleX;
   }
@@ -138,7 +138,7 @@ public class ShapeImageExportOptions {
    * Get or sets scaling ratio by Y axis.
    * @return scaleY
   **/
-  @ApiModelProperty(required = true, value = "Get or sets scaling ratio by Y axis.")
+  @ApiModelProperty(value = "Get or sets scaling ratio by Y axis.")
   public Double getScaleY() {
     return scaleY;
   }
@@ -156,7 +156,7 @@ public class ShapeImageExportOptions {
    * Get or sets thumbnail bounds
    * @return thumbnailBounds
   **/
-  @ApiModelProperty(required = true, value = "Get or sets thumbnail bounds")
+  @ApiModelProperty(value = "Get or sets thumbnail bounds")
   public ThumbnailBoundsEnum getThumbnailBounds() {
     return thumbnailBounds;
   }

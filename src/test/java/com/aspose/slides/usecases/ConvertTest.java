@@ -68,8 +68,10 @@ public class ConvertTest extends ApiTest {
 
     @Test
     public void convertPostFromStorageTest() throws ApiException, IOException {
+        String fileName = "test.pdf";
         initialize(null, null, null);
-        File converted = api.downloadPresentation(c_fileName, c_format, null, c_password, c_folderName, null, null, null);
+        api.copyFile(tempFolderName + "/" + fileName, c_folderName + "/" + fileName, null, null, null);
+        File converted = api.downloadPresentation(fileName, ExportFormat.HTML5, null, c_password, c_folderName, null, null, null);
         assertNotNull(converted);
         assertTrue(converted.length() > 0);
         assertTrue(converted.canRead());
@@ -95,12 +97,14 @@ public class ConvertTest extends ApiTest {
 
     @Test
     public void convertWithOptionsFromStorageTest() throws ApiException, IOException {
+        ExportFormat format = ExportFormat.PNG;
         initialize(null, null, null);
-        File converted1 = api.downloadPresentation(c_fileName, c_format, null, c_password, c_folderName, null, null, null);
-        PdfExportOptions options = new PdfExportOptions();
-        options.setDrawSlidesFrame(true);
+        File converted1 = api.downloadPresentation(c_fileName, format, null, c_password, c_folderName, null, null, null);
+        ImageExportOptions options = new ImageExportOptions();
+        options.setWidth(480);
+        options.setHeight(360);
         File converted2 = api.downloadPresentation(c_fileName, c_format, options, c_password, c_folderName, null, null, null);
-        assertNotEquals(converted1.length(), converted2.length());
+        assertTrue(converted1.length() > converted2.length());
     }
 
     @Test

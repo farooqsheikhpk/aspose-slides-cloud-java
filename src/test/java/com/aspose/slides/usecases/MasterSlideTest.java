@@ -205,7 +205,7 @@ public class MasterSlideTest extends ApiTest {
     public void masterSlideAnimationTest() throws ApiException, IOException {
         initialize(null, null, null);
         SlideAnimation animation = api.getSpecialSlideAnimation(
-            c_fileName, c_slideIndex, SpecialSlideType.MASTERSLIDE, null, c_password, c_folderName, null);
+            c_fileName, c_slideIndex, SpecialSlideType.MASTERSLIDE, null, null, c_password, c_folderName, null);
         assertEquals(1, animation.getMainSequence().size());
 
         SlideAnimation dto = new SlideAnimation();
@@ -223,14 +223,14 @@ public class MasterSlideTest extends ApiTest {
             c_fileName, c_slideIndex, SpecialSlideType.MASTERSLIDE, dto, c_password, c_folderName, null);
         assertEquals(dto.getMainSequence().size(), animation.getMainSequence().size());
         animation = api.getSpecialSlideAnimation(
-            c_fileName, c_slideIndex, SpecialSlideType.MASTERSLIDE, 3, c_password, c_folderName, null);
+            c_fileName, c_slideIndex, SpecialSlideType.MASTERSLIDE, 3, null, c_password, c_folderName, null);
         assertEquals(1, animation.getMainSequence().size());
 
         animation = api.deleteSpecialSlideAnimationEffect(
             c_fileName, c_slideIndex, SpecialSlideType.MASTERSLIDE, 2, c_password, c_folderName, null);
         assertEquals(dto.getMainSequence().size() - 1, animation.getMainSequence().size());
         animation = api.getSpecialSlideAnimation(
-            c_fileName, c_slideIndex, SpecialSlideType.MASTERSLIDE, 3, c_password, c_folderName, null);
+            c_fileName, c_slideIndex, SpecialSlideType.MASTERSLIDE, 3, null, c_password, c_folderName, null);
         assertEquals(0, animation.getMainSequence().size());
 
         animation = api.deleteSpecialSlideAnimation(

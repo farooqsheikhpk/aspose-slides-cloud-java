@@ -3566,8 +3566,8 @@ public class SlidesApi {
     /**
      * Build call for createPresentation
      * @param name Document name. (required)
-     * @param data Document input data. 
-     * @param inputPassword The password for input document. 
+     * @param data Source presentation binary data. 
+     * @param inputPassword The password for source presentation. 
      * @param password The document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
@@ -3631,8 +3631,8 @@ public class SlidesApi {
      * Create a presentation.
      * 
      * @param name Document name. (required)
-     * @param data Document input data. 
-     * @param inputPassword The password for input document. 
+     * @param data Source presentation binary data. 
+     * @param inputPassword The password for source presentation. 
      * @param password The document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
@@ -3653,8 +3653,8 @@ public class SlidesApi {
      * Create a presentation.
      * 
      * @param name Document name. (required)
-     * @param data Document input data. 
-     * @param inputPassword The password for input document. 
+     * @param data Source presentation binary data. 
+     * @param inputPassword The password for source presentation. 
      * @param password The document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
@@ -3671,8 +3671,8 @@ public class SlidesApi {
      * Create a presentation. (asynchronously)
      * 
      * @param name Document name. (required)
-     * @param data Document input data. 
-     * @param inputPassword The password for input document. 
+     * @param data Source presentation binary data. 
+     * @param inputPassword The password for source presentation. 
      * @param password The document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
@@ -3709,9 +3709,9 @@ public class SlidesApi {
     /**
      * Build call for createPresentationFromSource
      * @param name Document name. (required)
-     * @param sourcePath Template file path. 
-     * @param sourcePassword Template file password. 
-     * @param sourceStorage Template storage name. 
+     * @param sourcePath Source file path. 
+     * @param sourcePassword Source file password. 
+     * @param sourceStorage Source storage name. 
      * @param password The document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
@@ -3775,9 +3775,9 @@ public class SlidesApi {
      * Create a presentation from an existing source.
      * 
      * @param name Document name. (required)
-     * @param sourcePath Template file path. 
-     * @param sourcePassword Template file password. 
-     * @param sourceStorage Template storage name. 
+     * @param sourcePath Source file path. 
+     * @param sourcePassword Source file password. 
+     * @param sourceStorage Source storage name. 
      * @param password The document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
@@ -3798,9 +3798,9 @@ public class SlidesApi {
      * Create a presentation from an existing source.
      * 
      * @param name Document name. (required)
-     * @param sourcePath Template file path. 
-     * @param sourcePassword Template file password. 
-     * @param sourceStorage Template storage name. 
+     * @param sourcePath Source file path. 
+     * @param sourcePassword Source file password. 
+     * @param sourceStorage Source storage name. 
      * @param password The document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
@@ -3817,9 +3817,9 @@ public class SlidesApi {
      * Create a presentation from an existing source. (asynchronously)
      * 
      * @param name Document name. (required)
-     * @param sourcePath Template file path. 
-     * @param sourcePassword Template file password. 
-     * @param sourceStorage Template storage name. 
+     * @param sourcePath Source file path. 
+     * @param sourcePassword Source file password. 
+     * @param sourceStorage Source storage name. 
      * @param password The document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
@@ -18143,6 +18143,7 @@ public class SlidesApi {
      * @param name Document name. (required)
      * @param slideIndex Slide index. (required)
      * @param shapeIndex Shape index. If specified, only effects related to that shape are returned. 
+     * @param paragraphIndex Paragraph index. 
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
@@ -18151,7 +18152,7 @@ public class SlidesApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAnimationCall(String name, Integer slideIndex, Integer shapeIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAnimationCall(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getAnimation(Async)");
@@ -18168,6 +18169,7 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "shapeIndex", shapeIndex);
+        apiClient.addQueryParameter(queryParams, "paragraphIndex", paragraphIndex);
         apiClient.addQueryParameter(queryParams, "folder", folder);
         apiClient.addQueryParameter(queryParams, "storage", storage);
 
@@ -18209,18 +18211,19 @@ public class SlidesApi {
      * @param name Document name. (required)
      * @param slideIndex Slide index. (required)
      * @param shapeIndex Shape index. If specified, only effects related to that shape are returned. 
+     * @param paragraphIndex Paragraph index. 
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
      * @return SlideAnimation
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public SlideAnimation getAnimation(String name, Integer slideIndex, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
+    public SlideAnimation getAnimation(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
         try {
-            ApiResponse<SlideAnimation> resp = getAnimationWithHttpInfo(name, slideIndex, shapeIndex, password, folder, storage);
+            ApiResponse<SlideAnimation> resp = getAnimationWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage);
             return resp.getData();
         } catch (NeedRepeatRequestException e) {
-            ApiResponse<SlideAnimation> resp = getAnimationWithHttpInfo(name, slideIndex, shapeIndex, password, folder, storage);
+            ApiResponse<SlideAnimation> resp = getAnimationWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage);
             return resp.getData();
         }
     }
@@ -18231,14 +18234,15 @@ public class SlidesApi {
      * @param name Document name. (required)
      * @param slideIndex Slide index. (required)
      * @param shapeIndex Shape index. If specified, only effects related to that shape are returned. 
+     * @param paragraphIndex Paragraph index. 
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
      * @return ApiResponse&lt;SlideAnimation&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SlideAnimation> getAnimationWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getAnimationCall(name, slideIndex, shapeIndex, password, folder, storage, null, null);
+    public ApiResponse<SlideAnimation> getAnimationWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getAnimationCall(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage, null, null);
         Type returnType = new TypeToken<SlideAnimation>(){}.getType();
         return apiClient.execute(call, returnType);
     }
@@ -18249,6 +18253,7 @@ public class SlidesApi {
      * @param name Document name. (required)
      * @param slideIndex Slide index. (required)
      * @param shapeIndex Shape index. If specified, only effects related to that shape are returned. 
+     * @param paragraphIndex Paragraph index. 
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
@@ -18256,7 +18261,7 @@ public class SlidesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAnimationAsync(String name, Integer slideIndex, Integer shapeIndex, String password, String folder, String storage, final ApiCallback<SlideAnimation> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAnimationAsync(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ApiCallback<SlideAnimation> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -18277,7 +18282,7 @@ public class SlidesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAnimationCall(name, slideIndex, shapeIndex, password, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAnimationCall(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage, progressListener, progressRequestListener);
         Type returnType = new TypeToken<SlideAnimation>(){}.getType();
         apiClient.executeAsync(call, returnType, callback);
         return call;
@@ -23328,6 +23333,7 @@ public class SlidesApi {
      * @param slideIndex Parent slide index. (required)
      * @param slideType Slide type (master, layout or notes). (required)
      * @param shapeIndex Shape index. If specified, only effects related to that shape are returned. 
+     * @param paragraphIndex Paragraph index. If specified, only effects related to that paragraph are returned. 
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
@@ -23336,7 +23342,7 @@ public class SlidesApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSpecialSlideAnimationCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSpecialSlideAnimationCall(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getSpecialSlideAnimation(Async)");
@@ -23357,6 +23363,7 @@ public class SlidesApi {
 
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "shapeIndex", shapeIndex);
+        apiClient.addQueryParameter(queryParams, "paragraphIndex", paragraphIndex);
         apiClient.addQueryParameter(queryParams, "folder", folder);
         apiClient.addQueryParameter(queryParams, "storage", storage);
 
@@ -23399,18 +23406,19 @@ public class SlidesApi {
      * @param slideIndex Parent slide index. (required)
      * @param slideType Slide type (master, layout or notes). (required)
      * @param shapeIndex Shape index. If specified, only effects related to that shape are returned. 
+     * @param paragraphIndex Paragraph index. If specified, only effects related to that paragraph are returned. 
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
      * @return SlideAnimation
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public SlideAnimation getSpecialSlideAnimation(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
+    public SlideAnimation getSpecialSlideAnimation(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
         try {
-            ApiResponse<SlideAnimation> resp = getSpecialSlideAnimationWithHttpInfo(name, slideIndex, slideType, shapeIndex, password, folder, storage);
+            ApiResponse<SlideAnimation> resp = getSpecialSlideAnimationWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, password, folder, storage);
             return resp.getData();
         } catch (NeedRepeatRequestException e) {
-            ApiResponse<SlideAnimation> resp = getSpecialSlideAnimationWithHttpInfo(name, slideIndex, slideType, shapeIndex, password, folder, storage);
+            ApiResponse<SlideAnimation> resp = getSpecialSlideAnimationWithHttpInfo(name, slideIndex, slideType, shapeIndex, paragraphIndex, password, folder, storage);
             return resp.getData();
         }
     }
@@ -23422,14 +23430,15 @@ public class SlidesApi {
      * @param slideIndex Parent slide index. (required)
      * @param slideType Slide type (master, layout or notes). (required)
      * @param shapeIndex Shape index. If specified, only effects related to that shape are returned. 
+     * @param paragraphIndex Paragraph index. If specified, only effects related to that paragraph are returned. 
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
      * @return ApiResponse&lt;SlideAnimation&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SlideAnimation> getSpecialSlideAnimationWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getSpecialSlideAnimationCall(name, slideIndex, slideType, shapeIndex, password, folder, storage, null, null);
+    public ApiResponse<SlideAnimation> getSpecialSlideAnimationWithHttpInfo(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getSpecialSlideAnimationCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, password, folder, storage, null, null);
         Type returnType = new TypeToken<SlideAnimation>(){}.getType();
         return apiClient.execute(call, returnType);
     }
@@ -23441,6 +23450,7 @@ public class SlidesApi {
      * @param slideIndex Parent slide index. (required)
      * @param slideType Slide type (master, layout or notes). (required)
      * @param shapeIndex Shape index. If specified, only effects related to that shape are returned. 
+     * @param paragraphIndex Paragraph index. If specified, only effects related to that paragraph are returned. 
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
@@ -23448,7 +23458,7 @@ public class SlidesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSpecialSlideAnimationAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, String password, String folder, String storage, final ApiCallback<SlideAnimation> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSpecialSlideAnimationAsync(String name, Integer slideIndex, SpecialSlideType slideType, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ApiCallback<SlideAnimation> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -23469,7 +23479,7 @@ public class SlidesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getSpecialSlideAnimationCall(name, slideIndex, slideType, shapeIndex, password, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSpecialSlideAnimationCall(name, slideIndex, slideType, shapeIndex, paragraphIndex, password, folder, storage, progressListener, progressRequestListener);
         Type returnType = new TypeToken<SlideAnimation>(){}.getType();
         apiClient.executeAsync(call, returnType, callback);
         return call;

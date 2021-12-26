@@ -76,6 +76,8 @@ public enum ExportFormat {
   
   HTML("Html"),
   
+  HTML5("Html5"),
+  
   SWF("Swf"),
   
   SVG("Svg"),

@@ -377,7 +377,7 @@ public class PdfExportOptions extends ExportOptions {
    * Specifies compression type to be used for all textual content in the document.
    * @return textCompression
   **/
-  @ApiModelProperty(required = true, value = "Specifies compression type to be used for all textual content in the document.")
+  @ApiModelProperty(value = "Specifies compression type to be used for all textual content in the document.")
   public TextCompressionEnum getTextCompression() {
     return textCompression;
   }
@@ -395,7 +395,7 @@ public class PdfExportOptions extends ExportOptions {
    * Determines if all characters of font should be embedded or only used subset.
    * @return embedFullFonts
   **/
-  @ApiModelProperty(required = true, value = "Determines if all characters of font should be embedded or only used subset.")
+  @ApiModelProperty(value = "Determines if all characters of font should be embedded or only used subset.")
   public Boolean isEmbedFullFonts() {
     return embedFullFonts;
   }
@@ -413,7 +413,7 @@ public class PdfExportOptions extends ExportOptions {
    * Desired conformance level for generated PDF document.
    * @return compliance
   **/
-  @ApiModelProperty(required = true, value = "Desired conformance level for generated PDF document.")
+  @ApiModelProperty(value = "Desired conformance level for generated PDF document.")
   public ComplianceEnum getCompliance() {
     return compliance;
   }
@@ -431,7 +431,7 @@ public class PdfExportOptions extends ExportOptions {
    * Returns or sets a value determining resolution of images inside PDF document.  Property affects on file size, time of export and image quality. The default value is 96.
    * @return sufficientResolution
   **/
-  @ApiModelProperty(required = true, value = "Returns or sets a value determining resolution of images inside PDF document.  Property affects on file size, time of export and image quality. The default value is 96.")
+  @ApiModelProperty(value = "Returns or sets a value determining resolution of images inside PDF document.  Property affects on file size, time of export and image quality. The default value is 96.")
   public Double getSufficientResolution() {
     return sufficientResolution;
   }
@@ -449,7 +449,7 @@ public class PdfExportOptions extends ExportOptions {
    * Returns or sets a value determining the quality of the JPEG images inside PDF document.
    * @return jpegQuality
   **/
-  @ApiModelProperty(required = true, value = "Returns or sets a value determining the quality of the JPEG images inside PDF document.")
+  @ApiModelProperty(value = "Returns or sets a value determining the quality of the JPEG images inside PDF document.")
   public Integer getJpegQuality() {
     return jpegQuality;
   }
@@ -467,7 +467,7 @@ public class PdfExportOptions extends ExportOptions {
    * True to draw black frame around each slide.
    * @return drawSlidesFrame
   **/
-  @ApiModelProperty(required = true, value = "True to draw black frame around each slide.")
+  @ApiModelProperty(value = "True to draw black frame around each slide.")
   public Boolean isDrawSlidesFrame() {
     return drawSlidesFrame;
   }
@@ -485,7 +485,7 @@ public class PdfExportOptions extends ExportOptions {
    * Specifies whether the generated document should include hidden slides or not. Default is false. 
    * @return showHiddenSlides
   **/
-  @ApiModelProperty(required = true, value = "Specifies whether the generated document should include hidden slides or not. Default is false. ")
+  @ApiModelProperty(value = "Specifies whether the generated document should include hidden slides or not. Default is false. ")
   public Boolean isShowHiddenSlides() {
     return showHiddenSlides;
   }
@@ -503,7 +503,7 @@ public class PdfExportOptions extends ExportOptions {
    * True to convert all metafiles used in a presentation to the PNG images.
    * @return saveMetafilesAsPng
   **/
-  @ApiModelProperty(required = true, value = "True to convert all metafiles used in a presentation to the PNG images.")
+  @ApiModelProperty(value = "True to convert all metafiles used in a presentation to the PNG images.")
   public Boolean isSaveMetafilesAsPng() {
     return saveMetafilesAsPng;
   }
@@ -539,7 +539,7 @@ public class PdfExportOptions extends ExportOptions {
    * Determines if Aspose.Slides will embed common fonts for ASCII (33..127 code range) text. Fonts for character codes greater than 127 are always embedded. Common fonts list includes PDF&#39;s base 14 fonts and additional user specified fonts.
    * @return embedTrueTypeFontsForASCII
   **/
-  @ApiModelProperty(required = true, value = "Determines if Aspose.Slides will embed common fonts for ASCII (33..127 code range) text. Fonts for character codes greater than 127 are always embedded. Common fonts list includes PDF's base 14 fonts and additional user specified fonts.")
+  @ApiModelProperty(value = "Determines if Aspose.Slides will embed common fonts for ASCII (33..127 code range) text. Fonts for character codes greater than 127 are always embedded. Common fonts list includes PDF's base 14 fonts and additional user specified fonts.")
   public Boolean isEmbedTrueTypeFontsForASCII() {
     return embedTrueTypeFontsForASCII;
   }
@@ -583,7 +583,7 @@ public class PdfExportOptions extends ExportOptions {
    * Gets or sets the position of the notes on the page.
    * @return notesPosition
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the position of the notes on the page.")
+  @ApiModelProperty(value = "Gets or sets the position of the notes on the page.")
   public NotesPositionEnum getNotesPosition() {
     return notesPosition;
   }
@@ -601,7 +601,7 @@ public class PdfExportOptions extends ExportOptions {
    * Gets or sets the position of the comments on the page.
    * @return commentsPosition
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the position of the comments on the page.")
+  @ApiModelProperty(value = "Gets or sets the position of the comments on the page.")
   public CommentsPositionEnum getCommentsPosition() {
     return commentsPosition;
   }
@@ -619,7 +619,7 @@ public class PdfExportOptions extends ExportOptions {
    * Gets or sets the width of the comment output area in pixels (Applies only if comments are displayed on the right).
    * @return commentsAreaWidth
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the width of the comment output area in pixels (Applies only if comments are displayed on the right).")
+  @ApiModelProperty(value = "Gets or sets the width of the comment output area in pixels (Applies only if comments are displayed on the right).")
   public Integer getCommentsAreaWidth() {
     return commentsAreaWidth;
   }
@@ -655,7 +655,7 @@ public class PdfExportOptions extends ExportOptions {
    * True if comments that have no author are displayed. (Applies only if comments are displayed).
    * @return showCommentsByNoAuthor
   **/
-  @ApiModelProperty(required = true, value = "True if comments that have no author are displayed. (Applies only if comments are displayed).")
+  @ApiModelProperty(value = "True if comments that have no author are displayed. (Applies only if comments are displayed).")
   public Boolean isShowCommentsByNoAuthor() {
     return showCommentsByNoAuthor;
   }
@@ -691,7 +691,7 @@ public class PdfExportOptions extends ExportOptions {
    * True to apply specified ImageTransparentColor  to an image.
    * @return applyImageTransparent
   **/
-  @ApiModelProperty(required = true, value = "True to apply specified ImageTransparentColor  to an image.")
+  @ApiModelProperty(value = "True to apply specified ImageTransparentColor  to an image.")
   public Boolean isApplyImageTransparent() {
     return applyImageTransparent;
   }
@@ -709,7 +709,7 @@ public class PdfExportOptions extends ExportOptions {
    * Access permissions that should be granted when the document is opened with user access.  Default is AccessPermissions.None.             
    * @return accessPermissions
   **/
-  @ApiModelProperty(required = true, value = "Access permissions that should be granted when the document is opened with user access.  Default is AccessPermissions.None.             ")
+  @ApiModelProperty(value = "Access permissions that should be granted when the document is opened with user access.  Default is AccessPermissions.None.             ")
   public AccessPermissionsEnum getAccessPermissions() {
     return accessPermissions;
   }

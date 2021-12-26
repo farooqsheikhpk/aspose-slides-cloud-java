@@ -34,6 +34,7 @@ import com.aspose.slides.model.LineFormat;
 import com.aspose.slides.model.ResourceUri;
 import com.aspose.slides.model.ShapeBase;
 import com.aspose.slides.model.SmartArtNode;
+import com.aspose.slides.model.ThreeDFormat;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;

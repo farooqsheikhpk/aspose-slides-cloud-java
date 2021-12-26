@@ -192,7 +192,7 @@ public class SvgExportOptions extends ExportOptions {
    * Determines whether the text on a slide will be saved as graphics.
    * @return vectorizeText
   **/
-  @ApiModelProperty(required = true, value = "Determines whether the text on a slide will be saved as graphics.")
+  @ApiModelProperty(value = "Determines whether the text on a slide will be saved as graphics.")
   public Boolean isVectorizeText() {
     return vectorizeText;
   }
@@ -210,7 +210,7 @@ public class SvgExportOptions extends ExportOptions {
    * Returns or sets the lower resolution limit for metafile rasterization.
    * @return metafileRasterizationDpi
   **/
-  @ApiModelProperty(required = true, value = "Returns or sets the lower resolution limit for metafile rasterization.")
+  @ApiModelProperty(value = "Returns or sets the lower resolution limit for metafile rasterization.")
   public Integer getMetafileRasterizationDpi() {
     return metafileRasterizationDpi;
   }
@@ -228,7 +228,7 @@ public class SvgExportOptions extends ExportOptions {
    * Determines whether the 3D text is disabled in SVG.
    * @return disable3DText
   **/
-  @ApiModelProperty(required = true, value = "Determines whether the 3D text is disabled in SVG.")
+  @ApiModelProperty(value = "Determines whether the 3D text is disabled in SVG.")
   public Boolean isDisable3DText() {
     return disable3DText;
   }
@@ -246,7 +246,7 @@ public class SvgExportOptions extends ExportOptions {
    * Disables splitting FromCornerX and FromCenter gradients.
    * @return disableGradientSplit
   **/
-  @ApiModelProperty(required = true, value = "Disables splitting FromCornerX and FromCenter gradients.")
+  @ApiModelProperty(value = "Disables splitting FromCornerX and FromCenter gradients.")
   public Boolean isDisableGradientSplit() {
     return disableGradientSplit;
   }
@@ -264,7 +264,7 @@ public class SvgExportOptions extends ExportOptions {
    * SVG 1.1 lacks ability to define insets for markers. Aspose.Slides SVG writing engine has workaround for that problem: it crops end of line with arrow, so, line doesn&#39;t overlap markers. This option switches off such behavior.
    * @return disableLineEndCropping
   **/
-  @ApiModelProperty(required = true, value = "SVG 1.1 lacks ability to define insets for markers. Aspose.Slides SVG writing engine has workaround for that problem: it crops end of line with arrow, so, line doesn't overlap markers. This option switches off such behavior.")
+  @ApiModelProperty(value = "SVG 1.1 lacks ability to define insets for markers. Aspose.Slides SVG writing engine has workaround for that problem: it crops end of line with arrow, so, line doesn't overlap markers. This option switches off such behavior.")
   public Boolean isDisableLineEndCropping() {
     return disableLineEndCropping;
   }
@@ -282,7 +282,7 @@ public class SvgExportOptions extends ExportOptions {
    * Determines JPEG encoding quality.
    * @return jpegQuality
   **/
-  @ApiModelProperty(required = true, value = "Determines JPEG encoding quality.")
+  @ApiModelProperty(value = "Determines JPEG encoding quality.")
   public Integer getJpegQuality() {
     return jpegQuality;
   }
@@ -300,7 +300,7 @@ public class SvgExportOptions extends ExportOptions {
    * Represents the pictures compression level
    * @return picturesCompression
   **/
-  @ApiModelProperty(required = true, value = "Represents the pictures compression level")
+  @ApiModelProperty(value = "Represents the pictures compression level")
   public PicturesCompressionEnum getPicturesCompression() {
     return picturesCompression;
   }
@@ -318,7 +318,7 @@ public class SvgExportOptions extends ExportOptions {
    * A boolean flag indicates if the cropped parts remain as part of the document. If true the cropped  parts will removed, if false they will be serialized in the document (which can possible lead to a  larger file)
    * @return deletePicturesCroppedAreas
   **/
-  @ApiModelProperty(required = true, value = "A boolean flag indicates if the cropped parts remain as part of the document. If true the cropped  parts will removed, if false they will be serialized in the document (which can possible lead to a  larger file)")
+  @ApiModelProperty(value = "A boolean flag indicates if the cropped parts remain as part of the document. If true the cropped  parts will removed, if false they will be serialized in the document (which can possible lead to a  larger file)")
   public Boolean isDeletePicturesCroppedAreas() {
     return deletePicturesCroppedAreas;
   }
@@ -336,7 +336,7 @@ public class SvgExportOptions extends ExportOptions {
    * Determines a way of handling externally loaded fonts.
    * @return externalFontsHandling
   **/
-  @ApiModelProperty(required = true, value = "Determines a way of handling externally loaded fonts.")
+  @ApiModelProperty(value = "Determines a way of handling externally loaded fonts.")
   public ExternalFontsHandlingEnum getExternalFontsHandling() {
     return externalFontsHandling;
   }

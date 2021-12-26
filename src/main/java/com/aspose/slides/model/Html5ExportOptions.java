@@ -28,13 +28,7 @@
 package com.aspose.slides.model;
 
 import java.util.Objects;
-import com.aspose.slides.model.EffectFormat;
-import com.aspose.slides.model.FillFormat;
-import com.aspose.slides.model.GeometryShape;
-import com.aspose.slides.model.LineFormat;
-import com.aspose.slides.model.PictureFill;
-import com.aspose.slides.model.ResourceUri;
-import com.aspose.slides.model.ThreeDFormat;
+import com.aspose.slides.model.ExportOptions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -43,41 +37,61 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
 
 /**
- * Represents PictureFrame resource.
+ * Provides options that control how a presentation is saved in Html5 format.
  */
-@ApiModel(description = "Represents PictureFrame resource.")
-public class PictureFrame extends GeometryShape {
-  @SerializedName(value = "pictureFillFormat", alternate = { "PictureFillFormat" })
-  private PictureFill pictureFillFormat;
+@ApiModel(description = "Provides options that control how a presentation is saved in Html5 format.")
+public class Html5ExportOptions extends ExportOptions {
+  @SerializedName(value = "animateTransitions", alternate = { "AnimateTransitions" })
+  private Boolean animateTransitions;
+
+  @SerializedName(value = "animateShapes", alternate = { "AnimateShapes" })
+  private Boolean animateShapes;
 
 
-  public PictureFrame() {
+  public Html5ExportOptions() {
     super();
-    setType(TypeEnum.PICTUREFRAME);
+    setFormat("HTML5");
   }
 
-  public PictureFrame pictureFillFormat(PictureFill pictureFillFormat) {
-    this.pictureFillFormat = pictureFillFormat;
+  public Html5ExportOptions animateTransitions(Boolean animateTransitions) {
+    this.animateTransitions = animateTransitions;
     return this;
   }
 
    /**
-   * Fill format.
-   * @return pictureFillFormat
+   * Gets or sets transitions animation option.
+   * @return animateTransitions
   **/
-  @ApiModelProperty(value = "Fill format.")
-  public PictureFill getPictureFillFormat() {
-    return pictureFillFormat;
+  @ApiModelProperty(value = "Gets or sets transitions animation option.")
+  public Boolean isAnimateTransitions() {
+    return animateTransitions;
   }
 
-  public void setPictureFillFormat(PictureFill pictureFillFormat) {
-    this.pictureFillFormat = pictureFillFormat;
+  public void setAnimateTransitions(Boolean animateTransitions) {
+    this.animateTransitions = animateTransitions;
+  }
+
+  public Html5ExportOptions animateShapes(Boolean animateShapes) {
+    this.animateShapes = animateShapes;
+    return this;
+  }
+
+   /**
+   * Gets or sets shapes animation option.
+   * @return animateShapes
+  **/
+  @ApiModelProperty(value = "Gets or sets shapes animation option.")
+  public Boolean isAnimateShapes() {
+    return animateShapes;
+  }
+
+  public void setAnimateShapes(Boolean animateShapes) {
+    this.animateShapes = animateShapes;
   }
 
 
@@ -89,22 +103,23 @@ public class PictureFrame extends GeometryShape {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PictureFrame pictureFrame = (PictureFrame) o;
-    return true && Objects.equals(this.pictureFillFormat, pictureFrame.pictureFillFormat) && super.equals(o);
+    Html5ExportOptions html5ExportOptions = (Html5ExportOptions) o;
+    return true && Objects.equals(this.animateTransitions, html5ExportOptions.animateTransitions) && Objects.equals(this.animateShapes, html5ExportOptions.animateShapes) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(pictureFillFormat, super.hashCode());
+    return Objects.hash(animateTransitions, animateShapes, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PictureFrame {\n");
+    sb.append("class Html5ExportOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    pictureFillFormat: ").append(toIndentedString(pictureFillFormat)).append("\n");
+    sb.append("    animateTransitions: ").append(toIndentedString(animateTransitions)).append("\n");
+    sb.append("    animateShapes: ").append(toIndentedString(animateShapes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -124,7 +139,4 @@ public class PictureFrame extends GeometryShape {
 
   private static final Map<String, Object> typeDeterminers = new Hashtable<String, Object>();
 
-  static {
-      typeDeterminers.put("Type", TypeEnum.PICTUREFRAME);
-  }
 }

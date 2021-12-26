@@ -33,6 +33,7 @@ import com.aspose.slides.model.FillFormat;
 import com.aspose.slides.model.LineFormat;
 import com.aspose.slides.model.ResourceBase;
 import com.aspose.slides.model.ResourceUri;
+import com.aspose.slides.model.ThreeDFormat;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -86,6 +87,9 @@ public class ShapeBase extends ResourceBase {
 
   @SerializedName(value = "effectFormat", alternate = { "EffectFormat" })
   private EffectFormat effectFormat;
+
+  @SerializedName(value = "threeDFormat", alternate = { "ThreeDFormat" })
+  private ThreeDFormat threeDFormat;
 
   @SerializedName(value = "lineFormat", alternate = { "LineFormat" })
   private LineFormat lineFormat;
@@ -381,6 +385,24 @@ public class ShapeBase extends ResourceBase {
     this.effectFormat = effectFormat;
   }
 
+  public ShapeBase threeDFormat(ThreeDFormat threeDFormat) {
+    this.threeDFormat = threeDFormat;
+    return this;
+  }
+
+   /**
+   * Gets or sets the 3D format
+   * @return threeDFormat
+  **/
+  @ApiModelProperty(value = "Gets or sets the 3D format")
+  public ThreeDFormat getThreeDFormat() {
+    return threeDFormat;
+  }
+
+  public void setThreeDFormat(ThreeDFormat threeDFormat) {
+    this.threeDFormat = threeDFormat;
+  }
+
   public ShapeBase lineFormat(LineFormat lineFormat) {
     this.lineFormat = lineFormat;
     return this;
@@ -427,12 +449,12 @@ public class ShapeBase extends ResourceBase {
       return false;
     }
     ShapeBase shapeBase = (ShapeBase) o;
-    return true && Objects.equals(this.name, shapeBase.name) && Objects.equals(this.width, shapeBase.width) && Objects.equals(this.height, shapeBase.height) && Objects.equals(this.alternativeText, shapeBase.alternativeText) && Objects.equals(this.alternativeTextTitle, shapeBase.alternativeTextTitle) && Objects.equals(this.hidden, shapeBase.hidden) && Objects.equals(this.x, shapeBase.x) && Objects.equals(this.y, shapeBase.y) && Objects.equals(this.zorderPosition, shapeBase.zorderPosition) && Objects.equals(this.shapes, shapeBase.shapes) && Objects.equals(this.fillFormat, shapeBase.fillFormat) && Objects.equals(this.effectFormat, shapeBase.effectFormat) && Objects.equals(this.lineFormat, shapeBase.lineFormat) && Objects.equals(this.type, shapeBase.type) && super.equals(o);
+    return true && Objects.equals(this.name, shapeBase.name) && Objects.equals(this.width, shapeBase.width) && Objects.equals(this.height, shapeBase.height) && Objects.equals(this.alternativeText, shapeBase.alternativeText) && Objects.equals(this.alternativeTextTitle, shapeBase.alternativeTextTitle) && Objects.equals(this.hidden, shapeBase.hidden) && Objects.equals(this.x, shapeBase.x) && Objects.equals(this.y, shapeBase.y) && Objects.equals(this.zorderPosition, shapeBase.zorderPosition) && Objects.equals(this.shapes, shapeBase.shapes) && Objects.equals(this.fillFormat, shapeBase.fillFormat) && Objects.equals(this.effectFormat, shapeBase.effectFormat) && Objects.equals(this.threeDFormat, shapeBase.threeDFormat) && Objects.equals(this.lineFormat, shapeBase.lineFormat) && Objects.equals(this.type, shapeBase.type) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, width, height, alternativeText, alternativeTextTitle, hidden, x, y, zorderPosition, shapes, fillFormat, effectFormat, lineFormat, type, super.hashCode());
+    return Objects.hash(name, width, height, alternativeText, alternativeTextTitle, hidden, x, y, zorderPosition, shapes, fillFormat, effectFormat, threeDFormat, lineFormat, type, super.hashCode());
   }
 
 
@@ -453,6 +475,7 @@ public class ShapeBase extends ResourceBase {
     sb.append("    shapes: ").append(toIndentedString(shapes)).append("\n");
     sb.append("    fillFormat: ").append(toIndentedString(fillFormat)).append("\n");
     sb.append("    effectFormat: ").append(toIndentedString(effectFormat)).append("\n");
+    sb.append("    threeDFormat: ").append(toIndentedString(threeDFormat)).append("\n");
     sb.append("    lineFormat: ").append(toIndentedString(lineFormat)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");

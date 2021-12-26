@@ -113,7 +113,7 @@ public class PptxExportOptions extends ExportOptions {
    * The conformance class to which the PresentationML document conforms. Read/write Conformance.
    * @return conformance
   **/
-  @ApiModelProperty(required = true, value = "The conformance class to which the PresentationML document conforms. Read/write Conformance.")
+  @ApiModelProperty(value = "The conformance class to which the PresentationML document conforms. Read/write Conformance.")
   public ConformanceEnum getConformance() {
     return conformance;
   }
