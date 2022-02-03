@@ -96,7 +96,9 @@ public class SaveSlide extends Task {
     
     SVG("Svg"),
     
-    FODP("Fodp");
+    FODP("Fodp"),
+    
+    XAML("Xaml");
 
     private String value;
 

@@ -30,6 +30,7 @@ package com.aspose.slides.model;
 import java.util.Objects;
 import com.aspose.slides.model.EffectFormat;
 import com.aspose.slides.model.FillFormat;
+import com.aspose.slides.model.Hyperlink;
 import com.aspose.slides.model.LineFormat;
 import com.aspose.slides.model.ResourceUri;
 import com.aspose.slides.model.ShapeBase;

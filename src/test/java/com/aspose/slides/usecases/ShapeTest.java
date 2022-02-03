@@ -304,14 +304,10 @@ public class ShapeTest extends ApiTest {
     }
 
     @Test
-    public void groupShapeTest() throws ApiException, IOException {
+    public void groupShapeEmptyTest() throws ApiException, IOException {
         initialize(null, null, null);
-        try {
-            //Cannot create a group shape
-            api.createShape(c_fileName, c_slideIndex, new GroupShape(), null, null, c_password, c_folderName, null);
-        } catch (Exception ex) {
-            assertTrue(ex instanceof ApiException);
-        }
+        ShapeBase shape = api.createShape(c_fileName, c_slideIndex, new GroupShape(), null, null, c_password, c_folderName, null);
+        assertTrue(shape instanceof GroupShape);
     }
 
     @Test
@@ -359,6 +355,77 @@ public class ShapeTest extends ApiTest {
         assertEquals(shape1.getX(), shape2.getX(), 1.0);
         assertEquals(shape1.getY(), shape2.getY(), 1.0);
         assertEquals(0.0, shape1.getX().doubleValue(), 1.0);
+    }
+
+    @Test
+    public void shapesAlignGroupTest() throws ApiException, IOException {
+        int slideIndex = 1;
+        String path = "4/shapes";
+        initialize(null, null, null);
+        ShapeBase shape1 = api.getSubshape(c_fileName, slideIndex, path, 1, c_password, c_folderName, null);
+        ShapeBase shape2 = api.getSubshape(c_fileName, slideIndex, path, 2, c_password, c_folderName, null);
+        assertNotEquals(shape1.getX(), shape2.getX(), 1.0);
+        assertNotEquals(shape1.getY(), shape2.getY(), 1.0);
+
+        api.alignSubshapes(c_fileName, slideIndex, path, ShapesAlignmentType.ALIGNTOP, null, null, c_password, c_folderName, null);
+        shape1 = api.getSubshape(c_fileName, slideIndex, path, 1, c_password, c_folderName, null);
+        shape2 = api.getSubshape(c_fileName, slideIndex, path, 2, c_password, c_folderName, null);
+        assertNotEquals(shape1.getX(), shape2.getX(), 1.0);
+        assertEquals(shape1.getY(), shape2.getY(), 1.0);
+
+        List<Integer> shapes = new ArrayList<Integer>();
+        shapes.add(1);
+        shapes.add(2);
+        api.alignSubshapes(c_fileName, slideIndex, path, ShapesAlignmentType.ALIGNLEFT, true, shapes, c_password, c_folderName, null);
+        shape1 = api.getSubshape(c_fileName, slideIndex, path, 1, c_password, c_folderName, null);
+        shape2 = api.getSubshape(c_fileName, slideIndex, path, 2, c_password, c_folderName, null);
+        assertEquals(shape1.getX(), shape2.getX(), 1.0);
+        assertEquals(shape1.getY(), shape2.getY(), 1.0);
+        assertEquals(0.0, shape1.getX().doubleValue(), 1.0);
+    }
+
+    @Test
+    public void shapeGeometryGetTest() throws ApiException, IOException {
+        initialize(null, null, null);
+        GeometryPaths paths = api.getShapeGeometryPath(c_fileName, 4, 2, c_password, c_folderName, null);
+        assertTrue(paths.getPaths() != null);
+        assertEquals(1, paths.getPaths().size());
+    }
+
+    @Test
+    public void shapeGeometrySetTest() throws ApiException, IOException {
+        initialize(null, null, null);
+        GeometryPaths dto = new GeometryPaths();
+        List<GeometryPath> paths = new ArrayList<GeometryPath>();
+        GeometryPath path = new GeometryPath();
+        List<PathSegment> pathData = new ArrayList<PathSegment>();
+        MoveToPathSegment startSegment = new MoveToPathSegment();
+        startSegment.setX(0.0);
+        startSegment.setY(0.0);
+        pathData.add(startSegment);
+        LineToPathSegment line1Segment = new LineToPathSegment();
+        line1Segment.setX(0.0);
+        line1Segment.setY(200.0);
+        pathData.add(line1Segment);
+        LineToPathSegment line2Segment = new LineToPathSegment();
+        line2Segment.setX(200.0);
+        line2Segment.setY(300.0);
+        pathData.add(line2Segment);
+        LineToPathSegment line3Segment = new LineToPathSegment();
+        line3Segment.setX(400.0);
+        line3Segment.setY(200.0);
+        pathData.add(line3Segment);
+        LineToPathSegment line4Segment = new LineToPathSegment();
+        line4Segment.setX(400.0);
+        line4Segment.setY(0.0);
+        pathData.add(line4Segment);
+        ClosePathSegment endSegment = new ClosePathSegment();
+        pathData.add(endSegment);
+        path.setPathData(pathData);
+        paths.add(path);
+        dto.setPaths(paths);
+        ShapeBase shape = api.setShapeGeometryPath(c_fileName, 4, 1, dto, c_password, c_folderName, null);
+        assertTrue(shape != null);
     }
 
     private final String c_folderName = "TempSlidesSDK";

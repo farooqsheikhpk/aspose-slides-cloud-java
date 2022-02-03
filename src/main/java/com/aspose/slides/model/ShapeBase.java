@@ -30,6 +30,7 @@ package com.aspose.slides.model;
 import java.util.Objects;
 import com.aspose.slides.model.EffectFormat;
 import com.aspose.slides.model.FillFormat;
+import com.aspose.slides.model.Hyperlink;
 import com.aspose.slides.model.LineFormat;
 import com.aspose.slides.model.ResourceBase;
 import com.aspose.slides.model.ResourceUri;
@@ -93,6 +94,12 @@ public class ShapeBase extends ResourceBase {
 
   @SerializedName(value = "lineFormat", alternate = { "LineFormat" })
   private LineFormat lineFormat;
+
+  @SerializedName(value = "hyperlinkClick", alternate = { "HyperlinkClick" })
+  private Hyperlink hyperlinkClick;
+
+  @SerializedName(value = "hyperlinkMouseOver", alternate = { "HyperlinkMouseOver" })
+  private Hyperlink hyperlinkMouseOver;
 
   /**
    * Gets or Sets type
@@ -421,6 +428,42 @@ public class ShapeBase extends ResourceBase {
     this.lineFormat = lineFormat;
   }
 
+  public ShapeBase hyperlinkClick(Hyperlink hyperlinkClick) {
+    this.hyperlinkClick = hyperlinkClick;
+    return this;
+  }
+
+   /**
+   * Hyperlink defined for mouse click.
+   * @return hyperlinkClick
+  **/
+  @ApiModelProperty(value = "Hyperlink defined for mouse click.")
+  public Hyperlink getHyperlinkClick() {
+    return hyperlinkClick;
+  }
+
+  public void setHyperlinkClick(Hyperlink hyperlinkClick) {
+    this.hyperlinkClick = hyperlinkClick;
+  }
+
+  public ShapeBase hyperlinkMouseOver(Hyperlink hyperlinkMouseOver) {
+    this.hyperlinkMouseOver = hyperlinkMouseOver;
+    return this;
+  }
+
+   /**
+   * Hyperlink defined for mouse over.
+   * @return hyperlinkMouseOver
+  **/
+  @ApiModelProperty(value = "Hyperlink defined for mouse over.")
+  public Hyperlink getHyperlinkMouseOver() {
+    return hyperlinkMouseOver;
+  }
+
+  public void setHyperlinkMouseOver(Hyperlink hyperlinkMouseOver) {
+    this.hyperlinkMouseOver = hyperlinkMouseOver;
+  }
+
   public ShapeBase type(TypeEnum type) {
     this.type = type;
     return this;
@@ -449,12 +492,12 @@ public class ShapeBase extends ResourceBase {
       return false;
     }
     ShapeBase shapeBase = (ShapeBase) o;
-    return true && Objects.equals(this.name, shapeBase.name) && Objects.equals(this.width, shapeBase.width) && Objects.equals(this.height, shapeBase.height) && Objects.equals(this.alternativeText, shapeBase.alternativeText) && Objects.equals(this.alternativeTextTitle, shapeBase.alternativeTextTitle) && Objects.equals(this.hidden, shapeBase.hidden) && Objects.equals(this.x, shapeBase.x) && Objects.equals(this.y, shapeBase.y) && Objects.equals(this.zorderPosition, shapeBase.zorderPosition) && Objects.equals(this.shapes, shapeBase.shapes) && Objects.equals(this.fillFormat, shapeBase.fillFormat) && Objects.equals(this.effectFormat, shapeBase.effectFormat) && Objects.equals(this.threeDFormat, shapeBase.threeDFormat) && Objects.equals(this.lineFormat, shapeBase.lineFormat) && Objects.equals(this.type, shapeBase.type) && super.equals(o);
+    return true && Objects.equals(this.name, shapeBase.name) && Objects.equals(this.width, shapeBase.width) && Objects.equals(this.height, shapeBase.height) && Objects.equals(this.alternativeText, shapeBase.alternativeText) && Objects.equals(this.alternativeTextTitle, shapeBase.alternativeTextTitle) && Objects.equals(this.hidden, shapeBase.hidden) && Objects.equals(this.x, shapeBase.x) && Objects.equals(this.y, shapeBase.y) && Objects.equals(this.zorderPosition, shapeBase.zorderPosition) && Objects.equals(this.shapes, shapeBase.shapes) && Objects.equals(this.fillFormat, shapeBase.fillFormat) && Objects.equals(this.effectFormat, shapeBase.effectFormat) && Objects.equals(this.threeDFormat, shapeBase.threeDFormat) && Objects.equals(this.lineFormat, shapeBase.lineFormat) && Objects.equals(this.hyperlinkClick, shapeBase.hyperlinkClick) && Objects.equals(this.hyperlinkMouseOver, shapeBase.hyperlinkMouseOver) && Objects.equals(this.type, shapeBase.type) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, width, height, alternativeText, alternativeTextTitle, hidden, x, y, zorderPosition, shapes, fillFormat, effectFormat, threeDFormat, lineFormat, type, super.hashCode());
+    return Objects.hash(name, width, height, alternativeText, alternativeTextTitle, hidden, x, y, zorderPosition, shapes, fillFormat, effectFormat, threeDFormat, lineFormat, hyperlinkClick, hyperlinkMouseOver, type, super.hashCode());
   }
 
 
@@ -477,6 +520,8 @@ public class ShapeBase extends ResourceBase {
     sb.append("    effectFormat: ").append(toIndentedString(effectFormat)).append("\n");
     sb.append("    threeDFormat: ").append(toIndentedString(threeDFormat)).append("\n");
     sb.append("    lineFormat: ").append(toIndentedString(lineFormat)).append("\n");
+    sb.append("    hyperlinkClick: ").append(toIndentedString(hyperlinkClick)).append("\n");
+    sb.append("    hyperlinkMouseOver: ").append(toIndentedString(hyperlinkMouseOver)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();

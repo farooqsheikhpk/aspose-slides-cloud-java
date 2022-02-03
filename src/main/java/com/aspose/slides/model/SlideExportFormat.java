@@ -86,7 +86,9 @@ public enum SlideExportFormat {
   
   SVG("Svg"),
   
-  FODP("Fodp");
+  FODP("Fodp"),
+  
+  XAML("Xaml");
 
   private String value;
 

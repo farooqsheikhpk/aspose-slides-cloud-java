@@ -31,6 +31,7 @@ import java.util.Objects;
 import com.aspose.slides.model.EffectFormat;
 import com.aspose.slides.model.FillFormat;
 import com.aspose.slides.model.GeometryShape;
+import com.aspose.slides.model.Hyperlink;
 import com.aspose.slides.model.LineFormat;
 import com.aspose.slides.model.ResourceUri;
 import com.aspose.slides.model.ThreeDFormat;
@@ -83,6 +84,8 @@ public class AudioFrame extends GeometryShape {
     ONCLICK("OnClick"),
     
     ALLSLIDES("AllSlides"),
+    
+    INCLICKSEQUENCE("InClickSequence"),
     
     MIXED("Mixed");
 
@@ -185,6 +188,12 @@ public class AudioFrame extends GeometryShape {
 
   @SerializedName(value = "base64Data", alternate = { "Base64Data" })
   private String base64Data;
+
+  @SerializedName(value = "playAcrossSlides", alternate = { "PlayAcrossSlides" })
+  private Boolean playAcrossSlides;
+
+  @SerializedName(value = "rewindAudio", alternate = { "RewindAudio" })
+  private Boolean rewindAudio;
 
 
   public AudioFrame() {
@@ -372,6 +381,42 @@ public class AudioFrame extends GeometryShape {
     this.base64Data = base64Data;
   }
 
+  public AudioFrame playAcrossSlides(Boolean playAcrossSlides) {
+    this.playAcrossSlides = playAcrossSlides;
+    return this;
+  }
+
+   /**
+   * Determines whether an audio is playing across the slides.
+   * @return playAcrossSlides
+  **/
+  @ApiModelProperty(value = "Determines whether an audio is playing across the slides.")
+  public Boolean isPlayAcrossSlides() {
+    return playAcrossSlides;
+  }
+
+  public void setPlayAcrossSlides(Boolean playAcrossSlides) {
+    this.playAcrossSlides = playAcrossSlides;
+  }
+
+  public AudioFrame rewindAudio(Boolean rewindAudio) {
+    this.rewindAudio = rewindAudio;
+    return this;
+  }
+
+   /**
+   * Determines whether audio is automatically rewound to start after playing.
+   * @return rewindAudio
+  **/
+  @ApiModelProperty(value = "Determines whether audio is automatically rewound to start after playing.")
+  public Boolean isRewindAudio() {
+    return rewindAudio;
+  }
+
+  public void setRewindAudio(Boolean rewindAudio) {
+    this.rewindAudio = rewindAudio;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -382,12 +427,12 @@ public class AudioFrame extends GeometryShape {
       return false;
     }
     AudioFrame audioFrame = (AudioFrame) o;
-    return true && Objects.equals(this.audioCdEndTrack, audioFrame.audioCdEndTrack) && Objects.equals(this.audioCdEndTrackTime, audioFrame.audioCdEndTrackTime) && Objects.equals(this.audioCdStartTrack, audioFrame.audioCdStartTrack) && Objects.equals(this.audioCdStartTrackTime, audioFrame.audioCdStartTrackTime) && Objects.equals(this.embedded, audioFrame.embedded) && Objects.equals(this.hideAtShowing, audioFrame.hideAtShowing) && Objects.equals(this.playLoopMode, audioFrame.playLoopMode) && Objects.equals(this.playMode, audioFrame.playMode) && Objects.equals(this.volume, audioFrame.volume) && Objects.equals(this.base64Data, audioFrame.base64Data) && super.equals(o);
+    return true && Objects.equals(this.audioCdEndTrack, audioFrame.audioCdEndTrack) && Objects.equals(this.audioCdEndTrackTime, audioFrame.audioCdEndTrackTime) && Objects.equals(this.audioCdStartTrack, audioFrame.audioCdStartTrack) && Objects.equals(this.audioCdStartTrackTime, audioFrame.audioCdStartTrackTime) && Objects.equals(this.embedded, audioFrame.embedded) && Objects.equals(this.hideAtShowing, audioFrame.hideAtShowing) && Objects.equals(this.playLoopMode, audioFrame.playLoopMode) && Objects.equals(this.playMode, audioFrame.playMode) && Objects.equals(this.volume, audioFrame.volume) && Objects.equals(this.base64Data, audioFrame.base64Data) && Objects.equals(this.playAcrossSlides, audioFrame.playAcrossSlides) && Objects.equals(this.rewindAudio, audioFrame.rewindAudio) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(audioCdEndTrack, audioCdEndTrackTime, audioCdStartTrack, audioCdStartTrackTime, embedded, hideAtShowing, playLoopMode, playMode, volume, base64Data, super.hashCode());
+    return Objects.hash(audioCdEndTrack, audioCdEndTrackTime, audioCdStartTrack, audioCdStartTrackTime, embedded, hideAtShowing, playLoopMode, playMode, volume, base64Data, playAcrossSlides, rewindAudio, super.hashCode());
   }
 
 
@@ -406,6 +451,8 @@ public class AudioFrame extends GeometryShape {
     sb.append("    playMode: ").append(toIndentedString(playMode)).append("\n");
     sb.append("    volume: ").append(toIndentedString(volume)).append("\n");
     sb.append("    base64Data: ").append(toIndentedString(base64Data)).append("\n");
+    sb.append("    playAcrossSlides: ").append(toIndentedString(playAcrossSlides)).append("\n");
+    sb.append("    rewindAudio: ").append(toIndentedString(rewindAudio)).append("\n");
     sb.append("}");
     return sb.toString();
   }

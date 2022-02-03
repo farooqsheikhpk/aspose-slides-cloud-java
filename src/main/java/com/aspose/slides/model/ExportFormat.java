@@ -90,7 +90,9 @@ public enum ExportFormat {
   
   BMP("Bmp"),
   
-  FODP("Fodp");
+  FODP("Fodp"),
+  
+  XAML("Xaml");
 
   private String value;
 

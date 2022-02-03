@@ -59,6 +59,7 @@ import com.aspose.slides.model.FilesList;
 import com.aspose.slides.model.FilesUploadResult;
 import com.aspose.slides.model.FontScheme;
 import com.aspose.slides.model.FormatScheme;
+import com.aspose.slides.model.GeometryPaths;
 import com.aspose.slides.model.HeaderFooter;
 import com.aspose.slides.model.IShapeExportOptions;
 import com.aspose.slides.model.Images;
@@ -695,6 +696,320 @@ public class SlidesApiTest extends ApiTest {
         }
         if (needAssertResponse) {
             assertResponse("storage", "alignSpecialSlideShapes");
+        }
+    }
+    
+    /**
+     * Changes the placement of selected shapes on the slide. Aligns shapes to the margins or the edge of the slide or aligns them relative to each other (for group shapes only).
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void alignSubshapesTest() throws ApiException, Exception {
+        initialize("alignSubshapes", null, null);
+        Shapes response = null;
+        String valueName = (String)getTestValue("String", "alignSubshapes", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "alignSubshapes", "slideIndex");
+        String valuePath = (String)getTestValue("String", "alignSubshapes", "path");
+        ShapesAlignmentType valueAlignmentType = (ShapesAlignmentType)getTestValue("ShapesAlignmentType", "alignSubshapes", "alignmentType");
+        Boolean valueAlignToSlide = (Boolean)getTestValue("Boolean", "alignSubshapes", "alignToSlide");
+        List<Integer> valueShapes = (List<Integer>)getTestValue("List<Integer>", "alignSubshapes", "shapes");
+        String valuePassword = (String)getTestValue("String", "alignSubshapes", "password");
+        String valueFolder = (String)getTestValue("String", "alignSubshapes", "folder");
+        String valueStorage = (String)getTestValue("String", "alignSubshapes", "storage");
+        response = api.alignSubshapes(valueName, valueSlideIndex, valuePath, valueAlignmentType, valueAlignToSlide, valueShapes, valuePassword, valueFolder, valueStorage);
+        assertNotNull(response);
+    }
+
+    /**
+     * Changes the placement of selected shapes on the slide. Aligns shapes to the margins or the edge of the slide or aligns them relative to each other (for group shapes only).
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void alignSubshapesInvalidNameTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "alignSubshapes", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "alignSubshapes", "slideIndex");
+        String valuePath = (String)getTestValue("String", "alignSubshapes", "path");
+        ShapesAlignmentType valueAlignmentType = (ShapesAlignmentType)getTestValue("ShapesAlignmentType", "alignSubshapes", "alignmentType");
+        Boolean valueAlignToSlide = (Boolean)getTestValue("Boolean", "alignSubshapes", "alignToSlide");
+        List<Integer> valueShapes = (List<Integer>)getTestValue("List<Integer>", "alignSubshapes", "shapes");
+        String valuePassword = (String)getTestValue("String", "alignSubshapes", "password");
+        String valueFolder = (String)getTestValue("String", "alignSubshapes", "folder");
+        String valueStorage = (String)getTestValue("String", "alignSubshapes", "storage");
+        try {
+            valueName = (String)invalidizeTestValue("String", valueName, "alignSubshapes", "name");
+            initialize("alignSubshapes", "name", valueName);
+            Shapes response = api.alignSubshapes(valueName, valueSlideIndex, valuePath, valueAlignmentType, valueAlignToSlide, valueShapes, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "name", "alignSubshapes", valueName);
+        }
+        if (needAssertResponse) {
+            assertResponse("name", "alignSubshapes");
+        }
+    }
+    /**
+     * Changes the placement of selected shapes on the slide. Aligns shapes to the margins or the edge of the slide or aligns them relative to each other (for group shapes only).
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void alignSubshapesInvalidSlideIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "alignSubshapes", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "alignSubshapes", "slideIndex");
+        String valuePath = (String)getTestValue("String", "alignSubshapes", "path");
+        ShapesAlignmentType valueAlignmentType = (ShapesAlignmentType)getTestValue("ShapesAlignmentType", "alignSubshapes", "alignmentType");
+        Boolean valueAlignToSlide = (Boolean)getTestValue("Boolean", "alignSubshapes", "alignToSlide");
+        List<Integer> valueShapes = (List<Integer>)getTestValue("List<Integer>", "alignSubshapes", "shapes");
+        String valuePassword = (String)getTestValue("String", "alignSubshapes", "password");
+        String valueFolder = (String)getTestValue("String", "alignSubshapes", "folder");
+        String valueStorage = (String)getTestValue("String", "alignSubshapes", "storage");
+        try {
+            valueSlideIndex = (Integer)invalidizeTestValue("Integer", valueSlideIndex, "alignSubshapes", "slideIndex");
+            initialize("alignSubshapes", "slideIndex", valueSlideIndex);
+            Shapes response = api.alignSubshapes(valueName, valueSlideIndex, valuePath, valueAlignmentType, valueAlignToSlide, valueShapes, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "slideIndex", "alignSubshapes", valueSlideIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("slideIndex", "alignSubshapes");
+        }
+    }
+    /**
+     * Changes the placement of selected shapes on the slide. Aligns shapes to the margins or the edge of the slide or aligns them relative to each other (for group shapes only).
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void alignSubshapesInvalidPathTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "alignSubshapes", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "alignSubshapes", "slideIndex");
+        String valuePath = (String)getTestValue("String", "alignSubshapes", "path");
+        ShapesAlignmentType valueAlignmentType = (ShapesAlignmentType)getTestValue("ShapesAlignmentType", "alignSubshapes", "alignmentType");
+        Boolean valueAlignToSlide = (Boolean)getTestValue("Boolean", "alignSubshapes", "alignToSlide");
+        List<Integer> valueShapes = (List<Integer>)getTestValue("List<Integer>", "alignSubshapes", "shapes");
+        String valuePassword = (String)getTestValue("String", "alignSubshapes", "password");
+        String valueFolder = (String)getTestValue("String", "alignSubshapes", "folder");
+        String valueStorage = (String)getTestValue("String", "alignSubshapes", "storage");
+        try {
+            valuePath = (String)invalidizeTestValue("String", valuePath, "alignSubshapes", "path");
+            initialize("alignSubshapes", "path", valuePath);
+            Shapes response = api.alignSubshapes(valueName, valueSlideIndex, valuePath, valueAlignmentType, valueAlignToSlide, valueShapes, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "path", "alignSubshapes", valuePath);
+        }
+        if (needAssertResponse) {
+            assertResponse("path", "alignSubshapes");
+        }
+    }
+    /**
+     * Changes the placement of selected shapes on the slide. Aligns shapes to the margins or the edge of the slide or aligns them relative to each other (for group shapes only).
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void alignSubshapesInvalidAlignmentTypeTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "alignSubshapes", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "alignSubshapes", "slideIndex");
+        String valuePath = (String)getTestValue("String", "alignSubshapes", "path");
+        ShapesAlignmentType valueAlignmentType = (ShapesAlignmentType)getTestValue("ShapesAlignmentType", "alignSubshapes", "alignmentType");
+        Boolean valueAlignToSlide = (Boolean)getTestValue("Boolean", "alignSubshapes", "alignToSlide");
+        List<Integer> valueShapes = (List<Integer>)getTestValue("List<Integer>", "alignSubshapes", "shapes");
+        String valuePassword = (String)getTestValue("String", "alignSubshapes", "password");
+        String valueFolder = (String)getTestValue("String", "alignSubshapes", "folder");
+        String valueStorage = (String)getTestValue("String", "alignSubshapes", "storage");
+        try {
+            valueAlignmentType = (ShapesAlignmentType)invalidizeTestValue("ShapesAlignmentType", valueAlignmentType, "alignSubshapes", "alignmentType");
+            initialize("alignSubshapes", "alignmentType", valueAlignmentType);
+            Shapes response = api.alignSubshapes(valueName, valueSlideIndex, valuePath, valueAlignmentType, valueAlignToSlide, valueShapes, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "alignmentType", "alignSubshapes", valueAlignmentType);
+        }
+        if (needAssertResponse) {
+            assertResponse("alignmentType", "alignSubshapes");
+        }
+    }
+    /**
+     * Changes the placement of selected shapes on the slide. Aligns shapes to the margins or the edge of the slide or aligns them relative to each other (for group shapes only).
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void alignSubshapesInvalidAlignToSlideTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "alignSubshapes", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "alignSubshapes", "slideIndex");
+        String valuePath = (String)getTestValue("String", "alignSubshapes", "path");
+        ShapesAlignmentType valueAlignmentType = (ShapesAlignmentType)getTestValue("ShapesAlignmentType", "alignSubshapes", "alignmentType");
+        Boolean valueAlignToSlide = (Boolean)getTestValue("Boolean", "alignSubshapes", "alignToSlide");
+        List<Integer> valueShapes = (List<Integer>)getTestValue("List<Integer>", "alignSubshapes", "shapes");
+        String valuePassword = (String)getTestValue("String", "alignSubshapes", "password");
+        String valueFolder = (String)getTestValue("String", "alignSubshapes", "folder");
+        String valueStorage = (String)getTestValue("String", "alignSubshapes", "storage");
+        try {
+            valueAlignToSlide = (Boolean)invalidizeTestValue("Boolean", valueAlignToSlide, "alignSubshapes", "alignToSlide");
+            initialize("alignSubshapes", "alignToSlide", valueAlignToSlide);
+            Shapes response = api.alignSubshapes(valueName, valueSlideIndex, valuePath, valueAlignmentType, valueAlignToSlide, valueShapes, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "alignToSlide", "alignSubshapes", valueAlignToSlide);
+        }
+        if (needAssertResponse) {
+            assertResponse("alignToSlide", "alignSubshapes");
+        }
+    }
+    /**
+     * Changes the placement of selected shapes on the slide. Aligns shapes to the margins or the edge of the slide or aligns them relative to each other (for group shapes only).
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void alignSubshapesInvalidShapesTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "alignSubshapes", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "alignSubshapes", "slideIndex");
+        String valuePath = (String)getTestValue("String", "alignSubshapes", "path");
+        ShapesAlignmentType valueAlignmentType = (ShapesAlignmentType)getTestValue("ShapesAlignmentType", "alignSubshapes", "alignmentType");
+        Boolean valueAlignToSlide = (Boolean)getTestValue("Boolean", "alignSubshapes", "alignToSlide");
+        List<Integer> valueShapes = (List<Integer>)getTestValue("List<Integer>", "alignSubshapes", "shapes");
+        String valuePassword = (String)getTestValue("String", "alignSubshapes", "password");
+        String valueFolder = (String)getTestValue("String", "alignSubshapes", "folder");
+        String valueStorage = (String)getTestValue("String", "alignSubshapes", "storage");
+        try {
+            valueShapes = (List<Integer>)invalidizeTestValue("List<Integer>", valueShapes, "alignSubshapes", "shapes");
+            initialize("alignSubshapes", "shapes", valueShapes);
+            Shapes response = api.alignSubshapes(valueName, valueSlideIndex, valuePath, valueAlignmentType, valueAlignToSlide, valueShapes, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "shapes", "alignSubshapes", valueShapes);
+        }
+        if (needAssertResponse) {
+            assertResponse("shapes", "alignSubshapes");
+        }
+    }
+    /**
+     * Changes the placement of selected shapes on the slide. Aligns shapes to the margins or the edge of the slide or aligns them relative to each other (for group shapes only).
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void alignSubshapesInvalidPasswordTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "alignSubshapes", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "alignSubshapes", "slideIndex");
+        String valuePath = (String)getTestValue("String", "alignSubshapes", "path");
+        ShapesAlignmentType valueAlignmentType = (ShapesAlignmentType)getTestValue("ShapesAlignmentType", "alignSubshapes", "alignmentType");
+        Boolean valueAlignToSlide = (Boolean)getTestValue("Boolean", "alignSubshapes", "alignToSlide");
+        List<Integer> valueShapes = (List<Integer>)getTestValue("List<Integer>", "alignSubshapes", "shapes");
+        String valuePassword = (String)getTestValue("String", "alignSubshapes", "password");
+        String valueFolder = (String)getTestValue("String", "alignSubshapes", "folder");
+        String valueStorage = (String)getTestValue("String", "alignSubshapes", "storage");
+        try {
+            valuePassword = (String)invalidizeTestValue("String", valuePassword, "alignSubshapes", "password");
+            initialize("alignSubshapes", "password", valuePassword);
+            Shapes response = api.alignSubshapes(valueName, valueSlideIndex, valuePath, valueAlignmentType, valueAlignToSlide, valueShapes, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "password", "alignSubshapes", valuePassword);
+        }
+        if (needAssertResponse) {
+            assertResponse("password", "alignSubshapes");
+        }
+    }
+    /**
+     * Changes the placement of selected shapes on the slide. Aligns shapes to the margins or the edge of the slide or aligns them relative to each other (for group shapes only).
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void alignSubshapesInvalidFolderTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "alignSubshapes", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "alignSubshapes", "slideIndex");
+        String valuePath = (String)getTestValue("String", "alignSubshapes", "path");
+        ShapesAlignmentType valueAlignmentType = (ShapesAlignmentType)getTestValue("ShapesAlignmentType", "alignSubshapes", "alignmentType");
+        Boolean valueAlignToSlide = (Boolean)getTestValue("Boolean", "alignSubshapes", "alignToSlide");
+        List<Integer> valueShapes = (List<Integer>)getTestValue("List<Integer>", "alignSubshapes", "shapes");
+        String valuePassword = (String)getTestValue("String", "alignSubshapes", "password");
+        String valueFolder = (String)getTestValue("String", "alignSubshapes", "folder");
+        String valueStorage = (String)getTestValue("String", "alignSubshapes", "storage");
+        try {
+            valueFolder = (String)invalidizeTestValue("String", valueFolder, "alignSubshapes", "folder");
+            initialize("alignSubshapes", "folder", valueFolder);
+            Shapes response = api.alignSubshapes(valueName, valueSlideIndex, valuePath, valueAlignmentType, valueAlignToSlide, valueShapes, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "folder", "alignSubshapes", valueFolder);
+        }
+        if (needAssertResponse) {
+            assertResponse("folder", "alignSubshapes");
+        }
+    }
+    /**
+     * Changes the placement of selected shapes on the slide. Aligns shapes to the margins or the edge of the slide or aligns them relative to each other (for group shapes only).
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void alignSubshapesInvalidStorageTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "alignSubshapes", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "alignSubshapes", "slideIndex");
+        String valuePath = (String)getTestValue("String", "alignSubshapes", "path");
+        ShapesAlignmentType valueAlignmentType = (ShapesAlignmentType)getTestValue("ShapesAlignmentType", "alignSubshapes", "alignmentType");
+        Boolean valueAlignToSlide = (Boolean)getTestValue("Boolean", "alignSubshapes", "alignToSlide");
+        List<Integer> valueShapes = (List<Integer>)getTestValue("List<Integer>", "alignSubshapes", "shapes");
+        String valuePassword = (String)getTestValue("String", "alignSubshapes", "password");
+        String valueFolder = (String)getTestValue("String", "alignSubshapes", "folder");
+        String valueStorage = (String)getTestValue("String", "alignSubshapes", "storage");
+        try {
+            valueStorage = (String)invalidizeTestValue("String", valueStorage, "alignSubshapes", "storage");
+            initialize("alignSubshapes", "storage", valueStorage);
+            Shapes response = api.alignSubshapes(valueName, valueSlideIndex, valuePath, valueAlignmentType, valueAlignToSlide, valueShapes, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "storage", "alignSubshapes", valueStorage);
+        }
+        if (needAssertResponse) {
+            assertResponse("storage", "alignSubshapes");
         }
     }
     
@@ -25079,6 +25394,279 @@ public class SlidesApiTest extends ApiTest {
     }
     
     /**
+     * Convert Mathematical Text to MathML Format
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void downloadPortionAsMathMlTest() throws ApiException, Exception {
+        initialize("downloadPortionAsMathMl", null, null);
+        File response = null;
+        String valueName = (String)getTestValue("String", "downloadPortionAsMathMl", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "portionIndex");
+        String valuePassword = (String)getTestValue("String", "downloadPortionAsMathMl", "password");
+        String valueFolder = (String)getTestValue("String", "downloadPortionAsMathMl", "folder");
+        String valueStorage = (String)getTestValue("String", "downloadPortionAsMathMl", "storage");
+        response = api.downloadPortionAsMathMl(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valuePassword, valueFolder, valueStorage);
+        assertTrue(response.isFile());
+    }
+
+    /**
+     * Convert Mathematical Text to MathML Format
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void downloadPortionAsMathMlInvalidNameTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "downloadPortionAsMathMl", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "portionIndex");
+        String valuePassword = (String)getTestValue("String", "downloadPortionAsMathMl", "password");
+        String valueFolder = (String)getTestValue("String", "downloadPortionAsMathMl", "folder");
+        String valueStorage = (String)getTestValue("String", "downloadPortionAsMathMl", "storage");
+        try {
+            valueName = (String)invalidizeTestValue("String", valueName, "downloadPortionAsMathMl", "name");
+            initialize("downloadPortionAsMathMl", "name", valueName);
+            File response = api.downloadPortionAsMathMl(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "name", "downloadPortionAsMathMl", valueName);
+        }
+        if (needAssertResponse) {
+            assertResponse("name", "downloadPortionAsMathMl");
+        }
+    }
+    /**
+     * Convert Mathematical Text to MathML Format
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void downloadPortionAsMathMlInvalidSlideIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "downloadPortionAsMathMl", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "portionIndex");
+        String valuePassword = (String)getTestValue("String", "downloadPortionAsMathMl", "password");
+        String valueFolder = (String)getTestValue("String", "downloadPortionAsMathMl", "folder");
+        String valueStorage = (String)getTestValue("String", "downloadPortionAsMathMl", "storage");
+        try {
+            valueSlideIndex = (Integer)invalidizeTestValue("Integer", valueSlideIndex, "downloadPortionAsMathMl", "slideIndex");
+            initialize("downloadPortionAsMathMl", "slideIndex", valueSlideIndex);
+            File response = api.downloadPortionAsMathMl(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "slideIndex", "downloadPortionAsMathMl", valueSlideIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("slideIndex", "downloadPortionAsMathMl");
+        }
+    }
+    /**
+     * Convert Mathematical Text to MathML Format
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void downloadPortionAsMathMlInvalidShapeIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "downloadPortionAsMathMl", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "portionIndex");
+        String valuePassword = (String)getTestValue("String", "downloadPortionAsMathMl", "password");
+        String valueFolder = (String)getTestValue("String", "downloadPortionAsMathMl", "folder");
+        String valueStorage = (String)getTestValue("String", "downloadPortionAsMathMl", "storage");
+        try {
+            valueShapeIndex = (Integer)invalidizeTestValue("Integer", valueShapeIndex, "downloadPortionAsMathMl", "shapeIndex");
+            initialize("downloadPortionAsMathMl", "shapeIndex", valueShapeIndex);
+            File response = api.downloadPortionAsMathMl(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "shapeIndex", "downloadPortionAsMathMl", valueShapeIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("shapeIndex", "downloadPortionAsMathMl");
+        }
+    }
+    /**
+     * Convert Mathematical Text to MathML Format
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void downloadPortionAsMathMlInvalidParagraphIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "downloadPortionAsMathMl", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "portionIndex");
+        String valuePassword = (String)getTestValue("String", "downloadPortionAsMathMl", "password");
+        String valueFolder = (String)getTestValue("String", "downloadPortionAsMathMl", "folder");
+        String valueStorage = (String)getTestValue("String", "downloadPortionAsMathMl", "storage");
+        try {
+            valueParagraphIndex = (Integer)invalidizeTestValue("Integer", valueParagraphIndex, "downloadPortionAsMathMl", "paragraphIndex");
+            initialize("downloadPortionAsMathMl", "paragraphIndex", valueParagraphIndex);
+            File response = api.downloadPortionAsMathMl(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "paragraphIndex", "downloadPortionAsMathMl", valueParagraphIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("paragraphIndex", "downloadPortionAsMathMl");
+        }
+    }
+    /**
+     * Convert Mathematical Text to MathML Format
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void downloadPortionAsMathMlInvalidPortionIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "downloadPortionAsMathMl", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "portionIndex");
+        String valuePassword = (String)getTestValue("String", "downloadPortionAsMathMl", "password");
+        String valueFolder = (String)getTestValue("String", "downloadPortionAsMathMl", "folder");
+        String valueStorage = (String)getTestValue("String", "downloadPortionAsMathMl", "storage");
+        try {
+            valuePortionIndex = (Integer)invalidizeTestValue("Integer", valuePortionIndex, "downloadPortionAsMathMl", "portionIndex");
+            initialize("downloadPortionAsMathMl", "portionIndex", valuePortionIndex);
+            File response = api.downloadPortionAsMathMl(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "portionIndex", "downloadPortionAsMathMl", valuePortionIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("portionIndex", "downloadPortionAsMathMl");
+        }
+    }
+    /**
+     * Convert Mathematical Text to MathML Format
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void downloadPortionAsMathMlInvalidPasswordTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "downloadPortionAsMathMl", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "portionIndex");
+        String valuePassword = (String)getTestValue("String", "downloadPortionAsMathMl", "password");
+        String valueFolder = (String)getTestValue("String", "downloadPortionAsMathMl", "folder");
+        String valueStorage = (String)getTestValue("String", "downloadPortionAsMathMl", "storage");
+        try {
+            valuePassword = (String)invalidizeTestValue("String", valuePassword, "downloadPortionAsMathMl", "password");
+            initialize("downloadPortionAsMathMl", "password", valuePassword);
+            File response = api.downloadPortionAsMathMl(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "password", "downloadPortionAsMathMl", valuePassword);
+        }
+        if (needAssertResponse) {
+            assertResponse("password", "downloadPortionAsMathMl");
+        }
+    }
+    /**
+     * Convert Mathematical Text to MathML Format
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void downloadPortionAsMathMlInvalidFolderTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "downloadPortionAsMathMl", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "portionIndex");
+        String valuePassword = (String)getTestValue("String", "downloadPortionAsMathMl", "password");
+        String valueFolder = (String)getTestValue("String", "downloadPortionAsMathMl", "folder");
+        String valueStorage = (String)getTestValue("String", "downloadPortionAsMathMl", "storage");
+        try {
+            valueFolder = (String)invalidizeTestValue("String", valueFolder, "downloadPortionAsMathMl", "folder");
+            initialize("downloadPortionAsMathMl", "folder", valueFolder);
+            File response = api.downloadPortionAsMathMl(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "folder", "downloadPortionAsMathMl", valueFolder);
+        }
+        if (needAssertResponse) {
+            assertResponse("folder", "downloadPortionAsMathMl");
+        }
+    }
+    /**
+     * Convert Mathematical Text to MathML Format
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void downloadPortionAsMathMlInvalidStorageTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "downloadPortionAsMathMl", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "downloadPortionAsMathMl", "portionIndex");
+        String valuePassword = (String)getTestValue("String", "downloadPortionAsMathMl", "password");
+        String valueFolder = (String)getTestValue("String", "downloadPortionAsMathMl", "folder");
+        String valueStorage = (String)getTestValue("String", "downloadPortionAsMathMl", "storage");
+        try {
+            valueStorage = (String)invalidizeTestValue("String", valueStorage, "downloadPortionAsMathMl", "storage");
+            initialize("downloadPortionAsMathMl", "storage", valueStorage);
+            File response = api.downloadPortionAsMathMl(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "storage", "downloadPortionAsMathMl", valueStorage);
+        }
+        if (needAssertResponse) {
+            assertResponse("storage", "downloadPortionAsMathMl");
+        }
+    }
+    
+    /**
      * Save a presentation to a specified format.
      *
      * 
@@ -32961,6 +33549,203 @@ public class SlidesApiTest extends ApiTest {
         }
         if (needAssertResponse) {
             assertResponse("storage", "getShape");
+        }
+    }
+    
+    /**
+     * Returns geometry path of the shape
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getShapeGeometryPathTest() throws ApiException, Exception {
+        initialize("getShapeGeometryPath", null, null);
+        GeometryPaths response = null;
+        String valueName = (String)getTestValue("String", "getShapeGeometryPath", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getShapeGeometryPath", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getShapeGeometryPath", "shapeIndex");
+        String valuePassword = (String)getTestValue("String", "getShapeGeometryPath", "password");
+        String valueFolder = (String)getTestValue("String", "getShapeGeometryPath", "folder");
+        String valueStorage = (String)getTestValue("String", "getShapeGeometryPath", "storage");
+        response = api.getShapeGeometryPath(valueName, valueSlideIndex, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+        assertNotNull(response);
+    }
+
+    /**
+     * Returns geometry path of the shape
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getShapeGeometryPathInvalidNameTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getShapeGeometryPath", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getShapeGeometryPath", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getShapeGeometryPath", "shapeIndex");
+        String valuePassword = (String)getTestValue("String", "getShapeGeometryPath", "password");
+        String valueFolder = (String)getTestValue("String", "getShapeGeometryPath", "folder");
+        String valueStorage = (String)getTestValue("String", "getShapeGeometryPath", "storage");
+        try {
+            valueName = (String)invalidizeTestValue("String", valueName, "getShapeGeometryPath", "name");
+            initialize("getShapeGeometryPath", "name", valueName);
+            GeometryPaths response = api.getShapeGeometryPath(valueName, valueSlideIndex, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "name", "getShapeGeometryPath", valueName);
+        }
+        if (needAssertResponse) {
+            assertResponse("name", "getShapeGeometryPath");
+        }
+    }
+    /**
+     * Returns geometry path of the shape
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getShapeGeometryPathInvalidSlideIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getShapeGeometryPath", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getShapeGeometryPath", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getShapeGeometryPath", "shapeIndex");
+        String valuePassword = (String)getTestValue("String", "getShapeGeometryPath", "password");
+        String valueFolder = (String)getTestValue("String", "getShapeGeometryPath", "folder");
+        String valueStorage = (String)getTestValue("String", "getShapeGeometryPath", "storage");
+        try {
+            valueSlideIndex = (Integer)invalidizeTestValue("Integer", valueSlideIndex, "getShapeGeometryPath", "slideIndex");
+            initialize("getShapeGeometryPath", "slideIndex", valueSlideIndex);
+            GeometryPaths response = api.getShapeGeometryPath(valueName, valueSlideIndex, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "slideIndex", "getShapeGeometryPath", valueSlideIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("slideIndex", "getShapeGeometryPath");
+        }
+    }
+    /**
+     * Returns geometry path of the shape
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getShapeGeometryPathInvalidShapeIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getShapeGeometryPath", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getShapeGeometryPath", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getShapeGeometryPath", "shapeIndex");
+        String valuePassword = (String)getTestValue("String", "getShapeGeometryPath", "password");
+        String valueFolder = (String)getTestValue("String", "getShapeGeometryPath", "folder");
+        String valueStorage = (String)getTestValue("String", "getShapeGeometryPath", "storage");
+        try {
+            valueShapeIndex = (Integer)invalidizeTestValue("Integer", valueShapeIndex, "getShapeGeometryPath", "shapeIndex");
+            initialize("getShapeGeometryPath", "shapeIndex", valueShapeIndex);
+            GeometryPaths response = api.getShapeGeometryPath(valueName, valueSlideIndex, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "shapeIndex", "getShapeGeometryPath", valueShapeIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("shapeIndex", "getShapeGeometryPath");
+        }
+    }
+    /**
+     * Returns geometry path of the shape
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getShapeGeometryPathInvalidPasswordTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getShapeGeometryPath", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getShapeGeometryPath", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getShapeGeometryPath", "shapeIndex");
+        String valuePassword = (String)getTestValue("String", "getShapeGeometryPath", "password");
+        String valueFolder = (String)getTestValue("String", "getShapeGeometryPath", "folder");
+        String valueStorage = (String)getTestValue("String", "getShapeGeometryPath", "storage");
+        try {
+            valuePassword = (String)invalidizeTestValue("String", valuePassword, "getShapeGeometryPath", "password");
+            initialize("getShapeGeometryPath", "password", valuePassword);
+            GeometryPaths response = api.getShapeGeometryPath(valueName, valueSlideIndex, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "password", "getShapeGeometryPath", valuePassword);
+        }
+        if (needAssertResponse) {
+            assertResponse("password", "getShapeGeometryPath");
+        }
+    }
+    /**
+     * Returns geometry path of the shape
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getShapeGeometryPathInvalidFolderTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getShapeGeometryPath", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getShapeGeometryPath", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getShapeGeometryPath", "shapeIndex");
+        String valuePassword = (String)getTestValue("String", "getShapeGeometryPath", "password");
+        String valueFolder = (String)getTestValue("String", "getShapeGeometryPath", "folder");
+        String valueStorage = (String)getTestValue("String", "getShapeGeometryPath", "storage");
+        try {
+            valueFolder = (String)invalidizeTestValue("String", valueFolder, "getShapeGeometryPath", "folder");
+            initialize("getShapeGeometryPath", "folder", valueFolder);
+            GeometryPaths response = api.getShapeGeometryPath(valueName, valueSlideIndex, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "folder", "getShapeGeometryPath", valueFolder);
+        }
+        if (needAssertResponse) {
+            assertResponse("folder", "getShapeGeometryPath");
+        }
+    }
+    /**
+     * Returns geometry path of the shape
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getShapeGeometryPathInvalidStorageTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getShapeGeometryPath", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getShapeGeometryPath", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getShapeGeometryPath", "shapeIndex");
+        String valuePassword = (String)getTestValue("String", "getShapeGeometryPath", "password");
+        String valueFolder = (String)getTestValue("String", "getShapeGeometryPath", "folder");
+        String valueStorage = (String)getTestValue("String", "getShapeGeometryPath", "storage");
+        try {
+            valueStorage = (String)invalidizeTestValue("String", valueStorage, "getShapeGeometryPath", "storage");
+            initialize("getShapeGeometryPath", "storage", valueStorage);
+            GeometryPaths response = api.getShapeGeometryPath(valueName, valueSlideIndex, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "storage", "getShapeGeometryPath", valueStorage);
+        }
+        if (needAssertResponse) {
+            assertResponse("storage", "getShapeGeometryPath");
         }
     }
     
@@ -42656,6 +43441,319 @@ public class SlidesApiTest extends ApiTest {
     }
     
     /**
+     * Convert Mathematical Text to MathML Format and saves result to the storage
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void savePortionAsMathMlTest() throws ApiException, Exception {
+        initialize("savePortionAsMathMl", null, null);
+        ;
+        String valueName = (String)getTestValue("String", "savePortionAsMathMl", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "portionIndex");
+        String valueOutPath = (String)getTestValue("String", "savePortionAsMathMl", "outPath");
+        String valuePassword = (String)getTestValue("String", "savePortionAsMathMl", "password");
+        String valueFolder = (String)getTestValue("String", "savePortionAsMathMl", "folder");
+        String valueStorage = (String)getTestValue("String", "savePortionAsMathMl", "storage");
+        api.savePortionAsMathMl(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valueOutPath, valuePassword, valueFolder, valueStorage);
+    }
+
+    /**
+     * Convert Mathematical Text to MathML Format and saves result to the storage
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void savePortionAsMathMlInvalidNameTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "savePortionAsMathMl", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "portionIndex");
+        String valueOutPath = (String)getTestValue("String", "savePortionAsMathMl", "outPath");
+        String valuePassword = (String)getTestValue("String", "savePortionAsMathMl", "password");
+        String valueFolder = (String)getTestValue("String", "savePortionAsMathMl", "folder");
+        String valueStorage = (String)getTestValue("String", "savePortionAsMathMl", "storage");
+        try {
+            valueName = (String)invalidizeTestValue("String", valueName, "savePortionAsMathMl", "name");
+            initialize("savePortionAsMathMl", "name", valueName);
+            api.savePortionAsMathMl(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valueOutPath, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "name", "savePortionAsMathMl", valueName);
+        }
+        if (needAssertResponse) {
+            assertResponse("name", "savePortionAsMathMl");
+        }
+    }
+    /**
+     * Convert Mathematical Text to MathML Format and saves result to the storage
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void savePortionAsMathMlInvalidSlideIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "savePortionAsMathMl", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "portionIndex");
+        String valueOutPath = (String)getTestValue("String", "savePortionAsMathMl", "outPath");
+        String valuePassword = (String)getTestValue("String", "savePortionAsMathMl", "password");
+        String valueFolder = (String)getTestValue("String", "savePortionAsMathMl", "folder");
+        String valueStorage = (String)getTestValue("String", "savePortionAsMathMl", "storage");
+        try {
+            valueSlideIndex = (Integer)invalidizeTestValue("Integer", valueSlideIndex, "savePortionAsMathMl", "slideIndex");
+            initialize("savePortionAsMathMl", "slideIndex", valueSlideIndex);
+            api.savePortionAsMathMl(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valueOutPath, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "slideIndex", "savePortionAsMathMl", valueSlideIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("slideIndex", "savePortionAsMathMl");
+        }
+    }
+    /**
+     * Convert Mathematical Text to MathML Format and saves result to the storage
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void savePortionAsMathMlInvalidShapeIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "savePortionAsMathMl", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "portionIndex");
+        String valueOutPath = (String)getTestValue("String", "savePortionAsMathMl", "outPath");
+        String valuePassword = (String)getTestValue("String", "savePortionAsMathMl", "password");
+        String valueFolder = (String)getTestValue("String", "savePortionAsMathMl", "folder");
+        String valueStorage = (String)getTestValue("String", "savePortionAsMathMl", "storage");
+        try {
+            valueShapeIndex = (Integer)invalidizeTestValue("Integer", valueShapeIndex, "savePortionAsMathMl", "shapeIndex");
+            initialize("savePortionAsMathMl", "shapeIndex", valueShapeIndex);
+            api.savePortionAsMathMl(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valueOutPath, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "shapeIndex", "savePortionAsMathMl", valueShapeIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("shapeIndex", "savePortionAsMathMl");
+        }
+    }
+    /**
+     * Convert Mathematical Text to MathML Format and saves result to the storage
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void savePortionAsMathMlInvalidParagraphIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "savePortionAsMathMl", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "portionIndex");
+        String valueOutPath = (String)getTestValue("String", "savePortionAsMathMl", "outPath");
+        String valuePassword = (String)getTestValue("String", "savePortionAsMathMl", "password");
+        String valueFolder = (String)getTestValue("String", "savePortionAsMathMl", "folder");
+        String valueStorage = (String)getTestValue("String", "savePortionAsMathMl", "storage");
+        try {
+            valueParagraphIndex = (Integer)invalidizeTestValue("Integer", valueParagraphIndex, "savePortionAsMathMl", "paragraphIndex");
+            initialize("savePortionAsMathMl", "paragraphIndex", valueParagraphIndex);
+            api.savePortionAsMathMl(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valueOutPath, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "paragraphIndex", "savePortionAsMathMl", valueParagraphIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("paragraphIndex", "savePortionAsMathMl");
+        }
+    }
+    /**
+     * Convert Mathematical Text to MathML Format and saves result to the storage
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void savePortionAsMathMlInvalidPortionIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "savePortionAsMathMl", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "portionIndex");
+        String valueOutPath = (String)getTestValue("String", "savePortionAsMathMl", "outPath");
+        String valuePassword = (String)getTestValue("String", "savePortionAsMathMl", "password");
+        String valueFolder = (String)getTestValue("String", "savePortionAsMathMl", "folder");
+        String valueStorage = (String)getTestValue("String", "savePortionAsMathMl", "storage");
+        try {
+            valuePortionIndex = (Integer)invalidizeTestValue("Integer", valuePortionIndex, "savePortionAsMathMl", "portionIndex");
+            initialize("savePortionAsMathMl", "portionIndex", valuePortionIndex);
+            api.savePortionAsMathMl(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valueOutPath, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "portionIndex", "savePortionAsMathMl", valuePortionIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("portionIndex", "savePortionAsMathMl");
+        }
+    }
+    /**
+     * Convert Mathematical Text to MathML Format and saves result to the storage
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void savePortionAsMathMlInvalidOutPathTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "savePortionAsMathMl", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "portionIndex");
+        String valueOutPath = (String)getTestValue("String", "savePortionAsMathMl", "outPath");
+        String valuePassword = (String)getTestValue("String", "savePortionAsMathMl", "password");
+        String valueFolder = (String)getTestValue("String", "savePortionAsMathMl", "folder");
+        String valueStorage = (String)getTestValue("String", "savePortionAsMathMl", "storage");
+        try {
+            valueOutPath = (String)invalidizeTestValue("String", valueOutPath, "savePortionAsMathMl", "outPath");
+            initialize("savePortionAsMathMl", "outPath", valueOutPath);
+            api.savePortionAsMathMl(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valueOutPath, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "outPath", "savePortionAsMathMl", valueOutPath);
+        }
+        if (needAssertResponse) {
+            assertResponse("outPath", "savePortionAsMathMl");
+        }
+    }
+    /**
+     * Convert Mathematical Text to MathML Format and saves result to the storage
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void savePortionAsMathMlInvalidPasswordTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "savePortionAsMathMl", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "portionIndex");
+        String valueOutPath = (String)getTestValue("String", "savePortionAsMathMl", "outPath");
+        String valuePassword = (String)getTestValue("String", "savePortionAsMathMl", "password");
+        String valueFolder = (String)getTestValue("String", "savePortionAsMathMl", "folder");
+        String valueStorage = (String)getTestValue("String", "savePortionAsMathMl", "storage");
+        try {
+            valuePassword = (String)invalidizeTestValue("String", valuePassword, "savePortionAsMathMl", "password");
+            initialize("savePortionAsMathMl", "password", valuePassword);
+            api.savePortionAsMathMl(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valueOutPath, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "password", "savePortionAsMathMl", valuePassword);
+        }
+        if (needAssertResponse) {
+            assertResponse("password", "savePortionAsMathMl");
+        }
+    }
+    /**
+     * Convert Mathematical Text to MathML Format and saves result to the storage
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void savePortionAsMathMlInvalidFolderTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "savePortionAsMathMl", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "portionIndex");
+        String valueOutPath = (String)getTestValue("String", "savePortionAsMathMl", "outPath");
+        String valuePassword = (String)getTestValue("String", "savePortionAsMathMl", "password");
+        String valueFolder = (String)getTestValue("String", "savePortionAsMathMl", "folder");
+        String valueStorage = (String)getTestValue("String", "savePortionAsMathMl", "storage");
+        try {
+            valueFolder = (String)invalidizeTestValue("String", valueFolder, "savePortionAsMathMl", "folder");
+            initialize("savePortionAsMathMl", "folder", valueFolder);
+            api.savePortionAsMathMl(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valueOutPath, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "folder", "savePortionAsMathMl", valueFolder);
+        }
+        if (needAssertResponse) {
+            assertResponse("folder", "savePortionAsMathMl");
+        }
+    }
+    /**
+     * Convert Mathematical Text to MathML Format and saves result to the storage
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void savePortionAsMathMlInvalidStorageTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "savePortionAsMathMl", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "savePortionAsMathMl", "portionIndex");
+        String valueOutPath = (String)getTestValue("String", "savePortionAsMathMl", "outPath");
+        String valuePassword = (String)getTestValue("String", "savePortionAsMathMl", "password");
+        String valueFolder = (String)getTestValue("String", "savePortionAsMathMl", "folder");
+        String valueStorage = (String)getTestValue("String", "savePortionAsMathMl", "storage");
+        try {
+            valueStorage = (String)invalidizeTestValue("String", valueStorage, "savePortionAsMathMl", "storage");
+            initialize("savePortionAsMathMl", "storage", valueStorage);
+            api.savePortionAsMathMl(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valueOutPath, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "storage", "savePortionAsMathMl", valueStorage);
+        }
+        if (needAssertResponse) {
+            assertResponse("storage", "savePortionAsMathMl");
+        }
+    }
+    
+    /**
      * Save a presentation to a specified format.
      *
      * 
@@ -48095,6 +49193,240 @@ public class SlidesApiTest extends ApiTest {
         }
         if (needAssertResponse) {
             assertResponse("storage", "setSections");
+        }
+    }
+    
+    /**
+     * Sets geometry path to the shape
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void setShapeGeometryPathTest() throws ApiException, Exception {
+        initialize("setShapeGeometryPath", null, null);
+        ShapeBase response = null;
+        String valueName = (String)getTestValue("String", "setShapeGeometryPath", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "setShapeGeometryPath", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "setShapeGeometryPath", "shapeIndex");
+        GeometryPaths valueDto = (GeometryPaths)getTestValue("GeometryPaths", "setShapeGeometryPath", "dto");
+        String valuePassword = (String)getTestValue("String", "setShapeGeometryPath", "password");
+        String valueFolder = (String)getTestValue("String", "setShapeGeometryPath", "folder");
+        String valueStorage = (String)getTestValue("String", "setShapeGeometryPath", "storage");
+        response = api.setShapeGeometryPath(valueName, valueSlideIndex, valueShapeIndex, valueDto, valuePassword, valueFolder, valueStorage);
+        assertNotNull(response);
+    }
+
+    /**
+     * Sets geometry path to the shape
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void setShapeGeometryPathInvalidNameTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "setShapeGeometryPath", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "setShapeGeometryPath", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "setShapeGeometryPath", "shapeIndex");
+        GeometryPaths valueDto = (GeometryPaths)getTestValue("GeometryPaths", "setShapeGeometryPath", "dto");
+        String valuePassword = (String)getTestValue("String", "setShapeGeometryPath", "password");
+        String valueFolder = (String)getTestValue("String", "setShapeGeometryPath", "folder");
+        String valueStorage = (String)getTestValue("String", "setShapeGeometryPath", "storage");
+        try {
+            valueName = (String)invalidizeTestValue("String", valueName, "setShapeGeometryPath", "name");
+            initialize("setShapeGeometryPath", "name", valueName);
+            ShapeBase response = api.setShapeGeometryPath(valueName, valueSlideIndex, valueShapeIndex, valueDto, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "name", "setShapeGeometryPath", valueName);
+        }
+        if (needAssertResponse) {
+            assertResponse("name", "setShapeGeometryPath");
+        }
+    }
+    /**
+     * Sets geometry path to the shape
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void setShapeGeometryPathInvalidSlideIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "setShapeGeometryPath", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "setShapeGeometryPath", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "setShapeGeometryPath", "shapeIndex");
+        GeometryPaths valueDto = (GeometryPaths)getTestValue("GeometryPaths", "setShapeGeometryPath", "dto");
+        String valuePassword = (String)getTestValue("String", "setShapeGeometryPath", "password");
+        String valueFolder = (String)getTestValue("String", "setShapeGeometryPath", "folder");
+        String valueStorage = (String)getTestValue("String", "setShapeGeometryPath", "storage");
+        try {
+            valueSlideIndex = (Integer)invalidizeTestValue("Integer", valueSlideIndex, "setShapeGeometryPath", "slideIndex");
+            initialize("setShapeGeometryPath", "slideIndex", valueSlideIndex);
+            ShapeBase response = api.setShapeGeometryPath(valueName, valueSlideIndex, valueShapeIndex, valueDto, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "slideIndex", "setShapeGeometryPath", valueSlideIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("slideIndex", "setShapeGeometryPath");
+        }
+    }
+    /**
+     * Sets geometry path to the shape
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void setShapeGeometryPathInvalidShapeIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "setShapeGeometryPath", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "setShapeGeometryPath", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "setShapeGeometryPath", "shapeIndex");
+        GeometryPaths valueDto = (GeometryPaths)getTestValue("GeometryPaths", "setShapeGeometryPath", "dto");
+        String valuePassword = (String)getTestValue("String", "setShapeGeometryPath", "password");
+        String valueFolder = (String)getTestValue("String", "setShapeGeometryPath", "folder");
+        String valueStorage = (String)getTestValue("String", "setShapeGeometryPath", "storage");
+        try {
+            valueShapeIndex = (Integer)invalidizeTestValue("Integer", valueShapeIndex, "setShapeGeometryPath", "shapeIndex");
+            initialize("setShapeGeometryPath", "shapeIndex", valueShapeIndex);
+            ShapeBase response = api.setShapeGeometryPath(valueName, valueSlideIndex, valueShapeIndex, valueDto, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "shapeIndex", "setShapeGeometryPath", valueShapeIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("shapeIndex", "setShapeGeometryPath");
+        }
+    }
+    /**
+     * Sets geometry path to the shape
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void setShapeGeometryPathInvalidDtoTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "setShapeGeometryPath", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "setShapeGeometryPath", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "setShapeGeometryPath", "shapeIndex");
+        GeometryPaths valueDto = (GeometryPaths)getTestValue("GeometryPaths", "setShapeGeometryPath", "dto");
+        String valuePassword = (String)getTestValue("String", "setShapeGeometryPath", "password");
+        String valueFolder = (String)getTestValue("String", "setShapeGeometryPath", "folder");
+        String valueStorage = (String)getTestValue("String", "setShapeGeometryPath", "storage");
+        try {
+            valueDto = (GeometryPaths)invalidizeTestValue("GeometryPaths", valueDto, "setShapeGeometryPath", "dto");
+            initialize("setShapeGeometryPath", "dto", valueDto);
+            ShapeBase response = api.setShapeGeometryPath(valueName, valueSlideIndex, valueShapeIndex, valueDto, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "dto", "setShapeGeometryPath", valueDto);
+        }
+        if (needAssertResponse) {
+            assertResponse("dto", "setShapeGeometryPath");
+        }
+    }
+    /**
+     * Sets geometry path to the shape
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void setShapeGeometryPathInvalidPasswordTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "setShapeGeometryPath", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "setShapeGeometryPath", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "setShapeGeometryPath", "shapeIndex");
+        GeometryPaths valueDto = (GeometryPaths)getTestValue("GeometryPaths", "setShapeGeometryPath", "dto");
+        String valuePassword = (String)getTestValue("String", "setShapeGeometryPath", "password");
+        String valueFolder = (String)getTestValue("String", "setShapeGeometryPath", "folder");
+        String valueStorage = (String)getTestValue("String", "setShapeGeometryPath", "storage");
+        try {
+            valuePassword = (String)invalidizeTestValue("String", valuePassword, "setShapeGeometryPath", "password");
+            initialize("setShapeGeometryPath", "password", valuePassword);
+            ShapeBase response = api.setShapeGeometryPath(valueName, valueSlideIndex, valueShapeIndex, valueDto, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "password", "setShapeGeometryPath", valuePassword);
+        }
+        if (needAssertResponse) {
+            assertResponse("password", "setShapeGeometryPath");
+        }
+    }
+    /**
+     * Sets geometry path to the shape
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void setShapeGeometryPathInvalidFolderTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "setShapeGeometryPath", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "setShapeGeometryPath", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "setShapeGeometryPath", "shapeIndex");
+        GeometryPaths valueDto = (GeometryPaths)getTestValue("GeometryPaths", "setShapeGeometryPath", "dto");
+        String valuePassword = (String)getTestValue("String", "setShapeGeometryPath", "password");
+        String valueFolder = (String)getTestValue("String", "setShapeGeometryPath", "folder");
+        String valueStorage = (String)getTestValue("String", "setShapeGeometryPath", "storage");
+        try {
+            valueFolder = (String)invalidizeTestValue("String", valueFolder, "setShapeGeometryPath", "folder");
+            initialize("setShapeGeometryPath", "folder", valueFolder);
+            ShapeBase response = api.setShapeGeometryPath(valueName, valueSlideIndex, valueShapeIndex, valueDto, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "folder", "setShapeGeometryPath", valueFolder);
+        }
+        if (needAssertResponse) {
+            assertResponse("folder", "setShapeGeometryPath");
+        }
+    }
+    /**
+     * Sets geometry path to the shape
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void setShapeGeometryPathInvalidStorageTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "setShapeGeometryPath", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "setShapeGeometryPath", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "setShapeGeometryPath", "shapeIndex");
+        GeometryPaths valueDto = (GeometryPaths)getTestValue("GeometryPaths", "setShapeGeometryPath", "dto");
+        String valuePassword = (String)getTestValue("String", "setShapeGeometryPath", "password");
+        String valueFolder = (String)getTestValue("String", "setShapeGeometryPath", "folder");
+        String valueStorage = (String)getTestValue("String", "setShapeGeometryPath", "storage");
+        try {
+            valueStorage = (String)invalidizeTestValue("String", valueStorage, "setShapeGeometryPath", "storage");
+            initialize("setShapeGeometryPath", "storage", valueStorage);
+            ShapeBase response = api.setShapeGeometryPath(valueName, valueSlideIndex, valueShapeIndex, valueDto, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "storage", "setShapeGeometryPath", valueStorage);
+        }
+        if (needAssertResponse) {
+            assertResponse("storage", "setShapeGeometryPath");
         }
     }
     

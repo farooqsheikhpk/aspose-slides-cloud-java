@@ -198,7 +198,7 @@ public class LayoutSlideTest extends ApiTest {
         initialize(null, null, null);
         SlideAnimation animation = api.getSpecialSlideAnimation(
             c_fileName, c_slideIndex, SpecialSlideType.LAYOUTSLIDE, null, null, c_password, c_folderName, null);
-        assertEquals(0, animation.getMainSequence().size());
+        assertEquals(1, animation.getMainSequence().size());
 
         SlideAnimation dto = new SlideAnimation();
         List<Effect> effects = new ArrayList<Effect>();
@@ -235,7 +235,7 @@ public class LayoutSlideTest extends ApiTest {
     private final String c_password = "password";
     private final int c_slideIndex = 1;
     private final int c_shapeIndex = 2;
-    private final int c_shapeCount = 5;
+    private final int c_shapeCount = 6;
     private final int c_paragraphIndex = 1;
     private final int c_paragraphCount = 1;
     private final int c_portionCount = 1;

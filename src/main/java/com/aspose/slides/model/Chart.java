@@ -34,6 +34,7 @@ import com.aspose.slides.model.ChartTitle;
 import com.aspose.slides.model.ChartWall;
 import com.aspose.slides.model.EffectFormat;
 import com.aspose.slides.model.FillFormat;
+import com.aspose.slides.model.Hyperlink;
 import com.aspose.slides.model.Legend;
 import com.aspose.slides.model.LineFormat;
 import com.aspose.slides.model.PlotArea;

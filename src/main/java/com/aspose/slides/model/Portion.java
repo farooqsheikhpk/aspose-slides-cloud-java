@@ -30,7 +30,9 @@ package com.aspose.slides.model;
 import java.util.Objects;
 import com.aspose.slides.model.EffectFormat;
 import com.aspose.slides.model.FillFormat;
+import com.aspose.slides.model.Hyperlink;
 import com.aspose.slides.model.LineFormat;
+import com.aspose.slides.model.MathParagraph;
 import com.aspose.slides.model.ResourceBase;
 import com.aspose.slides.model.ResourceUri;
 import com.google.gson.TypeAdapter;
@@ -53,6 +55,9 @@ import java.util.Map;
 public class Portion extends ResourceBase {
   @SerializedName(value = "text", alternate = { "Text" })
   private String text;
+
+  @SerializedName(value = "mathParagraph", alternate = { "MathParagraph" })
+  private MathParagraph mathParagraph;
 
   /**
    * True for bold font.
@@ -652,6 +657,12 @@ public class Portion extends ResourceBase {
   @SerializedName(value = "underlineLineFormat", alternate = { "UnderlineLineFormat" })
   private LineFormat underlineLineFormat;
 
+  @SerializedName(value = "hyperlinkClick", alternate = { "HyperlinkClick" })
+  private Hyperlink hyperlinkClick;
+
+  @SerializedName(value = "hyperlinkMouseOver", alternate = { "HyperlinkMouseOver" })
+  private Hyperlink hyperlinkMouseOver;
+
 
   public Portion() {
     super();
@@ -673,6 +684,24 @@ public class Portion extends ResourceBase {
 
   public void setText(String text) {
     this.text = text;
+  }
+
+  public Portion mathParagraph(MathParagraph mathParagraph) {
+    this.mathParagraph = mathParagraph;
+    return this;
+  }
+
+   /**
+   * Math paragraph.
+   * @return mathParagraph
+  **/
+  @ApiModelProperty(value = "Math paragraph.")
+  public MathParagraph getMathParagraph() {
+    return mathParagraph;
+  }
+
+  public void setMathParagraph(MathParagraph mathParagraph) {
+    this.mathParagraph = mathParagraph;
   }
 
   public Portion fontBold(FontBoldEnum fontBold) {
@@ -1107,6 +1136,42 @@ public class Portion extends ResourceBase {
     this.underlineLineFormat = underlineLineFormat;
   }
 
+  public Portion hyperlinkClick(Hyperlink hyperlinkClick) {
+    this.hyperlinkClick = hyperlinkClick;
+    return this;
+  }
+
+   /**
+   * Hyperlink defined for mouse click.
+   * @return hyperlinkClick
+  **/
+  @ApiModelProperty(value = "Hyperlink defined for mouse click.")
+  public Hyperlink getHyperlinkClick() {
+    return hyperlinkClick;
+  }
+
+  public void setHyperlinkClick(Hyperlink hyperlinkClick) {
+    this.hyperlinkClick = hyperlinkClick;
+  }
+
+  public Portion hyperlinkMouseOver(Hyperlink hyperlinkMouseOver) {
+    this.hyperlinkMouseOver = hyperlinkMouseOver;
+    return this;
+  }
+
+   /**
+   * Hyperlink defined for mouse over.
+   * @return hyperlinkMouseOver
+  **/
+  @ApiModelProperty(value = "Hyperlink defined for mouse over.")
+  public Hyperlink getHyperlinkMouseOver() {
+    return hyperlinkMouseOver;
+  }
+
+  public void setHyperlinkMouseOver(Hyperlink hyperlinkMouseOver) {
+    this.hyperlinkMouseOver = hyperlinkMouseOver;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -1117,12 +1182,12 @@ public class Portion extends ResourceBase {
       return false;
     }
     Portion portion = (Portion) o;
-    return true && Objects.equals(this.text, portion.text) && Objects.equals(this.fontBold, portion.fontBold) && Objects.equals(this.fontItalic, portion.fontItalic) && Objects.equals(this.fontUnderline, portion.fontUnderline) && Objects.equals(this.strikethroughType, portion.strikethroughType) && Objects.equals(this.textCapType, portion.textCapType) && Objects.equals(this.escapement, portion.escapement) && Objects.equals(this.spacing, portion.spacing) && Objects.equals(this.fontColor, portion.fontColor) && Objects.equals(this.highlightColor, portion.highlightColor) && Objects.equals(this.fontHeight, portion.fontHeight) && Objects.equals(this.normaliseHeight, portion.normaliseHeight) && Objects.equals(this.proofDisabled, portion.proofDisabled) && Objects.equals(this.smartTagClean, portion.smartTagClean) && Objects.equals(this.kerningMinimalSize, portion.kerningMinimalSize) && Objects.equals(this.kumimoji, portion.kumimoji) && Objects.equals(this.languageId, portion.languageId) && Objects.equals(this.alternativeLanguageId, portion.alternativeLanguageId) && Objects.equals(this.isHardUnderlineFill, portion.isHardUnderlineFill) && Objects.equals(this.isHardUnderlineLine, portion.isHardUnderlineLine) && Objects.equals(this.fillFormat, portion.fillFormat) && Objects.equals(this.effectFormat, portion.effectFormat) && Objects.equals(this.lineFormat, portion.lineFormat) && Objects.equals(this.underlineFillFormat, portion.underlineFillFormat) && Objects.equals(this.underlineLineFormat, portion.underlineLineFormat) && super.equals(o);
+    return true && Objects.equals(this.text, portion.text) && Objects.equals(this.mathParagraph, portion.mathParagraph) && Objects.equals(this.fontBold, portion.fontBold) && Objects.equals(this.fontItalic, portion.fontItalic) && Objects.equals(this.fontUnderline, portion.fontUnderline) && Objects.equals(this.strikethroughType, portion.strikethroughType) && Objects.equals(this.textCapType, portion.textCapType) && Objects.equals(this.escapement, portion.escapement) && Objects.equals(this.spacing, portion.spacing) && Objects.equals(this.fontColor, portion.fontColor) && Objects.equals(this.highlightColor, portion.highlightColor) && Objects.equals(this.fontHeight, portion.fontHeight) && Objects.equals(this.normaliseHeight, portion.normaliseHeight) && Objects.equals(this.proofDisabled, portion.proofDisabled) && Objects.equals(this.smartTagClean, portion.smartTagClean) && Objects.equals(this.kerningMinimalSize, portion.kerningMinimalSize) && Objects.equals(this.kumimoji, portion.kumimoji) && Objects.equals(this.languageId, portion.languageId) && Objects.equals(this.alternativeLanguageId, portion.alternativeLanguageId) && Objects.equals(this.isHardUnderlineFill, portion.isHardUnderlineFill) && Objects.equals(this.isHardUnderlineLine, portion.isHardUnderlineLine) && Objects.equals(this.fillFormat, portion.fillFormat) && Objects.equals(this.effectFormat, portion.effectFormat) && Objects.equals(this.lineFormat, portion.lineFormat) && Objects.equals(this.underlineFillFormat, portion.underlineFillFormat) && Objects.equals(this.underlineLineFormat, portion.underlineLineFormat) && Objects.equals(this.hyperlinkClick, portion.hyperlinkClick) && Objects.equals(this.hyperlinkMouseOver, portion.hyperlinkMouseOver) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, fontBold, fontItalic, fontUnderline, strikethroughType, textCapType, escapement, spacing, fontColor, highlightColor, fontHeight, normaliseHeight, proofDisabled, smartTagClean, kerningMinimalSize, kumimoji, languageId, alternativeLanguageId, isHardUnderlineFill, isHardUnderlineLine, fillFormat, effectFormat, lineFormat, underlineFillFormat, underlineLineFormat, super.hashCode());
+    return Objects.hash(text, mathParagraph, fontBold, fontItalic, fontUnderline, strikethroughType, textCapType, escapement, spacing, fontColor, highlightColor, fontHeight, normaliseHeight, proofDisabled, smartTagClean, kerningMinimalSize, kumimoji, languageId, alternativeLanguageId, isHardUnderlineFill, isHardUnderlineLine, fillFormat, effectFormat, lineFormat, underlineFillFormat, underlineLineFormat, hyperlinkClick, hyperlinkMouseOver, super.hashCode());
   }
 
 
@@ -1132,6 +1197,7 @@ public class Portion extends ResourceBase {
     sb.append("class Portion {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    mathParagraph: ").append(toIndentedString(mathParagraph)).append("\n");
     sb.append("    fontBold: ").append(toIndentedString(fontBold)).append("\n");
     sb.append("    fontItalic: ").append(toIndentedString(fontItalic)).append("\n");
     sb.append("    fontUnderline: ").append(toIndentedString(fontUnderline)).append("\n");
@@ -1156,6 +1222,8 @@ public class Portion extends ResourceBase {
     sb.append("    lineFormat: ").append(toIndentedString(lineFormat)).append("\n");
     sb.append("    underlineFillFormat: ").append(toIndentedString(underlineFillFormat)).append("\n");
     sb.append("    underlineLineFormat: ").append(toIndentedString(underlineLineFormat)).append("\n");
+    sb.append("    hyperlinkClick: ").append(toIndentedString(hyperlinkClick)).append("\n");
+    sb.append("    hyperlinkMouseOver: ").append(toIndentedString(hyperlinkMouseOver)).append("\n");
     sb.append("}");
     return sb.toString();
   }

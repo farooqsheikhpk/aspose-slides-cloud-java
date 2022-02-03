@@ -97,7 +97,9 @@ public class Save extends Task {
     
     BMP("Bmp"),
     
-    FODP("Fodp");
+    FODP("Fodp"),
+    
+    XAML("Xaml");
 
     private String value;
 

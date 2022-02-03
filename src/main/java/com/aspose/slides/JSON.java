@@ -72,6 +72,15 @@ public class JSON {
             .registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter)
             .registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter)
             .registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
+        if (!typeAdapters.containsKey("MathElement")) {
+            typeAdapters.put("MathElement", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.MathElement.class, "type"));
+            valueMap.put("MathElement", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.MathElement.TypeEnum.ACCENT.getValue();
+        if (!valueMap.get("MathElement").containsKey(currentValue)) {
+            valueMap.get("MathElement").put(currentValue, null);
+            typeAdapters.get("MathElement").registerSubtype(com.aspose.slides.model.AccentElement.class, currentValue);
+        }
         if (!typeAdapters.containsKey("Task")) {
             typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
             valueMap.put("Task", new HashMap<String, String>());
@@ -108,6 +117,33 @@ public class JSON {
             valueMap.get("Task").put(currentValue, null);
             typeAdapters.get("Task").registerSubtype(com.aspose.slides.model.AddSlide.class, currentValue);
         }
+        if (!typeAdapters.containsKey("PathSegment")) {
+            typeAdapters.put("PathSegment", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.PathSegment.class, "type"));
+            valueMap.put("PathSegment", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.PathSegment.TypeEnum.ARCTO.getValue();
+        if (!valueMap.get("PathSegment").containsKey(currentValue)) {
+            valueMap.get("PathSegment").put(currentValue, null);
+            typeAdapters.get("PathSegment").registerSubtype(com.aspose.slides.model.ArcToPathSegment.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("MathElement")) {
+            typeAdapters.put("MathElement", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.MathElement.class, "type"));
+            valueMap.put("MathElement", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.MathElement.TypeEnum.ARRAY.getValue();
+        if (!valueMap.get("MathElement").containsKey(currentValue)) {
+            valueMap.get("MathElement").put(currentValue, null);
+            typeAdapters.get("MathElement").registerSubtype(com.aspose.slides.model.ArrayElement.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("MathElement")) {
+            typeAdapters.put("MathElement", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.MathElement.class, "type"));
+            valueMap.put("MathElement", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.MathElement.TypeEnum.BAR.getValue();
+        if (!valueMap.get("MathElement").containsKey(currentValue)) {
+            valueMap.get("MathElement").put(currentValue, null);
+            typeAdapters.get("MathElement").registerSubtype(com.aspose.slides.model.BarElement.class, currentValue);
+        }
         if (!typeAdapters.containsKey("InputFile")) {
             typeAdapters.put("InputFile", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.InputFile.class, "type"));
             valueMap.put("InputFile", new HashMap<String, String>());
@@ -116,6 +152,33 @@ public class JSON {
         if (!valueMap.get("InputFile").containsKey(currentValue)) {
             valueMap.get("InputFile").put(currentValue, null);
             typeAdapters.get("InputFile").registerSubtype(com.aspose.slides.model.Base64InputFile.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("MathElement")) {
+            typeAdapters.put("MathElement", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.MathElement.class, "type"));
+            valueMap.put("MathElement", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.MathElement.TypeEnum.BLOCK.getValue();
+        if (!valueMap.get("MathElement").containsKey(currentValue)) {
+            valueMap.get("MathElement").put(currentValue, null);
+            typeAdapters.get("MathElement").registerSubtype(com.aspose.slides.model.BlockElement.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("MathElement")) {
+            typeAdapters.put("MathElement", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.MathElement.class, "type"));
+            valueMap.put("MathElement", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.MathElement.TypeEnum.BORDERBOX.getValue();
+        if (!valueMap.get("MathElement").containsKey(currentValue)) {
+            valueMap.get("MathElement").put(currentValue, null);
+            typeAdapters.get("MathElement").registerSubtype(com.aspose.slides.model.BorderBoxElement.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("MathElement")) {
+            typeAdapters.put("MathElement", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.MathElement.class, "type"));
+            valueMap.put("MathElement", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.MathElement.TypeEnum.BOX.getValue();
+        if (!valueMap.get("MathElement").containsKey(currentValue)) {
+            valueMap.get("MathElement").put(currentValue, null);
+            typeAdapters.get("MathElement").registerSubtype(com.aspose.slides.model.BoxElement.class, currentValue);
         }
         if (!typeAdapters.containsKey("Series")) {
             typeAdapters.put("Series", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Series.class, "dataPointType"));
@@ -126,6 +189,51 @@ public class JSON {
             valueMap.get("Series").put(currentValue, null);
             typeAdapters.get("Series").registerSubtype(com.aspose.slides.model.BubbleSeries.class, currentValue);
         }
+        if (!typeAdapters.containsKey("PathSegment")) {
+            typeAdapters.put("PathSegment", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.PathSegment.class, "type"));
+            valueMap.put("PathSegment", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.PathSegment.TypeEnum.CLOSE.getValue();
+        if (!valueMap.get("PathSegment").containsKey(currentValue)) {
+            valueMap.get("PathSegment").put(currentValue, null);
+            typeAdapters.get("PathSegment").registerSubtype(com.aspose.slides.model.ClosePathSegment.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("PathSegment")) {
+            typeAdapters.put("PathSegment", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.PathSegment.class, "type"));
+            valueMap.put("PathSegment", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.PathSegment.TypeEnum.CUBICBEZIERTO.getValue();
+        if (!valueMap.get("PathSegment").containsKey(currentValue)) {
+            valueMap.get("PathSegment").put(currentValue, null);
+            typeAdapters.get("PathSegment").registerSubtype(com.aspose.slides.model.CubicBezierToPathSegment.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("MathElement")) {
+            typeAdapters.put("MathElement", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.MathElement.class, "type"));
+            valueMap.put("MathElement", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.MathElement.TypeEnum.DELIMITER.getValue();
+        if (!valueMap.get("MathElement").containsKey(currentValue)) {
+            valueMap.get("MathElement").put(currentValue, null);
+            typeAdapters.get("MathElement").registerSubtype(com.aspose.slides.model.DelimiterElement.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("MathElement")) {
+            typeAdapters.put("MathElement", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.MathElement.class, "type"));
+            valueMap.put("MathElement", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.MathElement.TypeEnum.FRACTION.getValue();
+        if (!valueMap.get("MathElement").containsKey(currentValue)) {
+            valueMap.get("MathElement").put(currentValue, null);
+            typeAdapters.get("MathElement").registerSubtype(com.aspose.slides.model.FractionElement.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("MathElement")) {
+            typeAdapters.put("MathElement", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.MathElement.class, "type"));
+            valueMap.put("MathElement", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.MathElement.TypeEnum.FUNCTION.getValue();
+        if (!valueMap.get("MathElement").containsKey(currentValue)) {
+            valueMap.get("MathElement").put(currentValue, null);
+            typeAdapters.get("MathElement").registerSubtype(com.aspose.slides.model.FunctionElement.class, currentValue);
+        }
         if (!typeAdapters.containsKey("FillFormat")) {
             typeAdapters.put("FillFormat", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.FillFormat.class, "type"));
             valueMap.put("FillFormat", new HashMap<String, String>());
@@ -135,6 +243,51 @@ public class JSON {
             valueMap.get("FillFormat").put(currentValue, null);
             typeAdapters.get("FillFormat").registerSubtype(com.aspose.slides.model.GradientFill.class, currentValue);
         }
+        if (!typeAdapters.containsKey("MathElement")) {
+            typeAdapters.put("MathElement", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.MathElement.class, "type"));
+            valueMap.put("MathElement", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.MathElement.TypeEnum.GROUPINGCHARACTER.getValue();
+        if (!valueMap.get("MathElement").containsKey(currentValue)) {
+            valueMap.get("MathElement").put(currentValue, null);
+            typeAdapters.get("MathElement").registerSubtype(com.aspose.slides.model.GroupingCharacterElement.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("MathElement")) {
+            typeAdapters.put("MathElement", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.MathElement.class, "type"));
+            valueMap.put("MathElement", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.MathElement.TypeEnum.LEFTSUBSUPERSCRIPTELEMENT.getValue();
+        if (!valueMap.get("MathElement").containsKey(currentValue)) {
+            valueMap.get("MathElement").put(currentValue, null);
+            typeAdapters.get("MathElement").registerSubtype(com.aspose.slides.model.LeftSubSuperscriptElement.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("MathElement")) {
+            typeAdapters.put("MathElement", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.MathElement.class, "type"));
+            valueMap.put("MathElement", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.MathElement.TypeEnum.LIMIT.getValue();
+        if (!valueMap.get("MathElement").containsKey(currentValue)) {
+            valueMap.get("MathElement").put(currentValue, null);
+            typeAdapters.get("MathElement").registerSubtype(com.aspose.slides.model.LimitElement.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("PathSegment")) {
+            typeAdapters.put("PathSegment", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.PathSegment.class, "type"));
+            valueMap.put("PathSegment", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.PathSegment.TypeEnum.LINETO.getValue();
+        if (!valueMap.get("PathSegment").containsKey(currentValue)) {
+            valueMap.get("PathSegment").put(currentValue, null);
+            typeAdapters.get("PathSegment").registerSubtype(com.aspose.slides.model.LineToPathSegment.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("MathElement")) {
+            typeAdapters.put("MathElement", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.MathElement.class, "type"));
+            valueMap.put("MathElement", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.MathElement.TypeEnum.MATRIX.getValue();
+        if (!valueMap.get("MathElement").containsKey(currentValue)) {
+            valueMap.get("MathElement").put(currentValue, null);
+            typeAdapters.get("MathElement").registerSubtype(com.aspose.slides.model.MatrixElement.class, currentValue);
+        }
         if (!typeAdapters.containsKey("Task")) {
             typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
             valueMap.put("Task", new HashMap<String, String>());
@@ -143,6 +296,24 @@ public class JSON {
         if (!valueMap.get("Task").containsKey(currentValue)) {
             valueMap.get("Task").put(currentValue, null);
             typeAdapters.get("Task").registerSubtype(com.aspose.slides.model.Merge.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("PathSegment")) {
+            typeAdapters.put("PathSegment", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.PathSegment.class, "type"));
+            valueMap.put("PathSegment", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.PathSegment.TypeEnum.MOVETO.getValue();
+        if (!valueMap.get("PathSegment").containsKey(currentValue)) {
+            valueMap.get("PathSegment").put(currentValue, null);
+            typeAdapters.get("PathSegment").registerSubtype(com.aspose.slides.model.MoveToPathSegment.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("MathElement")) {
+            typeAdapters.put("MathElement", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.MathElement.class, "type"));
+            valueMap.put("MathElement", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.MathElement.TypeEnum.NARYOPERATOR.getValue();
+        if (!valueMap.get("MathElement").containsKey(currentValue)) {
+            valueMap.get("MathElement").put(currentValue, null);
+            typeAdapters.get("MathElement").registerSubtype(com.aspose.slides.model.NaryOperatorElement.class, currentValue);
         }
         if (!typeAdapters.containsKey("FillFormat")) {
             typeAdapters.put("FillFormat", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.FillFormat.class, "type"));
@@ -197,6 +368,24 @@ public class JSON {
         if (!valueMap.get("FillFormat").containsKey(currentValue)) {
             valueMap.get("FillFormat").put(currentValue, null);
             typeAdapters.get("FillFormat").registerSubtype(com.aspose.slides.model.PictureFill.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("PathSegment")) {
+            typeAdapters.put("PathSegment", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.PathSegment.class, "type"));
+            valueMap.put("PathSegment", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.PathSegment.TypeEnum.QUADBEZIERTO.getValue();
+        if (!valueMap.get("PathSegment").containsKey(currentValue)) {
+            valueMap.get("PathSegment").put(currentValue, null);
+            typeAdapters.get("PathSegment").registerSubtype(com.aspose.slides.model.QuadraticBezierToPathSegment.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("MathElement")) {
+            typeAdapters.put("MathElement", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.MathElement.class, "type"));
+            valueMap.put("MathElement", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.MathElement.TypeEnum.RADICAL.getValue();
+        if (!valueMap.get("MathElement").containsKey(currentValue)) {
+            valueMap.get("MathElement").put(currentValue, null);
+            typeAdapters.get("MathElement").registerSubtype(com.aspose.slides.model.RadicalElement.class, currentValue);
         }
         if (!typeAdapters.containsKey("Task")) {
             typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
@@ -261,6 +450,15 @@ public class JSON {
             valueMap.get("OutputFile").put(currentValue, null);
             typeAdapters.get("OutputFile").registerSubtype(com.aspose.slides.model.ResponseOutputFile.class, currentValue);
         }
+        if (!typeAdapters.containsKey("MathElement")) {
+            typeAdapters.put("MathElement", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.MathElement.class, "type"));
+            valueMap.put("MathElement", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.MathElement.TypeEnum.RIGHTSUBSUPERSCRIPTELEMENT.getValue();
+        if (!valueMap.get("MathElement").containsKey(currentValue)) {
+            valueMap.get("MathElement").put(currentValue, null);
+            typeAdapters.get("MathElement").registerSubtype(com.aspose.slides.model.RightSubSuperscriptElement.class, currentValue);
+        }
         if (!typeAdapters.containsKey("Task")) {
             typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
             valueMap.put("Task", new HashMap<String, String>());
@@ -305,6 +503,33 @@ public class JSON {
         if (!valueMap.get("FillFormat").containsKey(currentValue)) {
             valueMap.get("FillFormat").put(currentValue, null);
             typeAdapters.get("FillFormat").registerSubtype(com.aspose.slides.model.SolidFill.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("MathElement")) {
+            typeAdapters.put("MathElement", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.MathElement.class, "type"));
+            valueMap.put("MathElement", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.MathElement.TypeEnum.SUBSCRIPTELEMENT.getValue();
+        if (!valueMap.get("MathElement").containsKey(currentValue)) {
+            valueMap.get("MathElement").put(currentValue, null);
+            typeAdapters.get("MathElement").registerSubtype(com.aspose.slides.model.SubscriptElement.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("MathElement")) {
+            typeAdapters.put("MathElement", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.MathElement.class, "type"));
+            valueMap.put("MathElement", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.MathElement.TypeEnum.SUPERSCRIPTELEMENT.getValue();
+        if (!valueMap.get("MathElement").containsKey(currentValue)) {
+            valueMap.get("MathElement").put(currentValue, null);
+            typeAdapters.get("MathElement").registerSubtype(com.aspose.slides.model.SuperscriptElement.class, currentValue);
+        }
+        if (!typeAdapters.containsKey("MathElement")) {
+            typeAdapters.put("MathElement", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.MathElement.class, "type"));
+            valueMap.put("MathElement", new HashMap<String, String>());
+        }
+        currentValue = com.aspose.slides.model.MathElement.TypeEnum.TEXT.getValue();
+        if (!valueMap.get("MathElement").containsKey(currentValue)) {
+            valueMap.get("MathElement").put(currentValue, null);
+            typeAdapters.get("MathElement").registerSubtype(com.aspose.slides.model.TextElement.class, currentValue);
         }
         if (!typeAdapters.containsKey("Task")) {
             typeAdapters.put("Task", RuntimeTypeAdapterFactory.of(com.aspose.slides.model.Task.class, "type"));
