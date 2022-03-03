@@ -32,8 +32,8 @@ import com.aspose.slides.model.BubbleChartDataPoint;
 import com.aspose.slides.model.EffectFormat;
 import com.aspose.slides.model.FillFormat;
 import com.aspose.slides.model.LineFormat;
-import com.aspose.slides.model.Series;
 import com.aspose.slides.model.SeriesMarker;
+import com.aspose.slides.model.XYSeries;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -52,9 +52,12 @@ import java.util.Map;
  * A bubble series.
  */
 @ApiModel(description = "A bubble series.")
-public class BubbleSeries extends Series {
+public class BubbleSeries extends XYSeries {
   @SerializedName(value = "dataPoints", alternate = { "DataPoints" })
   private List<BubbleChartDataPoint> dataPoints = null;
+
+  @SerializedName(value = "numberFormatOfBubbleSizes", alternate = { "NumberFormatOfBubbleSizes" })
+  private String numberFormatOfBubbleSizes;
 
 
   public BubbleSeries() {
@@ -88,6 +91,24 @@ public class BubbleSeries extends Series {
     this.dataPoints = dataPoints;
   }
 
+  public BubbleSeries numberFormatOfBubbleSizes(String numberFormatOfBubbleSizes) {
+    this.numberFormatOfBubbleSizes = numberFormatOfBubbleSizes;
+    return this;
+  }
+
+   /**
+   * The number format for the series bubble sizes.
+   * @return numberFormatOfBubbleSizes
+  **/
+  @ApiModelProperty(value = "The number format for the series bubble sizes.")
+  public String getNumberFormatOfBubbleSizes() {
+    return numberFormatOfBubbleSizes;
+  }
+
+  public void setNumberFormatOfBubbleSizes(String numberFormatOfBubbleSizes) {
+    this.numberFormatOfBubbleSizes = numberFormatOfBubbleSizes;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -98,12 +119,12 @@ public class BubbleSeries extends Series {
       return false;
     }
     BubbleSeries bubbleSeries = (BubbleSeries) o;
-    return true && Objects.equals(this.dataPoints, bubbleSeries.dataPoints) && super.equals(o);
+    return true && Objects.equals(this.dataPoints, bubbleSeries.dataPoints) && Objects.equals(this.numberFormatOfBubbleSizes, bubbleSeries.numberFormatOfBubbleSizes) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dataPoints, super.hashCode());
+    return Objects.hash(dataPoints, numberFormatOfBubbleSizes, super.hashCode());
   }
 
 
@@ -113,6 +134,7 @@ public class BubbleSeries extends Series {
     sb.append("class BubbleSeries {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    dataPoints: ").append(toIndentedString(dataPoints)).append("\n");
+    sb.append("    numberFormatOfBubbleSizes: ").append(toIndentedString(numberFormatOfBubbleSizes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

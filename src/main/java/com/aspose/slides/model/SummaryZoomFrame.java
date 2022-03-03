@@ -28,9 +28,14 @@
 package com.aspose.slides.model;
 
 import java.util.Objects;
-import com.aspose.slides.model.ExportOptions;
-import com.aspose.slides.model.OutputFile;
-import com.aspose.slides.model.Task;
+import com.aspose.slides.model.EffectFormat;
+import com.aspose.slides.model.FillFormat;
+import com.aspose.slides.model.Hyperlink;
+import com.aspose.slides.model.LineFormat;
+import com.aspose.slides.model.ResourceUri;
+import com.aspose.slides.model.ShapeBase;
+import com.aspose.slides.model.SummaryZoomSection;
+import com.aspose.slides.model.ThreeDFormat;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -40,72 +45,28 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
 
 /**
- * Save slide task.
+ * Summary zoom frame.
  */
-@ApiModel(description = "Save slide task.")
-public class Save extends Task {
+@ApiModel(description = "Summary zoom frame.")
+public class SummaryZoomFrame extends ShapeBase {
   /**
-   * Format.
+   * Zoom layout type
    */
-  @JsonAdapter(FormatEnum.Adapter.class)
-  public enum FormatEnum {
-    PDF("Pdf"),
+  @JsonAdapter(ZoomLayoutEnum.Adapter.class)
+  public enum ZoomLayoutEnum {
+    GRIDLAYOUT("GridLayout"),
     
-    XPS("Xps"),
-    
-    TIFF("Tiff"),
-    
-    PPTX("Pptx"),
-    
-    ODP("Odp"),
-    
-    OTP("Otp"),
-    
-    PPT("Ppt"),
-    
-    PPS("Pps"),
-    
-    PPSX("Ppsx"),
-    
-    PPTM("Pptm"),
-    
-    PPSM("Ppsm"),
-    
-    POT("Pot"),
-    
-    POTX("Potx"),
-    
-    POTM("Potm"),
-    
-    HTML("Html"),
-    
-    HTML5("Html5"),
-    
-    SWF("Swf"),
-    
-    SVG("Svg"),
-    
-    JPEG("Jpeg"),
-    
-    PNG("Png"),
-    
-    GIF("Gif"),
-    
-    BMP("Bmp"),
-    
-    FODP("Fodp"),
-    
-    XAML("Xaml"),
-    
-    MPEG4("Mpeg4");
+    FIXEDLAYOUT("FixedLayout");
 
     private String value;
 
-    FormatEnum(String value) {
+    ZoomLayoutEnum(String value) {
       this.value = value;
     }
 
@@ -118,8 +79,8 @@ public class Save extends Task {
       return String.valueOf(value);
     }
 
-    public static FormatEnum fromValue(String text) {
-      for (FormatEnum b : FormatEnum.values()) {
+    public static ZoomLayoutEnum fromValue(String text) {
+      for (ZoomLayoutEnum b : ZoomLayoutEnum.values()) {
         if (String.valueOf(b.value).equals(text)) {
           return b;
         }
@@ -127,87 +88,74 @@ public class Save extends Task {
       return null;
     }
 
-    public static class Adapter extends TypeAdapter<FormatEnum> {
+    public static class Adapter extends TypeAdapter<ZoomLayoutEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final FormatEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final ZoomLayoutEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public FormatEnum read(final JsonReader jsonReader) throws IOException {
+      public ZoomLayoutEnum read(final JsonReader jsonReader) throws IOException {
         String value = jsonReader.nextString();
-        return FormatEnum.fromValue(String.valueOf(value));
+        return ZoomLayoutEnum.fromValue(String.valueOf(value));
       }
     }
   }
 
-  @SerializedName(value = "format", alternate = { "Format" })
-  private FormatEnum format;
+  @SerializedName(value = "zoomLayout", alternate = { "ZoomLayout" })
+  private ZoomLayoutEnum zoomLayout;
 
-  @SerializedName(value = "output", alternate = { "Output" })
-  private OutputFile output;
-
-  @SerializedName(value = "options", alternate = { "Options" })
-  private ExportOptions options;
+  @SerializedName(value = "sections", alternate = { "Sections" })
+  private List<SummaryZoomSection> sections = null;
 
 
-  public Save() {
+  public SummaryZoomFrame() {
     super();
-    setType(TypeEnum.SAVE);
+    setType(TypeEnum.SUMMARYZOOMFRAME);
   }
 
-  public Save format(FormatEnum format) {
-    this.format = format;
+  public SummaryZoomFrame zoomLayout(ZoomLayoutEnum zoomLayout) {
+    this.zoomLayout = zoomLayout;
     return this;
   }
 
    /**
-   * Format.
-   * @return format
+   * Zoom layout type
+   * @return zoomLayout
   **/
-  @ApiModelProperty(required = true, value = "Format.")
-  public FormatEnum getFormat() {
-    return format;
+  @ApiModelProperty(value = "Zoom layout type")
+  public ZoomLayoutEnum getZoomLayout() {
+    return zoomLayout;
   }
 
-  public void setFormat(FormatEnum format) {
-    this.format = format;
+  public void setZoomLayout(ZoomLayoutEnum zoomLayout) {
+    this.zoomLayout = zoomLayout;
   }
 
-  public Save output(OutputFile output) {
-    this.output = output;
+  public SummaryZoomFrame sections(List<SummaryZoomSection> sections) {
+    this.sections = sections;
+    return this;
+  }
+
+  public SummaryZoomFrame addSectionsItem(SummaryZoomSection sectionsItem) {
+    if (this.sections == null) {
+      this.sections = new ArrayList<SummaryZoomSection>();
+    }
+    this.sections.add(sectionsItem);
     return this;
   }
 
    /**
-   * Output file.
-   * @return output
+   * Zoom frame sections
+   * @return sections
   **/
-  @ApiModelProperty(value = "Output file.")
-  public OutputFile getOutput() {
-    return output;
+  @ApiModelProperty(value = "Zoom frame sections")
+  public List<SummaryZoomSection> getSections() {
+    return sections;
   }
 
-  public void setOutput(OutputFile output) {
-    this.output = output;
-  }
-
-  public Save options(ExportOptions options) {
-    this.options = options;
-    return this;
-  }
-
-   /**
-   * Save options.
-   * @return options
-  **/
-  @ApiModelProperty(value = "Save options.")
-  public ExportOptions getOptions() {
-    return options;
-  }
-
-  public void setOptions(ExportOptions options) {
-    this.options = options;
+  public void setSections(List<SummaryZoomSection> sections) {
+    this.sections = sections;
   }
 
 
@@ -219,24 +167,23 @@ public class Save extends Task {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Save save = (Save) o;
-    return true && Objects.equals(this.format, save.format) && Objects.equals(this.output, save.output) && Objects.equals(this.options, save.options) && super.equals(o);
+    SummaryZoomFrame summaryZoomFrame = (SummaryZoomFrame) o;
+    return true && Objects.equals(this.zoomLayout, summaryZoomFrame.zoomLayout) && Objects.equals(this.sections, summaryZoomFrame.sections) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(format, output, options, super.hashCode());
+    return Objects.hash(zoomLayout, sections, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Save {\n");
+    sb.append("class SummaryZoomFrame {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    output: ").append(toIndentedString(output)).append("\n");
-    sb.append("    options: ").append(toIndentedString(options)).append("\n");
+    sb.append("    zoomLayout: ").append(toIndentedString(zoomLayout)).append("\n");
+    sb.append("    sections: ").append(toIndentedString(sections)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -257,6 +204,6 @@ public class Save extends Task {
   private static final Map<String, Object> typeDeterminers = new Hashtable<String, Object>();
 
   static {
-      typeDeterminers.put("Type", TypeEnum.SAVE);
+      typeDeterminers.put("Type", TypeEnum.SUMMARYZOOMFRAME);
   }
 }

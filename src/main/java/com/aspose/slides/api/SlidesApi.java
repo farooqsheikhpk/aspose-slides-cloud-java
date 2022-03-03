@@ -15126,6 +15126,260 @@ public class SlidesApi {
         return call;
     }
     /**
+     * Build call for deleteUnusedLayoutSlides
+     * @param name Document name. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteUnusedLayoutSlidesCall(String name, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteUnusedLayoutSlides(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/layoutSlides"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "DELETE", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Removes unused layout slides.
+     * 
+     * @param name Document name. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return LayoutSlides
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public LayoutSlides deleteUnusedLayoutSlides(String name, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<LayoutSlides> resp = deleteUnusedLayoutSlidesWithHttpInfo(name, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<LayoutSlides> resp = deleteUnusedLayoutSlidesWithHttpInfo(name, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Removes unused layout slides.
+     * 
+     * @param name Document name. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;LayoutSlides&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<LayoutSlides> deleteUnusedLayoutSlidesWithHttpInfo(String name, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = deleteUnusedLayoutSlidesCall(name, password, folder, storage, null, null);
+        Type returnType = new TypeToken<LayoutSlides>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Removes unused layout slides. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteUnusedLayoutSlidesAsync(String name, String password, String folder, String storage, final ApiCallback<LayoutSlides> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteUnusedLayoutSlidesCall(name, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<LayoutSlides>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteUnusedLayoutSlidesOnline
+     * @param document Document data (required)
+     * @param password Document password. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteUnusedLayoutSlidesOnlineCall(byte[] document, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'document' is set
+        if (document == null) {
+            throw new ApiException("Missing the required parameter 'document' when calling deleteUnusedLayoutSlidesOnline(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/layoutSlides/delete"
+            ;
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+        if (document != null)
+        formParams.put("document", document);
+
+        final String[] accepts = {
+            "multipart/form-data"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "multipart/form-data"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Removes unused layout slides.
+     * 
+     * @param document Document data (required)
+     * @param password Document password. 
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File deleteUnusedLayoutSlidesOnline(byte[] document, String password) throws ApiException {
+        try {
+            ApiResponse<File> resp = deleteUnusedLayoutSlidesOnlineWithHttpInfo(document, password);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<File> resp = deleteUnusedLayoutSlidesOnlineWithHttpInfo(document, password);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Removes unused layout slides.
+     * 
+     * @param document Document data (required)
+     * @param password Document password. 
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<File> deleteUnusedLayoutSlidesOnlineWithHttpInfo(byte[] document, String password) throws ApiException {
+        com.squareup.okhttp.Call call = deleteUnusedLayoutSlidesOnlineCall(document, password, null, null);
+        Type returnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Removes unused layout slides. (asynchronously)
+     * 
+     * @param document Document data (required)
+     * @param password Document password. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteUnusedLayoutSlidesOnlineAsync(byte[] document, String password, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteUnusedLayoutSlidesOnlineCall(document, password, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
      * Build call for deleteWatermark
      * @param name Document name. (required)
      * @param shapeName Name of the watermark shape. If null, default value \"watermark\"is used. 
@@ -27085,6 +27339,356 @@ public class SlidesApi {
 
         com.squareup.okhttp.Call call = getViewPropertiesCall(name, password, folder, storage, progressListener, progressRequestListener);
         Type returnType = new TypeToken<ViewProperties>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for highlightShapeRegex
+     * @param name Document name. (required)
+     * @param slideIndex Slide index. (required)
+     * @param shapeIndex Shape index. (required)
+     * @param regex Regular expression. (required)
+     * @param color Highlighting color. (required)
+     * @param wholeWordsOnly Match only whole words. 
+     * @param ignoreCase True to search ignoring char case. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call highlightShapeRegexCall(String name, Integer slideIndex, Integer shapeIndex, String regex, String color, Boolean wholeWordsOnly, Boolean ignoreCase, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling highlightShapeRegex(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling highlightShapeRegex(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling highlightShapeRegex(Async)");
+        }
+        // verify the required parameter 'regex' is set
+        if (regex == null) {
+            throw new ApiException("Missing the required parameter 'regex' when calling highlightShapeRegex(Async)");
+        }
+        // verify the required parameter 'color' is set
+        if (color == null) {
+            throw new ApiException("Missing the required parameter 'color' when calling highlightShapeRegex(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/highlightRegex"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "regex", regex);
+        apiClient.addQueryParameter(queryParams, "color", color);
+        apiClient.addQueryParameter(queryParams, "wholeWordsOnly", wholeWordsOnly);
+        apiClient.addQueryParameter(queryParams, "ignoreCase", ignoreCase);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Slide index. (required)
+     * @param shapeIndex Shape index. (required)
+     * @param regex Regular expression. (required)
+     * @param color Highlighting color. (required)
+     * @param wholeWordsOnly Match only whole words. 
+     * @param ignoreCase True to search ignoring char case. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Shape
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Shape highlightShapeRegex(String name, Integer slideIndex, Integer shapeIndex, String regex, String color, Boolean wholeWordsOnly, Boolean ignoreCase, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Shape> resp = highlightShapeRegexWithHttpInfo(name, slideIndex, shapeIndex, regex, color, wholeWordsOnly, ignoreCase, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Shape> resp = highlightShapeRegexWithHttpInfo(name, slideIndex, shapeIndex, regex, color, wholeWordsOnly, ignoreCase, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Slide index. (required)
+     * @param shapeIndex Shape index. (required)
+     * @param regex Regular expression. (required)
+     * @param color Highlighting color. (required)
+     * @param wholeWordsOnly Match only whole words. 
+     * @param ignoreCase True to search ignoring char case. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Shape&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Shape> highlightShapeRegexWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, String regex, String color, Boolean wholeWordsOnly, Boolean ignoreCase, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = highlightShapeRegexCall(name, slideIndex, shapeIndex, regex, color, wholeWordsOnly, ignoreCase, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Shape>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Highlight all matches of sample in text frame text using specified color. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Slide index. (required)
+     * @param shapeIndex Shape index. (required)
+     * @param regex Regular expression. (required)
+     * @param color Highlighting color. (required)
+     * @param wholeWordsOnly Match only whole words. 
+     * @param ignoreCase True to search ignoring char case. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call highlightShapeRegexAsync(String name, Integer slideIndex, Integer shapeIndex, String regex, String color, Boolean wholeWordsOnly, Boolean ignoreCase, String password, String folder, String storage, final ApiCallback<Shape> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = highlightShapeRegexCall(name, slideIndex, shapeIndex, regex, color, wholeWordsOnly, ignoreCase, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Shape>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for highlightShapeText
+     * @param name Document name. (required)
+     * @param slideIndex Slide index. (required)
+     * @param shapeIndex Shape index. (required)
+     * @param text Text sample to highlight. (required)
+     * @param color Highlighting color. (required)
+     * @param wholeWordsOnly Match only whole words. 
+     * @param ignoreCase True to search ignoring char case. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call highlightShapeTextCall(String name, Integer slideIndex, Integer shapeIndex, String text, String color, Boolean wholeWordsOnly, Boolean ignoreCase, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling highlightShapeText(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling highlightShapeText(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling highlightShapeText(Async)");
+        }
+        // verify the required parameter 'text' is set
+        if (text == null) {
+            throw new ApiException("Missing the required parameter 'text' when calling highlightShapeText(Async)");
+        }
+        // verify the required parameter 'color' is set
+        if (color == null) {
+            throw new ApiException("Missing the required parameter 'color' when calling highlightShapeText(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/highlightText"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "text", text);
+        apiClient.addQueryParameter(queryParams, "color", color);
+        apiClient.addQueryParameter(queryParams, "wholeWordsOnly", wholeWordsOnly);
+        apiClient.addQueryParameter(queryParams, "ignoreCase", ignoreCase);
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Slide index. (required)
+     * @param shapeIndex Shape index. (required)
+     * @param text Text sample to highlight. (required)
+     * @param color Highlighting color. (required)
+     * @param wholeWordsOnly Match only whole words. 
+     * @param ignoreCase True to search ignoring char case. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return Shape
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Shape highlightShapeText(String name, Integer slideIndex, Integer shapeIndex, String text, String color, Boolean wholeWordsOnly, Boolean ignoreCase, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<Shape> resp = highlightShapeTextWithHttpInfo(name, slideIndex, shapeIndex, text, color, wholeWordsOnly, ignoreCase, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<Shape> resp = highlightShapeTextWithHttpInfo(name, slideIndex, shapeIndex, text, color, wholeWordsOnly, ignoreCase, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Slide index. (required)
+     * @param shapeIndex Shape index. (required)
+     * @param text Text sample to highlight. (required)
+     * @param color Highlighting color. (required)
+     * @param wholeWordsOnly Match only whole words. 
+     * @param ignoreCase True to search ignoring char case. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;Shape&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Shape> highlightShapeTextWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, String text, String color, Boolean wholeWordsOnly, Boolean ignoreCase, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = highlightShapeTextCall(name, slideIndex, shapeIndex, text, color, wholeWordsOnly, ignoreCase, password, folder, storage, null, null);
+        Type returnType = new TypeToken<Shape>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Highlight all matches of sample in text frame text using specified color. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Slide index. (required)
+     * @param shapeIndex Shape index. (required)
+     * @param text Text sample to highlight. (required)
+     * @param color Highlighting color. (required)
+     * @param wholeWordsOnly Match only whole words. 
+     * @param ignoreCase True to search ignoring char case. 
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call highlightShapeTextAsync(String name, Integer slideIndex, Integer shapeIndex, String text, String color, Boolean wholeWordsOnly, Boolean ignoreCase, String password, String folder, String storage, final ApiCallback<Shape> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = highlightShapeTextCall(name, slideIndex, shapeIndex, text, color, wholeWordsOnly, ignoreCase, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<Shape>(){}.getType();
         apiClient.executeAsync(call, returnType, callback);
         return call;
     }

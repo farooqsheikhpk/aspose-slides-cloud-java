@@ -128,7 +128,15 @@ public class ShapeBase extends ResourceBase {
     
     CONNECTOR("Connector"),
     
-    SMARTARTSHAPE("SmartArtShape");
+    SMARTARTSHAPE("SmartArtShape"),
+    
+    ZOOMFRAME("ZoomFrame"),
+    
+    SECTIONZOOMFRAME("SectionZoomFrame"),
+    
+    SUMMARYZOOMFRAME("SummaryZoomFrame"),
+    
+    SUMMARYZOOMSECTION("SummaryZoomSection");
 
     private String value;
 

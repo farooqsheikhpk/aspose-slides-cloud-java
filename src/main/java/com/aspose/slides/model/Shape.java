@@ -34,6 +34,7 @@ import com.aspose.slides.model.GeometryShape;
 import com.aspose.slides.model.Hyperlink;
 import com.aspose.slides.model.LineFormat;
 import com.aspose.slides.model.ResourceUri;
+import com.aspose.slides.model.TextFrameFormat;
 import com.aspose.slides.model.ThreeDFormat;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -58,6 +59,9 @@ public class Shape extends GeometryShape {
 
   @SerializedName(value = "paragraphs", alternate = { "Paragraphs" })
   private ResourceUri paragraphs;
+
+  @SerializedName(value = "textFrameFormat", alternate = { "TextFrameFormat" })
+  private TextFrameFormat textFrameFormat;
 
 
   public Shape() {
@@ -101,6 +105,24 @@ public class Shape extends GeometryShape {
     this.paragraphs = paragraphs;
   }
 
+  public Shape textFrameFormat(TextFrameFormat textFrameFormat) {
+    this.textFrameFormat = textFrameFormat;
+    return this;
+  }
+
+   /**
+   * Returns TextFrame&#39;s formatting properties.
+   * @return textFrameFormat
+  **/
+  @ApiModelProperty(value = "Returns TextFrame's formatting properties.")
+  public TextFrameFormat getTextFrameFormat() {
+    return textFrameFormat;
+  }
+
+  public void setTextFrameFormat(TextFrameFormat textFrameFormat) {
+    this.textFrameFormat = textFrameFormat;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -111,12 +133,12 @@ public class Shape extends GeometryShape {
       return false;
     }
     Shape shape = (Shape) o;
-    return true && Objects.equals(this.text, shape.text) && Objects.equals(this.paragraphs, shape.paragraphs) && super.equals(o);
+    return true && Objects.equals(this.text, shape.text) && Objects.equals(this.paragraphs, shape.paragraphs) && Objects.equals(this.textFrameFormat, shape.textFrameFormat) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, paragraphs, super.hashCode());
+    return Objects.hash(text, paragraphs, textFrameFormat, super.hashCode());
   }
 
 
@@ -127,6 +149,7 @@ public class Shape extends GeometryShape {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    paragraphs: ").append(toIndentedString(paragraphs)).append("\n");
+    sb.append("    textFrameFormat: ").append(toIndentedString(textFrameFormat)).append("\n");
     sb.append("}");
     return sb.toString();
   }

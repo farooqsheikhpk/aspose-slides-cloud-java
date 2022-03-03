@@ -23445,6 +23445,204 @@ public class SlidesApiTest extends ApiTest {
     }
     
     /**
+     * Removes unused layout slides.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteUnusedLayoutSlidesTest() throws ApiException, Exception {
+        initialize("deleteUnusedLayoutSlides", null, null);
+        LayoutSlides response = null;
+        String valueName = (String)getTestValue("String", "deleteUnusedLayoutSlides", "name");
+        String valuePassword = (String)getTestValue("String", "deleteUnusedLayoutSlides", "password");
+        String valueFolder = (String)getTestValue("String", "deleteUnusedLayoutSlides", "folder");
+        String valueStorage = (String)getTestValue("String", "deleteUnusedLayoutSlides", "storage");
+        response = api.deleteUnusedLayoutSlides(valueName, valuePassword, valueFolder, valueStorage);
+        assertNotNull(response);
+    }
+
+    /**
+     * Removes unused layout slides.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteUnusedLayoutSlidesInvalidNameTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "deleteUnusedLayoutSlides", "name");
+        String valuePassword = (String)getTestValue("String", "deleteUnusedLayoutSlides", "password");
+        String valueFolder = (String)getTestValue("String", "deleteUnusedLayoutSlides", "folder");
+        String valueStorage = (String)getTestValue("String", "deleteUnusedLayoutSlides", "storage");
+        try {
+            valueName = (String)invalidizeTestValue("String", valueName, "deleteUnusedLayoutSlides", "name");
+            initialize("deleteUnusedLayoutSlides", "name", valueName);
+            LayoutSlides response = api.deleteUnusedLayoutSlides(valueName, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "name", "deleteUnusedLayoutSlides", valueName);
+        }
+        if (needAssertResponse) {
+            assertResponse("name", "deleteUnusedLayoutSlides");
+        }
+    }
+    /**
+     * Removes unused layout slides.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteUnusedLayoutSlidesInvalidPasswordTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "deleteUnusedLayoutSlides", "name");
+        String valuePassword = (String)getTestValue("String", "deleteUnusedLayoutSlides", "password");
+        String valueFolder = (String)getTestValue("String", "deleteUnusedLayoutSlides", "folder");
+        String valueStorage = (String)getTestValue("String", "deleteUnusedLayoutSlides", "storage");
+        try {
+            valuePassword = (String)invalidizeTestValue("String", valuePassword, "deleteUnusedLayoutSlides", "password");
+            initialize("deleteUnusedLayoutSlides", "password", valuePassword);
+            LayoutSlides response = api.deleteUnusedLayoutSlides(valueName, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "password", "deleteUnusedLayoutSlides", valuePassword);
+        }
+        if (needAssertResponse) {
+            assertResponse("password", "deleteUnusedLayoutSlides");
+        }
+    }
+    /**
+     * Removes unused layout slides.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteUnusedLayoutSlidesInvalidFolderTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "deleteUnusedLayoutSlides", "name");
+        String valuePassword = (String)getTestValue("String", "deleteUnusedLayoutSlides", "password");
+        String valueFolder = (String)getTestValue("String", "deleteUnusedLayoutSlides", "folder");
+        String valueStorage = (String)getTestValue("String", "deleteUnusedLayoutSlides", "storage");
+        try {
+            valueFolder = (String)invalidizeTestValue("String", valueFolder, "deleteUnusedLayoutSlides", "folder");
+            initialize("deleteUnusedLayoutSlides", "folder", valueFolder);
+            LayoutSlides response = api.deleteUnusedLayoutSlides(valueName, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "folder", "deleteUnusedLayoutSlides", valueFolder);
+        }
+        if (needAssertResponse) {
+            assertResponse("folder", "deleteUnusedLayoutSlides");
+        }
+    }
+    /**
+     * Removes unused layout slides.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteUnusedLayoutSlidesInvalidStorageTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "deleteUnusedLayoutSlides", "name");
+        String valuePassword = (String)getTestValue("String", "deleteUnusedLayoutSlides", "password");
+        String valueFolder = (String)getTestValue("String", "deleteUnusedLayoutSlides", "folder");
+        String valueStorage = (String)getTestValue("String", "deleteUnusedLayoutSlides", "storage");
+        try {
+            valueStorage = (String)invalidizeTestValue("String", valueStorage, "deleteUnusedLayoutSlides", "storage");
+            initialize("deleteUnusedLayoutSlides", "storage", valueStorage);
+            LayoutSlides response = api.deleteUnusedLayoutSlides(valueName, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "storage", "deleteUnusedLayoutSlides", valueStorage);
+        }
+        if (needAssertResponse) {
+            assertResponse("storage", "deleteUnusedLayoutSlides");
+        }
+    }
+    
+    /**
+     * Removes unused layout slides.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteUnusedLayoutSlidesOnlineTest() throws ApiException, Exception {
+        initialize("deleteUnusedLayoutSlidesOnline", null, null);
+        File response = null;
+        byte[] valueDocument = (byte[])getTestValue("byte[]", "deleteUnusedLayoutSlidesOnline", "document");
+        String valuePassword = (String)getTestValue("String", "deleteUnusedLayoutSlidesOnline", "password");
+        response = api.deleteUnusedLayoutSlidesOnline(valueDocument, valuePassword);
+        assertTrue(response.isFile());
+    }
+
+    /**
+     * Removes unused layout slides.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteUnusedLayoutSlidesOnlineInvalidDocumentTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        byte[] valueDocument = (byte[])getTestValue("byte[]", "deleteUnusedLayoutSlidesOnline", "document");
+        String valuePassword = (String)getTestValue("String", "deleteUnusedLayoutSlidesOnline", "password");
+        try {
+            valueDocument = (byte[])invalidizeTestValue("byte[]", valueDocument, "deleteUnusedLayoutSlidesOnline", "document");
+            initialize("deleteUnusedLayoutSlidesOnline", "document", valueDocument);
+            File response = api.deleteUnusedLayoutSlidesOnline(valueDocument, valuePassword);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "document", "deleteUnusedLayoutSlidesOnline", valueDocument);
+        }
+        if (needAssertResponse) {
+            assertResponse("document", "deleteUnusedLayoutSlidesOnline");
+        }
+    }
+    /**
+     * Removes unused layout slides.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteUnusedLayoutSlidesOnlineInvalidPasswordTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        byte[] valueDocument = (byte[])getTestValue("byte[]", "deleteUnusedLayoutSlidesOnline", "document");
+        String valuePassword = (String)getTestValue("String", "deleteUnusedLayoutSlidesOnline", "password");
+        try {
+            valuePassword = (String)invalidizeTestValue("String", valuePassword, "deleteUnusedLayoutSlidesOnline", "password");
+            initialize("deleteUnusedLayoutSlidesOnline", "password", valuePassword);
+            File response = api.deleteUnusedLayoutSlidesOnline(valueDocument, valuePassword);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "password", "deleteUnusedLayoutSlidesOnline", valuePassword);
+        }
+        if (needAssertResponse) {
+            assertResponse("password", "deleteUnusedLayoutSlidesOnline");
+        }
+    }
+    
+    /**
      * Removes shapes with name \&quot;watermark\&quot; from the presentation.
      *
      * 
@@ -40390,6 +40588,720 @@ public class SlidesApiTest extends ApiTest {
         }
         if (needAssertResponse) {
             assertResponse("storage", "getViewProperties");
+        }
+    }
+    
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeRegexTest() throws ApiException, Exception {
+        initialize("highlightShapeRegex", null, null);
+        Shape response = null;
+        String valueName = (String)getTestValue("String", "highlightShapeRegex", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "shapeIndex");
+        String valueRegex = (String)getTestValue("String", "highlightShapeRegex", "regex");
+        String valueColor = (String)getTestValue("String", "highlightShapeRegex", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeRegex", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeRegex", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeRegex", "storage");
+        response = api.highlightShapeRegex(valueName, valueSlideIndex, valueShapeIndex, valueRegex, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+        assertNotNull(response);
+    }
+
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeRegexInvalidNameTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeRegex", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "shapeIndex");
+        String valueRegex = (String)getTestValue("String", "highlightShapeRegex", "regex");
+        String valueColor = (String)getTestValue("String", "highlightShapeRegex", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeRegex", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeRegex", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeRegex", "storage");
+        try {
+            valueName = (String)invalidizeTestValue("String", valueName, "highlightShapeRegex", "name");
+            initialize("highlightShapeRegex", "name", valueName);
+            Shape response = api.highlightShapeRegex(valueName, valueSlideIndex, valueShapeIndex, valueRegex, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "name", "highlightShapeRegex", valueName);
+        }
+        if (needAssertResponse) {
+            assertResponse("name", "highlightShapeRegex");
+        }
+    }
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeRegexInvalidSlideIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeRegex", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "shapeIndex");
+        String valueRegex = (String)getTestValue("String", "highlightShapeRegex", "regex");
+        String valueColor = (String)getTestValue("String", "highlightShapeRegex", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeRegex", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeRegex", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeRegex", "storage");
+        try {
+            valueSlideIndex = (Integer)invalidizeTestValue("Integer", valueSlideIndex, "highlightShapeRegex", "slideIndex");
+            initialize("highlightShapeRegex", "slideIndex", valueSlideIndex);
+            Shape response = api.highlightShapeRegex(valueName, valueSlideIndex, valueShapeIndex, valueRegex, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "slideIndex", "highlightShapeRegex", valueSlideIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("slideIndex", "highlightShapeRegex");
+        }
+    }
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeRegexInvalidShapeIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeRegex", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "shapeIndex");
+        String valueRegex = (String)getTestValue("String", "highlightShapeRegex", "regex");
+        String valueColor = (String)getTestValue("String", "highlightShapeRegex", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeRegex", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeRegex", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeRegex", "storage");
+        try {
+            valueShapeIndex = (Integer)invalidizeTestValue("Integer", valueShapeIndex, "highlightShapeRegex", "shapeIndex");
+            initialize("highlightShapeRegex", "shapeIndex", valueShapeIndex);
+            Shape response = api.highlightShapeRegex(valueName, valueSlideIndex, valueShapeIndex, valueRegex, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "shapeIndex", "highlightShapeRegex", valueShapeIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("shapeIndex", "highlightShapeRegex");
+        }
+    }
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeRegexInvalidRegexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeRegex", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "shapeIndex");
+        String valueRegex = (String)getTestValue("String", "highlightShapeRegex", "regex");
+        String valueColor = (String)getTestValue("String", "highlightShapeRegex", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeRegex", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeRegex", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeRegex", "storage");
+        try {
+            valueRegex = (String)invalidizeTestValue("String", valueRegex, "highlightShapeRegex", "regex");
+            initialize("highlightShapeRegex", "regex", valueRegex);
+            Shape response = api.highlightShapeRegex(valueName, valueSlideIndex, valueShapeIndex, valueRegex, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "regex", "highlightShapeRegex", valueRegex);
+        }
+        if (needAssertResponse) {
+            assertResponse("regex", "highlightShapeRegex");
+        }
+    }
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeRegexInvalidColorTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeRegex", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "shapeIndex");
+        String valueRegex = (String)getTestValue("String", "highlightShapeRegex", "regex");
+        String valueColor = (String)getTestValue("String", "highlightShapeRegex", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeRegex", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeRegex", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeRegex", "storage");
+        try {
+            valueColor = (String)invalidizeTestValue("String", valueColor, "highlightShapeRegex", "color");
+            initialize("highlightShapeRegex", "color", valueColor);
+            Shape response = api.highlightShapeRegex(valueName, valueSlideIndex, valueShapeIndex, valueRegex, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "color", "highlightShapeRegex", valueColor);
+        }
+        if (needAssertResponse) {
+            assertResponse("color", "highlightShapeRegex");
+        }
+    }
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeRegexInvalidWholeWordsOnlyTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeRegex", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "shapeIndex");
+        String valueRegex = (String)getTestValue("String", "highlightShapeRegex", "regex");
+        String valueColor = (String)getTestValue("String", "highlightShapeRegex", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeRegex", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeRegex", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeRegex", "storage");
+        try {
+            valueWholeWordsOnly = (Boolean)invalidizeTestValue("Boolean", valueWholeWordsOnly, "highlightShapeRegex", "wholeWordsOnly");
+            initialize("highlightShapeRegex", "wholeWordsOnly", valueWholeWordsOnly);
+            Shape response = api.highlightShapeRegex(valueName, valueSlideIndex, valueShapeIndex, valueRegex, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "wholeWordsOnly", "highlightShapeRegex", valueWholeWordsOnly);
+        }
+        if (needAssertResponse) {
+            assertResponse("wholeWordsOnly", "highlightShapeRegex");
+        }
+    }
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeRegexInvalidIgnoreCaseTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeRegex", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "shapeIndex");
+        String valueRegex = (String)getTestValue("String", "highlightShapeRegex", "regex");
+        String valueColor = (String)getTestValue("String", "highlightShapeRegex", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeRegex", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeRegex", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeRegex", "storage");
+        try {
+            valueIgnoreCase = (Boolean)invalidizeTestValue("Boolean", valueIgnoreCase, "highlightShapeRegex", "ignoreCase");
+            initialize("highlightShapeRegex", "ignoreCase", valueIgnoreCase);
+            Shape response = api.highlightShapeRegex(valueName, valueSlideIndex, valueShapeIndex, valueRegex, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "ignoreCase", "highlightShapeRegex", valueIgnoreCase);
+        }
+        if (needAssertResponse) {
+            assertResponse("ignoreCase", "highlightShapeRegex");
+        }
+    }
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeRegexInvalidPasswordTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeRegex", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "shapeIndex");
+        String valueRegex = (String)getTestValue("String", "highlightShapeRegex", "regex");
+        String valueColor = (String)getTestValue("String", "highlightShapeRegex", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeRegex", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeRegex", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeRegex", "storage");
+        try {
+            valuePassword = (String)invalidizeTestValue("String", valuePassword, "highlightShapeRegex", "password");
+            initialize("highlightShapeRegex", "password", valuePassword);
+            Shape response = api.highlightShapeRegex(valueName, valueSlideIndex, valueShapeIndex, valueRegex, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "password", "highlightShapeRegex", valuePassword);
+        }
+        if (needAssertResponse) {
+            assertResponse("password", "highlightShapeRegex");
+        }
+    }
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeRegexInvalidFolderTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeRegex", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "shapeIndex");
+        String valueRegex = (String)getTestValue("String", "highlightShapeRegex", "regex");
+        String valueColor = (String)getTestValue("String", "highlightShapeRegex", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeRegex", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeRegex", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeRegex", "storage");
+        try {
+            valueFolder = (String)invalidizeTestValue("String", valueFolder, "highlightShapeRegex", "folder");
+            initialize("highlightShapeRegex", "folder", valueFolder);
+            Shape response = api.highlightShapeRegex(valueName, valueSlideIndex, valueShapeIndex, valueRegex, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "folder", "highlightShapeRegex", valueFolder);
+        }
+        if (needAssertResponse) {
+            assertResponse("folder", "highlightShapeRegex");
+        }
+    }
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeRegexInvalidStorageTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeRegex", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeRegex", "shapeIndex");
+        String valueRegex = (String)getTestValue("String", "highlightShapeRegex", "regex");
+        String valueColor = (String)getTestValue("String", "highlightShapeRegex", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeRegex", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeRegex", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeRegex", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeRegex", "storage");
+        try {
+            valueStorage = (String)invalidizeTestValue("String", valueStorage, "highlightShapeRegex", "storage");
+            initialize("highlightShapeRegex", "storage", valueStorage);
+            Shape response = api.highlightShapeRegex(valueName, valueSlideIndex, valueShapeIndex, valueRegex, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "storage", "highlightShapeRegex", valueStorage);
+        }
+        if (needAssertResponse) {
+            assertResponse("storage", "highlightShapeRegex");
+        }
+    }
+    
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeTextTest() throws ApiException, Exception {
+        initialize("highlightShapeText", null, null);
+        Shape response = null;
+        String valueName = (String)getTestValue("String", "highlightShapeText", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeText", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeText", "shapeIndex");
+        String valueText = (String)getTestValue("String", "highlightShapeText", "text");
+        String valueColor = (String)getTestValue("String", "highlightShapeText", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeText", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeText", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeText", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeText", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeText", "storage");
+        response = api.highlightShapeText(valueName, valueSlideIndex, valueShapeIndex, valueText, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+        assertNotNull(response);
+    }
+
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeTextInvalidNameTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeText", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeText", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeText", "shapeIndex");
+        String valueText = (String)getTestValue("String", "highlightShapeText", "text");
+        String valueColor = (String)getTestValue("String", "highlightShapeText", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeText", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeText", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeText", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeText", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeText", "storage");
+        try {
+            valueName = (String)invalidizeTestValue("String", valueName, "highlightShapeText", "name");
+            initialize("highlightShapeText", "name", valueName);
+            Shape response = api.highlightShapeText(valueName, valueSlideIndex, valueShapeIndex, valueText, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "name", "highlightShapeText", valueName);
+        }
+        if (needAssertResponse) {
+            assertResponse("name", "highlightShapeText");
+        }
+    }
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeTextInvalidSlideIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeText", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeText", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeText", "shapeIndex");
+        String valueText = (String)getTestValue("String", "highlightShapeText", "text");
+        String valueColor = (String)getTestValue("String", "highlightShapeText", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeText", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeText", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeText", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeText", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeText", "storage");
+        try {
+            valueSlideIndex = (Integer)invalidizeTestValue("Integer", valueSlideIndex, "highlightShapeText", "slideIndex");
+            initialize("highlightShapeText", "slideIndex", valueSlideIndex);
+            Shape response = api.highlightShapeText(valueName, valueSlideIndex, valueShapeIndex, valueText, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "slideIndex", "highlightShapeText", valueSlideIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("slideIndex", "highlightShapeText");
+        }
+    }
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeTextInvalidShapeIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeText", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeText", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeText", "shapeIndex");
+        String valueText = (String)getTestValue("String", "highlightShapeText", "text");
+        String valueColor = (String)getTestValue("String", "highlightShapeText", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeText", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeText", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeText", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeText", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeText", "storage");
+        try {
+            valueShapeIndex = (Integer)invalidizeTestValue("Integer", valueShapeIndex, "highlightShapeText", "shapeIndex");
+            initialize("highlightShapeText", "shapeIndex", valueShapeIndex);
+            Shape response = api.highlightShapeText(valueName, valueSlideIndex, valueShapeIndex, valueText, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "shapeIndex", "highlightShapeText", valueShapeIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("shapeIndex", "highlightShapeText");
+        }
+    }
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeTextInvalidTextTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeText", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeText", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeText", "shapeIndex");
+        String valueText = (String)getTestValue("String", "highlightShapeText", "text");
+        String valueColor = (String)getTestValue("String", "highlightShapeText", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeText", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeText", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeText", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeText", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeText", "storage");
+        try {
+            valueText = (String)invalidizeTestValue("String", valueText, "highlightShapeText", "text");
+            initialize("highlightShapeText", "text", valueText);
+            Shape response = api.highlightShapeText(valueName, valueSlideIndex, valueShapeIndex, valueText, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "text", "highlightShapeText", valueText);
+        }
+        if (needAssertResponse) {
+            assertResponse("text", "highlightShapeText");
+        }
+    }
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeTextInvalidColorTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeText", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeText", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeText", "shapeIndex");
+        String valueText = (String)getTestValue("String", "highlightShapeText", "text");
+        String valueColor = (String)getTestValue("String", "highlightShapeText", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeText", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeText", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeText", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeText", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeText", "storage");
+        try {
+            valueColor = (String)invalidizeTestValue("String", valueColor, "highlightShapeText", "color");
+            initialize("highlightShapeText", "color", valueColor);
+            Shape response = api.highlightShapeText(valueName, valueSlideIndex, valueShapeIndex, valueText, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "color", "highlightShapeText", valueColor);
+        }
+        if (needAssertResponse) {
+            assertResponse("color", "highlightShapeText");
+        }
+    }
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeTextInvalidWholeWordsOnlyTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeText", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeText", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeText", "shapeIndex");
+        String valueText = (String)getTestValue("String", "highlightShapeText", "text");
+        String valueColor = (String)getTestValue("String", "highlightShapeText", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeText", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeText", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeText", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeText", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeText", "storage");
+        try {
+            valueWholeWordsOnly = (Boolean)invalidizeTestValue("Boolean", valueWholeWordsOnly, "highlightShapeText", "wholeWordsOnly");
+            initialize("highlightShapeText", "wholeWordsOnly", valueWholeWordsOnly);
+            Shape response = api.highlightShapeText(valueName, valueSlideIndex, valueShapeIndex, valueText, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "wholeWordsOnly", "highlightShapeText", valueWholeWordsOnly);
+        }
+        if (needAssertResponse) {
+            assertResponse("wholeWordsOnly", "highlightShapeText");
+        }
+    }
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeTextInvalidIgnoreCaseTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeText", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeText", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeText", "shapeIndex");
+        String valueText = (String)getTestValue("String", "highlightShapeText", "text");
+        String valueColor = (String)getTestValue("String", "highlightShapeText", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeText", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeText", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeText", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeText", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeText", "storage");
+        try {
+            valueIgnoreCase = (Boolean)invalidizeTestValue("Boolean", valueIgnoreCase, "highlightShapeText", "ignoreCase");
+            initialize("highlightShapeText", "ignoreCase", valueIgnoreCase);
+            Shape response = api.highlightShapeText(valueName, valueSlideIndex, valueShapeIndex, valueText, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "ignoreCase", "highlightShapeText", valueIgnoreCase);
+        }
+        if (needAssertResponse) {
+            assertResponse("ignoreCase", "highlightShapeText");
+        }
+    }
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeTextInvalidPasswordTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeText", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeText", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeText", "shapeIndex");
+        String valueText = (String)getTestValue("String", "highlightShapeText", "text");
+        String valueColor = (String)getTestValue("String", "highlightShapeText", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeText", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeText", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeText", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeText", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeText", "storage");
+        try {
+            valuePassword = (String)invalidizeTestValue("String", valuePassword, "highlightShapeText", "password");
+            initialize("highlightShapeText", "password", valuePassword);
+            Shape response = api.highlightShapeText(valueName, valueSlideIndex, valueShapeIndex, valueText, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "password", "highlightShapeText", valuePassword);
+        }
+        if (needAssertResponse) {
+            assertResponse("password", "highlightShapeText");
+        }
+    }
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeTextInvalidFolderTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeText", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeText", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeText", "shapeIndex");
+        String valueText = (String)getTestValue("String", "highlightShapeText", "text");
+        String valueColor = (String)getTestValue("String", "highlightShapeText", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeText", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeText", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeText", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeText", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeText", "storage");
+        try {
+            valueFolder = (String)invalidizeTestValue("String", valueFolder, "highlightShapeText", "folder");
+            initialize("highlightShapeText", "folder", valueFolder);
+            Shape response = api.highlightShapeText(valueName, valueSlideIndex, valueShapeIndex, valueText, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "folder", "highlightShapeText", valueFolder);
+        }
+        if (needAssertResponse) {
+            assertResponse("folder", "highlightShapeText");
+        }
+    }
+    /**
+     * Highlight all matches of sample in text frame text using specified color.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void highlightShapeTextInvalidStorageTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "highlightShapeText", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "highlightShapeText", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "highlightShapeText", "shapeIndex");
+        String valueText = (String)getTestValue("String", "highlightShapeText", "text");
+        String valueColor = (String)getTestValue("String", "highlightShapeText", "color");
+        Boolean valueWholeWordsOnly = (Boolean)getTestValue("Boolean", "highlightShapeText", "wholeWordsOnly");
+        Boolean valueIgnoreCase = (Boolean)getTestValue("Boolean", "highlightShapeText", "ignoreCase");
+        String valuePassword = (String)getTestValue("String", "highlightShapeText", "password");
+        String valueFolder = (String)getTestValue("String", "highlightShapeText", "folder");
+        String valueStorage = (String)getTestValue("String", "highlightShapeText", "storage");
+        try {
+            valueStorage = (String)invalidizeTestValue("String", valueStorage, "highlightShapeText", "storage");
+            initialize("highlightShapeText", "storage", valueStorage);
+            Shape response = api.highlightShapeText(valueName, valueSlideIndex, valueShapeIndex, valueText, valueColor, valueWholeWordsOnly, valueIgnoreCase, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "storage", "highlightShapeText", valueStorage);
+        }
+        if (needAssertResponse) {
+            assertResponse("storage", "highlightShapeText");
         }
     }
     

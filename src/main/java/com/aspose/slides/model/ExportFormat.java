@@ -92,7 +92,9 @@ public enum ExportFormat {
   
   FODP("Fodp"),
   
-  XAML("Xaml");
+  XAML("Xaml"),
+  
+  MPEG4("Mpeg4");
 
   private String value;
 

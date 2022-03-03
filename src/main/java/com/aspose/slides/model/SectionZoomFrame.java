@@ -30,10 +30,11 @@ package com.aspose.slides.model;
 import java.util.Objects;
 import com.aspose.slides.model.EffectFormat;
 import com.aspose.slides.model.FillFormat;
+import com.aspose.slides.model.Hyperlink;
 import com.aspose.slides.model.LineFormat;
-import com.aspose.slides.model.ScatterChartDataPoint;
-import com.aspose.slides.model.SeriesMarker;
-import com.aspose.slides.model.XYSeries;
+import com.aspose.slides.model.ResourceUri;
+import com.aspose.slides.model.ThreeDFormat;
+import com.aspose.slides.model.ZoomObject;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -42,50 +43,41 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
 
 /**
- * A scatter series
+ * Section zoom frame.             
  */
-@ApiModel(description = "A scatter series")
-public class ScatterSeries extends XYSeries {
-  @SerializedName(value = "dataPoints", alternate = { "DataPoints" })
-  private List<ScatterChartDataPoint> dataPoints = null;
+@ApiModel(description = "Section zoom frame.             ")
+public class SectionZoomFrame extends ZoomObject {
+  @SerializedName(value = "targetSectionIndex", alternate = { "TargetSectionIndex" })
+  private Integer targetSectionIndex;
 
 
-  public ScatterSeries() {
+  public SectionZoomFrame() {
     super();
-    setDataPointType(DataPointTypeEnum.SCATTER);
+    setType(TypeEnum.SECTIONZOOMFRAME);
   }
 
-  public ScatterSeries dataPoints(List<ScatterChartDataPoint> dataPoints) {
-    this.dataPoints = dataPoints;
-    return this;
-  }
-
-  public ScatterSeries addDataPointsItem(ScatterChartDataPoint dataPointsItem) {
-    if (this.dataPoints == null) {
-      this.dataPoints = new ArrayList<ScatterChartDataPoint>();
-    }
-    this.dataPoints.add(dataPointsItem);
+  public SectionZoomFrame targetSectionIndex(Integer targetSectionIndex) {
+    this.targetSectionIndex = targetSectionIndex;
     return this;
   }
 
    /**
-   * Gets or sets the values.
-   * @return dataPoints
+   * Index of the target section
+   * @return targetSectionIndex
   **/
-  @ApiModelProperty(value = "Gets or sets the values.")
-  public List<ScatterChartDataPoint> getDataPoints() {
-    return dataPoints;
+  @ApiModelProperty(value = "Index of the target section")
+  public Integer getTargetSectionIndex() {
+    return targetSectionIndex;
   }
 
-  public void setDataPoints(List<ScatterChartDataPoint> dataPoints) {
-    this.dataPoints = dataPoints;
+  public void setTargetSectionIndex(Integer targetSectionIndex) {
+    this.targetSectionIndex = targetSectionIndex;
   }
 
 
@@ -97,22 +89,22 @@ public class ScatterSeries extends XYSeries {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ScatterSeries scatterSeries = (ScatterSeries) o;
-    return true && Objects.equals(this.dataPoints, scatterSeries.dataPoints) && super.equals(o);
+    SectionZoomFrame sectionZoomFrame = (SectionZoomFrame) o;
+    return true && Objects.equals(this.targetSectionIndex, sectionZoomFrame.targetSectionIndex) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dataPoints, super.hashCode());
+    return Objects.hash(targetSectionIndex, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ScatterSeries {\n");
+    sb.append("class SectionZoomFrame {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    dataPoints: ").append(toIndentedString(dataPoints)).append("\n");
+    sb.append("    targetSectionIndex: ").append(toIndentedString(targetSectionIndex)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -133,6 +125,6 @@ public class ScatterSeries extends XYSeries {
   private static final Map<String, Object> typeDeterminers = new Hashtable<String, Object>();
 
   static {
-      typeDeterminers.put("DataPointType", DataPointTypeEnum.SCATTER);
+      typeDeterminers.put("Type", TypeEnum.SECTIONZOOMFRAME);
   }
 }

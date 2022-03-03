@@ -56,6 +56,9 @@ public class OneValueSeries extends Series {
   @SerializedName(value = "dataPoints", alternate = { "DataPoints" })
   private List<OneValueChartDataPoint> dataPoints = null;
 
+  @SerializedName(value = "numberFormatOfValues", alternate = { "NumberFormatOfValues" })
+  private String numberFormatOfValues;
+
 
   public OneValueSeries() {
     super();
@@ -88,6 +91,24 @@ public class OneValueSeries extends Series {
     this.dataPoints = dataPoints;
   }
 
+  public OneValueSeries numberFormatOfValues(String numberFormatOfValues) {
+    this.numberFormatOfValues = numberFormatOfValues;
+    return this;
+  }
+
+   /**
+   * The number format for the series values.
+   * @return numberFormatOfValues
+  **/
+  @ApiModelProperty(value = "The number format for the series values.")
+  public String getNumberFormatOfValues() {
+    return numberFormatOfValues;
+  }
+
+  public void setNumberFormatOfValues(String numberFormatOfValues) {
+    this.numberFormatOfValues = numberFormatOfValues;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -98,12 +119,12 @@ public class OneValueSeries extends Series {
       return false;
     }
     OneValueSeries oneValueSeries = (OneValueSeries) o;
-    return true && Objects.equals(this.dataPoints, oneValueSeries.dataPoints) && super.equals(o);
+    return true && Objects.equals(this.dataPoints, oneValueSeries.dataPoints) && Objects.equals(this.numberFormatOfValues, oneValueSeries.numberFormatOfValues) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dataPoints, super.hashCode());
+    return Objects.hash(dataPoints, numberFormatOfValues, super.hashCode());
   }
 
 
@@ -113,6 +134,7 @@ public class OneValueSeries extends Series {
     sb.append("class OneValueSeries {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    dataPoints: ").append(toIndentedString(dataPoints)).append("\n");
+    sb.append("    numberFormatOfValues: ").append(toIndentedString(numberFormatOfValues)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -29,8 +29,6 @@ package com.aspose.slides.model;
 
 import java.util.Objects;
 import com.aspose.slides.model.ExportOptions;
-import com.aspose.slides.model.OutputFile;
-import com.aspose.slides.model.Task;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -44,68 +42,29 @@ import java.util.Hashtable;
 import java.util.Map;
 
 /**
- * Save slide task.
+ * Provides options that control how a presentation is saved in an video format.
  */
-@ApiModel(description = "Save slide task.")
-public class Save extends Task {
+@ApiModel(description = "Provides options that control how a presentation is saved in an video format.")
+public class VideoExportOptions extends ExportOptions {
+  @SerializedName(value = "transitionDuration", alternate = { "TransitionDuration" })
+  private Integer transitionDuration;
+
   /**
-   * Format.
+   * Video resolution type
    */
-  @JsonAdapter(FormatEnum.Adapter.class)
-  public enum FormatEnum {
-    PDF("Pdf"),
+  @JsonAdapter(VideoResolutionTypeEnum.Adapter.class)
+  public enum VideoResolutionTypeEnum {
+    FULLHD("FullHD"),
     
-    XPS("Xps"),
+    SD("SD"),
     
-    TIFF("Tiff"),
+    HD("HD"),
     
-    PPTX("Pptx"),
-    
-    ODP("Odp"),
-    
-    OTP("Otp"),
-    
-    PPT("Ppt"),
-    
-    PPS("Pps"),
-    
-    PPSX("Ppsx"),
-    
-    PPTM("Pptm"),
-    
-    PPSM("Ppsm"),
-    
-    POT("Pot"),
-    
-    POTX("Potx"),
-    
-    POTM("Potm"),
-    
-    HTML("Html"),
-    
-    HTML5("Html5"),
-    
-    SWF("Swf"),
-    
-    SVG("Svg"),
-    
-    JPEG("Jpeg"),
-    
-    PNG("Png"),
-    
-    GIF("Gif"),
-    
-    BMP("Bmp"),
-    
-    FODP("Fodp"),
-    
-    XAML("Xaml"),
-    
-    MPEG4("Mpeg4");
+    QHD("QHD");
 
     private String value;
 
-    FormatEnum(String value) {
+    VideoResolutionTypeEnum(String value) {
       this.value = value;
     }
 
@@ -118,8 +77,8 @@ public class Save extends Task {
       return String.valueOf(value);
     }
 
-    public static FormatEnum fromValue(String text) {
-      for (FormatEnum b : FormatEnum.values()) {
+    public static VideoResolutionTypeEnum fromValue(String text) {
+      for (VideoResolutionTypeEnum b : VideoResolutionTypeEnum.values()) {
         if (String.valueOf(b.value).equals(text)) {
           return b;
         }
@@ -127,87 +86,63 @@ public class Save extends Task {
       return null;
     }
 
-    public static class Adapter extends TypeAdapter<FormatEnum> {
+    public static class Adapter extends TypeAdapter<VideoResolutionTypeEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final FormatEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final VideoResolutionTypeEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public FormatEnum read(final JsonReader jsonReader) throws IOException {
+      public VideoResolutionTypeEnum read(final JsonReader jsonReader) throws IOException {
         String value = jsonReader.nextString();
-        return FormatEnum.fromValue(String.valueOf(value));
+        return VideoResolutionTypeEnum.fromValue(String.valueOf(value));
       }
     }
   }
 
-  @SerializedName(value = "format", alternate = { "Format" })
-  private FormatEnum format;
-
-  @SerializedName(value = "output", alternate = { "Output" })
-  private OutputFile output;
-
-  @SerializedName(value = "options", alternate = { "Options" })
-  private ExportOptions options;
+  @SerializedName(value = "videoResolutionType", alternate = { "VideoResolutionType" })
+  private VideoResolutionTypeEnum videoResolutionType;
 
 
-  public Save() {
+  public VideoExportOptions() {
     super();
-    setType(TypeEnum.SAVE);
+    setFormat("MPEG4");
   }
 
-  public Save format(FormatEnum format) {
-    this.format = format;
+  public VideoExportOptions transitionDuration(Integer transitionDuration) {
+    this.transitionDuration = transitionDuration;
     return this;
   }
 
    /**
-   * Format.
-   * @return format
+   * Transition duration.
+   * @return transitionDuration
   **/
-  @ApiModelProperty(required = true, value = "Format.")
-  public FormatEnum getFormat() {
-    return format;
+  @ApiModelProperty(value = "Transition duration.")
+  public Integer getTransitionDuration() {
+    return transitionDuration;
   }
 
-  public void setFormat(FormatEnum format) {
-    this.format = format;
+  public void setTransitionDuration(Integer transitionDuration) {
+    this.transitionDuration = transitionDuration;
   }
 
-  public Save output(OutputFile output) {
-    this.output = output;
+  public VideoExportOptions videoResolutionType(VideoResolutionTypeEnum videoResolutionType) {
+    this.videoResolutionType = videoResolutionType;
     return this;
   }
 
    /**
-   * Output file.
-   * @return output
+   * Video resolution type
+   * @return videoResolutionType
   **/
-  @ApiModelProperty(value = "Output file.")
-  public OutputFile getOutput() {
-    return output;
+  @ApiModelProperty(value = "Video resolution type")
+  public VideoResolutionTypeEnum getVideoResolutionType() {
+    return videoResolutionType;
   }
 
-  public void setOutput(OutputFile output) {
-    this.output = output;
-  }
-
-  public Save options(ExportOptions options) {
-    this.options = options;
-    return this;
-  }
-
-   /**
-   * Save options.
-   * @return options
-  **/
-  @ApiModelProperty(value = "Save options.")
-  public ExportOptions getOptions() {
-    return options;
-  }
-
-  public void setOptions(ExportOptions options) {
-    this.options = options;
+  public void setVideoResolutionType(VideoResolutionTypeEnum videoResolutionType) {
+    this.videoResolutionType = videoResolutionType;
   }
 
 
@@ -219,24 +154,23 @@ public class Save extends Task {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Save save = (Save) o;
-    return true && Objects.equals(this.format, save.format) && Objects.equals(this.output, save.output) && Objects.equals(this.options, save.options) && super.equals(o);
+    VideoExportOptions videoExportOptions = (VideoExportOptions) o;
+    return true && Objects.equals(this.transitionDuration, videoExportOptions.transitionDuration) && Objects.equals(this.videoResolutionType, videoExportOptions.videoResolutionType) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(format, output, options, super.hashCode());
+    return Objects.hash(transitionDuration, videoResolutionType, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Save {\n");
+    sb.append("class VideoExportOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    output: ").append(toIndentedString(output)).append("\n");
-    sb.append("    options: ").append(toIndentedString(options)).append("\n");
+    sb.append("    transitionDuration: ").append(toIndentedString(transitionDuration)).append("\n");
+    sb.append("    videoResolutionType: ").append(toIndentedString(videoResolutionType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -256,7 +190,4 @@ public class Save extends Task {
 
   private static final Map<String, Object> typeDeterminers = new Hashtable<String, Object>();
 
-  static {
-      typeDeterminers.put("Type", TypeEnum.SAVE);
-  }
 }

@@ -181,6 +181,8 @@ public class Axis {
    */
   @JsonAdapter(BaseUnitScaleEnum.Adapter.class)
   public enum BaseUnitScaleEnum {
+    NONE("None"),
+    
     DAYS("Days"),
     
     MONTHS("Months"),
@@ -239,6 +241,8 @@ public class Axis {
    */
   @JsonAdapter(MajorUnitScaleEnum.Adapter.class)
   public enum MajorUnitScaleEnum {
+    NONE("None"),
+    
     DAYS("Days"),
     
     MONTHS("Months"),
@@ -351,6 +355,8 @@ public class Axis {
    */
   @JsonAdapter(MinorUnitScaleEnum.Adapter.class)
   public enum MinorUnitScaleEnum {
+    NONE("None"),
+    
     DAYS("Days"),
     
     MONTHS("Months"),

@@ -277,18 +277,6 @@ public class Series {
   @SerializedName(value = "order", alternate = { "Order" })
   private Integer order;
 
-  @SerializedName(value = "numberFormatOfYValues", alternate = { "NumberFormatOfYValues" })
-  private String numberFormatOfYValues;
-
-  @SerializedName(value = "numberFormatOfXValues", alternate = { "NumberFormatOfXValues" })
-  private String numberFormatOfXValues;
-
-  @SerializedName(value = "numberFormatOfValues", alternate = { "NumberFormatOfValues" })
-  private String numberFormatOfValues;
-
-  @SerializedName(value = "numberFormatOfBubbleSizes", alternate = { "NumberFormatOfBubbleSizes" })
-  private String numberFormatOfBubbleSizes;
-
   @SerializedName(value = "invertIfNegative", alternate = { "InvertIfNegative" })
   private Boolean invertIfNegative;
 
@@ -490,78 +478,6 @@ public class Series {
     this.order = order;
   }
 
-  public Series numberFormatOfYValues(String numberFormatOfYValues) {
-    this.numberFormatOfYValues = numberFormatOfYValues;
-    return this;
-  }
-
-   /**
-   * The number format for the series y values.
-   * @return numberFormatOfYValues
-  **/
-  @ApiModelProperty(value = "The number format for the series y values.")
-  public String getNumberFormatOfYValues() {
-    return numberFormatOfYValues;
-  }
-
-  public void setNumberFormatOfYValues(String numberFormatOfYValues) {
-    this.numberFormatOfYValues = numberFormatOfYValues;
-  }
-
-  public Series numberFormatOfXValues(String numberFormatOfXValues) {
-    this.numberFormatOfXValues = numberFormatOfXValues;
-    return this;
-  }
-
-   /**
-   * The number format for the series x values.
-   * @return numberFormatOfXValues
-  **/
-  @ApiModelProperty(value = "The number format for the series x values.")
-  public String getNumberFormatOfXValues() {
-    return numberFormatOfXValues;
-  }
-
-  public void setNumberFormatOfXValues(String numberFormatOfXValues) {
-    this.numberFormatOfXValues = numberFormatOfXValues;
-  }
-
-  public Series numberFormatOfValues(String numberFormatOfValues) {
-    this.numberFormatOfValues = numberFormatOfValues;
-    return this;
-  }
-
-   /**
-   * The number format for the series values.
-   * @return numberFormatOfValues
-  **/
-  @ApiModelProperty(value = "The number format for the series values.")
-  public String getNumberFormatOfValues() {
-    return numberFormatOfValues;
-  }
-
-  public void setNumberFormatOfValues(String numberFormatOfValues) {
-    this.numberFormatOfValues = numberFormatOfValues;
-  }
-
-  public Series numberFormatOfBubbleSizes(String numberFormatOfBubbleSizes) {
-    this.numberFormatOfBubbleSizes = numberFormatOfBubbleSizes;
-    return this;
-  }
-
-   /**
-   * The number format for the series bubble sizes.
-   * @return numberFormatOfBubbleSizes
-  **/
-  @ApiModelProperty(value = "The number format for the series bubble sizes.")
-  public String getNumberFormatOfBubbleSizes() {
-    return numberFormatOfBubbleSizes;
-  }
-
-  public void setNumberFormatOfBubbleSizes(String numberFormatOfBubbleSizes) {
-    this.numberFormatOfBubbleSizes = numberFormatOfBubbleSizes;
-  }
-
   public Series invertIfNegative(Boolean invertIfNegative) {
     this.invertIfNegative = invertIfNegative;
     return this;
@@ -698,12 +614,12 @@ public class Series {
       return false;
     }
     Series series = (Series) o;
-    return true && Objects.equals(this.type, series.type) && Objects.equals(this.name, series.name) && Objects.equals(this.isColorVaried, series.isColorVaried) && Objects.equals(this.invertedSolidFillColor, series.invertedSolidFillColor) && Objects.equals(this.smooth, series.smooth) && Objects.equals(this.plotOnSecondAxis, series.plotOnSecondAxis) && Objects.equals(this.order, series.order) && Objects.equals(this.numberFormatOfYValues, series.numberFormatOfYValues) && Objects.equals(this.numberFormatOfXValues, series.numberFormatOfXValues) && Objects.equals(this.numberFormatOfValues, series.numberFormatOfValues) && Objects.equals(this.numberFormatOfBubbleSizes, series.numberFormatOfBubbleSizes) && Objects.equals(this.invertIfNegative, series.invertIfNegative) && Objects.equals(this.explosion, series.explosion) && Objects.equals(this.marker, series.marker) && Objects.equals(this.fillFormat, series.fillFormat) && Objects.equals(this.effectFormat, series.effectFormat) && Objects.equals(this.lineFormat, series.lineFormat) && Objects.equals(this.dataPointType, series.dataPointType);
+    return true && Objects.equals(this.type, series.type) && Objects.equals(this.name, series.name) && Objects.equals(this.isColorVaried, series.isColorVaried) && Objects.equals(this.invertedSolidFillColor, series.invertedSolidFillColor) && Objects.equals(this.smooth, series.smooth) && Objects.equals(this.plotOnSecondAxis, series.plotOnSecondAxis) && Objects.equals(this.order, series.order) && Objects.equals(this.invertIfNegative, series.invertIfNegative) && Objects.equals(this.explosion, series.explosion) && Objects.equals(this.marker, series.marker) && Objects.equals(this.fillFormat, series.fillFormat) && Objects.equals(this.effectFormat, series.effectFormat) && Objects.equals(this.lineFormat, series.lineFormat) && Objects.equals(this.dataPointType, series.dataPointType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, name, isColorVaried, invertedSolidFillColor, smooth, plotOnSecondAxis, order, numberFormatOfYValues, numberFormatOfXValues, numberFormatOfValues, numberFormatOfBubbleSizes, invertIfNegative, explosion, marker, fillFormat, effectFormat, lineFormat, dataPointType);
+    return Objects.hash(type, name, isColorVaried, invertedSolidFillColor, smooth, plotOnSecondAxis, order, invertIfNegative, explosion, marker, fillFormat, effectFormat, lineFormat, dataPointType);
   }
 
 
@@ -719,10 +635,6 @@ public class Series {
     sb.append("    smooth: ").append(toIndentedString(smooth)).append("\n");
     sb.append("    plotOnSecondAxis: ").append(toIndentedString(plotOnSecondAxis)).append("\n");
     sb.append("    order: ").append(toIndentedString(order)).append("\n");
-    sb.append("    numberFormatOfYValues: ").append(toIndentedString(numberFormatOfYValues)).append("\n");
-    sb.append("    numberFormatOfXValues: ").append(toIndentedString(numberFormatOfXValues)).append("\n");
-    sb.append("    numberFormatOfValues: ").append(toIndentedString(numberFormatOfValues)).append("\n");
-    sb.append("    numberFormatOfBubbleSizes: ").append(toIndentedString(numberFormatOfBubbleSizes)).append("\n");
     sb.append("    invertIfNegative: ").append(toIndentedString(invertIfNegative)).append("\n");
     sb.append("    explosion: ").append(toIndentedString(explosion)).append("\n");
     sb.append("    marker: ").append(toIndentedString(marker)).append("\n");

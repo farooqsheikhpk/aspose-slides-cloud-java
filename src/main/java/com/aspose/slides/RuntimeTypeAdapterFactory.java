@@ -162,7 +162,7 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
      * typeFieldName} as the type field name. Type field names are case sensitive.
      */
     public static <T> RuntimeTypeAdapterFactory<T> of(Class<T> baseType, String typeFieldName) {
-        return new RuntimeTypeAdapterFactory<T>(baseType, typeFieldName, false);
+        return new RuntimeTypeAdapterFactory<T>(baseType, typeFieldName, true);
     }
 
     /**
@@ -170,7 +170,7 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
      * the type field name.
      */
     public static <T> RuntimeTypeAdapterFactory<T> of(Class<T> baseType) {
-        return new RuntimeTypeAdapterFactory<T>(baseType, "type", false);
+        return new RuntimeTypeAdapterFactory<T>(baseType, "type", true);
     }
 
     /**
@@ -207,7 +207,6 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
         if (type.getRawType() != baseType) {
             return null;
         }
-
         final Map<String, TypeAdapter<?>> labelToDelegate
                 = new LinkedHashMap<String, TypeAdapter<?>>();
         final Map<Class<?>, TypeAdapter<?>> subtypeToDelegate

@@ -30,10 +30,11 @@ package com.aspose.slides.model;
 import java.util.Objects;
 import com.aspose.slides.model.EffectFormat;
 import com.aspose.slides.model.FillFormat;
+import com.aspose.slides.model.Hyperlink;
 import com.aspose.slides.model.LineFormat;
-import com.aspose.slides.model.ScatterChartDataPoint;
-import com.aspose.slides.model.SeriesMarker;
-import com.aspose.slides.model.XYSeries;
+import com.aspose.slides.model.ResourceUri;
+import com.aspose.slides.model.SectionZoomFrame;
+import com.aspose.slides.model.ThreeDFormat;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -42,50 +43,62 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
 
 /**
- * A scatter series
+ * Represents summary zoom section
  */
-@ApiModel(description = "A scatter series")
-public class ScatterSeries extends XYSeries {
-  @SerializedName(value = "dataPoints", alternate = { "DataPoints" })
-  private List<ScatterChartDataPoint> dataPoints = null;
+@ApiModel(description = "Represents summary zoom section")
+public class SummaryZoomSection extends SectionZoomFrame {
+  @SerializedName(value = "title", alternate = { "Title" })
+  private String title;
+
+  @SerializedName(value = "description", alternate = { "Description" })
+  private String description;
 
 
-  public ScatterSeries() {
+  public SummaryZoomSection() {
     super();
-    setDataPointType(DataPointTypeEnum.SCATTER);
+    setType(TypeEnum.SUMMARYZOOMSECTION);
   }
 
-  public ScatterSeries dataPoints(List<ScatterChartDataPoint> dataPoints) {
-    this.dataPoints = dataPoints;
-    return this;
-  }
-
-  public ScatterSeries addDataPointsItem(ScatterChartDataPoint dataPointsItem) {
-    if (this.dataPoints == null) {
-      this.dataPoints = new ArrayList<ScatterChartDataPoint>();
-    }
-    this.dataPoints.add(dataPointsItem);
+  public SummaryZoomSection title(String title) {
+    this.title = title;
     return this;
   }
 
    /**
-   * Gets or sets the values.
-   * @return dataPoints
+   * Section title
+   * @return title
   **/
-  @ApiModelProperty(value = "Gets or sets the values.")
-  public List<ScatterChartDataPoint> getDataPoints() {
-    return dataPoints;
+  @ApiModelProperty(value = "Section title")
+  public String getTitle() {
+    return title;
   }
 
-  public void setDataPoints(List<ScatterChartDataPoint> dataPoints) {
-    this.dataPoints = dataPoints;
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public SummaryZoomSection description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Description of the Summary Zoom Section object. 
+   * @return description
+  **/
+  @ApiModelProperty(value = "Description of the Summary Zoom Section object. ")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
@@ -97,22 +110,23 @@ public class ScatterSeries extends XYSeries {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ScatterSeries scatterSeries = (ScatterSeries) o;
-    return true && Objects.equals(this.dataPoints, scatterSeries.dataPoints) && super.equals(o);
+    SummaryZoomSection summaryZoomSection = (SummaryZoomSection) o;
+    return true && Objects.equals(this.title, summaryZoomSection.title) && Objects.equals(this.description, summaryZoomSection.description) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dataPoints, super.hashCode());
+    return Objects.hash(title, description, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ScatterSeries {\n");
+    sb.append("class SummaryZoomSection {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    dataPoints: ").append(toIndentedString(dataPoints)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -133,6 +147,6 @@ public class ScatterSeries extends XYSeries {
   private static final Map<String, Object> typeDeterminers = new Hashtable<String, Object>();
 
   static {
-      typeDeterminers.put("DataPointType", DataPointTypeEnum.SCATTER);
+      typeDeterminers.put("Type", TypeEnum.SUMMARYZOOMSECTION);
   }
 }

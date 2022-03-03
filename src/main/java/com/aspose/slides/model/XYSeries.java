@@ -31,9 +31,8 @@ import java.util.Objects;
 import com.aspose.slides.model.EffectFormat;
 import com.aspose.slides.model.FillFormat;
 import com.aspose.slides.model.LineFormat;
-import com.aspose.slides.model.ScatterChartDataPoint;
+import com.aspose.slides.model.Series;
 import com.aspose.slides.model.SeriesMarker;
-import com.aspose.slides.model.XYSeries;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -43,49 +42,59 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
 
 /**
- * A scatter series
+ * Common properties for Bubble and Scatter series. 
  */
-@ApiModel(description = "A scatter series")
-public class ScatterSeries extends XYSeries {
-  @SerializedName(value = "dataPoints", alternate = { "DataPoints" })
-  private List<ScatterChartDataPoint> dataPoints = null;
+@ApiModel(description = "Common properties for Bubble and Scatter series. ")
+public class XYSeries extends Series {
+  @SerializedName(value = "numberFormatOfYValues", alternate = { "NumberFormatOfYValues" })
+  private String numberFormatOfYValues;
+
+  @SerializedName(value = "numberFormatOfXValues", alternate = { "NumberFormatOfXValues" })
+  private String numberFormatOfXValues;
 
 
-  public ScatterSeries() {
+  public XYSeries() {
     super();
-    setDataPointType(DataPointTypeEnum.SCATTER);
   }
 
-  public ScatterSeries dataPoints(List<ScatterChartDataPoint> dataPoints) {
-    this.dataPoints = dataPoints;
-    return this;
-  }
-
-  public ScatterSeries addDataPointsItem(ScatterChartDataPoint dataPointsItem) {
-    if (this.dataPoints == null) {
-      this.dataPoints = new ArrayList<ScatterChartDataPoint>();
-    }
-    this.dataPoints.add(dataPointsItem);
+  public XYSeries numberFormatOfYValues(String numberFormatOfYValues) {
+    this.numberFormatOfYValues = numberFormatOfYValues;
     return this;
   }
 
    /**
-   * Gets or sets the values.
-   * @return dataPoints
+   * The number format for the series y values.
+   * @return numberFormatOfYValues
   **/
-  @ApiModelProperty(value = "Gets or sets the values.")
-  public List<ScatterChartDataPoint> getDataPoints() {
-    return dataPoints;
+  @ApiModelProperty(value = "The number format for the series y values.")
+  public String getNumberFormatOfYValues() {
+    return numberFormatOfYValues;
   }
 
-  public void setDataPoints(List<ScatterChartDataPoint> dataPoints) {
-    this.dataPoints = dataPoints;
+  public void setNumberFormatOfYValues(String numberFormatOfYValues) {
+    this.numberFormatOfYValues = numberFormatOfYValues;
+  }
+
+  public XYSeries numberFormatOfXValues(String numberFormatOfXValues) {
+    this.numberFormatOfXValues = numberFormatOfXValues;
+    return this;
+  }
+
+   /**
+   * The number format for the series x values.
+   * @return numberFormatOfXValues
+  **/
+  @ApiModelProperty(value = "The number format for the series x values.")
+  public String getNumberFormatOfXValues() {
+    return numberFormatOfXValues;
+  }
+
+  public void setNumberFormatOfXValues(String numberFormatOfXValues) {
+    this.numberFormatOfXValues = numberFormatOfXValues;
   }
 
 
@@ -97,22 +106,23 @@ public class ScatterSeries extends XYSeries {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ScatterSeries scatterSeries = (ScatterSeries) o;
-    return true && Objects.equals(this.dataPoints, scatterSeries.dataPoints) && super.equals(o);
+    XYSeries xySeries = (XYSeries) o;
+    return true && Objects.equals(this.numberFormatOfYValues, xySeries.numberFormatOfYValues) && Objects.equals(this.numberFormatOfXValues, xySeries.numberFormatOfXValues) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dataPoints, super.hashCode());
+    return Objects.hash(numberFormatOfYValues, numberFormatOfXValues, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ScatterSeries {\n");
+    sb.append("class XYSeries {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    dataPoints: ").append(toIndentedString(dataPoints)).append("\n");
+    sb.append("    numberFormatOfYValues: ").append(toIndentedString(numberFormatOfYValues)).append("\n");
+    sb.append("    numberFormatOfXValues: ").append(toIndentedString(numberFormatOfXValues)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -132,7 +142,4 @@ public class ScatterSeries extends XYSeries {
 
   private static final Map<String, Object> typeDeterminers = new Hashtable<String, Object>();
 
-  static {
-      typeDeterminers.put("DataPointType", DataPointTypeEnum.SCATTER);
-  }
 }

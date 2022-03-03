@@ -328,7 +328,6 @@ public class ChartTest extends ApiTest {
         List<ChartCategory> categories = new ArrayList<ChartCategory>();
         ChartCategory category1 = new ChartCategory();
         category1.setValue("Leaf1");
-        category1.setLevel(3);
         List<String> parentCategories1 = new ArrayList<String>();
         parentCategories1.add("Branch1");
         parentCategories1.add("Stem1");
@@ -336,7 +335,6 @@ public class ChartTest extends ApiTest {
         categories.add(category1);
         ChartCategory category2 = new ChartCategory();
         category2.setValue("Leaf2");
-        category2.setLevel(3);
         List<String> parentCategories2 = new ArrayList<String>();
         parentCategories2.add("Branch1");
         parentCategories2.add("Stem1");
@@ -344,14 +342,12 @@ public class ChartTest extends ApiTest {
         categories.add(category2);
         ChartCategory category3 = new ChartCategory();
         category3.setValue("Branch2");
-        category3.setLevel(2);
         List<String> parentCategories3 = new ArrayList<String>();
         parentCategories3.add("Stem1");
         category3.setParentCategories(parentCategories3);
         categories.add(category3);
         ChartCategory category4 = new ChartCategory();
         category4.setValue("Stem2");
-        category4.setLevel(1);
         categories.add(category4);
         dto.setCategories(categories);
         List<Series> seriesList = new ArrayList<Series>();
@@ -377,7 +373,6 @@ public class ChartTest extends ApiTest {
         assertNotNull(chart);
         assertEquals(1, chart.getSeries().size());
         assertEquals(4, chart.getCategories().size());
-        assertEquals(3, chart.getCategories().get(0).getLevel().longValue());
     }
 
     private static final String c_folderName = "TempSlidesSDK";
