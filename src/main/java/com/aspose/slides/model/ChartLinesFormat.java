@@ -28,9 +28,8 @@
 package com.aspose.slides.model;
 
 import java.util.Objects;
-import com.aspose.slides.model.ResourceBase;
-import com.aspose.slides.model.ResourceUri;
-import com.aspose.slides.model.SlideCommentBase;
+import com.aspose.slides.model.EffectFormat;
+import com.aspose.slides.model.LineFormat;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -40,48 +39,59 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
 
 /**
- * Represents comments collection of slide
+ * Represents the lines format of chart elements. 
  */
-@ApiModel(description = "Represents comments collection of slide")
-public class SlideComments extends ResourceBase {
-  @SerializedName(value = "list", alternate = { "List" })
-  private List<SlideCommentBase> list = null;
+@ApiModel(description = "Represents the lines format of chart elements. ")
+public class ChartLinesFormat {
+  @SerializedName(value = "effectFormat", alternate = { "EffectFormat" })
+  private EffectFormat effectFormat;
+
+  @SerializedName(value = "lineFormat", alternate = { "LineFormat" })
+  private LineFormat lineFormat;
 
 
-  public SlideComments() {
+  public ChartLinesFormat() {
     super();
   }
 
-  public SlideComments list(List<SlideCommentBase> list) {
-    this.list = list;
-    return this;
-  }
-
-  public SlideComments addListItem(SlideCommentBase listItem) {
-    if (this.list == null) {
-      this.list = new ArrayList<SlideCommentBase>();
-    }
-    this.list.add(listItem);
+  public ChartLinesFormat effectFormat(EffectFormat effectFormat) {
+    this.effectFormat = effectFormat;
     return this;
   }
 
    /**
-   * Slide comment list.
-   * @return list
+   * Get or sets the effect format.
+   * @return effectFormat
   **/
-  @ApiModelProperty(value = "Slide comment list.")
-  public List<SlideCommentBase> getList() {
-    return list;
+  @ApiModelProperty(value = "Get or sets the effect format.")
+  public EffectFormat getEffectFormat() {
+    return effectFormat;
   }
 
-  public void setList(List<SlideCommentBase> list) {
-    this.list = list;
+  public void setEffectFormat(EffectFormat effectFormat) {
+    this.effectFormat = effectFormat;
+  }
+
+  public ChartLinesFormat lineFormat(LineFormat lineFormat) {
+    this.lineFormat = lineFormat;
+    return this;
+  }
+
+   /**
+   * Get or sets the line format.
+   * @return lineFormat
+  **/
+  @ApiModelProperty(value = "Get or sets the line format.")
+  public LineFormat getLineFormat() {
+    return lineFormat;
+  }
+
+  public void setLineFormat(LineFormat lineFormat) {
+    this.lineFormat = lineFormat;
   }
 
 
@@ -93,22 +103,23 @@ public class SlideComments extends ResourceBase {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SlideComments slideComments = (SlideComments) o;
-    return true && Objects.equals(this.list, slideComments.list) && super.equals(o);
+    ChartLinesFormat chartLinesFormat = (ChartLinesFormat) o;
+    return true && Objects.equals(this.effectFormat, chartLinesFormat.effectFormat) && Objects.equals(this.lineFormat, chartLinesFormat.lineFormat);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(list, super.hashCode());
+    return Objects.hash(effectFormat, lineFormat);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SlideComments {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    list: ").append(toIndentedString(list)).append("\n");
+    sb.append("class ChartLinesFormat {\n");
+    
+    sb.append("    effectFormat: ").append(toIndentedString(effectFormat)).append("\n");
+    sb.append("    lineFormat: ").append(toIndentedString(lineFormat)).append("\n");
     sb.append("}");
     return sb.toString();
   }

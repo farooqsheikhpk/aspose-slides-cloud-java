@@ -28,75 +28,86 @@
 package com.aspose.slides.model;
 
 import java.util.Objects;
-import com.aspose.slides.model.SlideCommentBase;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
-import java.util.List;
+import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
 
+import java.io.IOException;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+
 /**
- * Represents comment of slide
+ * Shape type
  */
-@ApiModel(description = "Represents comment of slide")
-public class SlideComment extends SlideCommentBase {
+@JsonAdapter(ShapeType.Adapter.class)
+public enum ShapeType {
+  
+  SHAPE("Shape"),
+  
+  CHART("Chart"),
+  
+  TABLE("Table"),
+  
+  PICTUREFRAME("PictureFrame"),
+  
+  VIDEOFRAME("VideoFrame"),
+  
+  AUDIOFRAME("AudioFrame"),
+  
+  SMARTART("SmartArt"),
+  
+  OLEOBJECTFRAME("OleObjectFrame"),
+  
+  GROUPSHAPE("GroupShape"),
+  
+  GRAPHICALOBJECT("GraphicalObject"),
+  
+  CONNECTOR("Connector"),
+  
+  SMARTARTSHAPE("SmartArtShape"),
+  
+  ZOOMFRAME("ZoomFrame"),
+  
+  SECTIONZOOMFRAME("SectionZoomFrame"),
+  
+  SUMMARYZOOMFRAME("SummaryZoomFrame"),
+  
+  SUMMARYZOOMSECTION("SummaryZoomSection");
 
-  public SlideComment() {
-    super();
-    setType(TypeEnum.REGULAR);
+  private String value;
+
+  ShapeType(String value) {
+    this.value = value;
   }
 
+  public String getValue() {
+    return value;
+  }
 
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+  public static ShapeType fromValue(String text) {
+    for (ShapeType b : ShapeType.values()) {
+      if (String.valueOf(b.value).equals(text)) {
+        return b;
+      }
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+    return null;
+  }
+
+  public static class Adapter extends TypeAdapter<ShapeType> {
+    @Override
+    public void write(final JsonWriter jsonWriter, final ShapeType enumeration) throws IOException {
+      jsonWriter.value(enumeration.getValue());
     }
-    SlideComment slideComment = (SlideComment) o;
-    return true && super.equals(o);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(super.hashCode());
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SlideComment {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    @Override
+    public ShapeType read(final JsonReader jsonReader) throws IOException {
+      String value = jsonReader.nextString();
+      return ShapeType.fromValue(String.valueOf(value));
     }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-
-
-  private static final Map<String, Object> typeDeterminers = new Hashtable<String, Object>();
-
-  static {
-      typeDeterminers.put("Type", TypeEnum.REGULAR);
   }
 }
+

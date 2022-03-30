@@ -28,9 +28,6 @@
 package com.aspose.slides.model;
 
 import java.util.Objects;
-import com.aspose.slides.model.ResourceBase;
-import com.aspose.slides.model.ResourceUri;
-import com.aspose.slides.model.SlideCommentBase;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -40,48 +37,101 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
 
 /**
- * Represents comments collection of slide
+ * Represents text bounds within a paragraph or portion.
  */
-@ApiModel(description = "Represents comments collection of slide")
-public class SlideComments extends ResourceBase {
-  @SerializedName(value = "list", alternate = { "List" })
-  private List<SlideCommentBase> list = null;
+@ApiModel(description = "Represents text bounds within a paragraph or portion.")
+public class TextBounds {
+  @SerializedName(value = "x", alternate = { "X" })
+  private Double x;
+
+  @SerializedName(value = "y", alternate = { "Y" })
+  private Double y;
+
+  @SerializedName(value = "width", alternate = { "Width" })
+  private Double width;
+
+  @SerializedName(value = "height", alternate = { "Height" })
+  private Double height;
 
 
-  public SlideComments() {
+  public TextBounds() {
     super();
   }
 
-  public SlideComments list(List<SlideCommentBase> list) {
-    this.list = list;
-    return this;
-  }
-
-  public SlideComments addListItem(SlideCommentBase listItem) {
-    if (this.list == null) {
-      this.list = new ArrayList<SlideCommentBase>();
-    }
-    this.list.add(listItem);
+  public TextBounds x(Double x) {
+    this.x = x;
     return this;
   }
 
    /**
-   * Slide comment list.
-   * @return list
+   * X coordinate of the text bounds.
+   * @return x
   **/
-  @ApiModelProperty(value = "Slide comment list.")
-  public List<SlideCommentBase> getList() {
-    return list;
+  @ApiModelProperty(required = true, value = "X coordinate of the text bounds.")
+  public Double getX() {
+    return x;
   }
 
-  public void setList(List<SlideCommentBase> list) {
-    this.list = list;
+  public void setX(Double x) {
+    this.x = x;
+  }
+
+  public TextBounds y(Double y) {
+    this.y = y;
+    return this;
+  }
+
+   /**
+   * X coordinate of the text bounds.             
+   * @return y
+  **/
+  @ApiModelProperty(required = true, value = "X coordinate of the text bounds.             ")
+  public Double getY() {
+    return y;
+  }
+
+  public void setY(Double y) {
+    this.y = y;
+  }
+
+  public TextBounds width(Double width) {
+    this.width = width;
+    return this;
+  }
+
+   /**
+   * Width of the text bounds.
+   * @return width
+  **/
+  @ApiModelProperty(required = true, value = "Width of the text bounds.")
+  public Double getWidth() {
+    return width;
+  }
+
+  public void setWidth(Double width) {
+    this.width = width;
+  }
+
+  public TextBounds height(Double height) {
+    this.height = height;
+    return this;
+  }
+
+   /**
+   * Height of the text bounds.
+   * @return height
+  **/
+  @ApiModelProperty(required = true, value = "Height of the text bounds.")
+  public Double getHeight() {
+    return height;
+  }
+
+  public void setHeight(Double height) {
+    this.height = height;
   }
 
 
@@ -93,22 +143,25 @@ public class SlideComments extends ResourceBase {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SlideComments slideComments = (SlideComments) o;
-    return true && Objects.equals(this.list, slideComments.list) && super.equals(o);
+    TextBounds textBounds = (TextBounds) o;
+    return true && Objects.equals(this.x, textBounds.x) && Objects.equals(this.y, textBounds.y) && Objects.equals(this.width, textBounds.width) && Objects.equals(this.height, textBounds.height);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(list, super.hashCode());
+    return Objects.hash(x, y, width, height);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SlideComments {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    list: ").append(toIndentedString(list)).append("\n");
+    sb.append("class TextBounds {\n");
+    
+    sb.append("    x: ").append(toIndentedString(x)).append("\n");
+    sb.append("    y: ").append(toIndentedString(y)).append("\n");
+    sb.append("    width: ").append(toIndentedString(width)).append("\n");
+    sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("}");
     return sb.toString();
   }

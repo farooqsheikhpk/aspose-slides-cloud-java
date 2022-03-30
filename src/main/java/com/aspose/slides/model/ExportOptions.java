@@ -28,6 +28,7 @@
 package com.aspose.slides.model;
 
 import java.util.Objects;
+import com.aspose.slides.model.FontFallbackRule;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -36,6 +37,8 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
@@ -53,6 +56,9 @@ public class ExportOptions {
 
   @SerializedName(value = "width", alternate = { "Width" })
   private Integer width;
+
+  @SerializedName(value = "fontFallbackRules", alternate = { "FontFallbackRules" })
+  private List<FontFallbackRule> fontFallbackRules = null;
 
   @SerializedName(value = "format", alternate = { "Format" })
   private String format;
@@ -116,6 +122,32 @@ public class ExportOptions {
     this.width = width;
   }
 
+  public ExportOptions fontFallbackRules(List<FontFallbackRule> fontFallbackRules) {
+    this.fontFallbackRules = fontFallbackRules;
+    return this;
+  }
+
+  public ExportOptions addFontFallbackRulesItem(FontFallbackRule fontFallbackRulesItem) {
+    if (this.fontFallbackRules == null) {
+      this.fontFallbackRules = new ArrayList<FontFallbackRule>();
+    }
+    this.fontFallbackRules.add(fontFallbackRulesItem);
+    return this;
+  }
+
+   /**
+   * Gets of sets list of font fallback rules.
+   * @return fontFallbackRules
+  **/
+  @ApiModelProperty(value = "Gets of sets list of font fallback rules.")
+  public List<FontFallbackRule> getFontFallbackRules() {
+    return fontFallbackRules;
+  }
+
+  public void setFontFallbackRules(List<FontFallbackRule> fontFallbackRules) {
+    this.fontFallbackRules = fontFallbackRules;
+  }
+
   public ExportOptions format(String format) {
     this.format = format;
     return this;
@@ -144,12 +176,12 @@ public class ExportOptions {
       return false;
     }
     ExportOptions exportOptions = (ExportOptions) o;
-    return true && Objects.equals(this.defaultRegularFont, exportOptions.defaultRegularFont) && Objects.equals(this.height, exportOptions.height) && Objects.equals(this.width, exportOptions.width) && Objects.equals(this.format, exportOptions.format);
+    return true && Objects.equals(this.defaultRegularFont, exportOptions.defaultRegularFont) && Objects.equals(this.height, exportOptions.height) && Objects.equals(this.width, exportOptions.width) && Objects.equals(this.fontFallbackRules, exportOptions.fontFallbackRules) && Objects.equals(this.format, exportOptions.format);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultRegularFont, height, width, format);
+    return Objects.hash(defaultRegularFont, height, width, fontFallbackRules, format);
   }
 
 
@@ -161,6 +193,7 @@ public class ExportOptions {
     sb.append("    defaultRegularFont: ").append(toIndentedString(defaultRegularFont)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
+    sb.append("    fontFallbackRules: ").append(toIndentedString(fontFallbackRules)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("}");
     return sb.toString();

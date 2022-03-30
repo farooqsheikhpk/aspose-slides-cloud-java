@@ -49,8 +49,9 @@ import java.util.Hashtable;
 import java.util.Map;
 
 /**
- * ZoomObject
+ * Zoom object.
  */
+@ApiModel(description = "Zoom object.")
 public class ZoomObject extends ShapeBase {
   /**
    * Image type of a zoom object. 

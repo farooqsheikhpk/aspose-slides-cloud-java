@@ -28,8 +28,6 @@
 package com.aspose.slides.model;
 
 import java.util.Objects;
-import com.aspose.slides.model.ExportOptions;
-import com.aspose.slides.model.FontFallbackRule;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -38,83 +36,91 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
 
 /**
- * Provides options that control how a presentation is saved in Gif format.
+ * Represents font fallback rule.             
  */
-@ApiModel(description = "Provides options that control how a presentation is saved in Gif format.")
-public class GifExportOptions extends ExportOptions {
-  @SerializedName(value = "exportHiddenSlides", alternate = { "ExportHiddenSlides" })
-  private Boolean exportHiddenSlides;
+@ApiModel(description = "Represents font fallback rule.             ")
+public class FontFallbackRule {
+  @SerializedName(value = "rangeStartIndex", alternate = { "RangeStartIndex" })
+  private Integer rangeStartIndex;
 
-  @SerializedName(value = "transitionFps", alternate = { "TransitionFps" })
-  private Integer transitionFps;
+  @SerializedName(value = "rangeEndIndex", alternate = { "RangeEndIndex" })
+  private Integer rangeEndIndex;
 
-  @SerializedName(value = "defaultDelay", alternate = { "DefaultDelay" })
-  private Integer defaultDelay;
+  @SerializedName(value = "fallbackFontList", alternate = { "FallbackFontList" })
+  private List<String> fallbackFontList = null;
 
 
-  public GifExportOptions() {
+  public FontFallbackRule() {
     super();
-    setFormat("GIF");
   }
 
-  public GifExportOptions exportHiddenSlides(Boolean exportHiddenSlides) {
-    this.exportHiddenSlides = exportHiddenSlides;
+  public FontFallbackRule rangeStartIndex(Integer rangeStartIndex) {
+    this.rangeStartIndex = rangeStartIndex;
     return this;
   }
 
    /**
-   * Determines whether hidden slides will be exported.
-   * @return exportHiddenSlides
+   * First index of continuous unicode range.
+   * @return rangeStartIndex
   **/
-  @ApiModelProperty(value = "Determines whether hidden slides will be exported.")
-  public Boolean isExportHiddenSlides() {
-    return exportHiddenSlides;
+  @ApiModelProperty(required = true, value = "First index of continuous unicode range.")
+  public Integer getRangeStartIndex() {
+    return rangeStartIndex;
   }
 
-  public void setExportHiddenSlides(Boolean exportHiddenSlides) {
-    this.exportHiddenSlides = exportHiddenSlides;
+  public void setRangeStartIndex(Integer rangeStartIndex) {
+    this.rangeStartIndex = rangeStartIndex;
   }
 
-  public GifExportOptions transitionFps(Integer transitionFps) {
-    this.transitionFps = transitionFps;
+  public FontFallbackRule rangeEndIndex(Integer rangeEndIndex) {
+    this.rangeEndIndex = rangeEndIndex;
     return this;
   }
 
    /**
-   * Gets or sets transition FPS [frames/sec]
-   * @return transitionFps
+   * Last index of continuous unicode range.
+   * @return rangeEndIndex
   **/
-  @ApiModelProperty(value = "Gets or sets transition FPS [frames/sec]")
-  public Integer getTransitionFps() {
-    return transitionFps;
+  @ApiModelProperty(required = true, value = "Last index of continuous unicode range.")
+  public Integer getRangeEndIndex() {
+    return rangeEndIndex;
   }
 
-  public void setTransitionFps(Integer transitionFps) {
-    this.transitionFps = transitionFps;
+  public void setRangeEndIndex(Integer rangeEndIndex) {
+    this.rangeEndIndex = rangeEndIndex;
   }
 
-  public GifExportOptions defaultDelay(Integer defaultDelay) {
-    this.defaultDelay = defaultDelay;
+  public FontFallbackRule fallbackFontList(List<String> fallbackFontList) {
+    this.fallbackFontList = fallbackFontList;
+    return this;
+  }
+
+  public FontFallbackRule addFallbackFontListItem(String fallbackFontListItem) {
+    if (this.fallbackFontList == null) {
+      this.fallbackFontList = new ArrayList<String>();
+    }
+    this.fallbackFontList.add(fallbackFontListItem);
     return this;
   }
 
    /**
-   * Gets or sets default delay time [ms].
-   * @return defaultDelay
+   * List of fallback font links.
+   * @return fallbackFontList
   **/
-  @ApiModelProperty(value = "Gets or sets default delay time [ms].")
-  public Integer getDefaultDelay() {
-    return defaultDelay;
+  @ApiModelProperty(value = "List of fallback font links.")
+  public List<String> getFallbackFontList() {
+    return fallbackFontList;
   }
 
-  public void setDefaultDelay(Integer defaultDelay) {
-    this.defaultDelay = defaultDelay;
+  public void setFallbackFontList(List<String> fallbackFontList) {
+    this.fallbackFontList = fallbackFontList;
   }
 
 
@@ -126,24 +132,24 @@ public class GifExportOptions extends ExportOptions {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GifExportOptions gifExportOptions = (GifExportOptions) o;
-    return true && Objects.equals(this.exportHiddenSlides, gifExportOptions.exportHiddenSlides) && Objects.equals(this.transitionFps, gifExportOptions.transitionFps) && Objects.equals(this.defaultDelay, gifExportOptions.defaultDelay) && super.equals(o);
+    FontFallbackRule fontFallbackRule = (FontFallbackRule) o;
+    return true && Objects.equals(this.rangeStartIndex, fontFallbackRule.rangeStartIndex) && Objects.equals(this.rangeEndIndex, fontFallbackRule.rangeEndIndex) && Objects.equals(this.fallbackFontList, fontFallbackRule.fallbackFontList);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(exportHiddenSlides, transitionFps, defaultDelay, super.hashCode());
+    return Objects.hash(rangeStartIndex, rangeEndIndex, fallbackFontList);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GifExportOptions {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    exportHiddenSlides: ").append(toIndentedString(exportHiddenSlides)).append("\n");
-    sb.append("    transitionFps: ").append(toIndentedString(transitionFps)).append("\n");
-    sb.append("    defaultDelay: ").append(toIndentedString(defaultDelay)).append("\n");
+    sb.append("class FontFallbackRule {\n");
+    
+    sb.append("    rangeStartIndex: ").append(toIndentedString(rangeStartIndex)).append("\n");
+    sb.append("    rangeEndIndex: ").append(toIndentedString(rangeEndIndex)).append("\n");
+    sb.append("    fallbackFontList: ").append(toIndentedString(fallbackFontList)).append("\n");
     sb.append("}");
     return sb.toString();
   }

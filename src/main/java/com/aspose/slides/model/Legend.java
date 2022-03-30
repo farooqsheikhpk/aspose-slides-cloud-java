@@ -128,6 +128,9 @@ public class Legend {
   @SerializedName(value = "lineFormat", alternate = { "LineFormat" })
   private LineFormat lineFormat;
 
+  @SerializedName(value = "hasLegend", alternate = { "HasLegend" })
+  private Boolean hasLegend;
+
 
   public Legend() {
     super();
@@ -295,6 +298,24 @@ public class Legend {
     this.lineFormat = lineFormat;
   }
 
+  public Legend hasLegend(Boolean hasLegend) {
+    this.hasLegend = hasLegend;
+    return this;
+  }
+
+   /**
+   * Get or sets value determines the visibility of legend
+   * @return hasLegend
+  **/
+  @ApiModelProperty(value = "Get or sets value determines the visibility of legend")
+  public Boolean isHasLegend() {
+    return hasLegend;
+  }
+
+  public void setHasLegend(Boolean hasLegend) {
+    this.hasLegend = hasLegend;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -305,12 +326,12 @@ public class Legend {
       return false;
     }
     Legend legend = (Legend) o;
-    return true && Objects.equals(this.position, legend.position) && Objects.equals(this.x, legend.x) && Objects.equals(this.y, legend.y) && Objects.equals(this.width, legend.width) && Objects.equals(this.height, legend.height) && Objects.equals(this.overlay, legend.overlay) && Objects.equals(this.fillFormat, legend.fillFormat) && Objects.equals(this.effectFormat, legend.effectFormat) && Objects.equals(this.lineFormat, legend.lineFormat);
+    return true && Objects.equals(this.position, legend.position) && Objects.equals(this.x, legend.x) && Objects.equals(this.y, legend.y) && Objects.equals(this.width, legend.width) && Objects.equals(this.height, legend.height) && Objects.equals(this.overlay, legend.overlay) && Objects.equals(this.fillFormat, legend.fillFormat) && Objects.equals(this.effectFormat, legend.effectFormat) && Objects.equals(this.lineFormat, legend.lineFormat) && Objects.equals(this.hasLegend, legend.hasLegend);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(position, x, y, width, height, overlay, fillFormat, effectFormat, lineFormat);
+    return Objects.hash(position, x, y, width, height, overlay, fillFormat, effectFormat, lineFormat, hasLegend);
   }
 
 
@@ -328,6 +349,7 @@ public class Legend {
     sb.append("    fillFormat: ").append(toIndentedString(fillFormat)).append("\n");
     sb.append("    effectFormat: ").append(toIndentedString(effectFormat)).append("\n");
     sb.append("    lineFormat: ").append(toIndentedString(lineFormat)).append("\n");
+    sb.append("    hasLegend: ").append(toIndentedString(hasLegend)).append("\n");
     sb.append("}");
     return sb.toString();
   }

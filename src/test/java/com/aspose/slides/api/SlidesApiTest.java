@@ -90,13 +90,14 @@ import com.aspose.slides.model.Shapes;
 import com.aspose.slides.model.Slide;
 import com.aspose.slides.model.SlideAnimation;
 import com.aspose.slides.model.SlideBackground;
-import com.aspose.slides.model.SlideComment;
+import com.aspose.slides.model.SlideCommentBase;
 import com.aspose.slides.model.SlideComments;
 import com.aspose.slides.model.SlideProperties;
 import com.aspose.slides.model.SlideReplaceResult;
 import com.aspose.slides.model.Slides;
 import com.aspose.slides.model.SplitDocumentResult;
 import com.aspose.slides.model.StorageExist;
+import com.aspose.slides.model.TextBounds;
 import com.aspose.slides.model.TextItems;
 import com.aspose.slides.model.Theme;
 import com.aspose.slides.model.ViewProperties;
@@ -4092,11 +4093,12 @@ public class SlidesApiTest extends ApiTest {
         SlideComments response = null;
         String valueName = (String)getTestValue("String", "createComment", "name");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "createComment", "slideIndex");
-        SlideComment valueDto = (SlideComment)getTestValue("SlideComment", "createComment", "dto");
+        SlideCommentBase valueDto = (SlideCommentBase)getTestValue("SlideCommentBase", "createComment", "dto");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "createComment", "shapeIndex");
         String valuePassword = (String)getTestValue("String", "createComment", "password");
         String valueFolder = (String)getTestValue("String", "createComment", "folder");
         String valueStorage = (String)getTestValue("String", "createComment", "storage");
-        response = api.createComment(valueName, valueSlideIndex, valueDto, valuePassword, valueFolder, valueStorage);
+        response = api.createComment(valueName, valueSlideIndex, valueDto, valueShapeIndex, valuePassword, valueFolder, valueStorage);
         assertNotNull(response);
     }
 
@@ -4113,14 +4115,15 @@ public class SlidesApiTest extends ApiTest {
         Boolean needAssertResponse = false;
         String valueName = (String)getTestValue("String", "createComment", "name");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "createComment", "slideIndex");
-        SlideComment valueDto = (SlideComment)getTestValue("SlideComment", "createComment", "dto");
+        SlideCommentBase valueDto = (SlideCommentBase)getTestValue("SlideCommentBase", "createComment", "dto");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "createComment", "shapeIndex");
         String valuePassword = (String)getTestValue("String", "createComment", "password");
         String valueFolder = (String)getTestValue("String", "createComment", "folder");
         String valueStorage = (String)getTestValue("String", "createComment", "storage");
         try {
             valueName = (String)invalidizeTestValue("String", valueName, "createComment", "name");
             initialize("createComment", "name", valueName);
-            SlideComments response = api.createComment(valueName, valueSlideIndex, valueDto, valuePassword, valueFolder, valueStorage);
+            SlideComments response = api.createComment(valueName, valueSlideIndex, valueDto, valueShapeIndex, valuePassword, valueFolder, valueStorage);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "name", "createComment", valueName);
@@ -4142,14 +4145,15 @@ public class SlidesApiTest extends ApiTest {
         Boolean needAssertResponse = false;
         String valueName = (String)getTestValue("String", "createComment", "name");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "createComment", "slideIndex");
-        SlideComment valueDto = (SlideComment)getTestValue("SlideComment", "createComment", "dto");
+        SlideCommentBase valueDto = (SlideCommentBase)getTestValue("SlideCommentBase", "createComment", "dto");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "createComment", "shapeIndex");
         String valuePassword = (String)getTestValue("String", "createComment", "password");
         String valueFolder = (String)getTestValue("String", "createComment", "folder");
         String valueStorage = (String)getTestValue("String", "createComment", "storage");
         try {
             valueSlideIndex = (Integer)invalidizeTestValue("Integer", valueSlideIndex, "createComment", "slideIndex");
             initialize("createComment", "slideIndex", valueSlideIndex);
-            SlideComments response = api.createComment(valueName, valueSlideIndex, valueDto, valuePassword, valueFolder, valueStorage);
+            SlideComments response = api.createComment(valueName, valueSlideIndex, valueDto, valueShapeIndex, valuePassword, valueFolder, valueStorage);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "slideIndex", "createComment", valueSlideIndex);
@@ -4171,14 +4175,15 @@ public class SlidesApiTest extends ApiTest {
         Boolean needAssertResponse = false;
         String valueName = (String)getTestValue("String", "createComment", "name");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "createComment", "slideIndex");
-        SlideComment valueDto = (SlideComment)getTestValue("SlideComment", "createComment", "dto");
+        SlideCommentBase valueDto = (SlideCommentBase)getTestValue("SlideCommentBase", "createComment", "dto");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "createComment", "shapeIndex");
         String valuePassword = (String)getTestValue("String", "createComment", "password");
         String valueFolder = (String)getTestValue("String", "createComment", "folder");
         String valueStorage = (String)getTestValue("String", "createComment", "storage");
         try {
-            valueDto = (SlideComment)invalidizeTestValue("SlideComment", valueDto, "createComment", "dto");
+            valueDto = (SlideCommentBase)invalidizeTestValue("SlideCommentBase", valueDto, "createComment", "dto");
             initialize("createComment", "dto", valueDto);
-            SlideComments response = api.createComment(valueName, valueSlideIndex, valueDto, valuePassword, valueFolder, valueStorage);
+            SlideComments response = api.createComment(valueName, valueSlideIndex, valueDto, valueShapeIndex, valuePassword, valueFolder, valueStorage);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "dto", "createComment", valueDto);
@@ -4196,18 +4201,49 @@ public class SlidesApiTest extends ApiTest {
      *          if the Api call fails
      */
     @Test
+    public void createCommentInvalidShapeIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "createComment", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "createComment", "slideIndex");
+        SlideCommentBase valueDto = (SlideCommentBase)getTestValue("SlideCommentBase", "createComment", "dto");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "createComment", "shapeIndex");
+        String valuePassword = (String)getTestValue("String", "createComment", "password");
+        String valueFolder = (String)getTestValue("String", "createComment", "folder");
+        String valueStorage = (String)getTestValue("String", "createComment", "storage");
+        try {
+            valueShapeIndex = (Integer)invalidizeTestValue("Integer", valueShapeIndex, "createComment", "shapeIndex");
+            initialize("createComment", "shapeIndex", valueShapeIndex);
+            SlideComments response = api.createComment(valueName, valueSlideIndex, valueDto, valueShapeIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "shapeIndex", "createComment", valueShapeIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("shapeIndex", "createComment");
+        }
+    }
+    /**
+     * Adds the comment on the slide.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
     public void createCommentInvalidPasswordTest() throws ApiException {
         Boolean needAssertResponse = false;
         String valueName = (String)getTestValue("String", "createComment", "name");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "createComment", "slideIndex");
-        SlideComment valueDto = (SlideComment)getTestValue("SlideComment", "createComment", "dto");
+        SlideCommentBase valueDto = (SlideCommentBase)getTestValue("SlideCommentBase", "createComment", "dto");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "createComment", "shapeIndex");
         String valuePassword = (String)getTestValue("String", "createComment", "password");
         String valueFolder = (String)getTestValue("String", "createComment", "folder");
         String valueStorage = (String)getTestValue("String", "createComment", "storage");
         try {
             valuePassword = (String)invalidizeTestValue("String", valuePassword, "createComment", "password");
             initialize("createComment", "password", valuePassword);
-            SlideComments response = api.createComment(valueName, valueSlideIndex, valueDto, valuePassword, valueFolder, valueStorage);
+            SlideComments response = api.createComment(valueName, valueSlideIndex, valueDto, valueShapeIndex, valuePassword, valueFolder, valueStorage);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "password", "createComment", valuePassword);
@@ -4229,14 +4265,15 @@ public class SlidesApiTest extends ApiTest {
         Boolean needAssertResponse = false;
         String valueName = (String)getTestValue("String", "createComment", "name");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "createComment", "slideIndex");
-        SlideComment valueDto = (SlideComment)getTestValue("SlideComment", "createComment", "dto");
+        SlideCommentBase valueDto = (SlideCommentBase)getTestValue("SlideCommentBase", "createComment", "dto");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "createComment", "shapeIndex");
         String valuePassword = (String)getTestValue("String", "createComment", "password");
         String valueFolder = (String)getTestValue("String", "createComment", "folder");
         String valueStorage = (String)getTestValue("String", "createComment", "storage");
         try {
             valueFolder = (String)invalidizeTestValue("String", valueFolder, "createComment", "folder");
             initialize("createComment", "folder", valueFolder);
-            SlideComments response = api.createComment(valueName, valueSlideIndex, valueDto, valuePassword, valueFolder, valueStorage);
+            SlideComments response = api.createComment(valueName, valueSlideIndex, valueDto, valueShapeIndex, valuePassword, valueFolder, valueStorage);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "folder", "createComment", valueFolder);
@@ -4258,14 +4295,15 @@ public class SlidesApiTest extends ApiTest {
         Boolean needAssertResponse = false;
         String valueName = (String)getTestValue("String", "createComment", "name");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "createComment", "slideIndex");
-        SlideComment valueDto = (SlideComment)getTestValue("SlideComment", "createComment", "dto");
+        SlideCommentBase valueDto = (SlideCommentBase)getTestValue("SlideCommentBase", "createComment", "dto");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "createComment", "shapeIndex");
         String valuePassword = (String)getTestValue("String", "createComment", "password");
         String valueFolder = (String)getTestValue("String", "createComment", "folder");
         String valueStorage = (String)getTestValue("String", "createComment", "storage");
         try {
             valueStorage = (String)invalidizeTestValue("String", valueStorage, "createComment", "storage");
             initialize("createComment", "storage", valueStorage);
-            SlideComments response = api.createComment(valueName, valueSlideIndex, valueDto, valuePassword, valueFolder, valueStorage);
+            SlideComments response = api.createComment(valueName, valueSlideIndex, valueDto, valueShapeIndex, valuePassword, valueFolder, valueStorage);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "storage", "createComment", valueStorage);
@@ -4289,9 +4327,10 @@ public class SlidesApiTest extends ApiTest {
         File response = null;
         byte[] valueDocument = (byte[])getTestValue("byte[]", "createCommentOnline", "document");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "createCommentOnline", "slideIndex");
-        SlideComment valueDto = (SlideComment)getTestValue("SlideComment", "createCommentOnline", "dto");
+        SlideCommentBase valueDto = (SlideCommentBase)getTestValue("SlideCommentBase", "createCommentOnline", "dto");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "createCommentOnline", "shapeIndex");
         String valuePassword = (String)getTestValue("String", "createCommentOnline", "password");
-        response = api.createCommentOnline(valueDocument, valueSlideIndex, valueDto, valuePassword);
+        response = api.createCommentOnline(valueDocument, valueSlideIndex, valueDto, valueShapeIndex, valuePassword);
         assertTrue(response.isFile());
     }
 
@@ -4308,12 +4347,13 @@ public class SlidesApiTest extends ApiTest {
         Boolean needAssertResponse = false;
         byte[] valueDocument = (byte[])getTestValue("byte[]", "createCommentOnline", "document");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "createCommentOnline", "slideIndex");
-        SlideComment valueDto = (SlideComment)getTestValue("SlideComment", "createCommentOnline", "dto");
+        SlideCommentBase valueDto = (SlideCommentBase)getTestValue("SlideCommentBase", "createCommentOnline", "dto");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "createCommentOnline", "shapeIndex");
         String valuePassword = (String)getTestValue("String", "createCommentOnline", "password");
         try {
             valueDocument = (byte[])invalidizeTestValue("byte[]", valueDocument, "createCommentOnline", "document");
             initialize("createCommentOnline", "document", valueDocument);
-            File response = api.createCommentOnline(valueDocument, valueSlideIndex, valueDto, valuePassword);
+            File response = api.createCommentOnline(valueDocument, valueSlideIndex, valueDto, valueShapeIndex, valuePassword);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "document", "createCommentOnline", valueDocument);
@@ -4335,12 +4375,13 @@ public class SlidesApiTest extends ApiTest {
         Boolean needAssertResponse = false;
         byte[] valueDocument = (byte[])getTestValue("byte[]", "createCommentOnline", "document");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "createCommentOnline", "slideIndex");
-        SlideComment valueDto = (SlideComment)getTestValue("SlideComment", "createCommentOnline", "dto");
+        SlideCommentBase valueDto = (SlideCommentBase)getTestValue("SlideCommentBase", "createCommentOnline", "dto");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "createCommentOnline", "shapeIndex");
         String valuePassword = (String)getTestValue("String", "createCommentOnline", "password");
         try {
             valueSlideIndex = (Integer)invalidizeTestValue("Integer", valueSlideIndex, "createCommentOnline", "slideIndex");
             initialize("createCommentOnline", "slideIndex", valueSlideIndex);
-            File response = api.createCommentOnline(valueDocument, valueSlideIndex, valueDto, valuePassword);
+            File response = api.createCommentOnline(valueDocument, valueSlideIndex, valueDto, valueShapeIndex, valuePassword);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "slideIndex", "createCommentOnline", valueSlideIndex);
@@ -4362,12 +4403,13 @@ public class SlidesApiTest extends ApiTest {
         Boolean needAssertResponse = false;
         byte[] valueDocument = (byte[])getTestValue("byte[]", "createCommentOnline", "document");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "createCommentOnline", "slideIndex");
-        SlideComment valueDto = (SlideComment)getTestValue("SlideComment", "createCommentOnline", "dto");
+        SlideCommentBase valueDto = (SlideCommentBase)getTestValue("SlideCommentBase", "createCommentOnline", "dto");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "createCommentOnline", "shapeIndex");
         String valuePassword = (String)getTestValue("String", "createCommentOnline", "password");
         try {
-            valueDto = (SlideComment)invalidizeTestValue("SlideComment", valueDto, "createCommentOnline", "dto");
+            valueDto = (SlideCommentBase)invalidizeTestValue("SlideCommentBase", valueDto, "createCommentOnline", "dto");
             initialize("createCommentOnline", "dto", valueDto);
-            File response = api.createCommentOnline(valueDocument, valueSlideIndex, valueDto, valuePassword);
+            File response = api.createCommentOnline(valueDocument, valueSlideIndex, valueDto, valueShapeIndex, valuePassword);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "dto", "createCommentOnline", valueDto);
@@ -4385,16 +4427,45 @@ public class SlidesApiTest extends ApiTest {
      *          if the Api call fails
      */
     @Test
+    public void createCommentOnlineInvalidShapeIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        byte[] valueDocument = (byte[])getTestValue("byte[]", "createCommentOnline", "document");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "createCommentOnline", "slideIndex");
+        SlideCommentBase valueDto = (SlideCommentBase)getTestValue("SlideCommentBase", "createCommentOnline", "dto");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "createCommentOnline", "shapeIndex");
+        String valuePassword = (String)getTestValue("String", "createCommentOnline", "password");
+        try {
+            valueShapeIndex = (Integer)invalidizeTestValue("Integer", valueShapeIndex, "createCommentOnline", "shapeIndex");
+            initialize("createCommentOnline", "shapeIndex", valueShapeIndex);
+            File response = api.createCommentOnline(valueDocument, valueSlideIndex, valueDto, valueShapeIndex, valuePassword);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "shapeIndex", "createCommentOnline", valueShapeIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("shapeIndex", "createCommentOnline");
+        }
+    }
+    /**
+     * Adds the comment on the slide.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
     public void createCommentOnlineInvalidPasswordTest() throws ApiException {
         Boolean needAssertResponse = false;
         byte[] valueDocument = (byte[])getTestValue("byte[]", "createCommentOnline", "document");
         Integer valueSlideIndex = (Integer)getTestValue("Integer", "createCommentOnline", "slideIndex");
-        SlideComment valueDto = (SlideComment)getTestValue("SlideComment", "createCommentOnline", "dto");
+        SlideCommentBase valueDto = (SlideCommentBase)getTestValue("SlideCommentBase", "createCommentOnline", "dto");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "createCommentOnline", "shapeIndex");
         String valuePassword = (String)getTestValue("String", "createCommentOnline", "password");
         try {
             valuePassword = (String)invalidizeTestValue("String", valuePassword, "createCommentOnline", "password");
             initialize("createCommentOnline", "password", valuePassword);
-            File response = api.createCommentOnline(valueDocument, valueSlideIndex, valueDto, valuePassword);
+            File response = api.createCommentOnline(valueDocument, valueSlideIndex, valueDto, valueShapeIndex, valuePassword);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "password", "createCommentOnline", valuePassword);
@@ -31813,6 +31884,240 @@ public class SlidesApiTest extends ApiTest {
     }
     
     /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getParagraphRectangleTest() throws ApiException, Exception {
+        initialize("getParagraphRectangle", null, null);
+        TextBounds response = null;
+        String valueName = (String)getTestValue("String", "getParagraphRectangle", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "paragraphIndex");
+        String valuePassword = (String)getTestValue("String", "getParagraphRectangle", "password");
+        String valueFolder = (String)getTestValue("String", "getParagraphRectangle", "folder");
+        String valueStorage = (String)getTestValue("String", "getParagraphRectangle", "storage");
+        response = api.getParagraphRectangle(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
+        assertNotNull(response);
+    }
+
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getParagraphRectangleInvalidNameTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getParagraphRectangle", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "paragraphIndex");
+        String valuePassword = (String)getTestValue("String", "getParagraphRectangle", "password");
+        String valueFolder = (String)getTestValue("String", "getParagraphRectangle", "folder");
+        String valueStorage = (String)getTestValue("String", "getParagraphRectangle", "storage");
+        try {
+            valueName = (String)invalidizeTestValue("String", valueName, "getParagraphRectangle", "name");
+            initialize("getParagraphRectangle", "name", valueName);
+            TextBounds response = api.getParagraphRectangle(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "name", "getParagraphRectangle", valueName);
+        }
+        if (needAssertResponse) {
+            assertResponse("name", "getParagraphRectangle");
+        }
+    }
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getParagraphRectangleInvalidSlideIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getParagraphRectangle", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "paragraphIndex");
+        String valuePassword = (String)getTestValue("String", "getParagraphRectangle", "password");
+        String valueFolder = (String)getTestValue("String", "getParagraphRectangle", "folder");
+        String valueStorage = (String)getTestValue("String", "getParagraphRectangle", "storage");
+        try {
+            valueSlideIndex = (Integer)invalidizeTestValue("Integer", valueSlideIndex, "getParagraphRectangle", "slideIndex");
+            initialize("getParagraphRectangle", "slideIndex", valueSlideIndex);
+            TextBounds response = api.getParagraphRectangle(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "slideIndex", "getParagraphRectangle", valueSlideIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("slideIndex", "getParagraphRectangle");
+        }
+    }
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getParagraphRectangleInvalidShapeIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getParagraphRectangle", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "paragraphIndex");
+        String valuePassword = (String)getTestValue("String", "getParagraphRectangle", "password");
+        String valueFolder = (String)getTestValue("String", "getParagraphRectangle", "folder");
+        String valueStorage = (String)getTestValue("String", "getParagraphRectangle", "storage");
+        try {
+            valueShapeIndex = (Integer)invalidizeTestValue("Integer", valueShapeIndex, "getParagraphRectangle", "shapeIndex");
+            initialize("getParagraphRectangle", "shapeIndex", valueShapeIndex);
+            TextBounds response = api.getParagraphRectangle(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "shapeIndex", "getParagraphRectangle", valueShapeIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("shapeIndex", "getParagraphRectangle");
+        }
+    }
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getParagraphRectangleInvalidParagraphIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getParagraphRectangle", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "paragraphIndex");
+        String valuePassword = (String)getTestValue("String", "getParagraphRectangle", "password");
+        String valueFolder = (String)getTestValue("String", "getParagraphRectangle", "folder");
+        String valueStorage = (String)getTestValue("String", "getParagraphRectangle", "storage");
+        try {
+            valueParagraphIndex = (Integer)invalidizeTestValue("Integer", valueParagraphIndex, "getParagraphRectangle", "paragraphIndex");
+            initialize("getParagraphRectangle", "paragraphIndex", valueParagraphIndex);
+            TextBounds response = api.getParagraphRectangle(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "paragraphIndex", "getParagraphRectangle", valueParagraphIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("paragraphIndex", "getParagraphRectangle");
+        }
+    }
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getParagraphRectangleInvalidPasswordTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getParagraphRectangle", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "paragraphIndex");
+        String valuePassword = (String)getTestValue("String", "getParagraphRectangle", "password");
+        String valueFolder = (String)getTestValue("String", "getParagraphRectangle", "folder");
+        String valueStorage = (String)getTestValue("String", "getParagraphRectangle", "storage");
+        try {
+            valuePassword = (String)invalidizeTestValue("String", valuePassword, "getParagraphRectangle", "password");
+            initialize("getParagraphRectangle", "password", valuePassword);
+            TextBounds response = api.getParagraphRectangle(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "password", "getParagraphRectangle", valuePassword);
+        }
+        if (needAssertResponse) {
+            assertResponse("password", "getParagraphRectangle");
+        }
+    }
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getParagraphRectangleInvalidFolderTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getParagraphRectangle", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "paragraphIndex");
+        String valuePassword = (String)getTestValue("String", "getParagraphRectangle", "password");
+        String valueFolder = (String)getTestValue("String", "getParagraphRectangle", "folder");
+        String valueStorage = (String)getTestValue("String", "getParagraphRectangle", "storage");
+        try {
+            valueFolder = (String)invalidizeTestValue("String", valueFolder, "getParagraphRectangle", "folder");
+            initialize("getParagraphRectangle", "folder", valueFolder);
+            TextBounds response = api.getParagraphRectangle(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "folder", "getParagraphRectangle", valueFolder);
+        }
+        if (needAssertResponse) {
+            assertResponse("folder", "getParagraphRectangle");
+        }
+    }
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getParagraphRectangleInvalidStorageTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getParagraphRectangle", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getParagraphRectangle", "paragraphIndex");
+        String valuePassword = (String)getTestValue("String", "getParagraphRectangle", "password");
+        String valueFolder = (String)getTestValue("String", "getParagraphRectangle", "folder");
+        String valueStorage = (String)getTestValue("String", "getParagraphRectangle", "storage");
+        try {
+            valueStorage = (String)invalidizeTestValue("String", valueStorage, "getParagraphRectangle", "storage");
+            initialize("getParagraphRectangle", "storage", valueStorage);
+            TextBounds response = api.getParagraphRectangle(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "storage", "getParagraphRectangle", valueStorage);
+        }
+        if (needAssertResponse) {
+            assertResponse("storage", "getParagraphRectangle");
+        }
+    }
+    
+    /**
      * Read shape paragraphs info.
      *
      * 
@@ -32638,6 +32943,279 @@ public class SlidesApiTest extends ApiTest {
         }
         if (needAssertResponse) {
             assertResponse("storage", "getPortion");
+        }
+    }
+    
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPortionRectangleTest() throws ApiException, Exception {
+        initialize("getPortionRectangle", null, null);
+        TextBounds response = null;
+        String valueName = (String)getTestValue("String", "getPortionRectangle", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "portionIndex");
+        String valuePassword = (String)getTestValue("String", "getPortionRectangle", "password");
+        String valueFolder = (String)getTestValue("String", "getPortionRectangle", "folder");
+        String valueStorage = (String)getTestValue("String", "getPortionRectangle", "storage");
+        response = api.getPortionRectangle(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valuePassword, valueFolder, valueStorage);
+        assertNotNull(response);
+    }
+
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPortionRectangleInvalidNameTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getPortionRectangle", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "portionIndex");
+        String valuePassword = (String)getTestValue("String", "getPortionRectangle", "password");
+        String valueFolder = (String)getTestValue("String", "getPortionRectangle", "folder");
+        String valueStorage = (String)getTestValue("String", "getPortionRectangle", "storage");
+        try {
+            valueName = (String)invalidizeTestValue("String", valueName, "getPortionRectangle", "name");
+            initialize("getPortionRectangle", "name", valueName);
+            TextBounds response = api.getPortionRectangle(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "name", "getPortionRectangle", valueName);
+        }
+        if (needAssertResponse) {
+            assertResponse("name", "getPortionRectangle");
+        }
+    }
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPortionRectangleInvalidSlideIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getPortionRectangle", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "portionIndex");
+        String valuePassword = (String)getTestValue("String", "getPortionRectangle", "password");
+        String valueFolder = (String)getTestValue("String", "getPortionRectangle", "folder");
+        String valueStorage = (String)getTestValue("String", "getPortionRectangle", "storage");
+        try {
+            valueSlideIndex = (Integer)invalidizeTestValue("Integer", valueSlideIndex, "getPortionRectangle", "slideIndex");
+            initialize("getPortionRectangle", "slideIndex", valueSlideIndex);
+            TextBounds response = api.getPortionRectangle(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "slideIndex", "getPortionRectangle", valueSlideIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("slideIndex", "getPortionRectangle");
+        }
+    }
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPortionRectangleInvalidShapeIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getPortionRectangle", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "portionIndex");
+        String valuePassword = (String)getTestValue("String", "getPortionRectangle", "password");
+        String valueFolder = (String)getTestValue("String", "getPortionRectangle", "folder");
+        String valueStorage = (String)getTestValue("String", "getPortionRectangle", "storage");
+        try {
+            valueShapeIndex = (Integer)invalidizeTestValue("Integer", valueShapeIndex, "getPortionRectangle", "shapeIndex");
+            initialize("getPortionRectangle", "shapeIndex", valueShapeIndex);
+            TextBounds response = api.getPortionRectangle(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "shapeIndex", "getPortionRectangle", valueShapeIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("shapeIndex", "getPortionRectangle");
+        }
+    }
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPortionRectangleInvalidParagraphIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getPortionRectangle", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "portionIndex");
+        String valuePassword = (String)getTestValue("String", "getPortionRectangle", "password");
+        String valueFolder = (String)getTestValue("String", "getPortionRectangle", "folder");
+        String valueStorage = (String)getTestValue("String", "getPortionRectangle", "storage");
+        try {
+            valueParagraphIndex = (Integer)invalidizeTestValue("Integer", valueParagraphIndex, "getPortionRectangle", "paragraphIndex");
+            initialize("getPortionRectangle", "paragraphIndex", valueParagraphIndex);
+            TextBounds response = api.getPortionRectangle(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "paragraphIndex", "getPortionRectangle", valueParagraphIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("paragraphIndex", "getPortionRectangle");
+        }
+    }
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPortionRectangleInvalidPortionIndexTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getPortionRectangle", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "portionIndex");
+        String valuePassword = (String)getTestValue("String", "getPortionRectangle", "password");
+        String valueFolder = (String)getTestValue("String", "getPortionRectangle", "folder");
+        String valueStorage = (String)getTestValue("String", "getPortionRectangle", "storage");
+        try {
+            valuePortionIndex = (Integer)invalidizeTestValue("Integer", valuePortionIndex, "getPortionRectangle", "portionIndex");
+            initialize("getPortionRectangle", "portionIndex", valuePortionIndex);
+            TextBounds response = api.getPortionRectangle(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "portionIndex", "getPortionRectangle", valuePortionIndex);
+        }
+        if (needAssertResponse) {
+            assertResponse("portionIndex", "getPortionRectangle");
+        }
+    }
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPortionRectangleInvalidPasswordTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getPortionRectangle", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "portionIndex");
+        String valuePassword = (String)getTestValue("String", "getPortionRectangle", "password");
+        String valueFolder = (String)getTestValue("String", "getPortionRectangle", "folder");
+        String valueStorage = (String)getTestValue("String", "getPortionRectangle", "storage");
+        try {
+            valuePassword = (String)invalidizeTestValue("String", valuePassword, "getPortionRectangle", "password");
+            initialize("getPortionRectangle", "password", valuePassword);
+            TextBounds response = api.getPortionRectangle(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "password", "getPortionRectangle", valuePassword);
+        }
+        if (needAssertResponse) {
+            assertResponse("password", "getPortionRectangle");
+        }
+    }
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPortionRectangleInvalidFolderTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getPortionRectangle", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "portionIndex");
+        String valuePassword = (String)getTestValue("String", "getPortionRectangle", "password");
+        String valueFolder = (String)getTestValue("String", "getPortionRectangle", "folder");
+        String valueStorage = (String)getTestValue("String", "getPortionRectangle", "storage");
+        try {
+            valueFolder = (String)invalidizeTestValue("String", valueFolder, "getPortionRectangle", "folder");
+            initialize("getPortionRectangle", "folder", valueFolder);
+            TextBounds response = api.getPortionRectangle(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "folder", "getPortionRectangle", valueFolder);
+        }
+        if (needAssertResponse) {
+            assertResponse("folder", "getPortionRectangle");
+        }
+    }
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPortionRectangleInvalidStorageTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getPortionRectangle", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "slideIndex");
+        Integer valueShapeIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "shapeIndex");
+        Integer valueParagraphIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "paragraphIndex");
+        Integer valuePortionIndex = (Integer)getTestValue("Integer", "getPortionRectangle", "portionIndex");
+        String valuePassword = (String)getTestValue("String", "getPortionRectangle", "password");
+        String valueFolder = (String)getTestValue("String", "getPortionRectangle", "folder");
+        String valueStorage = (String)getTestValue("String", "getPortionRectangle", "storage");
+        try {
+            valueStorage = (String)invalidizeTestValue("String", valueStorage, "getPortionRectangle", "storage");
+            initialize("getPortionRectangle", "storage", valueStorage);
+            TextBounds response = api.getPortionRectangle(valueName, valueSlideIndex, valueShapeIndex, valueParagraphIndex, valuePortionIndex, valuePassword, valueFolder, valueStorage);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "storage", "getPortionRectangle", valueStorage);
+        }
+        if (needAssertResponse) {
+            assertResponse("storage", "getPortionRectangle");
         }
     }
     
@@ -33964,7 +34542,8 @@ public class SlidesApiTest extends ApiTest {
         String valuePassword = (String)getTestValue("String", "getShapes", "password");
         String valueFolder = (String)getTestValue("String", "getShapes", "folder");
         String valueStorage = (String)getTestValue("String", "getShapes", "storage");
-        response = api.getShapes(valueName, valueSlideIndex, valuePassword, valueFolder, valueStorage);
+        ShapeType valueShapeType = (ShapeType)getTestValue("ShapeType", "getShapes", "shapeType");
+        response = api.getShapes(valueName, valueSlideIndex, valuePassword, valueFolder, valueStorage, valueShapeType);
         assertNotNull(response);
     }
 
@@ -33984,10 +34563,11 @@ public class SlidesApiTest extends ApiTest {
         String valuePassword = (String)getTestValue("String", "getShapes", "password");
         String valueFolder = (String)getTestValue("String", "getShapes", "folder");
         String valueStorage = (String)getTestValue("String", "getShapes", "storage");
+        ShapeType valueShapeType = (ShapeType)getTestValue("ShapeType", "getShapes", "shapeType");
         try {
             valueName = (String)invalidizeTestValue("String", valueName, "getShapes", "name");
             initialize("getShapes", "name", valueName);
-            Shapes response = api.getShapes(valueName, valueSlideIndex, valuePassword, valueFolder, valueStorage);
+            Shapes response = api.getShapes(valueName, valueSlideIndex, valuePassword, valueFolder, valueStorage, valueShapeType);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "name", "getShapes", valueName);
@@ -34012,10 +34592,11 @@ public class SlidesApiTest extends ApiTest {
         String valuePassword = (String)getTestValue("String", "getShapes", "password");
         String valueFolder = (String)getTestValue("String", "getShapes", "folder");
         String valueStorage = (String)getTestValue("String", "getShapes", "storage");
+        ShapeType valueShapeType = (ShapeType)getTestValue("ShapeType", "getShapes", "shapeType");
         try {
             valueSlideIndex = (Integer)invalidizeTestValue("Integer", valueSlideIndex, "getShapes", "slideIndex");
             initialize("getShapes", "slideIndex", valueSlideIndex);
-            Shapes response = api.getShapes(valueName, valueSlideIndex, valuePassword, valueFolder, valueStorage);
+            Shapes response = api.getShapes(valueName, valueSlideIndex, valuePassword, valueFolder, valueStorage, valueShapeType);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "slideIndex", "getShapes", valueSlideIndex);
@@ -34040,10 +34621,11 @@ public class SlidesApiTest extends ApiTest {
         String valuePassword = (String)getTestValue("String", "getShapes", "password");
         String valueFolder = (String)getTestValue("String", "getShapes", "folder");
         String valueStorage = (String)getTestValue("String", "getShapes", "storage");
+        ShapeType valueShapeType = (ShapeType)getTestValue("ShapeType", "getShapes", "shapeType");
         try {
             valuePassword = (String)invalidizeTestValue("String", valuePassword, "getShapes", "password");
             initialize("getShapes", "password", valuePassword);
-            Shapes response = api.getShapes(valueName, valueSlideIndex, valuePassword, valueFolder, valueStorage);
+            Shapes response = api.getShapes(valueName, valueSlideIndex, valuePassword, valueFolder, valueStorage, valueShapeType);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "password", "getShapes", valuePassword);
@@ -34068,10 +34650,11 @@ public class SlidesApiTest extends ApiTest {
         String valuePassword = (String)getTestValue("String", "getShapes", "password");
         String valueFolder = (String)getTestValue("String", "getShapes", "folder");
         String valueStorage = (String)getTestValue("String", "getShapes", "storage");
+        ShapeType valueShapeType = (ShapeType)getTestValue("ShapeType", "getShapes", "shapeType");
         try {
             valueFolder = (String)invalidizeTestValue("String", valueFolder, "getShapes", "folder");
             initialize("getShapes", "folder", valueFolder);
-            Shapes response = api.getShapes(valueName, valueSlideIndex, valuePassword, valueFolder, valueStorage);
+            Shapes response = api.getShapes(valueName, valueSlideIndex, valuePassword, valueFolder, valueStorage, valueShapeType);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "folder", "getShapes", valueFolder);
@@ -34096,16 +34679,46 @@ public class SlidesApiTest extends ApiTest {
         String valuePassword = (String)getTestValue("String", "getShapes", "password");
         String valueFolder = (String)getTestValue("String", "getShapes", "folder");
         String valueStorage = (String)getTestValue("String", "getShapes", "storage");
+        ShapeType valueShapeType = (ShapeType)getTestValue("ShapeType", "getShapes", "shapeType");
         try {
             valueStorage = (String)invalidizeTestValue("String", valueStorage, "getShapes", "storage");
             initialize("getShapes", "storage", valueStorage);
-            Shapes response = api.getShapes(valueName, valueSlideIndex, valuePassword, valueFolder, valueStorage);
+            Shapes response = api.getShapes(valueName, valueSlideIndex, valuePassword, valueFolder, valueStorage, valueShapeType);
             needAssertResponse = true;
         } catch (ApiException ex) {
             assertException(ex, "storage", "getShapes", valueStorage);
         }
         if (needAssertResponse) {
             assertResponse("storage", "getShapes");
+        }
+    }
+    /**
+     * Read slide shapes info.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getShapesInvalidShapeTypeTest() throws ApiException {
+        Boolean needAssertResponse = false;
+        String valueName = (String)getTestValue("String", "getShapes", "name");
+        Integer valueSlideIndex = (Integer)getTestValue("Integer", "getShapes", "slideIndex");
+        String valuePassword = (String)getTestValue("String", "getShapes", "password");
+        String valueFolder = (String)getTestValue("String", "getShapes", "folder");
+        String valueStorage = (String)getTestValue("String", "getShapes", "storage");
+        ShapeType valueShapeType = (ShapeType)getTestValue("ShapeType", "getShapes", "shapeType");
+        try {
+            valueShapeType = (ShapeType)invalidizeTestValue("ShapeType", valueShapeType, "getShapes", "shapeType");
+            initialize("getShapes", "shapeType", valueShapeType);
+            Shapes response = api.getShapes(valueName, valueSlideIndex, valuePassword, valueFolder, valueStorage, valueShapeType);
+            needAssertResponse = true;
+        } catch (ApiException ex) {
+            assertException(ex, "shapeType", "getShapes", valueShapeType);
+        }
+        if (needAssertResponse) {
+            assertResponse("shapeType", "getShapes");
         }
     }
     

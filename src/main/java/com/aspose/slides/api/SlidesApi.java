@@ -93,13 +93,14 @@ import com.aspose.slides.model.Shapes;
 import com.aspose.slides.model.Slide;
 import com.aspose.slides.model.SlideAnimation;
 import com.aspose.slides.model.SlideBackground;
-import com.aspose.slides.model.SlideComment;
+import com.aspose.slides.model.SlideCommentBase;
 import com.aspose.slides.model.SlideComments;
 import com.aspose.slides.model.SlideProperties;
 import com.aspose.slides.model.SlideReplaceResult;
 import com.aspose.slides.model.Slides;
 import com.aspose.slides.model.SplitDocumentResult;
 import com.aspose.slides.model.StorageExist;
+import com.aspose.slides.model.TextBounds;
 import com.aspose.slides.model.TextItems;
 import com.aspose.slides.model.Theme;
 import com.aspose.slides.model.ViewProperties;
@@ -2587,6 +2588,7 @@ public class SlidesApi {
      * @param name Document name. (required)
      * @param slideIndex Slide index. (required)
      * @param dto Comment DTO. (required)
+     * @param shapeIndex Shape index. 
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
@@ -2595,7 +2597,7 @@ public class SlidesApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call createCommentCall(String name, Integer slideIndex, SlideComment dto, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call createCommentCall(String name, Integer slideIndex, SlideCommentBase dto, Integer shapeIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling createComment(Async)");
@@ -2615,6 +2617,7 @@ public class SlidesApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex));
 
         List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "shapeIndex", shapeIndex);
         apiClient.addQueryParameter(queryParams, "folder", folder);
         apiClient.addQueryParameter(queryParams, "storage", storage);
 
@@ -2656,18 +2659,19 @@ public class SlidesApi {
      * @param name Document name. (required)
      * @param slideIndex Slide index. (required)
      * @param dto Comment DTO. (required)
+     * @param shapeIndex Shape index. 
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
      * @return SlideComments
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public SlideComments createComment(String name, Integer slideIndex, SlideComment dto, String password, String folder, String storage) throws ApiException {
+    public SlideComments createComment(String name, Integer slideIndex, SlideCommentBase dto, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
         try {
-            ApiResponse<SlideComments> resp = createCommentWithHttpInfo(name, slideIndex, dto, password, folder, storage);
+            ApiResponse<SlideComments> resp = createCommentWithHttpInfo(name, slideIndex, dto, shapeIndex, password, folder, storage);
             return resp.getData();
         } catch (NeedRepeatRequestException e) {
-            ApiResponse<SlideComments> resp = createCommentWithHttpInfo(name, slideIndex, dto, password, folder, storage);
+            ApiResponse<SlideComments> resp = createCommentWithHttpInfo(name, slideIndex, dto, shapeIndex, password, folder, storage);
             return resp.getData();
         }
     }
@@ -2678,14 +2682,15 @@ public class SlidesApi {
      * @param name Document name. (required)
      * @param slideIndex Slide index. (required)
      * @param dto Comment DTO. (required)
+     * @param shapeIndex Shape index. 
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
      * @return ApiResponse&lt;SlideComments&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SlideComments> createCommentWithHttpInfo(String name, Integer slideIndex, SlideComment dto, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = createCommentCall(name, slideIndex, dto, password, folder, storage, null, null);
+    public ApiResponse<SlideComments> createCommentWithHttpInfo(String name, Integer slideIndex, SlideCommentBase dto, Integer shapeIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = createCommentCall(name, slideIndex, dto, shapeIndex, password, folder, storage, null, null);
         Type returnType = new TypeToken<SlideComments>(){}.getType();
         return apiClient.execute(call, returnType);
     }
@@ -2696,6 +2701,7 @@ public class SlidesApi {
      * @param name Document name. (required)
      * @param slideIndex Slide index. (required)
      * @param dto Comment DTO. (required)
+     * @param shapeIndex Shape index. 
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
@@ -2703,7 +2709,7 @@ public class SlidesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call createCommentAsync(String name, Integer slideIndex, SlideComment dto, String password, String folder, String storage, final ApiCallback<SlideComments> callback) throws ApiException {
+    public com.squareup.okhttp.Call createCommentAsync(String name, Integer slideIndex, SlideCommentBase dto, Integer shapeIndex, String password, String folder, String storage, final ApiCallback<SlideComments> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2724,7 +2730,7 @@ public class SlidesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = createCommentCall(name, slideIndex, dto, password, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = createCommentCall(name, slideIndex, dto, shapeIndex, password, folder, storage, progressListener, progressRequestListener);
         Type returnType = new TypeToken<SlideComments>(){}.getType();
         apiClient.executeAsync(call, returnType, callback);
         return call;
@@ -2734,13 +2740,14 @@ public class SlidesApi {
      * @param document Document data. (required)
      * @param slideIndex Slide index. (required)
      * @param dto Comment DTO. (required)
+     * @param shapeIndex Shape index. 
      * @param password Document password. 
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call createCommentOnlineCall(byte[] document, Integer slideIndex, SlideComment dto, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call createCommentOnlineCall(byte[] document, Integer slideIndex, SlideCommentBase dto, Integer shapeIndex, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'document' is set
         if (document == null) {
             throw new ApiException("Missing the required parameter 'document' when calling createCommentOnline(Async)");
@@ -2760,6 +2767,7 @@ public class SlidesApi {
             .replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex));
 
         List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "shapeIndex", shapeIndex);
 
         Map<String, String> headerParams = new HashMap<String, String>();
         if (password != null)
@@ -2801,16 +2809,17 @@ public class SlidesApi {
      * @param document Document data. (required)
      * @param slideIndex Slide index. (required)
      * @param dto Comment DTO. (required)
+     * @param shapeIndex Shape index. 
      * @param password Document password. 
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File createCommentOnline(byte[] document, Integer slideIndex, SlideComment dto, String password) throws ApiException {
+    public File createCommentOnline(byte[] document, Integer slideIndex, SlideCommentBase dto, Integer shapeIndex, String password) throws ApiException {
         try {
-            ApiResponse<File> resp = createCommentOnlineWithHttpInfo(document, slideIndex, dto, password);
+            ApiResponse<File> resp = createCommentOnlineWithHttpInfo(document, slideIndex, dto, shapeIndex, password);
             return resp.getData();
         } catch (NeedRepeatRequestException e) {
-            ApiResponse<File> resp = createCommentOnlineWithHttpInfo(document, slideIndex, dto, password);
+            ApiResponse<File> resp = createCommentOnlineWithHttpInfo(document, slideIndex, dto, shapeIndex, password);
             return resp.getData();
         }
     }
@@ -2821,12 +2830,13 @@ public class SlidesApi {
      * @param document Document data. (required)
      * @param slideIndex Slide index. (required)
      * @param dto Comment DTO. (required)
+     * @param shapeIndex Shape index. 
      * @param password Document password. 
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> createCommentOnlineWithHttpInfo(byte[] document, Integer slideIndex, SlideComment dto, String password) throws ApiException {
-        com.squareup.okhttp.Call call = createCommentOnlineCall(document, slideIndex, dto, password, null, null);
+    public ApiResponse<File> createCommentOnlineWithHttpInfo(byte[] document, Integer slideIndex, SlideCommentBase dto, Integer shapeIndex, String password) throws ApiException {
+        com.squareup.okhttp.Call call = createCommentOnlineCall(document, slideIndex, dto, shapeIndex, password, null, null);
         Type returnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, returnType);
     }
@@ -2837,12 +2847,13 @@ public class SlidesApi {
      * @param document Document data. (required)
      * @param slideIndex Slide index. (required)
      * @param dto Comment DTO. (required)
+     * @param shapeIndex Shape index. 
      * @param password Document password. 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call createCommentOnlineAsync(byte[] document, Integer slideIndex, SlideComment dto, String password, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call createCommentOnlineAsync(byte[] document, Integer slideIndex, SlideCommentBase dto, Integer shapeIndex, String password, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2863,7 +2874,7 @@ public class SlidesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = createCommentOnlineCall(document, slideIndex, dto, password, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = createCommentOnlineCall(document, slideIndex, dto, shapeIndex, password, progressListener, progressRequestListener);
         Type returnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, returnType, callback);
         return call;
@@ -21248,6 +21259,161 @@ public class SlidesApi {
         return call;
     }
     /**
+     * Build call for getParagraphRectangle
+     * @param name Document name. (required)
+     * @param slideIndex Slide index. (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getParagraphRectangleCall(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getParagraphRectangle(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling getParagraphRectangle(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling getParagraphRectangle(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getParagraphRectangle(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/bounds"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Slide index. (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return TextBounds
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public TextBounds getParagraphRectangle(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<TextBounds> resp = getParagraphRectangleWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<TextBounds> resp = getParagraphRectangleWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Slide index. (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;TextBounds&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<TextBounds> getParagraphRectangleWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getParagraphRectangleCall(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<TextBounds>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Slide index. (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getParagraphRectangleAsync(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, String password, String folder, String storage, final ApiCallback<TextBounds> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getParagraphRectangleCall(name, slideIndex, shapeIndex, paragraphIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<TextBounds>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
      * Build call for getParagraphs
      * @param name Document name. (required)
      * @param slideIndex Slide index. (required)
@@ -21840,6 +22006,169 @@ public class SlidesApi {
 
         com.squareup.okhttp.Call call = getPortionCall(name, slideIndex, shapeIndex, paragraphIndex, portionIndex, password, folder, storage, progressListener, progressRequestListener);
         Type returnType = new TypeToken<Portion>(){}.getType();
+        apiClient.executeAsync(call, returnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getPortionRectangle
+     * @param name Document name. (required)
+     * @param slideIndex Slide index. (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getPortionRectangleCall(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getPortionRectangle(Async)");
+        }
+        // verify the required parameter 'slideIndex' is set
+        if (slideIndex == null) {
+            throw new ApiException("Missing the required parameter 'slideIndex' when calling getPortionRectangle(Async)");
+        }
+        // verify the required parameter 'shapeIndex' is set
+        if (shapeIndex == null) {
+            throw new ApiException("Missing the required parameter 'shapeIndex' when calling getPortionRectangle(Async)");
+        }
+        // verify the required parameter 'paragraphIndex' is set
+        if (paragraphIndex == null) {
+            throw new ApiException("Missing the required parameter 'paragraphIndex' when calling getPortionRectangle(Async)");
+        }
+        // verify the required parameter 'portionIndex' is set
+        if (portionIndex == null) {
+            throw new ApiException("Missing the required parameter 'portionIndex' when calling getPortionRectangle(Async)");
+        }
+        Object postBody = null;
+
+        // create path and map variables
+        String methodPath = "/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}/bounds"
+            .replaceAll("\\{" + "name" + "\\}", apiClient.objectToString(name)).replaceAll("\\{" + "slideIndex" + "\\}", apiClient.objectToString(slideIndex)).replaceAll("\\{" + "shapeIndex" + "\\}", apiClient.objectToString(shapeIndex)).replaceAll("\\{" + "paragraphIndex" + "\\}", apiClient.objectToString(paragraphIndex)).replaceAll("\\{" + "portionIndex" + "\\}", apiClient.objectToString(portionIndex));
+
+        List<Pair> queryParams = new ArrayList<Pair>();
+        apiClient.addQueryParameter(queryParams, "folder", folder);
+        apiClient.addQueryParameter(queryParams, "storage", storage);
+
+        Map<String, String> headerParams = new HashMap<String, String>();
+        if (password != null)
+        headerParams.put("password", apiClient.parameterToString(password));
+
+        Map<String, Object> formParams = new LinkedHashMap<String, Object>();
+
+        final String[] accepts = {
+            "application/json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+        if (accept != null) headerParams.put("Accept", accept);
+
+        final String[] contentTypes = {
+            "application/json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+        headerParams.put("Content-Type", contentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+        return apiClient.buildCall(methodPath, "GET", queryParams, postBody, headerParams, formParams, progressRequestListener);
+    }
+
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Slide index. (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return TextBounds
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public TextBounds getPortionRectangle(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage) throws ApiException {
+        try {
+            ApiResponse<TextBounds> resp = getPortionRectangleWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, portionIndex, password, folder, storage);
+            return resp.getData();
+        } catch (NeedRepeatRequestException e) {
+            ApiResponse<TextBounds> resp = getPortionRectangleWithHttpInfo(name, slideIndex, shapeIndex, paragraphIndex, portionIndex, password, folder, storage);
+            return resp.getData();
+        }
+    }
+
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Slide index. (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @return ApiResponse&lt;TextBounds&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<TextBounds> getPortionRectangleWithHttpInfo(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = getPortionRectangleCall(name, slideIndex, shapeIndex, paragraphIndex, portionIndex, password, folder, storage, null, null);
+        Type returnType = new TypeToken<TextBounds>(){}.getType();
+        return apiClient.execute(call, returnType);
+    }
+
+    /**
+     * Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param slideIndex Slide index. (required)
+     * @param shapeIndex Shape index. (required)
+     * @param paragraphIndex Paragraph index. (required)
+     * @param portionIndex Portion index. (required)
+     * @param password Document password. 
+     * @param folder Document folder. 
+     * @param storage Document storage. 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getPortionRectangleAsync(String name, Integer slideIndex, Integer shapeIndex, Integer paragraphIndex, Integer portionIndex, String password, String folder, String storage, final ApiCallback<TextBounds> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getPortionRectangleCall(name, slideIndex, shapeIndex, paragraphIndex, portionIndex, password, folder, storage, progressListener, progressRequestListener);
+        Type returnType = new TypeToken<TextBounds>(){}.getType();
         apiClient.executeAsync(call, returnType, callback);
         return call;
     }
@@ -22959,12 +23288,13 @@ public class SlidesApi {
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
+     * @param shapeType Shape type. 
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getShapesCall(String name, Integer slideIndex, String password, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getShapesCall(String name, Integer slideIndex, String password, String folder, String storage, ShapeType shapeType, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getShapes(Async)");
@@ -22982,6 +23312,7 @@ public class SlidesApi {
         List<Pair> queryParams = new ArrayList<Pair>();
         apiClient.addQueryParameter(queryParams, "folder", folder);
         apiClient.addQueryParameter(queryParams, "storage", storage);
+        apiClient.addQueryParameter(queryParams, "shapeType", shapeType);
 
         Map<String, String> headerParams = new HashMap<String, String>();
         if (password != null)
@@ -23023,15 +23354,16 @@ public class SlidesApi {
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
+     * @param shapeType Shape type. 
      * @return Shapes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Shapes getShapes(String name, Integer slideIndex, String password, String folder, String storage) throws ApiException {
+    public Shapes getShapes(String name, Integer slideIndex, String password, String folder, String storage, ShapeType shapeType) throws ApiException {
         try {
-            ApiResponse<Shapes> resp = getShapesWithHttpInfo(name, slideIndex, password, folder, storage);
+            ApiResponse<Shapes> resp = getShapesWithHttpInfo(name, slideIndex, password, folder, storage, shapeType);
             return resp.getData();
         } catch (NeedRepeatRequestException e) {
-            ApiResponse<Shapes> resp = getShapesWithHttpInfo(name, slideIndex, password, folder, storage);
+            ApiResponse<Shapes> resp = getShapesWithHttpInfo(name, slideIndex, password, folder, storage, shapeType);
             return resp.getData();
         }
     }
@@ -23044,11 +23376,12 @@ public class SlidesApi {
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
+     * @param shapeType Shape type. 
      * @return ApiResponse&lt;Shapes&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Shapes> getShapesWithHttpInfo(String name, Integer slideIndex, String password, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = getShapesCall(name, slideIndex, password, folder, storage, null, null);
+    public ApiResponse<Shapes> getShapesWithHttpInfo(String name, Integer slideIndex, String password, String folder, String storage, ShapeType shapeType) throws ApiException {
+        com.squareup.okhttp.Call call = getShapesCall(name, slideIndex, password, folder, storage, shapeType, null, null);
         Type returnType = new TypeToken<Shapes>(){}.getType();
         return apiClient.execute(call, returnType);
     }
@@ -23061,11 +23394,12 @@ public class SlidesApi {
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
+     * @param shapeType Shape type. 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getShapesAsync(String name, Integer slideIndex, String password, String folder, String storage, final ApiCallback<Shapes> callback) throws ApiException {
+    public com.squareup.okhttp.Call getShapesAsync(String name, Integer slideIndex, String password, String folder, String storage, ShapeType shapeType, final ApiCallback<Shapes> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -23086,7 +23420,7 @@ public class SlidesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getShapesCall(name, slideIndex, password, folder, storage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getShapesCall(name, slideIndex, password, folder, storage, shapeType, progressListener, progressRequestListener);
         Type returnType = new TypeToken<Shapes>(){}.getType();
         apiClient.executeAsync(call, returnType, callback);
         return call;
@@ -27423,7 +27757,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(methodPath, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
+        return apiClient.buildCall(methodPath, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -27598,7 +27932,7 @@ public class SlidesApi {
                 }
             });
         }
-        return apiClient.buildCall(methodPath, "PUT", queryParams, postBody, headerParams, formParams, progressRequestListener);
+        return apiClient.buildCall(methodPath, "POST", queryParams, postBody, headerParams, formParams, progressRequestListener);
     }
 
     /**
@@ -27830,7 +28164,7 @@ public class SlidesApi {
     /**
      * Build call for importFromPdf
      * @param name Document name. (required)
-     * @param pdf PDF data. 
+     * @param pdf PDF data. (required)
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
@@ -27843,6 +28177,10 @@ public class SlidesApi {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling importFromPdf(Async)");
+        }
+        // verify the required parameter 'pdf' is set
+        if (pdf == null) {
+            throw new ApiException("Missing the required parameter 'pdf' when calling importFromPdf(Async)");
         }
         Object postBody = null;
 
@@ -27892,7 +28230,7 @@ public class SlidesApi {
      * Create presentation document from pdf or append pdf to an existing presentation.
      * 
      * @param name Document name. (required)
-     * @param pdf PDF data. 
+     * @param pdf PDF data. (required)
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
@@ -27913,7 +28251,7 @@ public class SlidesApi {
      * Create presentation document from pdf or append pdf to an existing presentation.
      * 
      * @param name Document name. (required)
-     * @param pdf PDF data. 
+     * @param pdf PDF data. (required)
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 
@@ -27930,7 +28268,7 @@ public class SlidesApi {
      * Create presentation document from pdf or append pdf to an existing presentation. (asynchronously)
      * 
      * @param name Document name. (required)
-     * @param pdf PDF data. 
+     * @param pdf PDF data. (required)
      * @param password Document password. 
      * @param folder Document folder. 
      * @param storage Document storage. 

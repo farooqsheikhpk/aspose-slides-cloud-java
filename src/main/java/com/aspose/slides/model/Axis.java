@@ -28,6 +28,7 @@
 package com.aspose.slides.model;
 
 import java.util.Objects;
+import com.aspose.slides.model.ChartLinesFormat;
 import com.aspose.slides.model.EffectFormat;
 import com.aspose.slides.model.FillFormat;
 import com.aspose.slides.model.LineFormat;
@@ -673,6 +674,12 @@ public class Axis {
 
   @SerializedName(value = "lineFormat", alternate = { "LineFormat" })
   private LineFormat lineFormat;
+
+  @SerializedName(value = "majorGridLinesFormat", alternate = { "MajorGridLinesFormat" })
+  private ChartLinesFormat majorGridLinesFormat;
+
+  @SerializedName(value = "minorGridLinesFormat", alternate = { "MinorGridLinesFormat" })
+  private ChartLinesFormat minorGridLinesFormat;
 
 
   public Axis() {
@@ -1327,6 +1334,42 @@ public class Axis {
     this.lineFormat = lineFormat;
   }
 
+  public Axis majorGridLinesFormat(ChartLinesFormat majorGridLinesFormat) {
+    this.majorGridLinesFormat = majorGridLinesFormat;
+    return this;
+  }
+
+   /**
+   * Get or sets the format of major grid lines.
+   * @return majorGridLinesFormat
+  **/
+  @ApiModelProperty(value = "Get or sets the format of major grid lines.")
+  public ChartLinesFormat getMajorGridLinesFormat() {
+    return majorGridLinesFormat;
+  }
+
+  public void setMajorGridLinesFormat(ChartLinesFormat majorGridLinesFormat) {
+    this.majorGridLinesFormat = majorGridLinesFormat;
+  }
+
+  public Axis minorGridLinesFormat(ChartLinesFormat minorGridLinesFormat) {
+    this.minorGridLinesFormat = minorGridLinesFormat;
+    return this;
+  }
+
+   /**
+   * Get or sets the format of major grid lines.
+   * @return minorGridLinesFormat
+  **/
+  @ApiModelProperty(value = "Get or sets the format of major grid lines.")
+  public ChartLinesFormat getMinorGridLinesFormat() {
+    return minorGridLinesFormat;
+  }
+
+  public void setMinorGridLinesFormat(ChartLinesFormat minorGridLinesFormat) {
+    this.minorGridLinesFormat = minorGridLinesFormat;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -1337,12 +1380,12 @@ public class Axis {
       return false;
     }
     Axis axis = (Axis) o;
-    return true && Objects.equals(this.isVisible, axis.isVisible) && Objects.equals(this.hasTitle, axis.hasTitle) && Objects.equals(this.position, axis.position) && Objects.equals(this.displayUnit, axis.displayUnit) && Objects.equals(this.baseUnitScale, axis.baseUnitScale) && Objects.equals(this.isAutomaticMajorUnit, axis.isAutomaticMajorUnit) && Objects.equals(this.majorUnit, axis.majorUnit) && Objects.equals(this.majorUnitScale, axis.majorUnitScale) && Objects.equals(this.majorTickMark, axis.majorTickMark) && Objects.equals(this.isAutomaticMinorUnit, axis.isAutomaticMinorUnit) && Objects.equals(this.minorUnit, axis.minorUnit) && Objects.equals(this.minorUnitScale, axis.minorUnitScale) && Objects.equals(this.minorTickMark, axis.minorTickMark) && Objects.equals(this.isAutomaticMaxValue, axis.isAutomaticMaxValue) && Objects.equals(this.maxValue, axis.maxValue) && Objects.equals(this.isAutomaticMinValue, axis.isAutomaticMinValue) && Objects.equals(this.minValue, axis.minValue) && Objects.equals(this.isLogarithmic, axis.isLogarithmic) && Objects.equals(this.logBase, axis.logBase) && Objects.equals(this.categoryAxisType, axis.categoryAxisType) && Objects.equals(this.axisBetweenCategories, axis.axisBetweenCategories) && Objects.equals(this.labelOffset, axis.labelOffset) && Objects.equals(this.isPlotOrderReversed, axis.isPlotOrderReversed) && Objects.equals(this.isNumberFormatLinkedToSource, axis.isNumberFormatLinkedToSource) && Objects.equals(this.numberFormat, axis.numberFormat) && Objects.equals(this.crossType, axis.crossType) && Objects.equals(this.crossAt, axis.crossAt) && Objects.equals(this.isAutomaticTickMarksSpacing, axis.isAutomaticTickMarksSpacing) && Objects.equals(this.tickMarksSpacing, axis.tickMarksSpacing) && Objects.equals(this.isAutomaticTickLabelSpacing, axis.isAutomaticTickLabelSpacing) && Objects.equals(this.tickLabelSpacing, axis.tickLabelSpacing) && Objects.equals(this.tickLabelPosition, axis.tickLabelPosition) && Objects.equals(this.tickLabelRotationAngle, axis.tickLabelRotationAngle) && Objects.equals(this.fillFormat, axis.fillFormat) && Objects.equals(this.effectFormat, axis.effectFormat) && Objects.equals(this.lineFormat, axis.lineFormat);
+    return true && Objects.equals(this.isVisible, axis.isVisible) && Objects.equals(this.hasTitle, axis.hasTitle) && Objects.equals(this.position, axis.position) && Objects.equals(this.displayUnit, axis.displayUnit) && Objects.equals(this.baseUnitScale, axis.baseUnitScale) && Objects.equals(this.isAutomaticMajorUnit, axis.isAutomaticMajorUnit) && Objects.equals(this.majorUnit, axis.majorUnit) && Objects.equals(this.majorUnitScale, axis.majorUnitScale) && Objects.equals(this.majorTickMark, axis.majorTickMark) && Objects.equals(this.isAutomaticMinorUnit, axis.isAutomaticMinorUnit) && Objects.equals(this.minorUnit, axis.minorUnit) && Objects.equals(this.minorUnitScale, axis.minorUnitScale) && Objects.equals(this.minorTickMark, axis.minorTickMark) && Objects.equals(this.isAutomaticMaxValue, axis.isAutomaticMaxValue) && Objects.equals(this.maxValue, axis.maxValue) && Objects.equals(this.isAutomaticMinValue, axis.isAutomaticMinValue) && Objects.equals(this.minValue, axis.minValue) && Objects.equals(this.isLogarithmic, axis.isLogarithmic) && Objects.equals(this.logBase, axis.logBase) && Objects.equals(this.categoryAxisType, axis.categoryAxisType) && Objects.equals(this.axisBetweenCategories, axis.axisBetweenCategories) && Objects.equals(this.labelOffset, axis.labelOffset) && Objects.equals(this.isPlotOrderReversed, axis.isPlotOrderReversed) && Objects.equals(this.isNumberFormatLinkedToSource, axis.isNumberFormatLinkedToSource) && Objects.equals(this.numberFormat, axis.numberFormat) && Objects.equals(this.crossType, axis.crossType) && Objects.equals(this.crossAt, axis.crossAt) && Objects.equals(this.isAutomaticTickMarksSpacing, axis.isAutomaticTickMarksSpacing) && Objects.equals(this.tickMarksSpacing, axis.tickMarksSpacing) && Objects.equals(this.isAutomaticTickLabelSpacing, axis.isAutomaticTickLabelSpacing) && Objects.equals(this.tickLabelSpacing, axis.tickLabelSpacing) && Objects.equals(this.tickLabelPosition, axis.tickLabelPosition) && Objects.equals(this.tickLabelRotationAngle, axis.tickLabelRotationAngle) && Objects.equals(this.fillFormat, axis.fillFormat) && Objects.equals(this.effectFormat, axis.effectFormat) && Objects.equals(this.lineFormat, axis.lineFormat) && Objects.equals(this.majorGridLinesFormat, axis.majorGridLinesFormat) && Objects.equals(this.minorGridLinesFormat, axis.minorGridLinesFormat);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(isVisible, hasTitle, position, displayUnit, baseUnitScale, isAutomaticMajorUnit, majorUnit, majorUnitScale, majorTickMark, isAutomaticMinorUnit, minorUnit, minorUnitScale, minorTickMark, isAutomaticMaxValue, maxValue, isAutomaticMinValue, minValue, isLogarithmic, logBase, categoryAxisType, axisBetweenCategories, labelOffset, isPlotOrderReversed, isNumberFormatLinkedToSource, numberFormat, crossType, crossAt, isAutomaticTickMarksSpacing, tickMarksSpacing, isAutomaticTickLabelSpacing, tickLabelSpacing, tickLabelPosition, tickLabelRotationAngle, fillFormat, effectFormat, lineFormat);
+    return Objects.hash(isVisible, hasTitle, position, displayUnit, baseUnitScale, isAutomaticMajorUnit, majorUnit, majorUnitScale, majorTickMark, isAutomaticMinorUnit, minorUnit, minorUnitScale, minorTickMark, isAutomaticMaxValue, maxValue, isAutomaticMinValue, minValue, isLogarithmic, logBase, categoryAxisType, axisBetweenCategories, labelOffset, isPlotOrderReversed, isNumberFormatLinkedToSource, numberFormat, crossType, crossAt, isAutomaticTickMarksSpacing, tickMarksSpacing, isAutomaticTickLabelSpacing, tickLabelSpacing, tickLabelPosition, tickLabelRotationAngle, fillFormat, effectFormat, lineFormat, majorGridLinesFormat, minorGridLinesFormat);
   }
 
 
@@ -1387,6 +1430,8 @@ public class Axis {
     sb.append("    fillFormat: ").append(toIndentedString(fillFormat)).append("\n");
     sb.append("    effectFormat: ").append(toIndentedString(effectFormat)).append("\n");
     sb.append("    lineFormat: ").append(toIndentedString(lineFormat)).append("\n");
+    sb.append("    majorGridLinesFormat: ").append(toIndentedString(majorGridLinesFormat)).append("\n");
+    sb.append("    minorGridLinesFormat: ").append(toIndentedString(minorGridLinesFormat)).append("\n");
     sb.append("}");
     return sb.toString();
   }

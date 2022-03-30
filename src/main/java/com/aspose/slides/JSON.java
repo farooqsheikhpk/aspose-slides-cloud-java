@@ -117,6 +117,8 @@ public class JSON {
         registerType(com.aspose.slides.model.Task.class, com.aspose.slides.model.Save.class, "type", com.aspose.slides.model.Task.TypeEnum.SAVE.getValue(), typeAdapters, valueMap);
         registerType(com.aspose.slides.model.Task.class, com.aspose.slides.model.SaveShape.class, "type", com.aspose.slides.model.Task.TypeEnum.SAVESHAPE.getValue(), typeAdapters, valueMap);
         registerType(com.aspose.slides.model.Task.class, com.aspose.slides.model.SaveSlide.class, "type", com.aspose.slides.model.Task.TypeEnum.SAVESLIDE.getValue(), typeAdapters, valueMap);
+        registerType(com.aspose.slides.model.SlideCommentBase.class, com.aspose.slides.model.SlideComment.class, "type", com.aspose.slides.model.SlideCommentBase.TypeEnum.REGULAR.getValue(), typeAdapters, valueMap);
+        registerType(com.aspose.slides.model.SlideCommentBase.class, com.aspose.slides.model.SlideModernComment.class, "type", com.aspose.slides.model.SlideCommentBase.TypeEnum.MODERN.getValue(), typeAdapters, valueMap);
         registerType(com.aspose.slides.model.FillFormat.class, com.aspose.slides.model.SolidFill.class, "type", com.aspose.slides.model.FillFormat.TypeEnum.SOLID.getValue(), typeAdapters, valueMap);
         registerType(com.aspose.slides.model.MathElement.class, com.aspose.slides.model.SubscriptElement.class, "type", com.aspose.slides.model.MathElement.TypeEnum.SUBSCRIPTELEMENT.getValue(), typeAdapters, valueMap);
         registerType(com.aspose.slides.model.MathElement.class, com.aspose.slides.model.SuperscriptElement.class, "type", com.aspose.slides.model.MathElement.TypeEnum.SUPERSCRIPTELEMENT.getValue(), typeAdapters, valueMap);

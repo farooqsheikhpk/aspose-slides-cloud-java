@@ -48,48 +48,48 @@ public class WatermarkTest extends ApiTest {
     @Test
     public void watermarkTextStorageTest() throws ApiException, IOException {
         initialize(null, null, null);
-        int shapeCount = api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null).getShapesLinks().size();
+        int shapeCount = api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null, null).getShapesLinks().size();
         api.createWatermark(c_fileName, null, null, c_watermarkText, null, null, c_password, c_folderName, null);
-        assertEquals(shapeCount + 1, api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null).getShapesLinks().size());
+        assertEquals(shapeCount + 1, api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null, null).getShapesLinks().size());
         assertEquals(c_watermarkText, ((Shape)api.getShape(c_fileName, c_slideIndex, shapeCount + 1, c_password, c_folderName, null)).getText());
         assertEquals(c_watermarkName, ((Shape)api.getShape(c_fileName, c_slideIndex, shapeCount + 1, c_password, c_folderName, null)).getName());
 
         api.deleteWatermark(c_fileName, null, c_password, c_folderName, null);
-        assertEquals(shapeCount, api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null).getShapesLinks().size());
+        assertEquals(shapeCount, api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null, null).getShapesLinks().size());
     }
 
     @Test
     public void watermarkDtoStorageTest() throws ApiException, IOException {
         initialize(null, null, null);
-        int shapeCount = api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null).getShapesLinks().size();
+        int shapeCount = api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null, null).getShapesLinks().size();
         Shape dto = new Shape();
         dto.setText(c_watermarkText);
         api.createWatermark(c_fileName, dto, null, null, null, null, c_password, c_folderName, null);
-        assertEquals(shapeCount + 1, api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null).getShapesLinks().size());
+        assertEquals(shapeCount + 1, api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null, null).getShapesLinks().size());
         assertEquals(c_watermarkText, ((Shape)api.getShape(c_fileName, c_slideIndex, shapeCount + 1, c_password, c_folderName, null)).getText());
         assertEquals(c_watermarkName, ((Shape)api.getShape(c_fileName, c_slideIndex, shapeCount + 1, c_password, c_folderName, null)).getName());
 
         api.deleteWatermark(c_fileName, null, c_password, c_folderName, null);
-        assertEquals(shapeCount, api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null).getShapesLinks().size());
+        assertEquals(shapeCount, api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null, null).getShapesLinks().size());
     }
 
     @Test
     public void watermarkImageStorageTest() throws ApiException, IOException {
         initialize(null, null, null);
-        int shapeCount = api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null).getShapesLinks().size();
+        int shapeCount = api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null, null).getShapesLinks().size();
         byte[] watermarkFile = Files.readAllBytes(Paths.get(testDataFolderName + "/" + c_watermarkFileName));
         api.createImageWatermark(c_fileName, watermarkFile, null, c_password, c_folderName, null);
-        assertEquals(shapeCount + 1, api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null).getShapesLinks().size());
+        assertEquals(shapeCount + 1, api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null, null).getShapesLinks().size());
         assertEquals(c_watermarkName, ((Shape)api.getShape(c_fileName, c_slideIndex, shapeCount + 1, c_password, c_folderName, null)).getName());
 
         api.deleteWatermark(c_fileName, null, c_password, c_folderName, null);
-        assertEquals(shapeCount, api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null).getShapesLinks().size());
+        assertEquals(shapeCount, api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null, null).getShapesLinks().size());
     }
 
     @Test
     public void watermarkImageDtoStorageTest() throws ApiException, IOException {
         initialize(null, null, null);
-        int shapeCount = api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null).getShapesLinks().size();
+        int shapeCount = api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null, null).getShapesLinks().size();
         byte[] watermarkFile = Files.readAllBytes(Paths.get(testDataFolderName + "/" + c_watermarkFileName));
         String base64Data = new String(Base64.getEncoder().encode(watermarkFile));
         PictureFrame pictureFrame = new PictureFrame();
@@ -97,11 +97,11 @@ public class WatermarkTest extends ApiTest {
         fillFormat.setBase64Data(base64Data);
         pictureFrame.setFillFormat(fillFormat);
         api.createImageWatermark(c_fileName, watermarkFile, null, c_password, c_folderName, null);
-        assertEquals(shapeCount + 1, api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null).getShapesLinks().size());
+        assertEquals(shapeCount + 1, api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null, null).getShapesLinks().size());
         assertEquals(c_watermarkName, ((Shape)api.getShape(c_fileName, c_slideIndex, shapeCount + 1, c_password, c_folderName, null)).getName());
 
         api.deleteWatermark(c_fileName, null, c_password, c_folderName, null);
-        assertEquals(shapeCount, api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null).getShapesLinks().size());
+        assertEquals(shapeCount, api.getShapes(c_fileName, c_slideIndex, c_password, c_folderName, null, null).getShapesLinks().size());
     }
 
     @Test
