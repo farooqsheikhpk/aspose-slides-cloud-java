@@ -48,6 +48,115 @@ import java.util.Map;
  */
 @ApiModel(description = "Provides options that control how a presentation is saved in an video format.")
 public class VideoExportOptions extends ExportOptions {
+  @SerializedName(value = "slidesTransitionDuration", alternate = { "SlidesTransitionDuration" })
+  private Integer slidesTransitionDuration;
+
+  /**
+   * Video transition type
+   */
+  @JsonAdapter(TransitionTypeEnum.Adapter.class)
+  public enum TransitionTypeEnum {
+    NONE("None"),
+    
+    FADE("Fade"),
+    
+    DISTANCE("Distance"),
+    
+    SLIDEDOWN("Slidedown"),
+    
+    SLIDERIGHT("Slideright"),
+    
+    SLIDELEFT("Slideleft"),
+    
+    SLIDEUP("Slideup"),
+    
+    SMOOTHLEFT("Smoothleft"),
+    
+    SMOOTHRIGHT("Smoothright"),
+    
+    SMOOTHUP("Smoothup"),
+    
+    SMOOTHDOWN("Smoothdown"),
+    
+    RECTCROP("Rectcrop"),
+    
+    CIRCLECROP("Circlecrop"),
+    
+    CIRCLECLOSE("Circleclose"),
+    
+    CIRCLEOPEN("Circleopen"),
+    
+    HORZCLOSE("Horzclose"),
+    
+    HORZOPEN("Horzopen"),
+    
+    VERTCLOSE("Vertclose"),
+    
+    VERTOPEN("Vertopen"),
+    
+    DIAGBL("Diagbl"),
+    
+    DIAGBR("Diagbr"),
+    
+    DIAGTL("Diagtl"),
+    
+    DIAGTR("Diagtr"),
+    
+    HLSLICE("Hlslice"),
+    
+    HRSLICE("Hrslice"),
+    
+    VUSLICE("Vuslice"),
+    
+    VDSLICE("Vdslice"),
+    
+    DISSOLVE("Dissolve"),
+    
+    PIXELIZE("Pixelize"),
+    
+    RADIAL("Radial");
+
+    private String value;
+
+    TransitionTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TransitionTypeEnum fromValue(String text) {
+      for (TransitionTypeEnum b : TransitionTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<TransitionTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TransitionTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TransitionTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return TransitionTypeEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName(value = "transitionType", alternate = { "TransitionType" })
+  private TransitionTypeEnum transitionType;
+
   @SerializedName(value = "transitionDuration", alternate = { "TransitionDuration" })
   private Integer transitionDuration;
 
@@ -111,16 +220,52 @@ public class VideoExportOptions extends ExportOptions {
     setFormat("MPEG4");
   }
 
+  public VideoExportOptions slidesTransitionDuration(Integer slidesTransitionDuration) {
+    this.slidesTransitionDuration = slidesTransitionDuration;
+    return this;
+  }
+
+   /**
+   * Slides transition duration.
+   * @return slidesTransitionDuration
+  **/
+  @ApiModelProperty(value = "Slides transition duration.")
+  public Integer getSlidesTransitionDuration() {
+    return slidesTransitionDuration;
+  }
+
+  public void setSlidesTransitionDuration(Integer slidesTransitionDuration) {
+    this.slidesTransitionDuration = slidesTransitionDuration;
+  }
+
+  public VideoExportOptions transitionType(TransitionTypeEnum transitionType) {
+    this.transitionType = transitionType;
+    return this;
+  }
+
+   /**
+   * Video transition type
+   * @return transitionType
+  **/
+  @ApiModelProperty(value = "Video transition type")
+  public TransitionTypeEnum getTransitionType() {
+    return transitionType;
+  }
+
+  public void setTransitionType(TransitionTypeEnum transitionType) {
+    this.transitionType = transitionType;
+  }
+
   public VideoExportOptions transitionDuration(Integer transitionDuration) {
     this.transitionDuration = transitionDuration;
     return this;
   }
 
    /**
-   * Transition duration.
+   * Duration of transition defined in TransitionType property.
    * @return transitionDuration
   **/
-  @ApiModelProperty(value = "Transition duration.")
+  @ApiModelProperty(value = "Duration of transition defined in TransitionType property.")
   public Integer getTransitionDuration() {
     return transitionDuration;
   }
@@ -157,12 +302,12 @@ public class VideoExportOptions extends ExportOptions {
       return false;
     }
     VideoExportOptions videoExportOptions = (VideoExportOptions) o;
-    return true && Objects.equals(this.transitionDuration, videoExportOptions.transitionDuration) && Objects.equals(this.videoResolutionType, videoExportOptions.videoResolutionType) && super.equals(o);
+    return true && Objects.equals(this.slidesTransitionDuration, videoExportOptions.slidesTransitionDuration) && Objects.equals(this.transitionType, videoExportOptions.transitionType) && Objects.equals(this.transitionDuration, videoExportOptions.transitionDuration) && Objects.equals(this.videoResolutionType, videoExportOptions.videoResolutionType) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(transitionDuration, videoResolutionType, super.hashCode());
+    return Objects.hash(slidesTransitionDuration, transitionType, transitionDuration, videoResolutionType, super.hashCode());
   }
 
 
@@ -171,6 +316,8 @@ public class VideoExportOptions extends ExportOptions {
     StringBuilder sb = new StringBuilder();
     sb.append("class VideoExportOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    slidesTransitionDuration: ").append(toIndentedString(slidesTransitionDuration)).append("\n");
+    sb.append("    transitionType: ").append(toIndentedString(transitionType)).append("\n");
     sb.append("    transitionDuration: ").append(toIndentedString(transitionDuration)).append("\n");
     sb.append("    videoResolutionType: ").append(toIndentedString(videoResolutionType)).append("\n");
     sb.append("}");

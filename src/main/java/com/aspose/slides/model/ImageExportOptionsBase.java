@@ -28,8 +28,8 @@
 package com.aspose.slides.model;
 
 import java.util.Objects;
+import com.aspose.slides.model.ExportOptions;
 import com.aspose.slides.model.FontFallbackRule;
-import com.aspose.slides.model.ImageExportOptionsBase;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -44,77 +44,55 @@ import java.util.Hashtable;
 import java.util.Map;
 
 /**
- * Provides options that control how a presentation is saved in Gif format.
+ * The class provides shared options for image formats.
  */
-@ApiModel(description = "Provides options that control how a presentation is saved in Gif format.")
-public class GifExportOptions extends ImageExportOptionsBase {
-  @SerializedName(value = "exportHiddenSlides", alternate = { "ExportHiddenSlides" })
-  private Boolean exportHiddenSlides;
+@ApiModel(description = "The class provides shared options for image formats.")
+public class ImageExportOptionsBase extends ExportOptions {
+  @SerializedName(value = "height", alternate = { "Height" })
+  private Integer height;
 
-  @SerializedName(value = "transitionFps", alternate = { "TransitionFps" })
-  private Integer transitionFps;
-
-  @SerializedName(value = "defaultDelay", alternate = { "DefaultDelay" })
-  private Integer defaultDelay;
+  @SerializedName(value = "width", alternate = { "Width" })
+  private Integer width;
 
 
-  public GifExportOptions() {
+  public ImageExportOptionsBase() {
     super();
-    setFormat("GIF");
   }
 
-  public GifExportOptions exportHiddenSlides(Boolean exportHiddenSlides) {
-    this.exportHiddenSlides = exportHiddenSlides;
+  public ImageExportOptionsBase height(Integer height) {
+    this.height = height;
     return this;
   }
 
    /**
-   * Determines whether hidden slides will be exported.
-   * @return exportHiddenSlides
+   * Gets or sets the height of slides in the output image format.
+   * @return height
   **/
-  @ApiModelProperty(value = "Determines whether hidden slides will be exported.")
-  public Boolean isExportHiddenSlides() {
-    return exportHiddenSlides;
+  @ApiModelProperty(value = "Gets or sets the height of slides in the output image format.")
+  public Integer getHeight() {
+    return height;
   }
 
-  public void setExportHiddenSlides(Boolean exportHiddenSlides) {
-    this.exportHiddenSlides = exportHiddenSlides;
+  public void setHeight(Integer height) {
+    this.height = height;
   }
 
-  public GifExportOptions transitionFps(Integer transitionFps) {
-    this.transitionFps = transitionFps;
+  public ImageExportOptionsBase width(Integer width) {
+    this.width = width;
     return this;
   }
 
    /**
-   * Gets or sets transition FPS [frames/sec]
-   * @return transitionFps
+   * Gets or sets the height of slides in the output the output image format.
+   * @return width
   **/
-  @ApiModelProperty(value = "Gets or sets transition FPS [frames/sec]")
-  public Integer getTransitionFps() {
-    return transitionFps;
+  @ApiModelProperty(value = "Gets or sets the height of slides in the output the output image format.")
+  public Integer getWidth() {
+    return width;
   }
 
-  public void setTransitionFps(Integer transitionFps) {
-    this.transitionFps = transitionFps;
-  }
-
-  public GifExportOptions defaultDelay(Integer defaultDelay) {
-    this.defaultDelay = defaultDelay;
-    return this;
-  }
-
-   /**
-   * Gets or sets default delay time [ms].
-   * @return defaultDelay
-  **/
-  @ApiModelProperty(value = "Gets or sets default delay time [ms].")
-  public Integer getDefaultDelay() {
-    return defaultDelay;
-  }
-
-  public void setDefaultDelay(Integer defaultDelay) {
-    this.defaultDelay = defaultDelay;
+  public void setWidth(Integer width) {
+    this.width = width;
   }
 
 
@@ -126,24 +104,23 @@ public class GifExportOptions extends ImageExportOptionsBase {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GifExportOptions gifExportOptions = (GifExportOptions) o;
-    return true && Objects.equals(this.exportHiddenSlides, gifExportOptions.exportHiddenSlides) && Objects.equals(this.transitionFps, gifExportOptions.transitionFps) && Objects.equals(this.defaultDelay, gifExportOptions.defaultDelay) && super.equals(o);
+    ImageExportOptionsBase imageExportOptionsBase = (ImageExportOptionsBase) o;
+    return true && Objects.equals(this.height, imageExportOptionsBase.height) && Objects.equals(this.width, imageExportOptionsBase.width) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(exportHiddenSlides, transitionFps, defaultDelay, super.hashCode());
+    return Objects.hash(height, width, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GifExportOptions {\n");
+    sb.append("class ImageExportOptionsBase {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    exportHiddenSlides: ").append(toIndentedString(exportHiddenSlides)).append("\n");
-    sb.append("    transitionFps: ").append(toIndentedString(transitionFps)).append("\n");
-    sb.append("    defaultDelay: ").append(toIndentedString(defaultDelay)).append("\n");
+    sb.append("    height: ").append(toIndentedString(height)).append("\n");
+    sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();
   }

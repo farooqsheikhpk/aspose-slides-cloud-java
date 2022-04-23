@@ -29,6 +29,7 @@ package com.aspose.slides.model;
 
 import java.util.Objects;
 import com.aspose.slides.model.Portion;
+import com.aspose.slides.model.PortionFormat;
 import com.aspose.slides.model.ResourceBase;
 import com.aspose.slides.model.ResourceUri;
 import com.google.gson.TypeAdapter;
@@ -598,6 +599,9 @@ public class Paragraph extends ResourceBase {
   @SerializedName(value = "portionList", alternate = { "PortionList" })
   private List<Portion> portionList = null;
 
+  @SerializedName(value = "defaultPortionFormat", alternate = { "DefaultPortionFormat" })
+  private PortionFormat defaultPortionFormat;
+
 
   public Paragraph() {
     super();
@@ -971,6 +975,24 @@ public class Paragraph extends ResourceBase {
     this.portionList = portionList;
   }
 
+  public Paragraph defaultPortionFormat(PortionFormat defaultPortionFormat) {
+    this.defaultPortionFormat = defaultPortionFormat;
+    return this;
+  }
+
+   /**
+   * Default portion format.
+   * @return defaultPortionFormat
+  **/
+  @ApiModelProperty(value = "Default portion format.")
+  public PortionFormat getDefaultPortionFormat() {
+    return defaultPortionFormat;
+  }
+
+  public void setDefaultPortionFormat(PortionFormat defaultPortionFormat) {
+    this.defaultPortionFormat = defaultPortionFormat;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -981,12 +1003,12 @@ public class Paragraph extends ResourceBase {
       return false;
     }
     Paragraph paragraph = (Paragraph) o;
-    return true && Objects.equals(this.marginLeft, paragraph.marginLeft) && Objects.equals(this.marginRight, paragraph.marginRight) && Objects.equals(this.spaceBefore, paragraph.spaceBefore) && Objects.equals(this.spaceAfter, paragraph.spaceAfter) && Objects.equals(this.spaceWithin, paragraph.spaceWithin) && Objects.equals(this.indent, paragraph.indent) && Objects.equals(this.alignment, paragraph.alignment) && Objects.equals(this.fontAlignment, paragraph.fontAlignment) && Objects.equals(this.defaultTabSize, paragraph.defaultTabSize) && Objects.equals(this.depth, paragraph.depth) && Objects.equals(this.bulletChar, paragraph.bulletChar) && Objects.equals(this.bulletHeight, paragraph.bulletHeight) && Objects.equals(this.bulletType, paragraph.bulletType) && Objects.equals(this.numberedBulletStartWith, paragraph.numberedBulletStartWith) && Objects.equals(this.numberedBulletStyle, paragraph.numberedBulletStyle) && Objects.equals(this.hangingPunctuation, paragraph.hangingPunctuation) && Objects.equals(this.eastAsianLineBreak, paragraph.eastAsianLineBreak) && Objects.equals(this.latinLineBreak, paragraph.latinLineBreak) && Objects.equals(this.rightToLeft, paragraph.rightToLeft) && Objects.equals(this.portionList, paragraph.portionList) && super.equals(o);
+    return true && Objects.equals(this.marginLeft, paragraph.marginLeft) && Objects.equals(this.marginRight, paragraph.marginRight) && Objects.equals(this.spaceBefore, paragraph.spaceBefore) && Objects.equals(this.spaceAfter, paragraph.spaceAfter) && Objects.equals(this.spaceWithin, paragraph.spaceWithin) && Objects.equals(this.indent, paragraph.indent) && Objects.equals(this.alignment, paragraph.alignment) && Objects.equals(this.fontAlignment, paragraph.fontAlignment) && Objects.equals(this.defaultTabSize, paragraph.defaultTabSize) && Objects.equals(this.depth, paragraph.depth) && Objects.equals(this.bulletChar, paragraph.bulletChar) && Objects.equals(this.bulletHeight, paragraph.bulletHeight) && Objects.equals(this.bulletType, paragraph.bulletType) && Objects.equals(this.numberedBulletStartWith, paragraph.numberedBulletStartWith) && Objects.equals(this.numberedBulletStyle, paragraph.numberedBulletStyle) && Objects.equals(this.hangingPunctuation, paragraph.hangingPunctuation) && Objects.equals(this.eastAsianLineBreak, paragraph.eastAsianLineBreak) && Objects.equals(this.latinLineBreak, paragraph.latinLineBreak) && Objects.equals(this.rightToLeft, paragraph.rightToLeft) && Objects.equals(this.portionList, paragraph.portionList) && Objects.equals(this.defaultPortionFormat, paragraph.defaultPortionFormat) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(marginLeft, marginRight, spaceBefore, spaceAfter, spaceWithin, indent, alignment, fontAlignment, defaultTabSize, depth, bulletChar, bulletHeight, bulletType, numberedBulletStartWith, numberedBulletStyle, hangingPunctuation, eastAsianLineBreak, latinLineBreak, rightToLeft, portionList, super.hashCode());
+    return Objects.hash(marginLeft, marginRight, spaceBefore, spaceAfter, spaceWithin, indent, alignment, fontAlignment, defaultTabSize, depth, bulletChar, bulletHeight, bulletType, numberedBulletStartWith, numberedBulletStyle, hangingPunctuation, eastAsianLineBreak, latinLineBreak, rightToLeft, portionList, defaultPortionFormat, super.hashCode());
   }
 
 
@@ -1015,6 +1037,7 @@ public class Paragraph extends ResourceBase {
     sb.append("    latinLineBreak: ").append(toIndentedString(latinLineBreak)).append("\n");
     sb.append("    rightToLeft: ").append(toIndentedString(rightToLeft)).append("\n");
     sb.append("    portionList: ").append(toIndentedString(portionList)).append("\n");
+    sb.append("    defaultPortionFormat: ").append(toIndentedString(defaultPortionFormat)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -28,6 +28,7 @@
 package com.aspose.slides.model;
 
 import java.util.Objects;
+import com.aspose.slides.model.AccessPermissions;
 import com.aspose.slides.model.ExportOptions;
 import com.aspose.slides.model.FontFallbackRule;
 import com.google.gson.TypeAdapter;
@@ -299,69 +300,8 @@ public class PdfExportOptions extends ExportOptions {
   @SerializedName(value = "applyImageTransparent", alternate = { "ApplyImageTransparent" })
   private Boolean applyImageTransparent;
 
-  /**
-   * Access permissions that should be granted when the document is opened with user access.  Default is AccessPermissions.None.             
-   */
-  @JsonAdapter(AccessPermissionsEnum.Adapter.class)
-  public enum AccessPermissionsEnum {
-    NONE("None"),
-    
-    PRINTDOCUMENT("PrintDocument"),
-    
-    MODIFYCONTENT("ModifyContent"),
-    
-    COPYTEXTANDGRAPHICS("CopyTextAndGraphics"),
-    
-    ADDORMODIFYFIELDS("AddOrModifyFields"),
-    
-    FILLEXISTINGFIELDS("FillExistingFields"),
-    
-    EXTRACTTEXTANDGRAPHICS("ExtractTextAndGraphics"),
-    
-    ASSEMBLEDOCUMENT("AssembleDocument"),
-    
-    HIGHQUALITYPRINT("HighQualityPrint");
-
-    private String value;
-
-    AccessPermissionsEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static AccessPermissionsEnum fromValue(String text) {
-      for (AccessPermissionsEnum b : AccessPermissionsEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<AccessPermissionsEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final AccessPermissionsEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public AccessPermissionsEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return AccessPermissionsEnum.fromValue(String.valueOf(value));
-      }
-    }
-  }
-
   @SerializedName(value = "accessPermissions", alternate = { "AccessPermissions" })
-  private AccessPermissionsEnum accessPermissions;
+  private AccessPermissions accessPermissions;
 
 
   public PdfExportOptions() {
@@ -701,7 +641,7 @@ public class PdfExportOptions extends ExportOptions {
     this.applyImageTransparent = applyImageTransparent;
   }
 
-  public PdfExportOptions accessPermissions(AccessPermissionsEnum accessPermissions) {
+  public PdfExportOptions accessPermissions(AccessPermissions accessPermissions) {
     this.accessPermissions = accessPermissions;
     return this;
   }
@@ -711,11 +651,11 @@ public class PdfExportOptions extends ExportOptions {
    * @return accessPermissions
   **/
   @ApiModelProperty(value = "Access permissions that should be granted when the document is opened with user access.  Default is AccessPermissions.None.             ")
-  public AccessPermissionsEnum getAccessPermissions() {
+  public AccessPermissions getAccessPermissions() {
     return accessPermissions;
   }
 
-  public void setAccessPermissions(AccessPermissionsEnum accessPermissions) {
+  public void setAccessPermissions(AccessPermissions accessPermissions) {
     this.accessPermissions = accessPermissions;
   }
 

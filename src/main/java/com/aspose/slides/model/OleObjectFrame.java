@@ -32,6 +32,7 @@ import com.aspose.slides.model.EffectFormat;
 import com.aspose.slides.model.FillFormat;
 import com.aspose.slides.model.Hyperlink;
 import com.aspose.slides.model.LineFormat;
+import com.aspose.slides.model.PictureFill;
 import com.aspose.slides.model.ResourceUri;
 import com.aspose.slides.model.ShapeBase;
 import com.aspose.slides.model.ThreeDFormat;
@@ -58,6 +59,27 @@ public class OleObjectFrame extends ShapeBase {
 
   @SerializedName(value = "substitutePictureTitle", alternate = { "SubstitutePictureTitle" })
   private String substitutePictureTitle;
+
+  @SerializedName(value = "substitutePictureFormat", alternate = { "SubstitutePictureFormat" })
+  private PictureFill substitutePictureFormat;
+
+  @SerializedName(value = "objectName", alternate = { "ObjectName" })
+  private String objectName;
+
+  @SerializedName(value = "embeddedFileBase64Data", alternate = { "EmbeddedFileBase64Data" })
+  private String embeddedFileBase64Data;
+
+  @SerializedName(value = "embeddedFileExtension", alternate = { "EmbeddedFileExtension" })
+  private String embeddedFileExtension;
+
+  @SerializedName(value = "objectProgId", alternate = { "ObjectProgId" })
+  private String objectProgId;
+
+  @SerializedName(value = "linkPath", alternate = { "LinkPath" })
+  private String linkPath;
+
+  @SerializedName(value = "updateAutomatic", alternate = { "UpdateAutomatic" })
+  private Boolean updateAutomatic;
 
 
   public OleObjectFrame() {
@@ -101,6 +123,132 @@ public class OleObjectFrame extends ShapeBase {
     this.substitutePictureTitle = substitutePictureTitle;
   }
 
+  public OleObjectFrame substitutePictureFormat(PictureFill substitutePictureFormat) {
+    this.substitutePictureFormat = substitutePictureFormat;
+    return this;
+  }
+
+   /**
+   * OleObject image fill properties.
+   * @return substitutePictureFormat
+  **/
+  @ApiModelProperty(value = "OleObject image fill properties.")
+  public PictureFill getSubstitutePictureFormat() {
+    return substitutePictureFormat;
+  }
+
+  public void setSubstitutePictureFormat(PictureFill substitutePictureFormat) {
+    this.substitutePictureFormat = substitutePictureFormat;
+  }
+
+  public OleObjectFrame objectName(String objectName) {
+    this.objectName = objectName;
+    return this;
+  }
+
+   /**
+   * Returns or sets the name of an object.
+   * @return objectName
+  **/
+  @ApiModelProperty(value = "Returns or sets the name of an object.")
+  public String getObjectName() {
+    return objectName;
+  }
+
+  public void setObjectName(String objectName) {
+    this.objectName = objectName;
+  }
+
+  public OleObjectFrame embeddedFileBase64Data(String embeddedFileBase64Data) {
+    this.embeddedFileBase64Data = embeddedFileBase64Data;
+    return this;
+  }
+
+   /**
+   * File data of embedded OLE object. 
+   * @return embeddedFileBase64Data
+  **/
+  @ApiModelProperty(value = "File data of embedded OLE object. ")
+  public String getEmbeddedFileBase64Data() {
+    return embeddedFileBase64Data;
+  }
+
+  public void setEmbeddedFileBase64Data(String embeddedFileBase64Data) {
+    this.embeddedFileBase64Data = embeddedFileBase64Data;
+  }
+
+  public OleObjectFrame embeddedFileExtension(String embeddedFileExtension) {
+    this.embeddedFileExtension = embeddedFileExtension;
+    return this;
+  }
+
+   /**
+   * File extension for the current embedded OLE object
+   * @return embeddedFileExtension
+  **/
+  @ApiModelProperty(value = "File extension for the current embedded OLE object")
+  public String getEmbeddedFileExtension() {
+    return embeddedFileExtension;
+  }
+
+  public void setEmbeddedFileExtension(String embeddedFileExtension) {
+    this.embeddedFileExtension = embeddedFileExtension;
+  }
+
+  public OleObjectFrame objectProgId(String objectProgId) {
+    this.objectProgId = objectProgId;
+    return this;
+  }
+
+   /**
+   * ProgID of an object.
+   * @return objectProgId
+  **/
+  @ApiModelProperty(value = "ProgID of an object.")
+  public String getObjectProgId() {
+    return objectProgId;
+  }
+
+  public void setObjectProgId(String objectProgId) {
+    this.objectProgId = objectProgId;
+  }
+
+  public OleObjectFrame linkPath(String linkPath) {
+    this.linkPath = linkPath;
+    return this;
+  }
+
+   /**
+   * Full path to a linked file.
+   * @return linkPath
+  **/
+  @ApiModelProperty(value = "Full path to a linked file.")
+  public String getLinkPath() {
+    return linkPath;
+  }
+
+  public void setLinkPath(String linkPath) {
+    this.linkPath = linkPath;
+  }
+
+  public OleObjectFrame updateAutomatic(Boolean updateAutomatic) {
+    this.updateAutomatic = updateAutomatic;
+    return this;
+  }
+
+   /**
+   * Determines if the linked embedded object is automatically updated when the presentation is opened or printed. Read/write Boolean.
+   * @return updateAutomatic
+  **/
+  @ApiModelProperty(value = "Determines if the linked embedded object is automatically updated when the presentation is opened or printed. Read/write Boolean.")
+  public Boolean isUpdateAutomatic() {
+    return updateAutomatic;
+  }
+
+  public void setUpdateAutomatic(Boolean updateAutomatic) {
+    this.updateAutomatic = updateAutomatic;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -111,12 +259,12 @@ public class OleObjectFrame extends ShapeBase {
       return false;
     }
     OleObjectFrame oleObjectFrame = (OleObjectFrame) o;
-    return true && Objects.equals(this.isObjectIcon, oleObjectFrame.isObjectIcon) && Objects.equals(this.substitutePictureTitle, oleObjectFrame.substitutePictureTitle) && super.equals(o);
+    return true && Objects.equals(this.isObjectIcon, oleObjectFrame.isObjectIcon) && Objects.equals(this.substitutePictureTitle, oleObjectFrame.substitutePictureTitle) && Objects.equals(this.substitutePictureFormat, oleObjectFrame.substitutePictureFormat) && Objects.equals(this.objectName, oleObjectFrame.objectName) && Objects.equals(this.embeddedFileBase64Data, oleObjectFrame.embeddedFileBase64Data) && Objects.equals(this.embeddedFileExtension, oleObjectFrame.embeddedFileExtension) && Objects.equals(this.objectProgId, oleObjectFrame.objectProgId) && Objects.equals(this.linkPath, oleObjectFrame.linkPath) && Objects.equals(this.updateAutomatic, oleObjectFrame.updateAutomatic) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(isObjectIcon, substitutePictureTitle, super.hashCode());
+    return Objects.hash(isObjectIcon, substitutePictureTitle, substitutePictureFormat, objectName, embeddedFileBase64Data, embeddedFileExtension, objectProgId, linkPath, updateAutomatic, super.hashCode());
   }
 
 
@@ -127,6 +275,13 @@ public class OleObjectFrame extends ShapeBase {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    isObjectIcon: ").append(toIndentedString(isObjectIcon)).append("\n");
     sb.append("    substitutePictureTitle: ").append(toIndentedString(substitutePictureTitle)).append("\n");
+    sb.append("    substitutePictureFormat: ").append(toIndentedString(substitutePictureFormat)).append("\n");
+    sb.append("    objectName: ").append(toIndentedString(objectName)).append("\n");
+    sb.append("    embeddedFileBase64Data: ").append(toIndentedString(embeddedFileBase64Data)).append("\n");
+    sb.append("    embeddedFileExtension: ").append(toIndentedString(embeddedFileExtension)).append("\n");
+    sb.append("    objectProgId: ").append(toIndentedString(objectProgId)).append("\n");
+    sb.append("    linkPath: ").append(toIndentedString(linkPath)).append("\n");
+    sb.append("    updateAutomatic: ").append(toIndentedString(updateAutomatic)).append("\n");
     sb.append("}");
     return sb.toString();
   }

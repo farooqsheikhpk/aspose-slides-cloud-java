@@ -80,9 +80,6 @@ public class ShapeBase extends ResourceBase {
   @SerializedName(value = "zorderPosition", alternate = { "ZOrderPosition" })
   private Integer zorderPosition;
 
-  @SerializedName(value = "shapes", alternate = { "Shapes" })
-  private ResourceUri shapes;
-
   @SerializedName(value = "fillFormat", alternate = { "FillFormat" })
   private FillFormat fillFormat;
 
@@ -346,24 +343,6 @@ public class ShapeBase extends ResourceBase {
     this.zorderPosition = zorderPosition;
   }
 
-  public ShapeBase shapes(ResourceUri shapes) {
-    this.shapes = shapes;
-    return this;
-  }
-
-   /**
-   * Gets or sets the link to shapes.
-   * @return shapes
-  **/
-  @ApiModelProperty(value = "Gets or sets the link to shapes.")
-  public ResourceUri getShapes() {
-    return shapes;
-  }
-
-  public void setShapes(ResourceUri shapes) {
-    this.shapes = shapes;
-  }
-
   public ShapeBase fillFormat(FillFormat fillFormat) {
     this.fillFormat = fillFormat;
     return this;
@@ -500,12 +479,12 @@ public class ShapeBase extends ResourceBase {
       return false;
     }
     ShapeBase shapeBase = (ShapeBase) o;
-    return true && Objects.equals(this.name, shapeBase.name) && Objects.equals(this.width, shapeBase.width) && Objects.equals(this.height, shapeBase.height) && Objects.equals(this.alternativeText, shapeBase.alternativeText) && Objects.equals(this.alternativeTextTitle, shapeBase.alternativeTextTitle) && Objects.equals(this.hidden, shapeBase.hidden) && Objects.equals(this.x, shapeBase.x) && Objects.equals(this.y, shapeBase.y) && Objects.equals(this.zorderPosition, shapeBase.zorderPosition) && Objects.equals(this.shapes, shapeBase.shapes) && Objects.equals(this.fillFormat, shapeBase.fillFormat) && Objects.equals(this.effectFormat, shapeBase.effectFormat) && Objects.equals(this.threeDFormat, shapeBase.threeDFormat) && Objects.equals(this.lineFormat, shapeBase.lineFormat) && Objects.equals(this.hyperlinkClick, shapeBase.hyperlinkClick) && Objects.equals(this.hyperlinkMouseOver, shapeBase.hyperlinkMouseOver) && Objects.equals(this.type, shapeBase.type) && super.equals(o);
+    return true && Objects.equals(this.name, shapeBase.name) && Objects.equals(this.width, shapeBase.width) && Objects.equals(this.height, shapeBase.height) && Objects.equals(this.alternativeText, shapeBase.alternativeText) && Objects.equals(this.alternativeTextTitle, shapeBase.alternativeTextTitle) && Objects.equals(this.hidden, shapeBase.hidden) && Objects.equals(this.x, shapeBase.x) && Objects.equals(this.y, shapeBase.y) && Objects.equals(this.zorderPosition, shapeBase.zorderPosition) && Objects.equals(this.fillFormat, shapeBase.fillFormat) && Objects.equals(this.effectFormat, shapeBase.effectFormat) && Objects.equals(this.threeDFormat, shapeBase.threeDFormat) && Objects.equals(this.lineFormat, shapeBase.lineFormat) && Objects.equals(this.hyperlinkClick, shapeBase.hyperlinkClick) && Objects.equals(this.hyperlinkMouseOver, shapeBase.hyperlinkMouseOver) && Objects.equals(this.type, shapeBase.type) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, width, height, alternativeText, alternativeTextTitle, hidden, x, y, zorderPosition, shapes, fillFormat, effectFormat, threeDFormat, lineFormat, hyperlinkClick, hyperlinkMouseOver, type, super.hashCode());
+    return Objects.hash(name, width, height, alternativeText, alternativeTextTitle, hidden, x, y, zorderPosition, fillFormat, effectFormat, threeDFormat, lineFormat, hyperlinkClick, hyperlinkMouseOver, type, super.hashCode());
   }
 
 
@@ -523,7 +502,6 @@ public class ShapeBase extends ResourceBase {
     sb.append("    x: ").append(toIndentedString(x)).append("\n");
     sb.append("    y: ").append(toIndentedString(y)).append("\n");
     sb.append("    zorderPosition: ").append(toIndentedString(zorderPosition)).append("\n");
-    sb.append("    shapes: ").append(toIndentedString(shapes)).append("\n");
     sb.append("    fillFormat: ").append(toIndentedString(fillFormat)).append("\n");
     sb.append("    effectFormat: ").append(toIndentedString(effectFormat)).append("\n");
     sb.append("    threeDFormat: ").append(toIndentedString(threeDFormat)).append("\n");

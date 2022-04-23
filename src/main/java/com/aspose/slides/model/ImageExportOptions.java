@@ -28,8 +28,8 @@
 package com.aspose.slides.model;
 
 import java.util.Objects;
-import com.aspose.slides.model.ExportOptions;
 import com.aspose.slides.model.FontFallbackRule;
+import com.aspose.slides.model.ImageExportOptionsBase;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -47,7 +47,7 @@ import java.util.Map;
  * Provides options that control how a presentation is saved in an image format.
  */
 @ApiModel(description = "Provides options that control how a presentation is saved in an image format.")
-public class ImageExportOptions extends ExportOptions {
+public class ImageExportOptions extends ImageExportOptionsBase {
   /**
    * Gets or sets the position of the notes on the page.
    */

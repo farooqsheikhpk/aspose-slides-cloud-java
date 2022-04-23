@@ -33,6 +33,7 @@ import com.aspose.slides.model.FillFormat;
 import com.aspose.slides.model.GeometryShape;
 import com.aspose.slides.model.Hyperlink;
 import com.aspose.slides.model.LineFormat;
+import com.aspose.slides.model.PictureFill;
 import com.aspose.slides.model.ResourceUri;
 import com.aspose.slides.model.ThreeDFormat;
 import com.google.gson.TypeAdapter;
@@ -194,6 +195,9 @@ public class AudioFrame extends GeometryShape {
 
   @SerializedName(value = "rewindAudio", alternate = { "RewindAudio" })
   private Boolean rewindAudio;
+
+  @SerializedName(value = "pictureFillFormat", alternate = { "PictureFillFormat" })
+  private PictureFill pictureFillFormat;
 
 
   public AudioFrame() {
@@ -417,6 +421,24 @@ public class AudioFrame extends GeometryShape {
     this.rewindAudio = rewindAudio;
   }
 
+  public AudioFrame pictureFillFormat(PictureFill pictureFillFormat) {
+    this.pictureFillFormat = pictureFillFormat;
+    return this;
+  }
+
+   /**
+   * Picture fill format.
+   * @return pictureFillFormat
+  **/
+  @ApiModelProperty(value = "Picture fill format.")
+  public PictureFill getPictureFillFormat() {
+    return pictureFillFormat;
+  }
+
+  public void setPictureFillFormat(PictureFill pictureFillFormat) {
+    this.pictureFillFormat = pictureFillFormat;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -427,12 +449,12 @@ public class AudioFrame extends GeometryShape {
       return false;
     }
     AudioFrame audioFrame = (AudioFrame) o;
-    return true && Objects.equals(this.audioCdEndTrack, audioFrame.audioCdEndTrack) && Objects.equals(this.audioCdEndTrackTime, audioFrame.audioCdEndTrackTime) && Objects.equals(this.audioCdStartTrack, audioFrame.audioCdStartTrack) && Objects.equals(this.audioCdStartTrackTime, audioFrame.audioCdStartTrackTime) && Objects.equals(this.embedded, audioFrame.embedded) && Objects.equals(this.hideAtShowing, audioFrame.hideAtShowing) && Objects.equals(this.playLoopMode, audioFrame.playLoopMode) && Objects.equals(this.playMode, audioFrame.playMode) && Objects.equals(this.volume, audioFrame.volume) && Objects.equals(this.base64Data, audioFrame.base64Data) && Objects.equals(this.playAcrossSlides, audioFrame.playAcrossSlides) && Objects.equals(this.rewindAudio, audioFrame.rewindAudio) && super.equals(o);
+    return true && Objects.equals(this.audioCdEndTrack, audioFrame.audioCdEndTrack) && Objects.equals(this.audioCdEndTrackTime, audioFrame.audioCdEndTrackTime) && Objects.equals(this.audioCdStartTrack, audioFrame.audioCdStartTrack) && Objects.equals(this.audioCdStartTrackTime, audioFrame.audioCdStartTrackTime) && Objects.equals(this.embedded, audioFrame.embedded) && Objects.equals(this.hideAtShowing, audioFrame.hideAtShowing) && Objects.equals(this.playLoopMode, audioFrame.playLoopMode) && Objects.equals(this.playMode, audioFrame.playMode) && Objects.equals(this.volume, audioFrame.volume) && Objects.equals(this.base64Data, audioFrame.base64Data) && Objects.equals(this.playAcrossSlides, audioFrame.playAcrossSlides) && Objects.equals(this.rewindAudio, audioFrame.rewindAudio) && Objects.equals(this.pictureFillFormat, audioFrame.pictureFillFormat) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(audioCdEndTrack, audioCdEndTrackTime, audioCdStartTrack, audioCdStartTrackTime, embedded, hideAtShowing, playLoopMode, playMode, volume, base64Data, playAcrossSlides, rewindAudio, super.hashCode());
+    return Objects.hash(audioCdEndTrack, audioCdEndTrackTime, audioCdStartTrack, audioCdStartTrackTime, embedded, hideAtShowing, playLoopMode, playMode, volume, base64Data, playAcrossSlides, rewindAudio, pictureFillFormat, super.hashCode());
   }
 
 
@@ -453,6 +475,7 @@ public class AudioFrame extends GeometryShape {
     sb.append("    base64Data: ").append(toIndentedString(base64Data)).append("\n");
     sb.append("    playAcrossSlides: ").append(toIndentedString(playAcrossSlides)).append("\n");
     sb.append("    rewindAudio: ").append(toIndentedString(rewindAudio)).append("\n");
+    sb.append("    pictureFillFormat: ").append(toIndentedString(pictureFillFormat)).append("\n");
     sb.append("}");
     return sb.toString();
   }

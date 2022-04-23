@@ -53,10 +53,31 @@ import java.util.Map;
  */
 @ApiModel(description = "Represents GroupShape resource.")
 public class GroupShape extends ShapeBase {
+  @SerializedName(value = "shapes", alternate = { "Shapes" })
+  private ResourceUri shapes;
+
 
   public GroupShape() {
     super();
     setType(TypeEnum.GROUPSHAPE);
+  }
+
+  public GroupShape shapes(ResourceUri shapes) {
+    this.shapes = shapes;
+    return this;
+  }
+
+   /**
+   * Gets or sets the link to shapes.
+   * @return shapes
+  **/
+  @ApiModelProperty(value = "Gets or sets the link to shapes.")
+  public ResourceUri getShapes() {
+    return shapes;
+  }
+
+  public void setShapes(ResourceUri shapes) {
+    this.shapes = shapes;
   }
 
 
@@ -69,12 +90,12 @@ public class GroupShape extends ShapeBase {
       return false;
     }
     GroupShape groupShape = (GroupShape) o;
-    return true && super.equals(o);
+    return true && Objects.equals(this.shapes, groupShape.shapes) && super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode());
+    return Objects.hash(shapes, super.hashCode());
   }
 
 
@@ -83,6 +104,7 @@ public class GroupShape extends ShapeBase {
     StringBuilder sb = new StringBuilder();
     sb.append("class GroupShape {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    shapes: ").append(toIndentedString(shapes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

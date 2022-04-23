@@ -209,6 +209,12 @@ public class TableCell {
   @SerializedName(value = "borderDiagonalDown", alternate = { "BorderDiagonalDown" })
   private LineFormat borderDiagonalDown;
 
+  @SerializedName(value = "columnIndex", alternate = { "ColumnIndex" })
+  private Integer columnIndex;
+
+  @SerializedName(value = "rowIndex", alternate = { "RowIndex" })
+  private Integer rowIndex;
+
 
   public TableCell() {
     super();
@@ -502,6 +508,42 @@ public class TableCell {
     this.borderDiagonalDown = borderDiagonalDown;
   }
 
+  public TableCell columnIndex(Integer columnIndex) {
+    this.columnIndex = columnIndex;
+    return this;
+  }
+
+   /**
+   * Cell column index
+   * @return columnIndex
+  **/
+  @ApiModelProperty(value = "Cell column index")
+  public Integer getColumnIndex() {
+    return columnIndex;
+  }
+
+  public void setColumnIndex(Integer columnIndex) {
+    this.columnIndex = columnIndex;
+  }
+
+  public TableCell rowIndex(Integer rowIndex) {
+    this.rowIndex = rowIndex;
+    return this;
+  }
+
+   /**
+   * Cell row index
+   * @return rowIndex
+  **/
+  @ApiModelProperty(value = "Cell row index")
+  public Integer getRowIndex() {
+    return rowIndex;
+  }
+
+  public void setRowIndex(Integer rowIndex) {
+    this.rowIndex = rowIndex;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -512,12 +554,12 @@ public class TableCell {
       return false;
     }
     TableCell tableCell = (TableCell) o;
-    return true && Objects.equals(this.text, tableCell.text) && Objects.equals(this.rowSpan, tableCell.rowSpan) && Objects.equals(this.colSpan, tableCell.colSpan) && Objects.equals(this.marginTop, tableCell.marginTop) && Objects.equals(this.marginRight, tableCell.marginRight) && Objects.equals(this.marginLeft, tableCell.marginLeft) && Objects.equals(this.marginBottom, tableCell.marginBottom) && Objects.equals(this.textAnchorType, tableCell.textAnchorType) && Objects.equals(this.textVerticalType, tableCell.textVerticalType) && Objects.equals(this.fillFormat, tableCell.fillFormat) && Objects.equals(this.borderTop, tableCell.borderTop) && Objects.equals(this.borderRight, tableCell.borderRight) && Objects.equals(this.borderLeft, tableCell.borderLeft) && Objects.equals(this.borderBottom, tableCell.borderBottom) && Objects.equals(this.borderDiagonalUp, tableCell.borderDiagonalUp) && Objects.equals(this.borderDiagonalDown, tableCell.borderDiagonalDown);
+    return true && Objects.equals(this.text, tableCell.text) && Objects.equals(this.rowSpan, tableCell.rowSpan) && Objects.equals(this.colSpan, tableCell.colSpan) && Objects.equals(this.marginTop, tableCell.marginTop) && Objects.equals(this.marginRight, tableCell.marginRight) && Objects.equals(this.marginLeft, tableCell.marginLeft) && Objects.equals(this.marginBottom, tableCell.marginBottom) && Objects.equals(this.textAnchorType, tableCell.textAnchorType) && Objects.equals(this.textVerticalType, tableCell.textVerticalType) && Objects.equals(this.fillFormat, tableCell.fillFormat) && Objects.equals(this.borderTop, tableCell.borderTop) && Objects.equals(this.borderRight, tableCell.borderRight) && Objects.equals(this.borderLeft, tableCell.borderLeft) && Objects.equals(this.borderBottom, tableCell.borderBottom) && Objects.equals(this.borderDiagonalUp, tableCell.borderDiagonalUp) && Objects.equals(this.borderDiagonalDown, tableCell.borderDiagonalDown) && Objects.equals(this.columnIndex, tableCell.columnIndex) && Objects.equals(this.rowIndex, tableCell.rowIndex);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, rowSpan, colSpan, marginTop, marginRight, marginLeft, marginBottom, textAnchorType, textVerticalType, fillFormat, borderTop, borderRight, borderLeft, borderBottom, borderDiagonalUp, borderDiagonalDown);
+    return Objects.hash(text, rowSpan, colSpan, marginTop, marginRight, marginLeft, marginBottom, textAnchorType, textVerticalType, fillFormat, borderTop, borderRight, borderLeft, borderBottom, borderDiagonalUp, borderDiagonalDown, columnIndex, rowIndex);
   }
 
 
@@ -542,6 +584,8 @@ public class TableCell {
     sb.append("    borderBottom: ").append(toIndentedString(borderBottom)).append("\n");
     sb.append("    borderDiagonalUp: ").append(toIndentedString(borderDiagonalUp)).append("\n");
     sb.append("    borderDiagonalDown: ").append(toIndentedString(borderDiagonalDown)).append("\n");
+    sb.append("    columnIndex: ").append(toIndentedString(columnIndex)).append("\n");
+    sb.append("    rowIndex: ").append(toIndentedString(rowIndex)).append("\n");
     sb.append("}");
     return sb.toString();
   }

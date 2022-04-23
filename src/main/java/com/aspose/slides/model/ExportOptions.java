@@ -51,12 +51,6 @@ public class ExportOptions {
   @SerializedName(value = "defaultRegularFont", alternate = { "DefaultRegularFont" })
   private String defaultRegularFont;
 
-  @SerializedName(value = "height", alternate = { "Height" })
-  private Integer height;
-
-  @SerializedName(value = "width", alternate = { "Width" })
-  private Integer width;
-
   @SerializedName(value = "fontFallbackRules", alternate = { "FontFallbackRules" })
   private List<FontFallbackRule> fontFallbackRules = null;
 
@@ -84,42 +78,6 @@ public class ExportOptions {
 
   public void setDefaultRegularFont(String defaultRegularFont) {
     this.defaultRegularFont = defaultRegularFont;
-  }
-
-  public ExportOptions height(Integer height) {
-    this.height = height;
-    return this;
-  }
-
-   /**
-   * Gets or sets the height of slides in the output format, e.g. image size, pdf page size etc.
-   * @return height
-  **/
-  @ApiModelProperty(value = "Gets or sets the height of slides in the output format, e.g. image size, pdf page size etc.")
-  public Integer getHeight() {
-    return height;
-  }
-
-  public void setHeight(Integer height) {
-    this.height = height;
-  }
-
-  public ExportOptions width(Integer width) {
-    this.width = width;
-    return this;
-  }
-
-   /**
-   * Gets or sets the height of slides in the output format, e.g. image size, pdf page size etc.
-   * @return width
-  **/
-  @ApiModelProperty(value = "Gets or sets the height of slides in the output format, e.g. image size, pdf page size etc.")
-  public Integer getWidth() {
-    return width;
-  }
-
-  public void setWidth(Integer width) {
-    this.width = width;
   }
 
   public ExportOptions fontFallbackRules(List<FontFallbackRule> fontFallbackRules) {
@@ -176,12 +134,12 @@ public class ExportOptions {
       return false;
     }
     ExportOptions exportOptions = (ExportOptions) o;
-    return true && Objects.equals(this.defaultRegularFont, exportOptions.defaultRegularFont) && Objects.equals(this.height, exportOptions.height) && Objects.equals(this.width, exportOptions.width) && Objects.equals(this.fontFallbackRules, exportOptions.fontFallbackRules) && Objects.equals(this.format, exportOptions.format);
+    return true && Objects.equals(this.defaultRegularFont, exportOptions.defaultRegularFont) && Objects.equals(this.fontFallbackRules, exportOptions.fontFallbackRules) && Objects.equals(this.format, exportOptions.format);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultRegularFont, height, width, fontFallbackRules, format);
+    return Objects.hash(defaultRegularFont, fontFallbackRules, format);
   }
 
 
@@ -191,8 +149,6 @@ public class ExportOptions {
     sb.append("class ExportOptions {\n");
     
     sb.append("    defaultRegularFont: ").append(toIndentedString(defaultRegularFont)).append("\n");
-    sb.append("    height: ").append(toIndentedString(height)).append("\n");
-    sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    fontFallbackRules: ").append(toIndentedString(fontFallbackRules)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("}");
